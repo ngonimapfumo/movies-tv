@@ -2,6 +2,7 @@ package zw.co.nm.moviedb.network
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,19 +19,8 @@ object NetworkManager {
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
-
-    /* private var tokenInterceptor = Interceptor { chain ->
-         val urlPath = chain.request().url.encodedPath
-         var newRequestBuilder = chain.request().newBuilder()
-         if (NetworkingUtils.requiresBearerToken(urlPath = urlPath)) {
-             newRequestBuilder =
-                 newRequestBuilder.addHeader("Authorization", "Bearer $latestBearerToken")
-         }
-         chain.proceed(newRequestBuilder.build())
-     }*/
-
     private val client = OkHttpClient.Builder()
-        // .addInterceptor(tokenInterceptor)
+        .addInterceptor(ApiCallInterceptor)
         .addInterceptor(loggingInterceptor)
         .readTimeout(5, TimeUnit.MINUTES)
         .connectTimeout(5, TimeUnit.MINUTES)
