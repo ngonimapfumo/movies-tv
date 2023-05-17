@@ -7,4 +7,5 @@ object Constants {
 
     val IMAGE_BASE_URL
     get() = "https://image.tmdb.org/t/p/w500"
+
 }

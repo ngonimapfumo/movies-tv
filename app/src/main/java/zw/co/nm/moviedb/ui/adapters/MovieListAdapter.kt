@@ -8,6 +8,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.models.Movie
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.PageNavUtils
 
 class MovieListAdapter(private var data: ArrayList<Movie>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -24,7 +25,9 @@ class MovieListAdapter(private var data: ArrayList<Movie>) :
         //  binding!!.text.text = data[position].title
         Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_large)
             .into(binding!!.imageView)
-
+        holder.itemView.setOnClickListener {
+            PageNavUtils.toMovieDetailsPage(holder.itemView.context, data[position].id)
+        }
 
     }
 
