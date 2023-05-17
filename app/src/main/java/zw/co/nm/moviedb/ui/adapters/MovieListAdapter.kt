@@ -4,24 +4,34 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.models.Movie
+import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
-class MovieListAdapter(private val data: ArrayList<Movie>) :
+class MovieListAdapter(private var data: ArrayList<Movie>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var binding: ItemMovieDetailBinding
+    private var binding: ItemMovieDetailBinding? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         binding = ItemMovieDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemMovieViewHolder(binding)
+        return ItemMovieViewHolder(binding!!)
     }
 
     override fun getItemCount(): Int = data.size
-/*"http://image.tmdb.org/t/p/w500/"*/
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-       // Picasso.get().load(data[position].poster_path)
+        val imgPath = data[position].poster_path
+        //  binding!!.text.text = data[position].title
+        Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_large)
+            .into(binding!!.imageView)
+
+
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 
     class ItemMovieViewHolder(binding: ItemMovieDetailBinding) :
-        RecyclerView.ViewHolder(binding.root) {}
+        RecyclerView.ViewHolder(binding.root)
 }
