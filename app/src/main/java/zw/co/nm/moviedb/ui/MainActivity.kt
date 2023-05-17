@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb
+package zw.co.nm.moviedb.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

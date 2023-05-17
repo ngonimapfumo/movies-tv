@@ -3,9 +3,9 @@ package zw.co.nm.moviedb.network
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
-import zw.co.nm.moviedb.models.GetMovieDetailResponse
-import zw.co.nm.moviedb.models.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.models.SearchMovieResponse
+import zw.co.nm.moviedb.models.network.GetMovieDetailResponse
+import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.models.network.SearchMovieResponse
 
 interface ApiService {
 

@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.models
+package zw.co.nm.moviedb.models.network
 
 
 import com.google.gson.annotations.SerializedName
