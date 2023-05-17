@@ -3,7 +3,7 @@ package zw.co.nm.moviedb.models
 
 import com.google.gson.annotations.SerializedName
 
-data class GetPopularTVSeriesResponse(
+data class GetPopularTVSeriesListResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
