@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     namespace 'zw.co.nm.moviedb'
     compileSdk 33
@@ -21,6 +24,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", 'API_KEY', localProperties['apiKey'])
+        }
+        debug{
+            buildConfigField("String", 'API_KEY', localProperties['apiKey'])
         }
     }
     compileOptions {
