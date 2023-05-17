@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             val fullPosterPath = IMAGE_BASE_URL + response.results[i].posterPath
             val movies = Movie(fullPosterPath, response.results[i].title)
             movieList.add(movies)
-            println(movies)
         }
         adapter = MovieListAdapter(movieList)
         binding.recyclerView.adapter = adapter
