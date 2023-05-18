@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="genre_year_txt">12sp</dimen>
+    <dimen name="info_txt_size">15sp</dimen>
+    <dimen name="info_detail_txt">13sp</dimen>
+</resources>

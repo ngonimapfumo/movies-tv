@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flowOn
 import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.network.NetworkManager
 
-class GetPopularMoviesListRepo() {
+class GetPopularMoviesRepo() {
 
     fun getPopularMovies(page: Int): Flow<GetPopularMoviesListResponse?> = flow {
         emit(NetworkManager.apiService.getPopularMovies(page).body())
