@@ -7,6 +7,7 @@ import retrofit2.http.Query
 import zw.co.nm.moviedb.models.network.GetMovieDetailResponse
 import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.models.network.SearchMovieResponse
+import zw.co.nm.moviedb.models.network.GetSimilarMoviesResponse
 
 interface ApiService {
 
@@ -25,4 +26,9 @@ interface ApiService {
         @Query("query") query: String,
         @Query("include_adult") include_adult: Boolean
     ): Response<SearchMovieResponse>
+
+    @GET("movie/{id}/similar")
+    suspend fun getSimilarMoviesList(
+        @Path("id") movieId: Int
+    ): Response<GetSimilarMoviesResponse>
 }
