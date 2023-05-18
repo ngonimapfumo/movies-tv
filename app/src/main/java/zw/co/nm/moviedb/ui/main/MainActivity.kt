@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +14,6 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.models.Movie
-import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
@@ -31,30 +31,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpView()
         lifecycleScope.launch {
-            mainViewModel.getPopularMovies(1).collect(::process)
+            mainViewModel.getPopularMovies(1).collect { response ->
+                if (response.isSuccessful) {
+                    binding.recyclerView.hasFixedSize()
+                    binding.recyclerView.layoutManager = GridLayoutManager(this@MainActivity, 2)
+                    movieList = arrayListOf()
+                    for (i in response.body.results.indices) {
+                        val fullPosterPath = IMAGE_BASE_URL + response.body.results[i].posterPath
+                        val movies = Movie(
+                            fullPosterPath, response.body.results[i].title,
+                            response.body.results[i].id
+                        )
+                        movieList.add(movies)
+                    }
+                    adapter = MovieListAdapter(movieList)
+                    binding.recyclerView.adapter = adapter
+                }else{
+                    Toast.makeText(this@MainActivity, "Mmmm... Network?", Toast.LENGTH_SHORT).show()}
+            }
         }
 
     }
 
     private fun setUpView() {
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
-
-    }
-
-    private fun process(response: GetPopularMoviesListResponse?) {
-        binding.recyclerView.hasFixedSize()
-        binding.recyclerView.layoutManager = GridLayoutManager(this@MainActivity, 2)
-        movieList = arrayListOf()
-        for (i in response?.results!!.indices) {
-            val fullPosterPath = IMAGE_BASE_URL + response.results[i].posterPath
-            val movies = Movie(
-                fullPosterPath, response.results[i].title,
-                response.results[i].id
-            )
-            movieList.add(movies)
-        }
-        adapter = MovieListAdapter(movieList)
-        binding.recyclerView.adapter = adapter
 
     }
 
