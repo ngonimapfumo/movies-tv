@@ -23,11 +23,15 @@ class MovieDetailActivity : AppCompatActivity() {
         println(movieId)
         lifecycleScope.launch {
             movieDetailViewModel.getMovieDetail(movieId!!).collect {
-                Picasso.get().load(IMAGE_BASE_URL + it!!.posterPath).
-                placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
+                Picasso.get().load(IMAGE_BASE_URL + it!!.posterPath)
+                    .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
                 binding.movieSummaryTxt.text = it.overview
                 binding.movieTitleTxt.text = it.title
-
+                binding.runtimeTxt.text = "${it.runtime} minutes"
+                binding.yearTxt.text = it.releaseDate.substring(0, 4)
+                for (i in it.genres.indices) {
+                    binding.genre.text = it.genres[i].name
+                }
             }
         }
     }
