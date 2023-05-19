@@ -13,7 +13,7 @@ import kotlin.math.roundToInt
 
 class MovieDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityMovieDetailBinding
-    lateinit var movieDetailViewModel: MovieDetailViewModel
+    private lateinit var movieDetailViewModel: MovieDetailViewModel
     var movieId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,22 +24,23 @@ class MovieDetailActivity : AppCompatActivity() {
         println(movieId)
         lifecycleScope.launch {
             movieDetailViewModel.getMovieDetail(movieId!!).collect {
-                Picasso.get().load(IMAGE_BASE_URL + it!!.posterPath)
+                var response = it.body
+                Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
                     .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
-                binding.movieSummaryTxt.text = it.overview
-                binding.movieTitleTxt.text = it.title
+                binding.movieSummaryTxt.text = response.overview
+                binding.movieTitleTxt.text = response.title
                 binding.runtimeTxt.text = buildString {
-                    append(it.runtime)
+                    append(response.runtime)
                     append(" minutes")
                 }
-                binding.yearTxt.text = it.releaseDate.substring(0, 4)
-                for (i in it.genres.indices) {
-                    binding.genre.text = it.genres[i].name
+                binding.yearTxt.text = response.releaseDate.substring(0, 4)
+                for (i in response.genres.indices) {
+                    binding.genre.text = response.genres[i].name
                 }
-                for (i in it.productionCompanies.indices){
-                    binding.prodCompany.text = it.productionCompanies[i].name
+                for (i in response.productionCompanies.indices) {
+                    binding.prodCompany.text = response.productionCompanies[i].name
                 }
-                binding.movieRatingTxt.text = it.voteAverage.roundToInt().toString()
+                binding.movieRatingTxt.text = response.voteAverage.roundToInt().toString()
             }
         }
     }
