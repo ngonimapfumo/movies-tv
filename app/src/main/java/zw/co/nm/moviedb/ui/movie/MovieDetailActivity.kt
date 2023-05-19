@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import kotlin.math.roundToInt
 
 class MovieDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityMovieDetailBinding
@@ -27,11 +28,18 @@ class MovieDetailActivity : AppCompatActivity() {
                     .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
                 binding.movieSummaryTxt.text = it.overview
                 binding.movieTitleTxt.text = it.title
-                binding.runtimeTxt.text = "${it.runtime} minutes"
+                binding.runtimeTxt.text = buildString {
+                    append(it.runtime)
+                    append(" minutes")
+                }
                 binding.yearTxt.text = it.releaseDate.substring(0, 4)
                 for (i in it.genres.indices) {
                     binding.genre.text = it.genres[i].name
                 }
+                for (i in it.productionCompanies.indices){
+                    binding.prodCompany.text = it.productionCompanies[i].name
+                }
+                binding.movieRatingTxt.text = it.voteAverage.roundToInt().toString()
             }
         }
     }
