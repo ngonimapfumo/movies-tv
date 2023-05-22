@@ -23,8 +23,7 @@ class MovieListAdapter(private var data: ArrayList<Movie>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].poster_path
         //  binding!!.text.text = data[position].title
-        Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_large)
-            .into(binding!!.imageView)
+        Picasso.get().load(IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(holder.itemView.context, data[position].id)
         }
