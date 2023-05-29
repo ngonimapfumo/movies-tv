@@ -31,7 +31,7 @@ class MovieActivity : AppCompatActivity() {
         setUpView()
         lifecycleScope.launch {
             movieViewModel.getSimilarMoviesList(movieId!!).collect { response ->
-                var adapter: SimilarMoviesListAdapter
+                val adapter: SimilarMoviesListAdapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(
                     this@MovieActivity,
                     LinearLayoutManager.HORIZONTAL, false
@@ -43,7 +43,7 @@ class MovieActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             movieViewModel.getMovieDetail(movieId!!).collect {
-                var response = it.body
+                val response = it.body
                 Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
                     .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
                 binding.movieSummaryTxt.text = response.overview
