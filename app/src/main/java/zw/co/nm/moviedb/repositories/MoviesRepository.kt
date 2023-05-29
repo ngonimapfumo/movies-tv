@@ -9,6 +9,7 @@ import zw.co.nm.moviedb.models.network.GetCreditsResponse
 import zw.co.nm.moviedb.models.network.GetMovieDetailResponse
 import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.models.network.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.models.network.SearchMovieResponse
 import zw.co.nm.moviedb.network.NetworkManager
 
 class MoviesRepository() {
@@ -32,6 +33,11 @@ class MoviesRepository() {
         flow {
             emit(apiCall { NetworkManager.apiService.getCredits(movieId) })
         }.flowOn(Dispatchers.IO)
+
+    fun searchMovie(query: String): Flow<zw.co.nm.moviedb.network.Response<SearchMovieResponse>> =
+        flow {
+            emit(apiCall { NetworkManager.apiService.searchMovie(query, true) })
+        }
 
     private inline fun <T> apiCall(apiCall: () -> Response<T>): zw.co.nm.moviedb.network.Response<T> {
         return try {
