@@ -17,7 +17,6 @@ import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.network.Response
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
-import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: MovieListAdapter
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var movieList: ArrayList<Movie>
     private var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,17 +38,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun process(response: Response<GetPopularMoviesListResponse>) {
         if (response.isSuccessful) {
-            binding.recyclerView.hasFixedSize()
-            movieList = arrayListOf()
-            for (i in response.body.results.indices) {
-                val fullPosterPath = IMAGE_BASE_URL + response.body.results[i].posterPath
-                val movies = Movie(
-                    fullPosterPath, response.body.results[i].title,
-                    response.body.results[i].id
-                )
-                movieList.add(movies)
-            }
-            adapter = MovieListAdapter(movieList)
+            val data = response.data!!.body()!!.results
+            adapter = MovieListAdapter(data)
             binding.recyclerView.adapter = adapter
         } else {
             Toast.makeText(this@MainActivity, "Mmmm... Network?", Toast.LENGTH_SHORT).show()
@@ -87,7 +76,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
         if (id == R.id.app_bar_search) {
-
             startActivity(Intent(this@MainActivity, SearchActivity::class.java))
             return true
         }

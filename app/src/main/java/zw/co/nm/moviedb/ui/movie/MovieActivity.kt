@@ -1,7 +1,6 @@
 package zw.co.nm.moviedb.ui.movie
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +12,7 @@ import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.models.Movie
 import zw.co.nm.moviedb.models.network.Cast
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
+import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
 import kotlin.math.roundToInt
@@ -22,8 +22,6 @@ class MovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var movieViewModel: MovieViewModel
     private var movieId: Int? = null
-    private lateinit var movieList: ArrayList<Movie>
-    private lateinit var adapter: MovieListAdapter
     private lateinit var castList: ArrayList<Cast>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,26 +31,14 @@ class MovieActivity : AppCompatActivity() {
         setUpView()
         lifecycleScope.launch {
             movieViewModel.getSimilarMoviesList(movieId!!).collect { response ->
-
+                var adapter: SimilarMoviesListAdapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(
                     this@MovieActivity,
                     LinearLayoutManager.HORIZONTAL, false
                 )
-                binding.recyclerView.hasFixedSize()
-                movieList = arrayListOf()
-                for (i in response.body.results.indices) {
-                    val fullPosterPath =
-                        LOW_RES_IMAGE_BASE_URL + response.body.results[i].posterPath
-                    val movies = Movie(
-                        fullPosterPath, response.body.results[i].title,
-                        response.body.results[i].id
-                    )
-                    movieList.add(movies)
-                }
-                adapter = MovieListAdapter(movieList)
+                val data = response.data!!.body()!!.results
+                adapter = SimilarMoviesListAdapter(data)
                 binding.recyclerView.adapter = adapter
-
-
             }
         }
         lifecycleScope.launch {
@@ -90,7 +76,6 @@ class MovieActivity : AppCompatActivity() {
             }
         }
     }
-
 
     companion object {
         const val MOVIE_ID_EXTRA: String = "movieId"

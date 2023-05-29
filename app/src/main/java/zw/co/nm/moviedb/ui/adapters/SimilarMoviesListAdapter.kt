@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.models.network.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
-class MovieListAdapter(private var data: List<GetPopularMoviesListResponse.Result>) :
+class SimilarMoviesListAdapter(private var data: List<GetSimilarMoviesResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null
@@ -19,13 +20,16 @@ class MovieListAdapter(private var data: List<GetPopularMoviesListResponse.Resul
     }
 
     override fun getItemCount(): Int = data.size
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
         //  binding!!.text.text = data[position].title
-        Picasso.get().load(IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
+        Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-            PageNavUtils.toMovieDetailsPage(holder.itemView.context,
-                data[position].id)
+            PageNavUtils.toMovieDetailsPage(
+                holder.itemView.context,
+                data[position].id
+            )
         }
 
     }
