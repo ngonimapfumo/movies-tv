@@ -9,12 +9,10 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
-import zw.co.nm.moviedb.models.Movie
 import zw.co.nm.moviedb.models.network.Cast
-import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
+import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
 import kotlin.math.roundToInt
 
 
@@ -63,15 +61,16 @@ class MovieActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launch {
-            castList = arrayListOf()
-
             movieViewModel.getCredits(movieId!!).collect {
-                /*for (i in it.body.cast.indices) {
-                    val cast = Cast(it.body.cast[i].name,
-                        it.body.cast[i].character)
-                    castList.add(cast)
-
-                }*/
+                response ->
+                val adapter: CastAdapter
+                binding.castRecyclerView.layoutManager = LinearLayoutManager(
+                    this@MovieActivity,
+                    LinearLayoutManager.HORIZONTAL, false
+                )
+                val data = response.data!!.body()!!.cast
+                adapter = CastAdapter(data)
+                binding.castRecyclerView.adapter = adapter
 
             }
         }

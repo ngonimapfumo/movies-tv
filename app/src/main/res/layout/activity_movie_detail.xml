@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.movie.MovieActivity">
 
-
-
-
     <ScrollView
         android:id="@+id/scroller"
         android:layout_width="match_parent"
@@ -308,14 +305,14 @@
                             app:layout_constraintStart_toStartOf="@+id/textView7"
                             app:layout_constraintTop_toBottomOf="@+id/movieRatingTxt" />
 
-                        <TextView
-                            android:id="@+id/castTxt"
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/castRecyclerView"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/info_detail_txt"
                             app:layout_constraintStart_toStartOf="@+id/textView8"
                             app:layout_constraintTop_toBottomOf="@+id/textView8"
-                            tools:text="sdjsda, dasda ,dadas , dasdasd" />
+                            tools:listitem="@layout/item_cast" />
 
                         <TextView
                             android:id="@+id/textView6"
