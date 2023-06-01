@@ -29,6 +29,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_search_detail"
         android:id="@+id/searchRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
