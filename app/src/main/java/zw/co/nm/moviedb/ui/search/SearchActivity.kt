@@ -1,6 +1,8 @@
 package zw.co.nm.moviedb.ui.search
 
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -18,6 +20,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var adapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)

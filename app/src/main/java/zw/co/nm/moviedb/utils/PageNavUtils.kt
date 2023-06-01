@@ -9,6 +9,7 @@ object PageNavUtils {
     fun toMovieDetailsPage(context: Context, movieId: Int) {
         val intent = Intent(context, MovieActivity::class.java)
         intent.putExtra(MovieActivity.MOVIE_ID_EXTRA, movieId)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
     }
 }

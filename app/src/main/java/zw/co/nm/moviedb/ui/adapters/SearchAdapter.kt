@@ -7,6 +7,7 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
 import zw.co.nm.moviedb.models.network.SearchMovieResponse
 import zw.co.nm.moviedb.utils.Constants
+import zw.co.nm.moviedb.utils.PageNavUtils
 
 class SearchAdapter(private var data: List<SearchMovieResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -23,7 +24,10 @@ class SearchAdapter(private var data: List<SearchMovieResponse.Result>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
          val imgPath = data[position].posterPath
          Picasso.get().load(Constants.MED_RES_IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
-
+        holder.itemView.setOnClickListener {
+            PageNavUtils.toMovieDetailsPage(holder.itemView.context,
+                data[position].id)
+        }
 
     }
 
