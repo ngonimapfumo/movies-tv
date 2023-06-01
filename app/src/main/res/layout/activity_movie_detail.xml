@@ -92,6 +92,7 @@
 
             </LinearLayout>
             <com.google.android.material.button.MaterialButton
+                android:backgroundTint="@color/white"
                 android:id="@+id/trailerBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +105,7 @@
                 app:layout_constraintStart_toStartOf="@+id/background_imm"
                 app:layout_constraintTop_toTopOf="@+id/background_imm"
                 app:layout_constraintVertical_bias="0.859"
-                android:text="Watch trailers" />
+                android:text="Trailers" />
 
             <TextView
                 android:id="@+id/movieSummaryTxt"

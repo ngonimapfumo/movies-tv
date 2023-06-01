@@ -7,12 +7,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
-import zw.co.nm.moviedb.models.Movie
 import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.network.Response
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
@@ -31,7 +32,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpView()
         lifecycleScope.launch {
-            mainViewModel.getPopularMovies(page).collect(::process)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mainViewModel.getPopularMovies(page).collect(::process)
+            }
         }
 
     }
@@ -51,19 +54,20 @@ class MainActivity : AppCompatActivity() {
         binding.nextB.setOnClickListener {
             page++
             lifecycleScope.launch {
-                mainViewModel.getPopularMovies(page).collect(::process)
-            }
-        }
-        binding.prevB.setOnClickListener {
-            if (page != 1) {
-                page--
-                lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
                     mainViewModel.getPopularMovies(page).collect(::process)
                 }
-            } else {
-                return@setOnClickListener
             }
-
+            binding.prevB.setOnClickListener {
+                if (page != 1) {
+                    page--
+                    lifecycleScope.launch {
+                        mainViewModel.getPopularMovies(page).collect(::process)
+                    }
+                } else {
+                    return@setOnClickListener
+                }
+            }
         }
 
     }
