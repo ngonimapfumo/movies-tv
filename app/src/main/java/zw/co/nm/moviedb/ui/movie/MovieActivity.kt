@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.ui.movie
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -48,6 +49,11 @@ class MovieActivity : AppCompatActivity() {
                     Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
                         .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
                     binding.movieSummaryTxt.text = response.overview
+                    binding.movieSummaryTxt.setOnClickListener {
+                        AlertDialog.Builder(this@MovieActivity)
+                            .setMessage(response.overview)
+                            .show()
+                    }
                     binding.movieTitleTxt.text = response.title
                     binding.runtimeTxt.text = buildString {
                         append(response.runtime)
