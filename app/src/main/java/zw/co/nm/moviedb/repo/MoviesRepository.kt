@@ -1,16 +1,17 @@
-package zw.co.nm.moviedb.repositories
+package zw.co.nm.moviedb.repo
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
-import zw.co.nm.moviedb.models.network.GetCreditsResponse
-import zw.co.nm.moviedb.models.network.GetMovieDetailResponse
-import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.models.network.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.models.network.SearchMovieResponse
+import zw.co.nm.moviedb.model.GetCreditsResponse
+import zw.co.nm.moviedb.model.GetMovieDetailResponse
+import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.model.SearchMovieResponse
 import zw.co.nm.moviedb.network.NetworkManager
+import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
 class MoviesRepository() {
 
@@ -39,12 +40,5 @@ class MoviesRepository() {
             emit(apiCall { NetworkManager.apiService.searchMovie(query, true) })
         }
 
-    private inline fun <T> apiCall(apiCall: () -> Response<T>): zw.co.nm.moviedb.network.Response<T> {
-        return try {
-            zw.co.nm.moviedb.network.Response.success(apiCall.invoke())
-        } catch (e: Exception) {
-            zw.co.nm.moviedb.network.Response.failure(e)
-        }
-    }
 
 }

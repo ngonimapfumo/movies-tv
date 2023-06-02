@@ -3,12 +3,12 @@ package zw.co.nm.moviedb.ui.movie
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.Flow
-import zw.co.nm.moviedb.models.network.GetCreditsResponse
-import zw.co.nm.moviedb.models.network.GetMovieDetailResponse
-import zw.co.nm.moviedb.models.network.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.models.network.SearchMovieResponse
+import zw.co.nm.moviedb.model.GetCreditsResponse
+import zw.co.nm.moviedb.model.GetMovieDetailResponse
+import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.model.SearchMovieResponse
 import zw.co.nm.moviedb.network.Response
-import zw.co.nm.moviedb.repositories.MoviesRepository
+import zw.co.nm.moviedb.repo.MoviesRepository
 
 
 class MovieViewModel(application: Application): AndroidViewModel(application) {

@@ -14,7 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
-import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.network.Response
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity

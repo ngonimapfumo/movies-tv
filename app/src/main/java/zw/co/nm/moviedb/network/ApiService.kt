@@ -4,11 +4,12 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import zw.co.nm.moviedb.models.network.GetCreditsResponse
-import zw.co.nm.moviedb.models.network.GetMovieDetailResponse
-import zw.co.nm.moviedb.models.network.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.models.network.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.models.network.SearchMovieResponse
+import zw.co.nm.moviedb.model.GetCreditsResponse
+import zw.co.nm.moviedb.model.GetMovieDetailResponse
+import zw.co.nm.moviedb.model.GetPersonResponse
+import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.model.SearchMovieResponse
 
 interface ApiService {
 
@@ -37,5 +38,10 @@ interface ApiService {
     suspend fun getCredits(
         @Path("id") movieId: Int
     ): Response<GetCreditsResponse>
+
+    @GET("person/{id}")
+    suspend fun getPerson(
+        @Path("id") personId: Int
+    ): Response<GetPersonResponse>
 
 }

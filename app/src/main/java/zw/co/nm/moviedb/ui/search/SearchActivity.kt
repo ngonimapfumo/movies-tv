@@ -26,6 +26,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setContentView(binding.root)
         binding.searchView.setOnQueryTextListener(this)
         movieViewModel = ViewModelProvider(this)[MovieViewModel::class.java]
+        
 
     }
 

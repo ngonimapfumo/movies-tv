@@ -1,9 +1,9 @@
-package zw.co.nm.moviedb.models.network
+package zw.co.nm.moviedb.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class GetPopularMoviesListResponse(
+data class SearchMovieResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
