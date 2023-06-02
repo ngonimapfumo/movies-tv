@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="91dp"
-                android:layout_height="137dp"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
                 android:scaleType="fitStart"
                 android:src="@drawable/sample_cover_small"
                 app:layout_constraintBottom_toBottomOf="parent"
