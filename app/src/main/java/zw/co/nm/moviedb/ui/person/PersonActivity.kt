@@ -1,14 +1,16 @@
 package zw.co.nm.moviedb.ui.person
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
+import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 class PersonActivity : AppCompatActivity() {
     lateinit var binding: ActivityPersonBinding
@@ -23,8 +25,9 @@ class PersonActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 personViewModel.getPerson(personId!!).collect {
-                    Toast.makeText(this@PersonActivity, it.body.toString(), Toast.LENGTH_SHORT)
-                        .show()
+                    Picasso.get().load(IMAGE_BASE_URL + it.body.profilePath)
+                        .placeholder(R.drawable.sample_people).into(binding.imageView)
+                    binding.biographyTxt.text = it.body.biography
                 }
             }
         }

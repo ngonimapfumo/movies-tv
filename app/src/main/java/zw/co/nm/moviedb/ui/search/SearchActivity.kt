@@ -32,7 +32,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
                 movieViewModel.searchMovie(query!!).collect { response ->
                     val data = response.data!!.body()!!.results
                     adapter = SearchAdapter(data)
