@@ -23,7 +23,7 @@ class PersonActivity : AppCompatActivity() {
         setUpView()
         personViewModel = ViewModelProvider(this)[PersonViewModel::class.java]
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 personViewModel.getPerson(personId!!).collect {
                     Picasso.get().load(IMAGE_BASE_URL + it.body.profilePath)
                         .placeholder(R.drawable.sample_people).into(binding.imageView)
