@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Dummy"
+                        android:text="Name"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView2"
@@ -97,85 +97,81 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                     <TextView
-                        android:id="@+id/locationTxt"
+                        android:id="@+id/nameTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_detail_txt"
                         app:layout_constraintEnd_toEndOf="@+id/textView4"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView4"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4"
-                        tools:text="Earth" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                     <TextView
                         android:id="@+id/textView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Dummy"
+                        android:text="Birthday"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView6"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView6"
-                        app:layout_constraintTop_toBottomOf="@+id/specieTxt" />
+                        app:layout_constraintTop_toBottomOf="@+id/knownForTxt" />
 
                     <TextView
-                        android:id="@+id/typeTxt"
+                        android:id="@+id/birthdayTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_detail_txt"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        tools:text="Giant" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Dummy"
+                        android:text="Birth place"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
-                        app:layout_constraintTop_toBottomOf="@+id/typeTxt" />
+                        app:layout_constraintTop_toBottomOf="@+id/birthdayTxt" />
 
                     <TextView
-                        android:id="@+id/statusTxt"
+                        android:id="@+id/birthplaceTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_detail_txt"
                         app:layout_constraintStart_toStartOf="@+id/textView8"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        tools:text="Alive" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Dummy"
+                        android:text="Known for"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView4"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView4"
-                        app:layout_constraintTop_toBottomOf="@+id/locationTxt" />
+                        app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
 
                     <TextView
-                        android:id="@+id/specieTxt"
+                        android:id="@+id/knownForTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_detail_txt"
                         app:layout_constraintEnd_toEndOf="@+id/textView6"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView6"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6"
-                        tools:text="Human" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

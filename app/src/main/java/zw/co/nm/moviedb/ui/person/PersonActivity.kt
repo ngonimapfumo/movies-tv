@@ -28,6 +28,10 @@ class PersonActivity : AppCompatActivity() {
                     Picasso.get().load(IMAGE_BASE_URL + it.body.profilePath)
                         .placeholder(R.drawable.sample_people).into(binding.imageView)
                     binding.biographyTxt.text = it.body.biography
+                    binding.nameTxt.text = it.body.name
+                    binding.knownForTxt.text = it.body.knownForDepartment
+                    binding.birthdayTxt.text = it.body.birthday
+                    binding.birthplaceTxt.text = it.body.placeOfBirth
                 }
             }
         }
