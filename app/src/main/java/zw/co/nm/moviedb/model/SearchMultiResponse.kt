@@ -3,7 +3,7 @@ package zw.co.nm.moviedb.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchMulti(
+data class SearchMultiResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
