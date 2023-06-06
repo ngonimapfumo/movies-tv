@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.Flow
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.network.Response
+import zw.co.nm.moviedb.data.api.Response
 import zw.co.nm.moviedb.repo.MoviesRepository
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

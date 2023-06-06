@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.network
+package zw.co.nm.moviedb.data.api
 
 import okhttp3.HttpUrl
 import okhttp3.Interceptor

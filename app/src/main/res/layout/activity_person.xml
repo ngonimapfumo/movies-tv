@@ -46,6 +46,7 @@
                 app:layout_constraintVertical_bias="0.028">
 
                 <TextView
+                    android:textStyle="italic"
                     android:id="@+id/biographyTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

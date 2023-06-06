@@ -59,6 +59,7 @@ class MovieActivity : AppCompatActivity() {
                         append(response.runtime)
                         append(" minutes")
                     }
+                    //todo: bug
                     binding.yearTxt.text = response.releaseDate.substring(0, 4)
                     for (i in response.genres.indices) {
                         binding.genre.text = response.genres[i].name

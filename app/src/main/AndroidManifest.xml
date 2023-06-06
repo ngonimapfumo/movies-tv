@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MovieDB"
         tools:targetApi="31">
         <activity
+            android:name=".ui.tv.TvShowsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.person.PersonActivity"
             android:exported="false" />
         <activity

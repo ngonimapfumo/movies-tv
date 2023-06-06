@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.network
+package zw.co.nm.moviedb.data.api
 
 import retrofit2.Response
 import retrofit2.http.GET
@@ -10,6 +10,7 @@ import zw.co.nm.moviedb.model.GetPersonResponse
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.model.SearchMovieResponse
+import zw.co.nm.moviedb.model.SearchMultiResponse
 
 interface ApiService {
 
@@ -43,5 +44,11 @@ interface ApiService {
     suspend fun getPerson(
         @Path("id") personId: Int
     ): Response<GetPersonResponse>
+
+    @GET("search/multi")
+    suspend fun searchMulti(
+        @Query("query") query: String,
+        @Query("include_adult") include_adult: Boolean
+    ): Response<SearchMultiResponse>
 
 }

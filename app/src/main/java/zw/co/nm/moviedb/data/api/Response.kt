@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.network
+package zw.co.nm.moviedb.data.api
 import retrofit2.Response
 
 data class Response<T>(
@@ -9,7 +9,7 @@ data class Response<T>(
 
     companion object {
 
-        fun <T> success(data: Response<T>): zw.co.nm.moviedb.network.Response<T> {
+        fun <T> success(data: Response<T>): zw.co.nm.moviedb.data.api.Response<T> {
             return Response(
                 status = Status.Success,
                 data = data,
@@ -17,7 +17,7 @@ data class Response<T>(
             )
         }
 
-        fun <T> failure(exception: Exception): zw.co.nm.moviedb.network.Response<T> {
+        fun <T> failure(exception: Exception): zw.co.nm.moviedb.data.api.Response<T> {
             return Response(
                 status = Status.Failure,
                 data = null,
