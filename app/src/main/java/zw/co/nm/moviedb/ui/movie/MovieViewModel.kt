@@ -7,7 +7,8 @@ import zw.co.nm.moviedb.model.GetCreditsResponse
 import zw.co.nm.moviedb.model.GetMovieDetailResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.model.SearchMovieResponse
-import zw.co.nm.moviedb.network.Response
+import zw.co.nm.moviedb.data.api.Response
+import zw.co.nm.moviedb.model.SearchMultiResponse
 import zw.co.nm.moviedb.repo.MoviesRepository
 
 
@@ -28,6 +29,9 @@ class MovieViewModel(application: Application): AndroidViewModel(application) {
 
     fun searchMovie(query:String):Flow<Response<SearchMovieResponse>>{
         return moviesRepository.searchMovie(query)
+    }
+    fun searchMulti(query:String):Flow<Response<SearchMultiResponse>>{
+        return moviesRepository.searchMulti(query)
     }
 
 

@@ -3,8 +3,8 @@ package zw.co.nm.moviedb.repo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import zw.co.nm.moviedb.model.GetPersonResponse
-import zw.co.nm.moviedb.network.NetworkManager
-import zw.co.nm.moviedb.network.Response
+import zw.co.nm.moviedb.data.api.NetworkManager
+import zw.co.nm.moviedb.data.api.Response
 import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
 class PersonRepo {
