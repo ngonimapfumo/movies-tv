@@ -4,4 +4,5 @@
     <string name="ss"><![CDATA[<]]></string>
     <string name="ssw"><![CDATA[>]]></string>
     <string name="dummy_dummy">Dummy</string>
+    <string name="search_movies_tv_series_actors">Search movies/tv series/actors</string>
 </resources>

@@ -23,7 +23,7 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val imgPath: String = if (data[position].mediaType == "person") {
+        val imgPath: Any = if (data[position].mediaType == "person") {
             data[position].profilePath
 
         } else {
@@ -52,6 +52,7 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
                 "tv" -> {
                     Toast.makeText(holder.itemView.context, "working on it", Toast.LENGTH_SHORT)
                         .show()
+
                 }
             }
         }

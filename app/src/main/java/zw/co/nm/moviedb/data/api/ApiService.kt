@@ -9,8 +9,8 @@ import zw.co.nm.moviedb.model.GetMovieDetailResponse
 import zw.co.nm.moviedb.model.GetPersonResponse
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.model.SearchMovieResponse
 import zw.co.nm.moviedb.model.SearchMultiResponse
+import zw.co.nm.moviedb.model.SearchMovieResponse
 
 interface ApiService {
 

@@ -2,6 +2,7 @@ package zw.co.nm.moviedb.ui.search
 
 import android.os.Bundle
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -25,12 +26,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.searchView.setOnQueryTextListener(this)
         movieViewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 movieViewModel.searchMulti(query!!).collect {
                         response ->
                     val data = response.data!!.body()!!.results
