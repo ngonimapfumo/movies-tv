@@ -50,7 +50,7 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
                 }
 
                 "tv" -> {
-                    Toast.makeText(holder.itemView.context, "working on it", Toast.LENGTH_SHORT)
+                    Toast.makeText(holder.itemView.context, "working on this", Toast.LENGTH_SHORT)
                         .show()
 
                 }

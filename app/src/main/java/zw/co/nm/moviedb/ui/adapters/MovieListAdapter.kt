@@ -21,7 +21,6 @@ class MovieListAdapter(private var data: List<GetPopularMoviesListResponse.Resul
     override fun getItemCount(): Int = data.size
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        //  binding!!.text.text = data[position].title
         Picasso.get().load(IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(holder.itemView.context,
