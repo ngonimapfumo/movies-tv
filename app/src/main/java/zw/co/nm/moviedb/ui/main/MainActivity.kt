@@ -13,11 +13,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.api.Response
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.data.api.Response
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
+import zw.co.nm.moviedb.ui.settings.SettingsActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -81,6 +82,10 @@ class MainActivity : AppCompatActivity() {
         val id: Int = item.itemId
         if (id == R.id.app_bar_search) {
             startActivity(Intent(this@MainActivity, SearchActivity::class.java))
+            return true
+        }
+        if (id == R.id.app_bar_settings) {
+            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)

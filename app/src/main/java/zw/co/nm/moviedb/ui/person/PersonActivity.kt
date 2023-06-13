@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.ui.person
 
 import android.os.Bundle
+import android.view.View.GONE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -25,13 +26,18 @@ class PersonActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 personViewModel.getPerson(personId!!).collect {
-                    Picasso.get().load(IMAGE_BASE_URL + it.body.profilePath)
-                        .placeholder(R.drawable.sample_people).into(binding.imageView)
-                    binding.biographyTxt.text = it.body.biography
-                    binding.nameTxt.text = it.body.name
-                    binding.knownForTxt.text = it.body.knownForDepartment
-                    binding.birthdayTxt.text = it.body.birthday
-                    binding.birthplaceTxt.text = it.body.placeOfBirth
+                    if (it.isSuccessful) {
+                        Picasso.get().load(IMAGE_BASE_URL + it.body.profilePath)
+                            .placeholder(R.drawable.sample_people).into(binding.imageView)
+                        if (it.body.biography.isEmpty()) {
+                            binding.bioCard.visibility = GONE
+                        }
+                        binding.biographyTxt.text = it.body.biography
+                        binding.nameTxt.text = it.body.name
+                        binding.knownForTxt.text = it.body.knownForDepartment
+                        binding.birthdayTxt.text = it.body.birthday
+                        binding.birthplaceTxt.text = it.body.placeOfBirth
+                    }
                 }
             }
         }

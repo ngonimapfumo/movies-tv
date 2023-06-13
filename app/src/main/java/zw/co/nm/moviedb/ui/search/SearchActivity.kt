@@ -13,9 +13,10 @@ import zw.co.nm.moviedb.databinding.ActivitySearchBinding
 import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.movie.MovieViewModel
 
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
-    lateinit var binding: ActivitySearchBinding
-    lateinit var movieViewModel: MovieViewModel
+class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener,
+    SearchView.OnCloseListener {
+    private lateinit var binding: ActivitySearchBinding
+    private lateinit var movieViewModel: MovieViewModel
     private lateinit var adapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.searchView.setOnQueryTextListener(this)
+        binding.searchView.setOnCloseListener(this)
         movieViewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
     }
@@ -48,4 +50,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         // TODO("Not yet implemented")
         return false
     }
+
+    override fun onClose(): Boolean {
+        Toast.makeText(this@SearchActivity, "hello", Toast.LENGTH_SHORT).show()
+        return true
+    }
+
+
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
@@ -21,7 +22,7 @@ class MovieListAdapter(private var data: List<GetPopularMoviesListResponse.Resul
     override fun getItemCount(): Int = data.size
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        Picasso.get().load(IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
+        Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(holder.itemView.context,
                 data[position].id)
