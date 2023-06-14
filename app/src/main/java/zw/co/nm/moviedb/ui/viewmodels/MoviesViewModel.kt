@@ -22,31 +22,43 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     private val moviesRepository = MoviesRepository()
     var page: Int = 1
 
-    private val _searchMulti: MutableLiveData<retrofit2.Response<SearchMultiResponse>> =
+    private val _searchMulti =
         MutableLiveData<retrofit2.Response<SearchMultiResponse>>()
     val searchMulti: LiveData<retrofit2.Response<SearchMultiResponse>> =
         _searchMulti
 
-    private val _getPopularMovies: MutableLiveData<retrofit2.Response<GetPopularMoviesListResponse>> =
+    private val _getPopularMovies =
         MutableLiveData<retrofit2.Response<GetPopularMoviesListResponse>>()
     val getPopularMovies: LiveData<retrofit2.Response<GetPopularMoviesListResponse>> =
         _getPopularMovies
 
+    private val _getMovieDetail =
+        MutableLiveData<retrofit2.Response<GetMovieDetailResponse>>()
+    val getMovieDetail: LiveData<retrofit2.Response<GetMovieDetailResponse>> =
+        _getMovieDetail
 
-    fun getMovieDetail(movieId: Int): Flow<Response<GetMovieDetailResponse>> {
-        return moviesRepository.getMovieDetails(movieId)
+    private val _getMovieCredits =
+        MutableLiveData<retrofit2.Response<GetCreditsResponse>>()
+    val getMovieCredits: LiveData<retrofit2.Response<GetCreditsResponse>> =
+        _getMovieCredits
+
+    private val _getSimilarMovies =
+        MutableLiveData<retrofit2.Response<GetSimilarMoviesResponse>>()
+    val getSimilarMovies: LiveData<retrofit2.Response<GetSimilarMoviesResponse>> =
+        _getSimilarMovies
+
+    fun getSimilarMoviesList(movieId: Int) {
+        viewModelScope.launch {
+            val response = moviesRepository.getSimilarMoviesList(movieId)
+            _getSimilarMovies.postValue(response)
+        }
     }
 
-    fun getSimilarMoviesList(movieId: Int): Flow<Response<GetSimilarMoviesResponse>> {
-        return moviesRepository.getSimilarMoviesList(movieId)
-    }
-
-    fun getCredits(movieId: Int): Flow<Response<GetCreditsResponse>> {
-        return moviesRepository.getCredits(movieId)
-    }
-
-    fun searchMovie(query: String): Flow<Response<SearchMovieResponse>> {
-        return moviesRepository.searchMovie(query)
+    fun getCredits(movieId: Int) {
+        viewModelScope.launch {
+            val response = moviesRepository.getCredits(movieId)
+            _getMovieCredits.postValue(response)
+        }
     }
 
     fun searchMulti(query: String) {
@@ -60,6 +72,13 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         viewModelScope.launch {
             val response = moviesRepository.getPopularMovies(page)
             _getPopularMovies.postValue(response)
+        }
+    }
+
+    fun getMovieDetail(movieId: Int) {
+        viewModelScope.launch {
+            val response = moviesRepository.getMovieDetails(movieId)
+            _getMovieDetail.postValue(response)
         }
     }
 
