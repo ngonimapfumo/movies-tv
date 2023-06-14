@@ -10,7 +10,7 @@ import zw.co.nm.moviedb.repo.MoviesRepository
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val moviesRepository = MoviesRepository()
 
-    fun getPopularMovies(page: Int): Flow<Response<GetPopularMoviesListResponse>> {
-        return moviesRepository.getPopularMovies(page)
+    suspend fun getPopularMovies() {
+        return moviesRepository.getPopularMovies(1)
     }
 }

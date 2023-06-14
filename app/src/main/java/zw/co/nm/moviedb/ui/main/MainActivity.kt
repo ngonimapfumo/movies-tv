@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpView()
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.getPopularMovies(page).collect(::process)
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                mainViewModel.getPopularMovies()
             }
         }
 
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding.nextB.setOnClickListener {
             page++
-            lifecycleScope.launch {
+            /*lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                     mainViewModel.getPopularMovies(page).collect(::process)
                 }
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     return@setOnClickListener
                 }
-            }
+            }*/
         }
 
     }
