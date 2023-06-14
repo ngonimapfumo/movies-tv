@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
+import zw.co.nm.moviedb.ui.viewmodels.PersonViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 class PersonActivity : AppCompatActivity() {
