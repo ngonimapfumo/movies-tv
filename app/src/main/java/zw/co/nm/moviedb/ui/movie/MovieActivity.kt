@@ -14,13 +14,14 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
+import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import kotlin.math.roundToInt
 
 
 class MovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
-    private lateinit var movieViewModel: MovieViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
     private var movieId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class MovieActivity : AppCompatActivity() {
         setUpView()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                movieViewModel.getSimilarMoviesList(movieId!!).collect { response ->
+                moviesViewModel.getSimilarMoviesList(movieId!!).collect { response ->
                     val adapter: SimilarMoviesListAdapter
                     binding.recyclerView.layoutManager = LinearLayoutManager(
                         this@MovieActivity,
@@ -44,7 +45,7 @@ class MovieActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                movieViewModel.getMovieDetail(movieId!!).collect {
+                moviesViewModel.getMovieDetail(movieId!!).collect {
                     val response = it.body
                     Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
                         .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
@@ -73,7 +74,7 @@ class MovieActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                movieViewModel.getCredits(movieId!!).collect { response ->
+                moviesViewModel.getCredits(movieId!!).collect { response ->
                     val adapter: CastAdapter
                     binding.castRecyclerView.layoutManager = LinearLayoutManager(
                         this@MovieActivity,
@@ -93,7 +94,7 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
-        movieViewModel = ViewModelProvider(this)[MovieViewModel::class.java]
+        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
 
     }

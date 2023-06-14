@@ -18,17 +18,15 @@ import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
 class MoviesRepository() {
 
-    private val _getPopularMovies: MutableLiveData<Response<GetPopularMoviesListResponse>> =
-        MutableLiveData<Response<GetPopularMoviesListResponse>>()
-    var getPopularMovies: LiveData<Response<GetPopularMoviesListResponse>> = _getPopularMovies
+
 
     /*fun getPopularMovies(page: Int): Flow<zw.co.nm.moviedb.data.api.Response<GetPopularMoviesListResponse>> =
         flow {
             emit(apiCall { NetworkManager.apiService.getPopularMovies(page) })
         }.flowOn(Dispatchers.IO)*/
 
-    suspend fun getPopularMovies(page:Int) {
-        _getPopularMovies.postValue(NetworkManager.apiService.getPopularMovies(page))
+    suspend fun getPopularMovies(page:Int) : Response<GetPopularMoviesListResponse> {
+        return NetworkManager.apiService.getPopularMovies(page)
     }
 
     fun getMovieDetails(movieId: Int): Flow<zw.co.nm.moviedb.data.api.Response<GetMovieDetailResponse>> =
@@ -51,10 +49,14 @@ class MoviesRepository() {
             emit(apiCall { NetworkManager.apiService.searchMovie(query, true) })
         }
 
-    fun searchMulti(query: String): Flow<zw.co.nm.moviedb.data.api.Response<SearchMultiResponse>> =
+    /*fun searchMulti(query: String): Flow<zw.co.nm.moviedb.data.api.Response<SearchMultiResponse>> =
         flow {
             emit(apiCall { NetworkManager.apiService.searchMulti(query, true) })
-        }
+        }*/
 
+    suspend fun searchMulti(query: String): Response<SearchMultiResponse>{
+        return NetworkManager.apiService.searchMulti(query,true)
+
+    }
 
 }
