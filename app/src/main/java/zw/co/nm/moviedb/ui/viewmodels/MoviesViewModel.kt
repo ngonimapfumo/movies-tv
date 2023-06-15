@@ -1,7 +1,6 @@
 package zw.co.nm.moviedb.ui.viewmodels
 
 import android.app.Application
-import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -15,7 +14,6 @@ import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.model.SearchMultiResponse
 import zw.co.nm.moviedb.repo.MoviesRepository
-import zw.co.nm.moviedb.utils.GeneralUtil
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
@@ -29,8 +27,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         _searchMulti
 
     private val _getPopularMovies =
-        MutableLiveData<zw.co.nm.moviedb.data.api.Response<GetPopularMoviesListResponse>>()
-    val getPopularMovies: LiveData<zw.co.nm.moviedb.data.api.Response<GetPopularMoviesListResponse>> =
+        MutableLiveData<zw.co.nm.moviedb.data.remote.Response<GetPopularMoviesListResponse>>()
+    val getPopularMovies: LiveData<zw.co.nm.moviedb.data.remote.Response<GetPopularMoviesListResponse>> =
         _getPopularMovies
 
     private val _getMovieDetail =

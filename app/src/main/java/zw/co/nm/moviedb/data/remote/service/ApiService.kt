@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.api
+package zw.co.nm.moviedb.data.remote.service
 
 import retrofit2.Response
 import retrofit2.http.GET

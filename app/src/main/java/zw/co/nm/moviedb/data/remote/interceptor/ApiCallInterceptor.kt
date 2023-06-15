@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.api
+package zw.co.nm.moviedb.data.remote.interceptor
 
 import okhttp3.HttpUrl
 import okhttp3.Interceptor

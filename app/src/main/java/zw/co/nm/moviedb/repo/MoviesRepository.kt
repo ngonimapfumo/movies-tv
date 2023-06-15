@@ -1,7 +1,7 @@
 package zw.co.nm.moviedb.repo
 
 import retrofit2.Response
-import zw.co.nm.moviedb.data.api.NetworkManager
+import zw.co.nm.moviedb.data.remote.NetworkManager
 import zw.co.nm.moviedb.model.GetCreditsResponse
 import zw.co.nm.moviedb.model.GetMovieDetailResponse
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
@@ -10,7 +10,7 @@ import zw.co.nm.moviedb.model.SearchMultiResponse
 import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
 class MoviesRepository {
-    suspend fun getPopularMovies(page: Int):zw.co.nm.moviedb.data.api.Response<GetPopularMoviesListResponse> =
+    suspend fun getPopularMovies(page: Int):zw.co.nm.moviedb.data.remote.Response<GetPopularMoviesListResponse> =
        apiCall {NetworkManager.apiService.getPopularMovies(page)}
 
     suspend fun getMovieDetails(movieId: Int): Response<GetMovieDetailResponse> =
