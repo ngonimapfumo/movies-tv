@@ -44,7 +44,8 @@ class MovieActivity : AppCompatActivity() {
             Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
                 .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
             binding.movieSummaryTxt.text = response.overview
-            binding.movieSummaryTxt.setOnClickListener {
+            binding.detailedSummaryTxt.text = response.overview
+            binding.detailedSummaryTxt.setOnClickListener {
                 AlertDialog.Builder(this@MovieActivity)
                     .setMessage(response.overview)
                     .show()

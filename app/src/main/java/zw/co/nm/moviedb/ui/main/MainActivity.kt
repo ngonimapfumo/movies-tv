@@ -63,15 +63,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id: Int = item.itemId
-        if (id == R.id.app_bar_search) {
-            startActivity(Intent(this@MainActivity, SearchActivity::class.java))
-            return true
+        return when (item.itemId) {
+            R.id.app_bar_search -> {
+                startActivity(Intent(this@MainActivity, SearchActivity::class.java))
+                true
+            }
+
+            R.id.app_bar_settings -> {
+                startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
-        if (id == R.id.app_bar_settings) {
-            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
-            return true
-        }
-        return super.onOptionsItemSelected(item)
     }
 }
