@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemCastBinding
 import zw.co.nm.moviedb.model.GetCreditsResponse
 import zw.co.nm.moviedb.utils.Constants
@@ -23,7 +24,7 @@ class CastAdapter(private var data: List<GetCreditsResponse.Cast>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].profilePath
-        Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).into(binding!!.castImgView)
+        Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.castImgView)
         holder.itemView.setOnClickListener {
                 PageNavUtils.toPersonDetailsPage(holder.itemView.context,
                     data[position].id)

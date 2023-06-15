@@ -2,18 +2,28 @@ package zw.co.nm.moviedb.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import retrofit2.Response
 import zw.co.nm.moviedb.model.GetPersonResponse
-import zw.co.nm.moviedb.data.api.Response
 import zw.co.nm.moviedb.repo.PersonRepo
 
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
-
     private val personRepo = PersonRepo()
 
-    fun getPerson(personId: Int): Flow<Response<GetPersonResponse>> {
-        return personRepo.getPerson(personId)
+    private val _getPerson =
+        MutableLiveData<Response<GetPersonResponse>>()
+    val getPerson: LiveData<Response<GetPersonResponse>> =
+        _getPerson
+
+    fun getPerson(personId: Int) {
+        viewModelScope.launch {
+            val response = personRepo.getPerson(personId)
+            _getPerson.postValue(response)
+        }
     }
 
 }
