@@ -15,7 +15,7 @@ object ApiCallInterceptor : Interceptor {
             .newBuilder()
             //storing api key in local.properties file for now
             .addQueryParameter("api_key", BuildConfig.API_KEY)
-            .addQueryParameter("language", "en-UK")
+            .addQueryParameter("language", "en-US")
             .build()
         val request: Request = chain.request()
             .newBuilder()

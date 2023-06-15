@@ -1,6 +1,8 @@
 package zw.co.nm.moviedb.ui.viewmodels
 
 import android.app.Application
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,6 +15,7 @@ import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.model.SearchMultiResponse
 import zw.co.nm.moviedb.repo.MoviesRepository
+import zw.co.nm.moviedb.utils.GeneralUtil
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
@@ -26,8 +29,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         _searchMulti
 
     private val _getPopularMovies =
-        MutableLiveData<Response<GetPopularMoviesListResponse>>()
-    val getPopularMovies: LiveData<Response<GetPopularMoviesListResponse>> =
+        MutableLiveData<zw.co.nm.moviedb.data.api.Response<GetPopularMoviesListResponse>>()
+    val getPopularMovies: LiveData<zw.co.nm.moviedb.data.api.Response<GetPopularMoviesListResponse>> =
         _getPopularMovies
 
     private val _getMovieDetail =
@@ -69,7 +72,15 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getPopularMovies() {
         viewModelScope.launch {
             val response = moviesRepository.getPopularMovies(page)
-            _getPopularMovies.postValue(response)
+            if (response.isSuccessful){
+                _getPopularMovies.postValue(response)
+            }
+            else{
+//todo: handle this better
+                Toast.makeText(getApplication(), "network", Toast.LENGTH_SHORT).show()
+            }
+
+
         }
     }
 

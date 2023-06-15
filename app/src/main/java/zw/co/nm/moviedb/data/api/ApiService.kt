@@ -22,7 +22,7 @@ interface ApiService {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int
-    ): Response<GetPopularMoviesListResponse>
+    ):Response<GetPopularMoviesListResponse>
 
     @GET("search/movie")
     suspend fun searchMovie(

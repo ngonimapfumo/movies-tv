@@ -23,13 +23,22 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val imgPath: Any = if (data[position].mediaType == "person") {
-            data[position].profilePath
+        var imgPath: Any? = null
 
-        } else {
-            data[position].posterPath
+        if (data[position].mediaType == "person") {
+            imgPath = data[position].profilePath
+            binding!!.textViewName.text = data[position].originalName
+
+        } else if (data[position].mediaType == "movie") {
+            imgPath = data[position].posterPath
+            binding!!.textViewName.text = data[position].originalTitle
         }
-        Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
+        else if (data[position].mediaType == "tv"){
+            imgPath = data[position].posterPath
+            binding!!.textViewName.text = data[position].originalName
+        }
+
+        Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
             .into(binding!!.imageView)
 
 
@@ -50,7 +59,11 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
                 }
 
                 "tv" -> {
-                    Toast.makeText(holder.itemView.context, "working on this", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        holder.itemView.context,
+                        "working on tv views",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
 
                 }

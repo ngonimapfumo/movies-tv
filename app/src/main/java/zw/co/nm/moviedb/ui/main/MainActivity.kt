@@ -28,13 +28,17 @@ class MainActivity : AppCompatActivity() {
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
-            if (response.isSuccessful) {
+            /*if (response.isSuccessful) {
                 val data = response.body()!!.results
                 adapter = MovieListAdapter(data)
                 binding.recyclerView.adapter = adapter
             } else {
                 Toast.makeText(this@MainActivity, "Mmmm... Network?", Toast.LENGTH_SHORT).show()
-            }
+            }*/
+
+            val data = response.body.results
+            adapter = MovieListAdapter(data)
+            binding.recyclerView.adapter = adapter
 
         }
 
