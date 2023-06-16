@@ -19,7 +19,6 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/search_bg"
             android:queryHint="@string/search_movies_tv_series_actors"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

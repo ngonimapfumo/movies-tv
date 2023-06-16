@@ -74,8 +74,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
                 _getPopularMovies.postValue(response)
             }
             else{
-//todo: handle this better
-                Toast.makeText(getApplication(), "network", Toast.LENGTH_SHORT).show()
+//todo: fix this
+                Toast.makeText(getApplication(), "Mmmmm..network", Toast.LENGTH_SHORT).show()
             }
 
 
