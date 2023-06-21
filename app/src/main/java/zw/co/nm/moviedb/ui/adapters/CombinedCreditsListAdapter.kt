@@ -22,7 +22,6 @@ class CombinedCreditsListAdapter(private var data: List<GetCombinedCredits.Cast>
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        //  binding!!.text.text = data[position].title
         Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
 
         holder.itemView.setOnClickListener {

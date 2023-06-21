@@ -55,8 +55,15 @@ class MovieActivity : AppCompatActivity() {
                 append(response.runtime)
                 append(" minutes")
             }
-            //todo: null date bug
-            binding.yearTxt.text = response.releaseDate.substring(0, 4)
+
+            when {
+                response.releaseDate.isEmpty() -> {
+                    binding.yearTxt.text = "N/A"
+                }
+                else -> {
+                    binding.yearTxt.text = response.releaseDate.substring(0, 4)
+                }
+            }
             for (i in response.genres.indices) {
                 binding.genre.text = response.genres[i].name
             }

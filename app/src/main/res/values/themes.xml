@@ -3,6 +3,7 @@
     <style name="Theme.MovieDB" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
 
+        <item name="fontFamily">@font/googlesans</item>
         <item name="colorPrimary">#03A9F4</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -14,4 +15,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.MovieDB.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.MovieDB.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MovieDB.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
