@@ -59,12 +59,8 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
                 }
 
                 "tv" -> {
-                    Toast.makeText(
-                        holder.itemView.context,
-                        "working on tv views",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    PageNavUtils.toTvDetailsPage(holder.itemView.context,
+                    data[position].id)
 
                 }
             }

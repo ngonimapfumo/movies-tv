@@ -30,12 +30,16 @@ data class Response<T>(
     sealed class Status {
         object Success : Status()
         object Failure : Status()
+
     }
 
     val failed: Boolean
         get() = this.status == Status.Failure
 
     val isSuccessful: Boolean
+        get() = !failed && this.data?.isSuccessful == true
+
+    val loading: Boolean
         get() = !failed && this.data?.isSuccessful == true
 
     val body: T

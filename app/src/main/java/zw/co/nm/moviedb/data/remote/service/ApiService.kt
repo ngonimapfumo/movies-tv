@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import zw.co.nm.moviedb.model.GetCombinedCredits
 import zw.co.nm.moviedb.model.GetCreditsResponse
 import zw.co.nm.moviedb.model.GetMovieDetailResponse
 import zw.co.nm.moviedb.model.GetPersonResponse
@@ -23,12 +24,6 @@ interface ApiService {
     suspend fun getPopularMovies(
         @Query("page") page: Int
     ):Response<GetPopularMoviesListResponse>
-
-    @GET("search/movie")
-    suspend fun searchMovie(
-        @Query("query") query: String,
-        @Query("include_adult") include_adult: Boolean
-    ): Response<SearchMovieResponse>
 
     @GET("movie/{id}/similar")
     suspend fun getSimilarMoviesList(
@@ -50,5 +45,9 @@ interface ApiService {
         @Query("query") query: String,
         @Query("include_adult") include_adult: Boolean
     ): Response<SearchMultiResponse>
+
+    @GET("person/{id}/combined_credits")
+    suspend fun getCombinedCredits(@Path("id") query: Int
+    ): Response<GetCombinedCredits>
 
 }

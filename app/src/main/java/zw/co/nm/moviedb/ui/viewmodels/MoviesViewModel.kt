@@ -70,11 +70,13 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getPopularMovies() {
         viewModelScope.launch {
             val response = moviesRepository.getPopularMovies(page)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 _getPopularMovies.postValue(response)
             }
-            else{
-//todo: fix this
+            else if (response.loading){
+                Toast.makeText(getApplication(), "loading", Toast.LENGTH_SHORT).show()
+            }
+            else {
                 Toast.makeText(getApplication(), "Mmmmm..network", Toast.LENGTH_SHORT).show()
             }
 
