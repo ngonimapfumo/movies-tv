@@ -3,7 +3,6 @@ package zw.co.nm.moviedb.ui.person
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +10,6 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.ui.adapters.CombinedCreditsListAdapter
-import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
 import zw.co.nm.moviedb.ui.viewmodels.PersonViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
@@ -44,15 +42,18 @@ class PersonActivity : AppCompatActivity() {
         }
 
         personViewModel.getCombinedCredits(personId!!)
-        personViewModel.getCombinedCredits.observe(this){ response ->
-            val adapter: CombinedCreditsListAdapter
-            binding.creditsRecycler.layoutManager = LinearLayoutManager(
-                this@PersonActivity,
-                LinearLayoutManager.HORIZONTAL, false
-            )
-            val data = response.body()!!.cast
-            adapter = CombinedCreditsListAdapter(data)
-            binding.creditsRecycler.adapter = adapter
+        personViewModel.getCombinedCredits.observe(this) { response ->
+            if (response.isSuccessful) {
+                binding.creditsLayout.visibility = VISIBLE
+                val adapter: CombinedCreditsListAdapter
+                binding.creditsRecycler.layoutManager = LinearLayoutManager(
+                    this@PersonActivity,
+                    LinearLayoutManager.HORIZONTAL, false
+                )
+                val data = response.body()!!.cast
+                adapter = CombinedCreditsListAdapter(data)
+                binding.creditsRecycler.adapter = adapter
+            }
         }
     }
 

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.model.GetCombinedCredits
-import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
@@ -25,11 +24,24 @@ class CombinedCreditsListAdapter(private var data: List<GetCombinedCredits.Cast>
         val imgPath = data[position].posterPath
         //  binding!!.text.text = data[position].title
         Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
+
         holder.itemView.setOnClickListener {
-            PageNavUtils.toMovieDetailsPage(
-                holder.itemView.context,
-                data[position].id
-            )
+            when (data[position].mediaType) {
+                "movie" -> {
+                    PageNavUtils.toMovieDetailsPage(
+                        holder.itemView.context,
+                        data[position].id
+                    )
+                }
+
+                "tv" -> {
+                    PageNavUtils.toTvDetailsPage(
+                        holder.itemView.context,
+                        data[position].id
+                    )
+
+                }
+            }
         }
 
     }
