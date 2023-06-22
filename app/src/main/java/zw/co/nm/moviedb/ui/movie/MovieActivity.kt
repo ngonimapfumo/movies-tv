@@ -91,8 +91,13 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }

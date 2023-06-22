@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.BuildConfig
@@ -14,6 +15,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
+import zw.co.nm.moviedb.ui.search.SearchOptionsActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 
@@ -57,6 +59,9 @@ class MainActivity : AppCompatActivity() {
                         )
                             .show()
 
+                    }
+                    R.id.drawer_search -> {
+                        startActivity(Intent(this@MainActivity,SearchOptionsActivity::class.java))
                     }
                 }
                 true

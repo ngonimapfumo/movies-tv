@@ -9,21 +9,16 @@ import zw.co.nm.moviedb.databinding.ActivitySearchBinding
 import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener,
-    SearchView.OnCloseListener {
+class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var adapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.searchView.setOnQueryTextListener(this)
-        binding.searchView.setOnCloseListener(this)
-        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
-
+        setUpView()
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -41,10 +36,17 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener,
         // TODO("Not yet implemented")
         return false
     }
+    private fun setUpView(){
+        binding.searchView.setOnQueryTextListener(this)
+        binding.searchView.onActionViewExpanded()
+        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Search"
+    }
 
-    override fun onClose(): Boolean {
-        Toast.makeText(this@SearchActivity, "hello", Toast.LENGTH_SHORT).show()
-        return true
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
 
