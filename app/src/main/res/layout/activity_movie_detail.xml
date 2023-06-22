@@ -160,6 +160,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ll_suggested">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/aboutCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="10dp"
@@ -274,16 +275,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="Vote Average"
+                            android:text="Status"
                             android:textSize="@dimen/info_txt_size"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/textView6"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView6"
-                            app:layout_constraintTop_toBottomOf="@+id/movieMpaRatingTxt" />
+                            app:layout_constraintTop_toBottomOf="@+id/movieRatingTxt" />
 
                         <TextView
-                            android:id="@+id/movieRatingTxt"
+                            android:id="@+id/statusTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/info_detail_txt"
@@ -304,7 +305,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView7"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView7"
-                            app:layout_constraintTop_toBottomOf="@+id/movieRatingTxt" />
+                            app:layout_constraintTop_toBottomOf="@+id/statusTxt" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/castRecyclerView"
@@ -320,7 +321,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="MPA Rating"
+                            android:text="Vote average"
                             android:textSize="@dimen/info_txt_size"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/textView4"
@@ -329,7 +330,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/prod_company" />
 
                         <TextView
-                            android:id="@+id/movieMpaRatingTxt"
+                            android:id="@+id/movieRatingTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/info_detail_txt"
@@ -337,7 +338,7 @@
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView6"
                             app:layout_constraintTop_toBottomOf="@+id/textView6"
-                            tools:text="PG-13" />
+                            tools:text="3" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -71,6 +71,7 @@ class MovieActivity : AppCompatActivity() {
                 binding.prodCompany.text = response.productionCompanies[i].name
             }
             binding.movieRatingTxt.text = response.voteAverage.roundToInt().toString()
+            binding.statusTxt.text = response.status
         }
 
         moviesViewModel.getCredits(movieId!!)
