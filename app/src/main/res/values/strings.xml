@@ -39,4 +39,9 @@
     <string name="search_options">Search options</string>
     <string name="tv_shows">TV Shows</string>
     <string name="movies">Movies</string>
+    <string name="type">type</string>
+    <string name="site">site</string>
+    <string name="title">title</string>
+    <string name="official">Official</string>
+    <string name="unofficial">Unofficial</string>
 </resources>

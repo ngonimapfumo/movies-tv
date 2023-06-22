@@ -1,5 +1,6 @@
 package zw.co.nm.moviedb.ui.movie
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +11,10 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
+import zw.co.nm.moviedb.ui.trailers.TrailerActivity
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.PageNavUtils
 import kotlin.math.roundToInt
 
 
@@ -92,6 +95,9 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+        binding.trailerBtn.setOnClickListener {
+            PageNavUtils.toTrailersPage(this@MovieActivity,movieId!!)
+        }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)

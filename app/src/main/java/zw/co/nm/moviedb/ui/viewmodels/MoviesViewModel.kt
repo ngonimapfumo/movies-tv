@@ -13,12 +13,12 @@ import zw.co.nm.moviedb.model.GetMovieDetailResponse
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.model.SearchMultiResponse
-import zw.co.nm.moviedb.repo.MoviesRepository
+import zw.co.nm.moviedb.repo.MoviesRepo
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val moviesRepository = MoviesRepository()
+    private val moviesRepo = MoviesRepo()
     var page: Int = 1
 
     private val _searchMulti =
@@ -48,28 +48,28 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
-            val response = moviesRepository.getSimilarMoviesList(movieId)
+            val response = moviesRepo.getSimilarMoviesList(movieId)
             _getSimilarMovies.postValue(response)
         }
     }
 
     fun getCredits(movieId: Int) {
         viewModelScope.launch {
-            val response = moviesRepository.getCredits(movieId)
+            val response = moviesRepo.getCredits(movieId)
             _getMovieCredits.postValue(response)
         }
     }
 
     fun searchMulti(query: String) {
         viewModelScope.launch {
-            val response = moviesRepository.searchMulti(query)
+            val response = moviesRepo.searchMulti(query)
             _searchMulti.postValue(response)
         }
     }
 
     fun getPopularMovies() {
         viewModelScope.launch {
-            val response = moviesRepository.getPopularMovies(page)
+            val response = moviesRepo.getPopularMovies(page)
             if (response.isSuccessful) {
                 _getPopularMovies.postValue(response)
             }
@@ -83,7 +83,7 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch {
-            val response = moviesRepository.getMovieDetails(movieId)
+            val response = moviesRepo.getMovieDetails(movieId)
             _getMovieDetail.postValue(response)
         }
     }

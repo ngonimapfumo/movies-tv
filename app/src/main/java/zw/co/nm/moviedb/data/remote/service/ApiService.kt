@@ -10,8 +10,8 @@ import zw.co.nm.moviedb.model.GetMovieDetailResponse
 import zw.co.nm.moviedb.model.GetPersonResponse
 import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.model.GetTrailersResponse
 import zw.co.nm.moviedb.model.SearchMultiResponse
-import zw.co.nm.moviedb.model.SearchMovieResponse
 
 interface ApiService {
 
@@ -23,7 +23,7 @@ interface ApiService {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int
-    ):Response<GetPopularMoviesListResponse>
+    ): Response<GetPopularMoviesListResponse>
 
     @GET("movie/{id}/similar")
     suspend fun getSimilarMoviesList(
@@ -47,7 +47,13 @@ interface ApiService {
     ): Response<SearchMultiResponse>
 
     @GET("person/{id}/combined_credits")
-    suspend fun getCombinedCredits(@Path("id") query: Int
+    suspend fun getCombinedCredits(
+        @Path("id") query: Int
     ): Response<GetCombinedCredits>
+
+    @GET("movie/{id}/videos")
+    suspend fun getTrailers(
+        @Path("id") movieId: Int
+    ): Response<GetTrailersResponse>
 
 }

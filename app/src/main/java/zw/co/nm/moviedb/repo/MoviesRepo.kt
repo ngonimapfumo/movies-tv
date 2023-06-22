@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.model.SearchMultiResponse
 import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
-class MoviesRepository {
+class MoviesRepo {
     suspend fun getPopularMovies(page: Int):zw.co.nm.moviedb.data.remote.Response<GetPopularMoviesListResponse> =
        apiCall {NetworkManager.apiService.getPopularMovies(page)}
 

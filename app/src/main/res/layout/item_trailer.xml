@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/textViewName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                tools:text="Star Wars (1977) - Trailer" />
+
+            <TextView
+                android:id="@+id/textViewType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNameTxt"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewNameTxt"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNameTxt" />
+
+            <TextView
+                android:id="@+id/textViewTypeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewOfficialTxt"
+                app:layout_constraintStart_toEndOf="@+id/textViewOfficialTxt"
+                app:layout_constraintTop_toBottomOf="@+id/textViewType"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Trailer" />
+
+            <TextView
+                android:id="@+id/textViewOfficialTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/textViewType"
+                app:layout_constraintTop_toBottomOf="@+id/textViewType"
+                tools:text="Official" />
+
+
+            <TextView
+                android:id="@+id/textViewSite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/site"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textViewTypeTxt"
+                app:layout_constraintHorizontal_bias="0.015"
+                app:layout_constraintStart_toStartOf="@+id/textViewOfficialTxt"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOfficialTxt" />
+
+            <TextView
+                android:id="@+id/textViewSiteTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/textViewSite"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSite"
+                tools:text="Youtube" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/yt_img"
+                android:layout_width="77dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="4dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/yt_logo_mono_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSiteTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewSiteTxt"
+                app:layout_constraintTop_toTopOf="@+id/textViewSiteTxt"
+                app:layout_constraintVertical_bias="1.0"
+                app:tint="@color/black" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
