@@ -1,5 +1,5 @@
-# MovieDB
-Android client powered by TMDB API 
+# Unnamed app (for now)
+Android client powered by [TMDB API ](https://www.themoviedb.org/)
 
 ## version 1.0 screens
 
