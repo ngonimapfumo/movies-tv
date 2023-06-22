@@ -7,5 +7,5 @@ Android client powered by [TMDB API ](https://www.themoviedb.org/)
 
 ![Screenshot_20230622_200516_zw co nm moviedb](https://github.com/ngonimapfumo/MovieDB/assets/14276738/fdc73472-174a-4ff6-a7f3-91acdd4b37b4)
 
-<img src="https://github.com/ngonimapfumo/MovieDB/assets/14276738/fdc73472-174a-4ff6-a7f3-91acdd4b37b4" width="480" height="640">
+<img src="https://github.com/ngonimapfumo/MovieDB/assets/14276738/fdc73472-174a-4ff6-a7f3-91acdd4b37b4" width="300" height="900">
 
