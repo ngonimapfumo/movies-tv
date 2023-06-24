@@ -22,8 +22,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     var page: Int = 1
 
     private val _searchMulti =
-        MutableLiveData<Response<SearchMultiResponse>>()
-    val searchMulti: LiveData<Response<SearchMultiResponse>> =
+        MutableLiveData<zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse>>()
+    val searchMulti: LiveData<zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse>> =
         _searchMulti
 
     private val _getPopularMovies =
@@ -63,7 +63,11 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun searchMulti(query: String) {
         viewModelScope.launch {
             val response = moviesRepo.searchMulti(query)
-            _searchMulti.postValue(response)
+            if (response.isSuccessful){
+            _searchMulti.postValue(response)}
+            else{
+                Toast.makeText(getApplication(), "Mmmmm..network", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

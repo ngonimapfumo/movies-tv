@@ -1,7 +1,9 @@
 package zw.co.nm.moviedb.utils
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import retrofit2.Response
-import zw.co.nm.moviedb.data.remote.*
 
 object GeneralUtil {
 
@@ -13,5 +15,21 @@ object GeneralUtil {
         }
     }
 
+    fun generalAlertDialog(
+        context: Context,
+        title: String,
+        message: String,
+        positiveButtonText: String,
+        negativeButtonText: String,
+        positiveDialogInterface: DialogInterface.OnClickListener?,
+        negativeDialogInterface: DialogInterface.OnClickListener?
+    ) {
+        AlertDialog.Builder(context)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton(positiveButtonText, positiveDialogInterface)
+            .setNegativeButton(negativeButtonText, negativeDialogInterface)
+            .show()
+    }
 
 }

@@ -23,6 +23,7 @@ class TrailerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTrailerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
         trailersViewModel = ViewModelProvider(this)[TrailersViewModel::class.java]
         trailersViewModel.getTrailers(movieId!!)
@@ -31,8 +32,14 @@ class TrailerActivity : AppCompatActivity() {
             adapter = TrailersAdapter(data)
             binding.trailerRecycler.adapter = adapter
 
+
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
     companion object {

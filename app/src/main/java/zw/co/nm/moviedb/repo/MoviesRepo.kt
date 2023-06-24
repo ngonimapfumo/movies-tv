@@ -10,8 +10,8 @@ import zw.co.nm.moviedb.data.remote.model.SearchMultiResponse
 import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
 class MoviesRepo {
-    suspend fun getPopularMovies(page: Int):zw.co.nm.moviedb.data.remote.Response<GetPopularMoviesListResponse> =
-       apiCall {NetworkManager.movieService.getPopularMovies(page)}
+    suspend fun getPopularMovies(page: Int): zw.co.nm.moviedb.data.remote.Response<GetPopularMoviesListResponse> =
+        apiCall { NetworkManager.movieService.getPopularMovies(page) }
 
     suspend fun getMovieDetails(movieId: Int): Response<GetMovieDetailResponse> =
         NetworkManager.movieService.getMovieDetail(movieId)
@@ -23,8 +23,6 @@ class MoviesRepo {
     suspend fun getCredits(movieId: Int): Response<GetCreditsResponse> =
         NetworkManager.movieService.getCredits(movieId)
 
-    suspend fun searchMulti(query: String): Response<SearchMultiResponse> =
-        NetworkManager.movieService.searchMulti(query, true)
-
-
+    suspend fun searchMulti(query: String): zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse> =
+        apiCall {NetworkManager.movieService.searchMulti(query, true)}
 }

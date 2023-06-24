@@ -1,13 +1,14 @@
 package zw.co.nm.moviedb.ui.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
 import zw.co.nm.moviedb.data.remote.model.SearchMultiResponse
+import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
 import zw.co.nm.moviedb.utils.Constants
+import zw.co.nm.moviedb.utils.GeneralUtil
 import zw.co.nm.moviedb.utils.PageNavUtils
 
 class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
@@ -32,8 +33,7 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
         } else if (data[position].mediaType == "movie") {
             imgPath = data[position].posterPath
             binding!!.textViewName.text = data[position].originalTitle
-        }
-        else if (data[position].mediaType == "tv"){
+        } else if (data[position].mediaType == "tv") {
             imgPath = data[position].posterPath
             binding!!.textViewName.text = data[position].originalName
         }
@@ -44,11 +44,22 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
 
         holder.itemView.setOnClickListener {
             when (data[position].mediaType) {
+
+
                 "movie" -> {
-                    PageNavUtils.toMovieDetailsPage(
-                        holder.itemView.context,
-                        data[position].id
-                    )
+                    if (data[position].adult) {
+                        GeneralUtil.generalAlertDialog(
+                            holder.itemView.context,
+                            "Warning!",
+                            "Content may contain explicit images!",
+                            "Proceed",
+                            "Cancel",
+                            { _, _ -> proceedToMovie(holder.itemView.context, position)},
+                            null
+                        )
+                    } else
+                        proceedToMovie(holder.itemView.context, position)
+
                 }
 
                 "person" -> {
@@ -59,14 +70,23 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
                 }
 
                 "tv" -> {
-                    PageNavUtils.toTvDetailsPage(holder.itemView.context,
-                    data[position].id)
+                    PageNavUtils.toTvDetailsPage(
+                        holder.itemView.context,
+                        data[position].id
+                    )
 
                 }
             }
         }
 
 
+    }
+
+    private fun proceedToMovie(context: Context?, position: Int) {
+        PageNavUtils.toMovieDetailsPage(
+            context!!,
+            data[position].id
+        )
     }
 
     override fun getItemViewType(position: Int): Int {

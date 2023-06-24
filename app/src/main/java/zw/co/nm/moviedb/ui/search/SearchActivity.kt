@@ -1,6 +1,8 @@
 package zw.co.nm.moviedb.ui.search
 
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,8 +26,22 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(query: String?): Boolean {
         moviesViewModel.searchMulti(query!!)
         moviesViewModel.searchMulti.observe(this) { response ->
-            val data = response.body()!!.results
-            adapter = SearchAdapter(data)
+
+            val data = response.body.results
+            if (data.isEmpty()) {
+                /* GeneralUtil.generalAlertDialog(this,
+                 "Alert",
+                 "No results for this search, please try another search",
+                 "OKAY","",
+                 null,null)*/
+
+                Toast.makeText(this, "no dataa", Toast.LENGTH_SHORT).show()
+            }
+
+            if (response.body.totalPages > 1){
+                binding.constraintLayoutPages.visibility = VISIBLE
+            }else{binding.constraintLayoutPages.visibility = GONE}
+                adapter = SearchAdapter(data)
             binding.searchRecycler.adapter = adapter
 
         }
@@ -36,12 +52,12 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         // TODO("Not yet implemented")
         return false
     }
-    private fun setUpView(){
+
+    private fun setUpView() {
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Search"
     }
 
     override fun onSupportNavigateUp(): Boolean {

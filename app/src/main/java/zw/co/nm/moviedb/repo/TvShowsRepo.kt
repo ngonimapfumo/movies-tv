@@ -7,7 +7,7 @@ class TvShowsRepo {
 
     suspend fun getPopularTvShows(){
 
-        NetworkManager.movieService.getPopularTvShows()
+     //   NetworkManager.movieService.getPopularTvShows()
     }
 
 
