@@ -62,10 +62,10 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun searchMulti(query: String) {
         viewModelScope.launch {
-            val response = moviesRepo.searchMulti(query)
-            if (response.isSuccessful){
-            _searchMulti.postValue(response)}
-            else{
+            val response = moviesRepo.searchMulti(query, page)
+            if (response.isSuccessful) {
+                _searchMulti.postValue(response)
+            } else {
                 Toast.makeText(getApplication(), "Mmmmm..network", Toast.LENGTH_SHORT).show()
             }
         }
@@ -76,8 +76,7 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
             val response = moviesRepo.getPopularMovies(page)
             if (response.isSuccessful) {
                 _getPopularMovies.postValue(response)
-            }
-            else {
+            } else {
                 Toast.makeText(getApplication(), "Mmmmm..network", Toast.LENGTH_SHORT).show()
             }
 

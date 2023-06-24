@@ -1,10 +1,8 @@
 package zw.co.nm.moviedb.ui.search
 
 import android.os.Bundle
-import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
@@ -15,6 +13,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var adapter: SearchAdapter
+    private var queryStr: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,38 +25,53 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(query: String?): Boolean {
         moviesViewModel.searchMulti(query!!)
         moviesViewModel.searchMulti.observe(this) { response ->
-
+            queryStr = query
             val data = response.body.results
-            if (data.isEmpty()) {
-                /* GeneralUtil.generalAlertDialog(this,
-                 "Alert",
-                 "No results for this search, please try another search",
-                 "OKAY","",
-                 null,null)*/
+            /*  binding.nextB.isEnabled = true
+            if (moviesViewModel.page == response.body.totalPages) {
+                binding.nextB.isEnabled = false
+            } else {
+                if (response.body.totalPages > 1) {
+                    binding.constraintLayoutPages.visibility = VISIBLE
+                }
 
-                Toast.makeText(this, "no dataa", Toast.LENGTH_SHORT).show()
-            }
 
-            if (response.body.totalPages > 1){
+            }*/
+            if (response.body.totalPages > 1) {
                 binding.constraintLayoutPages.visibility = VISIBLE
-            }else{binding.constraintLayoutPages.visibility = GONE}
-                adapter = SearchAdapter(data)
+                binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
+            }
+            adapter = SearchAdapter(data)
             binding.searchRecycler.adapter = adapter
-
         }
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        // TODO("Not yet implemented")
+        //sa
         return false
     }
+
 
     private fun setUpView() {
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.nextB.setOnClickListener {
+            moviesViewModel.page++
+            moviesViewModel.searchMulti(queryStr!!)
+        }
+        binding.prevB.setOnClickListener {
+            if (moviesViewModel.page != 1) {
+                moviesViewModel.page--
+                moviesViewModel.searchMulti(queryStr!!)
+            } else {
+                return@setOnClickListener
+            }
+        }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -23,6 +23,9 @@ class MoviesRepo {
     suspend fun getCredits(movieId: Int): Response<GetCreditsResponse> =
         NetworkManager.movieService.getCredits(movieId)
 
-    suspend fun searchMulti(query: String): zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse> =
-        apiCall {NetworkManager.movieService.searchMulti(query, true)}
+    suspend fun searchMulti(
+        query: String,
+        page: Int
+    ): zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse> =
+        apiCall { NetworkManager.movieService.searchMulti(query,page,true) }
 }

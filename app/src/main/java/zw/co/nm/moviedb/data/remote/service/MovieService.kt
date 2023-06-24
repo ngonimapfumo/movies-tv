@@ -43,6 +43,7 @@ interface MovieService {
     @GET("search/multi")
     suspend fun searchMulti(
         @Query("query") query: String,
+        @Query("page") page: Int,
         @Query("include_adult") include_adult: Boolean
     ): Response<SearchMultiResponse>
 

@@ -26,16 +26,20 @@ class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var imgPath: Any? = null
 
-        if (data[position].mediaType == "person") {
-            imgPath = data[position].profilePath
-            binding!!.textViewName.text = data[position].originalName
+        when (data[position].mediaType) {
+            "person" -> {
+                imgPath = data[position].profilePath
+                binding!!.textViewName.text = data[position].originalName
 
-        } else if (data[position].mediaType == "movie") {
-            imgPath = data[position].posterPath
-            binding!!.textViewName.text = data[position].originalTitle
-        } else if (data[position].mediaType == "tv") {
-            imgPath = data[position].posterPath
-            binding!!.textViewName.text = data[position].originalName
+            }
+            "movie" -> {
+                imgPath = data[position].posterPath
+                binding!!.textViewName.text = data[position].originalTitle
+            }
+            "tv" -> {
+                imgPath = data[position].posterPath
+                binding!!.textViewName.text = data[position].originalName
+            }
         }
 
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
