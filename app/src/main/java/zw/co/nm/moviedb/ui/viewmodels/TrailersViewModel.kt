@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.model.GetTrailersResponse
+import zw.co.nm.moviedb.data.remote.model.GetTrailersResponse
 import zw.co.nm.moviedb.repo.TrailersRepo
 
 class TrailersViewModel(application: Application) :

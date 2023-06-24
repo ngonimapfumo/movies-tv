@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
-import zw.co.nm.moviedb.model.SearchMultiResponse
+import zw.co.nm.moviedb.data.remote.model.SearchMultiResponse
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.PageNavUtils
 

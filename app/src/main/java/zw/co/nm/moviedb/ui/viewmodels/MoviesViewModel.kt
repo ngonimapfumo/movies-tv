@@ -8,11 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.model.GetCreditsResponse
-import zw.co.nm.moviedb.model.GetMovieDetailResponse
-import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.model.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.model.SearchMultiResponse
+import zw.co.nm.moviedb.data.remote.model.GetCreditsResponse
+import zw.co.nm.moviedb.data.remote.model.GetMovieDetailResponse
+import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.data.remote.model.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.model.SearchMultiResponse
 import zw.co.nm.moviedb.repo.MoviesRepo
 
 

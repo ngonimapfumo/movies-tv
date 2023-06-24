@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemCastBinding
-import zw.co.nm.moviedb.model.GetCreditsResponse
+import zw.co.nm.moviedb.data.remote.model.GetCreditsResponse
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.PageNavUtils
 

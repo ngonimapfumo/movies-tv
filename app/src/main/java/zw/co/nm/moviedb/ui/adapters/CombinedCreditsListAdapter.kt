@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.model.GetCombinedCredits
+import zw.co.nm.moviedb.data.remote.model.GetCombinedCredits
 import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 

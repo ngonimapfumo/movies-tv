@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.model.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 

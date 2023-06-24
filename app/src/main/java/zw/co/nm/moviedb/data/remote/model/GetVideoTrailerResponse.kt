@@ -1,9 +1,9 @@
-package zw.co.nm.moviedb.model
+package zw.co.nm.moviedb.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class GetTrailersResponse(
+data class GetVideoTrailerResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("results")

@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import zw.co.nm.moviedb.data.remote.interceptor.ApiCallInterceptor
-import zw.co.nm.moviedb.data.remote.service.ApiService
+import zw.co.nm.moviedb.data.remote.service.MovieService
 import zw.co.nm.moviedb.utils.Constants
 import java.util.concurrent.TimeUnit
 
@@ -32,6 +32,6 @@ object NetworkManager {
         .client(client)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
-    var apiService: ApiService = retrofit.create(ApiService::class.java)
+    var movieService: MovieService = retrofit.create(MovieService::class.java)
 
 }

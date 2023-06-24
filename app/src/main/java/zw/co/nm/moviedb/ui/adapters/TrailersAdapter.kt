@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
-import zw.co.nm.moviedb.model.GetTrailersResponse
+import zw.co.nm.moviedb.data.remote.model.GetTrailersResponse
 
 
 class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
@@ -38,6 +38,7 @@ class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
         if (data[position].site == "YouTube") {
             binding!!.ytImg.visibility = VISIBLE
             holder.itemView.setOnClickListener {
+                //go to activity that extends youtube and display
                 val ytIntent = Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse("https://www.youtube.com/watch?v=${data[position].key}")
@@ -45,6 +46,7 @@ class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
                 try {
                     holder.itemView.context.startActivity(ytIntent)
                 } catch (ex: ActivityNotFoundException) {
+                    //hoyo
                 }
             }
         }
