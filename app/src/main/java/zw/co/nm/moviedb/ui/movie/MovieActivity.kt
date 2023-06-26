@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
@@ -15,6 +16,7 @@ import zw.co.nm.moviedb.ui.trailers.TrailerActivity
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.utils.SmallCache
 import kotlin.math.roundToInt
 
 
@@ -43,7 +45,7 @@ class MovieActivity : AppCompatActivity() {
 
         moviesViewModel.getMovieDetail(movieId!!)
         moviesViewModel.getMovieDetail.observe(this) {
-            val response = it.body()!!
+            val response = it.body
             Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
                 .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
             binding.movieSummaryTxt.text = response.overview

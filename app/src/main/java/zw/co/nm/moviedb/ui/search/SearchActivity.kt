@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
 import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
+import zw.co.nm.moviedb.utils.SmallCache
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivitySearchBinding
@@ -27,22 +28,14 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         moviesViewModel.searchMulti.observe(this) { response ->
             queryStr = query
             val data = response.body.results
-            /*  binding.nextB.isEnabled = true
-            if (moviesViewModel.page == response.body.totalPages) {
-                binding.nextB.isEnabled = false
-            } else {
-                if (response.body.totalPages > 1) {
-                    binding.constraintLayoutPages.visibility = VISIBLE
-                }
-
-
-            }*/
             if (response.body.totalPages > 1) {
                 binding.constraintLayoutPages.visibility = VISIBLE
                 binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
             }
             adapter = SearchAdapter(data)
             binding.searchRecycler.adapter = adapter
+
+
         }
         return true
     }

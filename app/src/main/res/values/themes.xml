@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
 
         <item name="fontFamily">@font/googlesans</item>
-        <item name="colorPrimary">#1EA6DD</item>
+        <item name="colorPrimary">#5E35B1</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

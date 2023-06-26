@@ -32,8 +32,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         _getPopularMovies
 
     private val _getMovieDetail =
-        MutableLiveData<Response<GetMovieDetailResponse>>()
-    val getMovieDetail: LiveData<Response<GetMovieDetailResponse>> =
+        MutableLiveData<zw.co.nm.moviedb.data.remote.Response<GetMovieDetailResponse>>()
+    val getMovieDetail: LiveData<zw.co.nm.moviedb.data.remote.Response<GetMovieDetailResponse>> =
         _getMovieDetail
 
     private val _getMovieCredits =
@@ -87,7 +87,10 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch {
             val response = moviesRepo.getMovieDetails(movieId)
-            _getMovieDetail.postValue(response)
+            if (response.isSuccessful) {
+                _getMovieDetail.postValue(response)
+            }
+
         }
     }
 
