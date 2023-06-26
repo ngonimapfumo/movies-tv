@@ -49,6 +49,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         //sa
+      //  moviesViewModel.page = 1
         return false
     }
 

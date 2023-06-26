@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import zw.co.nm.moviedb.data.remote.interceptor.ApiCallInterceptor
 import zw.co.nm.moviedb.data.remote.service.MovieService
+import zw.co.nm.moviedb.data.remote.service.TvShowService
 import zw.co.nm.moviedb.utils.Constants
 import java.util.concurrent.TimeUnit
 
@@ -33,5 +34,6 @@ object NetworkManager {
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
     var movieService: MovieService = retrofit.create(MovieService::class.java)
+    var tvShowService: TvShowService = retrofit.create(TvShowService::class.java)
 
 }

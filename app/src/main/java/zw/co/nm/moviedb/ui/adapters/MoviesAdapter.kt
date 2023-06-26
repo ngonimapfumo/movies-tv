@@ -10,7 +10,7 @@ import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
-class MovieListAdapter(private var data: List<GetPopularMoviesListResponse.Result>) :
+class MoviesAdapter(private var data: List<GetPopularMoviesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null

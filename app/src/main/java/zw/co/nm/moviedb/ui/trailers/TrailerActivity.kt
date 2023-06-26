@@ -3,12 +3,7 @@ package zw.co.nm.moviedb.ui.trailers
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
 import zw.co.nm.moviedb.databinding.ActivityTrailerBinding
 import zw.co.nm.moviedb.ui.adapters.TrailersAdapter
 import zw.co.nm.moviedb.ui.viewmodels.TrailersViewModel

@@ -7,13 +7,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
-import zw.co.nm.moviedb.ui.adapters.MovieListAdapter
+import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.search.SearchOptionsActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
@@ -23,7 +22,7 @@ import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: MovieListAdapter
+    private lateinit var adapter: MoviesAdapter
     private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
             val data = response.body.results
-            adapter = MovieListAdapter(data)
+            adapter = MoviesAdapter(data)
             binding.recyclerView.adapter = adapter
 
         }
@@ -63,6 +62,8 @@ class MainActivity : AppCompatActivity() {
                     R.id.drawer_search -> {
                         startActivity(Intent(this@MainActivity,SearchOptionsActivity::class.java))
                     }
+
+                    R.id.drawer_tv ->{startActivity(Intent(this@MainActivity,TVShowsActivity::class.java))}
                 }
                 true
             }
