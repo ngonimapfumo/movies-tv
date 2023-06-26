@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
-import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.adapters.TvShowsAdapter
-import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 import zw.co.nm.moviedb.ui.viewmodels.TvShowsViewModel
 
 class TVShowsActivity : AppCompatActivity() {
@@ -19,7 +17,6 @@ class TVShowsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.title = getString(R.string.tv_shows)
         tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         setUpView()
         tvShowsViewModel.getPopularTvShows()
@@ -32,6 +29,8 @@ class TVShowsActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+        supportActionBar?.title = getString(R.string.tv_shows)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.nextB.setOnClickListener {
             tvShowsViewModel.page++
             tvShowsViewModel.getPopularTvShows()
@@ -45,5 +44,10 @@ class TVShowsActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }
