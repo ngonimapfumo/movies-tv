@@ -8,11 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.data.remote.model.GetCreditsResponse
-import zw.co.nm.moviedb.data.remote.model.GetMovieDetailResponse
-import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.data.remote.model.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.data.remote.model.SearchMultiResponse
+import zw.co.nm.moviedb.data.domain.models.Movie
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
 import zw.co.nm.moviedb.repo.MoviesRepo
 
 
@@ -32,8 +32,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         _getPopularMovies
 
     private val _getMovieDetail =
-        MutableLiveData<zw.co.nm.moviedb.data.remote.Response<GetMovieDetailResponse>>()
-    val getMovieDetail: LiveData<zw.co.nm.moviedb.data.remote.Response<GetMovieDetailResponse>> =
+        MutableLiveData<Movie?>()
+    val getMovieDetail: LiveData<Movie?> =
         _getMovieDetail
 
     private val _getMovieCredits =
@@ -87,9 +87,7 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch {
             val response = moviesRepo.getMovieDetails(movieId)
-            if (response.isSuccessful) {
-                _getMovieDetail.postValue(response)
-            }
+            _getMovieDetail.postValue(response)
 
         }
     }

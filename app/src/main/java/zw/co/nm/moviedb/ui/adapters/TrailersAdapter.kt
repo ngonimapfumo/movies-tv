@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
-import zw.co.nm.moviedb.data.remote.model.GetTrailersResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 
 
 class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
