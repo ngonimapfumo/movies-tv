@@ -2,6 +2,7 @@ package zw.co.nm.moviedb.ui.movie
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -44,39 +45,43 @@ class MovieActivity : AppCompatActivity() {
         }
 
         moviesViewModel.getMovieDetail(movieId!!)
-        moviesViewModel.getMovieDetail.observe(this) {
-            val response = it.body
-            Picasso.get().load(IMAGE_BASE_URL + response.posterPath)
+        moviesViewModel.getMovieDetail.observe(this) { movie ->
+           if (movie == null){
+               Toast.makeText(this@MovieActivity,
+                   "Mmmm null", Toast.LENGTH_SHORT).show()
+               return@observe
+           }
+            Picasso.get().load(IMAGE_BASE_URL + movie!!.posterPath)
                 .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
-            binding.movieSummaryTxt.text = response.overview
-            binding.detailedSummaryTxt.text = response.overview
+            binding.movieSummaryTxt.text = movie.overview
+            binding.detailedSummaryTxt.text = movie.overview
             binding.detailedSummaryTxt.setOnClickListener {
                 AlertDialog.Builder(this@MovieActivity)
-                    .setMessage(response.overview)
+                    .setMessage(movie.overview)
                     .show()
             }
-            binding.movieTitleTxt.text = response.title
+            binding.movieTitleTxt.text = movie.title
             binding.runtimeTxt.text = buildString {
-                append(response.runtime)
+                append(movie.runtime)
                 append(" minutes")
             }
 
             when {
-                response.releaseDate.isEmpty() -> {
+                movie.releaseDate.isEmpty() -> {
                     binding.yearTxt.text = "N/A"
                 }
                 else -> {
-                    binding.yearTxt.text = response.releaseDate.substring(0, 4)
+                    binding.yearTxt.text = movie.releaseDate.substring(0, 4)
                 }
             }
-            for (i in response.genres.indices) {
-                binding.genre.text = response.genres[i].name
+            for (i in movie.genres.indices) {
+                binding.genre.text = movie.genres[i].name
             }
-            for (i in response.productionCompanies.indices) {
-                binding.prodCompany.text = response.productionCompanies[i].name
+            for (i in movie.productionCompanies.indices) {
+                binding.prodCompany.text = movie.productionCompanies[i].name
             }
-            binding.movieRatingTxt.text = response.voteAverage.roundToInt().toString()
-            binding.statusTxt.text = response.status
+            binding.movieRatingTxt.text = movie.voteAverage.roundToInt().toString()
+            binding.statusTxt.text = movie.status
         }
 
         moviesViewModel.getCredits(movieId!!)
