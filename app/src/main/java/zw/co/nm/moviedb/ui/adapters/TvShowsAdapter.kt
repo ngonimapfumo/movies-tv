@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.data.remote.model.GetPopularTVSeriesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.utils.PageNavUtils
 
 class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

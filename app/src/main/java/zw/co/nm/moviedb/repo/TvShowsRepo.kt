@@ -1,7 +1,7 @@
 package zw.co.nm.moviedb.repo
 
 import zw.co.nm.moviedb.data.remote.NetworkManager
-import zw.co.nm.moviedb.data.remote.model.GetPopularTVSeriesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
 
 class TvShowsRepo {

@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import retrofit2.Response
-import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
 
 object GeneralUtil {
 

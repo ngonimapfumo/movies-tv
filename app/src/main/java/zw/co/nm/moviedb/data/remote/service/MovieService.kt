@@ -4,14 +4,14 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import zw.co.nm.moviedb.data.remote.model.GetCombinedCredits
-import zw.co.nm.moviedb.data.remote.model.GetCreditsResponse
-import zw.co.nm.moviedb.data.remote.model.GetMovieDetailResponse
-import zw.co.nm.moviedb.data.remote.model.GetPersonResponse
-import zw.co.nm.moviedb.data.remote.model.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.data.remote.model.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.data.remote.model.GetTrailersResponse
-import zw.co.nm.moviedb.data.remote.model.SearchMultiResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCredits
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
 
 interface MovieService {
 

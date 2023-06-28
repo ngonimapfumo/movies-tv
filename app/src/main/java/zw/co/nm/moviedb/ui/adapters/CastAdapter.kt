@@ -2,12 +2,11 @@ package zw.co.nm.moviedb.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemCastBinding
-import zw.co.nm.moviedb.data.remote.model.GetCreditsResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.PageNavUtils
 

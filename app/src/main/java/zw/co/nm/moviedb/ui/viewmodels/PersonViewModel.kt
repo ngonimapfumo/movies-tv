@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.data.remote.model.GetCombinedCredits
-import zw.co.nm.moviedb.data.remote.model.GetPersonResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCredits
+import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
 import zw.co.nm.moviedb.repo.PersonRepo
 
 class PersonViewModel(application: Application) :
