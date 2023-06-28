@@ -50,15 +50,6 @@ class MainActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             navView.setNavigationItemSelectedListener {
                 when (it.itemId) {
-                    R.id.drawer_version -> {
-                        Toast.makeText(
-                            this@MainActivity,
-                            BuildConfig.VERSION_NAME,
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-
-                    }
                     R.id.drawer_search -> {
                         startActivity(Intent(this@MainActivity,SearchOptionsActivity::class.java))
                     }
@@ -102,11 +93,6 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.app_bar_search -> {
                 startActivity(Intent(this@MainActivity, SearchActivity::class.java))
-                true
-            }
-
-            R.id.app_bar_settings -> {
-                startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
                 true
             }
 
