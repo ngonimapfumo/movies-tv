@@ -36,7 +36,7 @@ class PersonActivity : AppCompatActivity() {
                 }
                 binding.bioCard.setOnClickListener {
                     AlertDialog.Builder(this@PersonActivity)
-                        .setPositiveButton("OKAY,BYE",null)
+                        .setPositiveButton("OKAY",null)
                         .setMessage(response.body()!!.biography)
                         .show()
                 }

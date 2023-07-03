@@ -5,16 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
-import zw.co.nm.moviedb.ui.search.SearchOptionsActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 
@@ -51,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             navView.setNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.drawer_search -> {
-                        startActivity(Intent(this@MainActivity,SearchOptionsActivity::class.java))
+                        startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
                     }
 
                     R.id.drawer_tv ->{startActivity(Intent(this@MainActivity,TVShowsActivity::class.java))}
