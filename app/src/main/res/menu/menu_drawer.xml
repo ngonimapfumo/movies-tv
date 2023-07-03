@@ -13,9 +13,9 @@
         android:id="@+id/drawer_search"
         android:title="@string/search_options" />
 
-    <item
+    <!--<item
         android:id="@+id/drawer_version"
-        android:title="@string/app_version" />
+        android:title="@string/app_version" />-->
 
 
 

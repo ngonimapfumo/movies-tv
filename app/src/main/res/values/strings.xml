@@ -36,7 +36,7 @@
     <string name="open">Open\n</string>
     <string name="close">Close</string>
     <string name="app_version">Version</string>
-    <string name="search_options">Search options</string>
+    <string name="search_options">Settings</string>
     <string name="tv_shows">TV Shows</string>
     <string name="movies">Movies</string>
     <string name="type">type</string>
@@ -47,4 +47,5 @@
     <string name="q_mark">\?</string>
     <string name="no_results_found">No results found</string>
     <string name="try_another_search">Try another search</string>
+    <string name="powered_by">powered by</string>
 </resources>

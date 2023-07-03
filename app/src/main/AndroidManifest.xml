@@ -17,15 +17,11 @@
             android:name=".ui.trailers.TrailerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.search.SearchOptionsActivity"
+            android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.TVShowsActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.settings.SettingsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_settings" />
         <activity
             android:name=".ui.tv.TvShowActivity"
             android:exported="false" />
