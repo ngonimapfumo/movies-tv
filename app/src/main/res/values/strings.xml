@@ -48,4 +48,6 @@
     <string name="no_results_found">No results found</string>
     <string name="try_another_search">Try another search</string>
     <string name="powered_by">powered by</string>
+    <string name="mature_content_txt">you may get results that contain mature \nor sexually explicit content by turning this off!</string>
+    <string name="include_explicit_content_txt">include explicit content</string>
 </resources>

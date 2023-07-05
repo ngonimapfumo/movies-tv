@@ -26,6 +26,7 @@
             android:layout_height="100dp">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
+                app:thumbTint="@color/blue_light"
                 android:id="@+id/switchMaterial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,7 +37,7 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="safe search"
+                android:text="@string/include_explicit_content_txt"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="@+id/switchMaterial"
                 app:layout_constraintEnd_toStartOf="@+id/switchMaterial"
@@ -47,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="you may get results that contain mature \nor sexually explicit content by turning this off!"
+                android:text="@string/mature_content_txt"
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textStyle="bold"

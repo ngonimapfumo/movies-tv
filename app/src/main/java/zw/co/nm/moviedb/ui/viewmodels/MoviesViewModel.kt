@@ -18,7 +18,7 @@ import zw.co.nm.moviedb.repo.MoviesRepo
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val moviesRepo = MoviesRepo()
+    private val moviesRepo = MoviesRepo(application)
     var page: Int = 1
 
     private val _searchMulti =

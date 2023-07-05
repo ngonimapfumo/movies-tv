@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.databinding.ActivitySettingsBinding
+import zw.co.nm.moviedb.utils.ConfigStore
+import zw.co.nm.moviedb.utils.ConfigStore.SEARCH_CONFIG_KEY
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -12,13 +14,21 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.appVerTxt.text = buildString {
             append("version: ")
             append(BuildConfig.VERSION_NAME)
         }
 
+        binding.switchMaterial.isChecked = ConfigStore.getBool(this, SEARCH_CONFIG_KEY)
+        binding.switchMaterial.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                ConfigStore.saveBoolConfig(this@SettingsActivity,SEARCH_CONFIG_KEY,true)
+            }
+            else {
+                ConfigStore.saveBoolConfig(this@SettingsActivity,SEARCH_CONFIG_KEY,false)
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
