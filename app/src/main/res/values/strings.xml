@@ -50,4 +50,6 @@
     <string name="powered_by">powered by</string>
     <string name="mature_content_txt">you may get results that contain mature \nor sexually explicit content by turning this on!</string>
     <string name="include_explicit_content_txt">include explicit content</string>
+    <string name="top_rated_movies">Top rated movies</string>
+    <string name="trending_today">Trending today</string>
 </resources>

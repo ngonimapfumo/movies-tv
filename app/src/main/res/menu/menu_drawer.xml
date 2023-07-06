@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item
-        android:id="@+id/drawer_movies"
-        android:title="@string/movies" />-->
+    <item
+        android:id="@+id/drawer_trending_today"
+        android:title="@string/trending_today"/>
+
+
+    <item
+        android:id="@+id/drawer_top_movies"
+        android:title="@string/top_rated_movies" />
 
     <item
         android:id="@+id/drawer_tv"
