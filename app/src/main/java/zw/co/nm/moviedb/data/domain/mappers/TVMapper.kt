@@ -22,7 +22,7 @@ object TVMapper {
             productionCompanies = emptyList(),
             firstAirDate = response.firstAirDate,
             inProduction = response.inProduction,
-            languages = emptyList(),
+            languages = response.languages,
             lastAirDate = response.lastAirDate,
             lastEpisodeToAir = TV.LastEpisodeToAir(
                 airDate = response.lastEpisodeToAir.airDate,

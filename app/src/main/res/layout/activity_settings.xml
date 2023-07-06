@@ -11,8 +11,8 @@
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="5dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 app:thumbTint="@color/blue_light"
