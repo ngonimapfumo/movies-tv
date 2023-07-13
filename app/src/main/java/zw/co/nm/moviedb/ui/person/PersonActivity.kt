@@ -49,7 +49,7 @@ class PersonActivity : AppCompatActivity() {
         }
 
         personViewModel.getCombinedCredits(personId!!)
-        personViewModel.getCombinedCredits.observe(this) { response ->
+        personViewModel.getCombinedCreditsResponse.observe(this) { response ->
             if (response.isSuccessful) {
                 binding.creditsLayout.visibility = VISIBLE
                 val adapter: CombinedCreditsListAdapter

@@ -5,48 +5,46 @@ import com.google.gson.annotations.SerializedName
 data class TV(
     val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerializedName("first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
     @SerializedName("genres")
     val genres: List<Genre>,
     @SerializedName("homepage")
-    val homepage: String,
+    val homepage: String?,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("in_production")
-    val inProduction: Boolean,
+    val inProduction: Boolean?,
     val languages: List<String>,
     @SerializedName("last_air_date")
-    val lastAirDate: String,
+    val lastAirDate: String?,
     @SerializedName("last_episode_to_air")
-    val lastEpisodeToAir: LastEpisodeToAir,
-    val name: String,
+    val lastEpisodeToAir: LastEpisodeToAir?,
+    val name: String?,
     val networks: List<Network>,
-    @SerializedName("next_episode_to_air")
-    val nextEpisodeToAir: Any,
     @SerializedName("number_of_episodes")
-    val numberOfEpisodes: Int,
+    val numberOfEpisodes: Int?,
     @SerializedName("number_of_seasons")
-    val numberOfSeasons: Int,
+    val numberOfSeasons: Int?,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
     @SerializedName("original_name")
-    val originalName: String,
-    val overview: String,
-    val popularity: Double,
+    val originalName: String?,
+    val overview: String?,
+    val popularity: Double?,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerializedName("production_companies")
     val productionCompanies: List<Any>,
     val seasons: List<Season>,
-    val status: String,
-    val tagline: String,
-    val type: String,
+    val status: String?,
+    val tagline: String?,
+    val type: String?,
     @SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int?
 ) {
     data class Genre(
         @SerializedName("id")
@@ -70,10 +68,8 @@ data class TV(
         val seasonNumber: Int,
         @SerializedName("show_id")
         val showId: Int,
-        @SerializedName("still_path")
-        val stillPath: Any,
         @SerializedName("vote_average")
-        val voteAverage: Int,
+        val voteAverage: Double,
         @SerializedName("vote_count")
         val voteCount: Int
     )

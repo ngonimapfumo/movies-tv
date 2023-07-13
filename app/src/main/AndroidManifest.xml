@@ -23,7 +23,7 @@
             android:name=".ui.main.TVShowsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tv.TvShowActivity"
+            android:name=".ui.tv.TvShowDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.person.PersonActivity"

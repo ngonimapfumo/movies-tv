@@ -5,7 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.movie.MovieActivity">
+    tools:context=".ui.tv.TvShowDetailActivity">
 
     <ScrollView
         android:id="@+id/scroller"
@@ -42,7 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/movieTitleTxt"
+                android:id="@+id/tvTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
@@ -64,7 +64,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/movieTitleTxt">
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleTxt">
 
                 <TextView
                     android:id="@+id/yearTxt"
@@ -108,24 +108,8 @@
                 app:layout_constraintTop_toTopOf="@+id/background_imm"
                 app:layout_constraintVertical_bias="0.857" />
 
-            <com.google.android.material.button.MaterialButton
-                android:visibility="gone
-"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/white"
-                android:text="Reviews"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/trailerBtn"
-                app:layout_constraintEnd_toStartOf="@+id/trailerBtn"
-                app:layout_constraintHorizontal_bias="0.718"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/trailerBtn"
-                app:layout_constraintVertical_bias="0.0" />
-
             <TextView
-                android:id="@+id/movieSummaryTxt"
+                android:id="@+id/tvSummaryTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"

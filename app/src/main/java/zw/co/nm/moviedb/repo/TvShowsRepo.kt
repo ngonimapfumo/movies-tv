@@ -14,6 +14,7 @@ class TvShowsRepo {
     suspend fun getTvShowDetails(showId: Int): TV? {
         val req = apiCall { NetworkManager.tvShowService.getTvShowDetails(showId) }
         return if (req.isSuccessful) {
+            println("ahhhhhhhhh"+req.body)
             TVMapper.buildFrom(req.body)
         } else null
     }

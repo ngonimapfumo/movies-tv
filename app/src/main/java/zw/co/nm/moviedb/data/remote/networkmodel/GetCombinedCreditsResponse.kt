@@ -3,7 +3,7 @@ package zw.co.nm.moviedb.data.remote.networkmodel
 
 import com.google.gson.annotations.SerializedName
 
-data class GetCombinedCredits(
+data class GetCombinedCreditsResponse(
     @SerializedName("cast")
     val cast: List<Cast>,
     @SerializedName("crew")

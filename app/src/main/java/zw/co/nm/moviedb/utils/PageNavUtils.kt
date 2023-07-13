@@ -5,7 +5,7 @@ import android.content.Intent
 import zw.co.nm.moviedb.ui.movie.MovieActivity
 import zw.co.nm.moviedb.ui.person.PersonActivity
 import zw.co.nm.moviedb.ui.trailers.TrailerActivity
-import zw.co.nm.moviedb.ui.tv.TvShowActivity
+import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity
 
 object PageNavUtils {
 
@@ -15,8 +15,8 @@ object PageNavUtils {
         context.startActivity(intent)
     }
     fun toTvDetailsPage(context: Context, tvShowId: Int) {
-        val intent = Intent(context, TvShowActivity::class.java)
-        intent.putExtra(TvShowActivity.TV_SHOW_ID_EXTRA, tvShowId)
+        val intent = Intent(context, TvShowDetailActivity::class.java)
+        intent.putExtra(TvShowDetailActivity.TV_SHOW_ID_EXTRA, tvShowId)
         context.startActivity(intent)
     }
 

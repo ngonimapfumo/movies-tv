@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import zw.co.nm.moviedb.data.remote.interceptor.ApiCallInterceptor
+import zw.co.nm.moviedb.data.remote.interceptor.QueryParamInterceptor
 import zw.co.nm.moviedb.data.remote.service.MovieService
 import zw.co.nm.moviedb.data.remote.service.TvShowService
 import zw.co.nm.moviedb.utils.Constants
@@ -22,7 +22,7 @@ object NetworkManager {
         level = HttpLoggingInterceptor.Level.BODY
     }
     private val client = OkHttpClient.Builder()
-        .addInterceptor(ApiCallInterceptor)
+        .addInterceptor(QueryParamInterceptor)
         .addInterceptor(loggingInterceptor)
         .readTimeout(1, TimeUnit.MINUTES)
         .connectTimeout(1, TimeUnit.MINUTES)

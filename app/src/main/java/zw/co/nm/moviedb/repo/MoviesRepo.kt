@@ -22,7 +22,9 @@ class MoviesRepo(private val context: Context) {
         val req = apiCall { NetworkManager.movieService.getMovieDetail(movieId) }
         return if (req.isSuccessful) {
             MovieMapper.buildFrom(req.body)
-        } else null
+        }
+        else null
+
 
     }
 

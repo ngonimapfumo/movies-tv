@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCredits
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
 import zw.co.nm.moviedb.repo.PersonRepo
 
@@ -20,8 +20,8 @@ class PersonViewModel(application: Application) :
     val getPerson: LiveData<Response<GetPersonResponse>> =
         _getPerson
 
-    private val _getCombinedCredits = MutableLiveData<Response<GetCombinedCredits>>()
-    val getCombinedCredits: LiveData<Response<GetCombinedCredits>> = _getCombinedCredits
+    private val _getCombinedCreditsResponse = MutableLiveData<Response<GetCombinedCreditsResponse>>()
+    val getCombinedCreditsResponse: LiveData<Response<GetCombinedCreditsResponse>> = _getCombinedCreditsResponse
 
 
     fun getPerson(personId: Int) {
@@ -34,7 +34,7 @@ class PersonViewModel(application: Application) :
     fun getCombinedCredits(personId: Int) {
         viewModelScope.launch {
             val response = personRepo.getCombinedCredits(personId)
-            _getCombinedCredits.postValue(response)
+            _getCombinedCreditsResponse.postValue(response)
         }
 
     }

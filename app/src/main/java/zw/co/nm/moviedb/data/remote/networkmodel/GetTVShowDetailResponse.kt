@@ -9,9 +9,9 @@ data class GetTVShowDetailResponse(
     @SerializedName("backdrop_path")
     val backdropPath: String,
     @SerializedName("created_by")
-    val createdBy: List<Any>,
+    val createdBy: List<CreatedBy>,
     @SerializedName("episode_run_time")
-    val episodeRunTime: List<Int>,
+    val episodeRunTime: List<Any>,
     @SerializedName("first_air_date")
     val firstAirDate: String,
     @SerializedName("genres")
@@ -33,7 +33,7 @@ data class GetTVShowDetailResponse(
     @SerializedName("networks")
     val networks: List<Network>,
     @SerializedName("next_episode_to_air")
-    val nextEpisodeToAir: Any,
+    val nextEpisodeToAir: NextEpisodeToAir,
     @SerializedName("number_of_episodes")
     val numberOfEpisodes: Int,
     @SerializedName("number_of_seasons")
@@ -51,7 +51,7 @@ data class GetTVShowDetailResponse(
     @SerializedName("poster_path")
     val posterPath: String,
     @SerializedName("production_companies")
-    val productionCompanies: List<Any>,
+    val productionCompanies: List<ProductionCompany>,
     @SerializedName("production_countries")
     val productionCountries: List<ProductionCountry>,
     @SerializedName("seasons")
@@ -69,6 +69,19 @@ data class GetTVShowDetailResponse(
     @SerializedName("vote_count")
     val voteCount: Int
 ) {
+    data class CreatedBy(
+        @SerializedName("credit_id")
+        val creditId: String,
+        @SerializedName("gender")
+        val gender: Int,
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("profile_path")
+        val profilePath: String
+    )
+
     data class Genre(
         @SerializedName("id")
         val id: Int,
@@ -96,9 +109,9 @@ data class GetTVShowDetailResponse(
         @SerializedName("show_id")
         val showId: Int,
         @SerializedName("still_path")
-        val stillPath: Any,
+        val stillPath: String,
         @SerializedName("vote_average")
-        val voteAverage: Int,
+        val voteAverage: Double,
         @SerializedName("vote_count")
         val voteCount: Int
     )
@@ -108,6 +121,44 @@ data class GetTVShowDetailResponse(
         val id: Int,
         @SerializedName("logo_path")
         val logoPath: String,
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("origin_country")
+        val originCountry: String
+    )
+
+    data class NextEpisodeToAir(
+        @SerializedName("air_date")
+        val airDate: String,
+        @SerializedName("episode_number")
+        val episodeNumber: Int,
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("overview")
+        val overview: String,
+        @SerializedName("production_code")
+        val productionCode: String,
+        @SerializedName("runtime")
+        val runtime: Any,
+        @SerializedName("season_number")
+        val seasonNumber: Int,
+        @SerializedName("show_id")
+        val showId: Int,
+        @SerializedName("still_path")
+        val stillPath: String,
+        @SerializedName("vote_average")
+        val voteAverage: Double,
+        @SerializedName("vote_count")
+        val voteCount: Int
+    )
+
+    data class ProductionCompany(
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("logo_path")
+        val logoPath: Any,
         @SerializedName("name")
         val name: String,
         @SerializedName("origin_country")
@@ -135,7 +186,9 @@ data class GetTVShowDetailResponse(
         @SerializedName("poster_path")
         val posterPath: String,
         @SerializedName("season_number")
-        val seasonNumber: Int
+        val seasonNumber: Int,
+        @SerializedName("vote_average")
+        val voteAverage: Double
     )
 
     data class SpokenLanguage(

@@ -7,15 +7,13 @@ import okhttp3.Response
 import zw.co.nm.moviedb.BuildConfig
 import java.io.IOException
 
-object ApiCallInterceptor : Interceptor {
+object QueryParamInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val url: HttpUrl = chain.request()
             .url
             .newBuilder()
-            /*storing api key in local.properties file for now
-            *
-            * */
+            /*storing api key in local.properties file for now*/
             .addQueryParameter("api_key", BuildConfig.API_KEY)
             .addQueryParameter("language", "en-US")
             .build()

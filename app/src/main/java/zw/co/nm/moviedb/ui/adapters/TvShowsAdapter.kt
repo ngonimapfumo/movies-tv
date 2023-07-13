@@ -9,6 +9,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.PageNavUtils
 
 class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -24,10 +25,9 @@ class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Resul
         val imgPath = data[position].posterPath
         Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-            /*PageNavUtils.toMovieDetailsPage(holder.itemView.context,
-                data[position].id)*/
-            Toast.makeText(holder.itemView.context,
-                "under construction", Toast.LENGTH_SHORT).show()
+            PageNavUtils.toTvDetailsPage(holder.itemView.context,
+                data[position].id)
+
         }
 
     }

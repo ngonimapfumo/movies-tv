@@ -4,7 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCredits
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
@@ -50,7 +50,7 @@ interface MovieService {
     @GET("person/{id}/combined_credits")
     suspend fun getCombinedCredits(
         @Path("id") query: Int
-    ): Response<GetCombinedCredits>
+    ): Response<GetCombinedCreditsResponse>
 
     @GET("movie/{id}/videos")
     suspend fun getTrailers(
