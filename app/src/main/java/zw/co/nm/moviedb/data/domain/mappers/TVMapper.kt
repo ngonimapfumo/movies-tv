@@ -5,7 +5,9 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 
 object TVMapper {
 
-    fun buildFrom(response: GetTVShowDetailResponse): TV {
+    fun buildFrom(
+        response: GetTVShowDetailResponse
+    ): TV {
         return TV(
             name = response.name,
             id = response.id,

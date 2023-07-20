@@ -74,13 +74,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/genre_year_txt" />
 
-                <TextView
-                    android:id="@+id/genre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="12dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt" />
+
 
                 <TextView
                     android:id="@+id/runtimeTxt"
@@ -107,22 +101,6 @@
                 app:layout_constraintStart_toStartOf="@+id/background_imm"
                 app:layout_constraintTop_toTopOf="@+id/background_imm"
                 app:layout_constraintVertical_bias="0.857" />
-
-            <com.google.android.material.button.MaterialButton
-                android:visibility="gone
-"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/white"
-                android:text="Reviews"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/trailerBtn"
-                app:layout_constraintEnd_toStartOf="@+id/trailerBtn"
-                app:layout_constraintHorizontal_bias="0.718"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/trailerBtn"
-                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/movieSummaryTxt"
@@ -315,6 +293,26 @@
                             tools:text="8.2" />
 
                         <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="Genres"
+                            app:layout_constraintStart_toStartOf="@+id/statusTxt"
+                            app:layout_constraintTop_toBottomOf="@+id/statusTxt" />
+
+
+                        <TextView
+                            android:id="@+id/genre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/genre_year_txt"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                        <TextView
                             android:id="@+id/textView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -322,10 +320,8 @@
                             android:text="Cast"
                             android:textSize="@dimen/info_txt_size"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/textView7"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView7"
-                            app:layout_constraintTop_toBottomOf="@+id/statusTxt" />
+                            app:layout_constraintStart_toStartOf="@+id/genre"
+                            app:layout_constraintTop_toBottomOf="@+id/genre" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/castRecyclerView"

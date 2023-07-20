@@ -42,6 +42,7 @@ class MovieActivity : AppCompatActivity() {
 
         moviesViewModel.getMovieDetail(movieId!!)
         moviesViewModel.getMovieDetail.observe(this) { movie ->
+
             if (movie == null) {
                 Toast.makeText(
                     this@MovieActivity,
@@ -72,13 +73,21 @@ class MovieActivity : AppCompatActivity() {
                 movie.releaseDate.isEmpty() -> {
                     binding.yearTxt.text = "N/A"
                 }
+
                 else -> {
                     binding.yearTxt.text = movie.releaseDate.substring(0, 4)
                 }
             }
+
+
+            //  Toast.makeText(this, movie.genres.indices.toString(), Toast.LENGTH_SHORT).show()
+            /*for (i in movie.genres.indices){
+                *//*Toast.makeText(this@MovieActivity,
+                    movie.genres[i].name.toString(), Toast.LENGTH_SHORT).show()*//*
+                binding.genre.text = movie.genres[i].name
+            }*/
             binding.genre.text = movie.genres.name
             binding.prodCompany.text = movie.productionCompanies.name
-
             binding.movieRatingTxt.text = movie.voteAverage.roundToInt().toString()
             binding.statusTxt.text = movie.status
         }
@@ -93,6 +102,7 @@ class MovieActivity : AppCompatActivity() {
             val data = response.body()!!.cast
             adapter = CastAdapter(data)
             binding.castRecyclerView.adapter = adapter
+
         }
     }
 
