@@ -9,7 +9,7 @@ data class TV(
     @SerializedName("first_air_date")
     val firstAirDate: String?,
     @SerializedName("genres")
-    val genres: List<Genre>?,
+    val genres: Genre?,
     @SerializedName("homepage")
     val homepage: String?,
     @SerializedName("id")
@@ -47,9 +47,6 @@ data class TV(
     val voteCount: Int?
 ) {
     data class Genre(
-        @SerializedName("id")
-        val id: Int,
-        @SerializedName("name")
         val name: String
     )
 

@@ -78,14 +78,6 @@ class MovieActivity : AppCompatActivity() {
                     binding.yearTxt.text = movie.releaseDate.substring(0, 4)
                 }
             }
-
-
-            //  Toast.makeText(this, movie.genres.indices.toString(), Toast.LENGTH_SHORT).show()
-            /*for (i in movie.genres.indices){
-                *//*Toast.makeText(this@MovieActivity,
-                    movie.genres[i].name.toString(), Toast.LENGTH_SHORT).show()*//*
-                binding.genre.text = movie.genres[i].name
-            }*/
             binding.genre.text = movie.genres.name
             binding.prodCompany.text = movie.productionCompanies.name
             binding.movieRatingTxt.text = movie.voteAverage.roundToInt().toString()

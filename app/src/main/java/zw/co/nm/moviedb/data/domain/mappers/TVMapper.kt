@@ -5,9 +5,19 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 
 object TVMapper {
 
+    private var genre: ArrayList<String>? = arrayListOf()
     fun buildFrom(
         response: GetTVShowDetailResponse
     ): TV {
+
+        if (genre!!.isNotEmpty()) {
+            genre!!.clear()
+        }
+
+        response.genres.indices.forEach { i ->
+            genre!!.add(response.genres[i].name)
+
+        }
         return TV(
             name = response.name,
             id = response.id,
@@ -17,7 +27,10 @@ object TVMapper {
             popularity = response.popularity,
             overview = response.overview,
             homepage = response.homepage,
-            genres = emptyList(),
+            genres = TV.Genre(
+                name = genre.toString().replace("[", "")
+                    .replace("]", "")
+            ),
             posterPath = response.posterPath,
             adult = response.adult,
             backdropPath = response.backdropPath,

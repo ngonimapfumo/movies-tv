@@ -3,12 +3,12 @@ package zw.co.nm.moviedb.ui.search
 import android.os.Bundle
 import android.view.View.VISIBLE
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
 import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
-import zw.co.nm.moviedb.utils.SmallCache
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivitySearchBinding
@@ -28,21 +28,25 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         moviesViewModel.searchMulti.observe(this) { response ->
             queryStr = query
             val data = response.body.results
-            if (response.body.totalPages > 1) {
-                binding.constraintLayoutPages.visibility = VISIBLE
-                binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
+            if (data.isEmpty()) {
+                Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show()
+
             }
-            adapter = SearchAdapter(data)
-            binding.searchRecycler.adapter = adapter
+                if (response.body.totalPages > 1) {
+                    binding.constraintLayoutPages.visibility = VISIBLE
+                    binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
+                }
+                adapter = SearchAdapter(data)
+                binding.searchRecycler.adapter = adapter
 
 
-        }
+            }
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         //sa
-      //  moviesViewModel.page = 1
+        //  moviesViewModel.page = 1
         return false
     }
 
