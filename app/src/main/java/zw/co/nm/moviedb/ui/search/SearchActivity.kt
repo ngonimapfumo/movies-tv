@@ -10,7 +10,8 @@ import zw.co.nm.moviedb.databinding.ActivitySearchBinding
 import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener,
+    SearchView.OnCloseListener {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var adapter: SearchAdapter
@@ -24,29 +25,35 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
+
+        if (moviesViewModel.page > 1) {
+            moviesViewModel.resetPage()
+        }
+
         moviesViewModel.searchMulti(query!!)
         moviesViewModel.searchMulti.observe(this) { response ->
             queryStr = query
             val data = response.body.results
-            if (data.isEmpty()) {
+            /*if (data.isEmpty()) {
                 Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show()
 
+            }*/
+            if (response.body.totalPages > 1) {
+                binding.constraintLayoutPages.visibility = VISIBLE
+                binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
             }
-                if (response.body.totalPages > 1) {
-                    binding.constraintLayoutPages.visibility = VISIBLE
-                    binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
-                }
-                adapter = SearchAdapter(data)
-                binding.searchRecycler.adapter = adapter
+            adapter = SearchAdapter(data)
+            binding.searchRecycler.adapter = adapter
 
 
-            }
+        }
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         //sa
         //  moviesViewModel.page = 1
+
         return false
     }
 
@@ -54,6 +61,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private fun setUpView() {
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
+        binding.searchView.setOnCloseListener(this)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.nextB.setOnClickListener {
@@ -75,6 +83,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    override fun onClose(): Boolean {
+        Toast.makeText(this@SearchActivity, "close", Toast.LENGTH_SHORT).show()
+        return true
     }
 
 
