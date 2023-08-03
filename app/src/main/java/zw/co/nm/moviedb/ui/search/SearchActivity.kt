@@ -50,18 +50,6 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 binding.searchRecycler.visibility = VISIBLE
                 binding.noResultLay.visibility = GONE
             }
-
-
-            /*if (response.body.totalPages > 1) {
-                totalPages = response.body.totalPages
-            }*/
-
-            /*if (data.isEmpty()) {
-                Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show()
-
-            }*/
-            //   Toast.makeText(this, totalPages.toString(), Toast.LENGTH_SHORT).show()
-
             adapter = SearchAdapter(data)
             binding.searchRecycler.adapter = adapter
 
@@ -73,7 +61,6 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(newText: String?): Boolean {
         return false
     }
-
 
     private fun setUpView() {
         binding.searchView.setOnQueryTextListener(this)

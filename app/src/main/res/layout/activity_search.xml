@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <SearchView
+            android:background="@drawable/search_bg"
             android:iconifiedByDefault="true"
             android:id="@+id/searchView"
             android:layout_width="match_parent"
