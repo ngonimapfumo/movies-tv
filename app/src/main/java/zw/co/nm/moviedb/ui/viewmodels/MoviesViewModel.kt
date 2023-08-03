@@ -92,7 +92,7 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun resetPage() {
+    fun resetPages() {
         page = 1
     }
 
