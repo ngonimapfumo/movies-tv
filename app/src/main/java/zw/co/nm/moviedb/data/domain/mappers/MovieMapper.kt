@@ -44,7 +44,8 @@ object MovieMapper {
             status = response.status,
             tagline = response.tagline,
             response.title,
-            voteAverage = response.voteAverage
+            voteAverage = response.voteAverage,
+            voteCount = response.voteCount
         )
     }
 

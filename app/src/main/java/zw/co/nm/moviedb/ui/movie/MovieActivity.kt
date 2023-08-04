@@ -14,7 +14,6 @@ import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
-import kotlin.math.roundToInt
 
 
 class MovieActivity : AppCompatActivity() {
@@ -80,7 +79,11 @@ class MovieActivity : AppCompatActivity() {
             }
             binding.genre.text = movie.genres.name
             binding.prodCompany.text = movie.productionCompanies.name
-            binding.movieRatingTxt.text = movie.voteAverage.roundToInt().toString()
+            binding.movieRatingTxt.text = buildString {
+                append((movie.voteAverage * 10).toInt().toString())
+                append("%")
+               // append(movie.voteCount)
+            }
             binding.statusTxt.text = movie.status
         }
 

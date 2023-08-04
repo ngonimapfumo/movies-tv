@@ -23,6 +23,8 @@ data class Movie(
     val title: String,
     @SerializedName("vote_average")
     val voteAverage: Double,
+    @SerializedName("vote_count")
+    val voteCount: Int
 ) {
 
     data class Genre(

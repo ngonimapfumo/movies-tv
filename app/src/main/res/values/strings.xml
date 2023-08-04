@@ -54,4 +54,5 @@
     <string name="trending_today">Trending today</string>
     <string name="genres">Genres</string>
     <string name="no_trailer_found">no trailer available</string>
+    <string name="user_score">User score</string>
 </resources>
