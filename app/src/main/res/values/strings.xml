@@ -53,4 +53,5 @@
     <string name="top_rated_movies">Top rated movies</string>
     <string name="trending_today">Trending today</string>
     <string name="genres">Genres</string>
+    <string name="no_trailer_found">no trailer available</string>
 </resources>

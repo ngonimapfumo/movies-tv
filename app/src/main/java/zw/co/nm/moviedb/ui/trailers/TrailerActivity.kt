@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.ui.trailers
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -10,7 +11,7 @@ import zw.co.nm.moviedb.ui.viewmodels.TrailersViewModel
 
 class TrailerActivity : AppCompatActivity() {
     lateinit var binding: ActivityTrailerBinding
-    lateinit var trailersViewModel: TrailersViewModel
+    private lateinit var trailersViewModel: TrailersViewModel
     private lateinit var adapter: TrailersAdapter
     private var movieId: Int? = null
 
@@ -23,6 +24,12 @@ class TrailerActivity : AppCompatActivity() {
         trailersViewModel = ViewModelProvider(this)[TrailersViewModel::class.java]
         trailersViewModel.getTrailers(movieId!!)
         trailersViewModel.getTrailers.observe(this) { response ->
+
+            if (response.body()!!.results.isEmpty()) {
+                binding.noResultLay.visibility = View.VISIBLE
+            } else  {
+                binding.noResultLay.visibility = View.GONE
+            }
             val data = response.body()!!.results
             adapter = TrailersAdapter(data)
             binding.trailerRecycler.adapter = adapter
