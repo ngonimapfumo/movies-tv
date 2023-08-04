@@ -9,4 +9,3 @@ Android client powered by [TMDB API ](https://www.themoviedb.org/)
 
 <img src ="https://github.com/ngonimapfumo/movies-tv/assets/14276738/7bf613ac-63b0-4fe9-acbc-fb0affb7af7a" width = "300" height= "1100">
  
-![Screenshot_20230804_135358]()
