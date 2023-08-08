@@ -21,17 +21,17 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
+        android:id="@+id/characterNameTxt"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
         android:textAlignment="center"
-        android:id="@+id/characterNameTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/castImgView"
         app:layout_constraintStart_toStartOf="@+id/castImgView"
         app:layout_constraintTop_toBottomOf="@+id/castImgView"
-        tools:text="Arnold\nSchwarzenegger" />
+        tools:text="Arnold Schwarzenegger" />
 
     <TextView
         android:ellipsize="end"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="@+id/characterNameTxt"
         app:layout_constraintStart_toStartOf="@+id/characterNameTxt"
         app:layout_constraintTop_toBottomOf="@+id/characterNameTxt"
-        tools:text="Jack Sulleysvcccccccccccccssssssadasdadd asdasda" />
+        tools:text="Jack Sulley" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

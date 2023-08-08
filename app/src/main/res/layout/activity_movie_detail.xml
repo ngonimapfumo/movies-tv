@@ -75,7 +75,6 @@
                     android:textSize="@dimen/genre_year_txt" />
 
 
-
                 <TextView
                     android:id="@+id/runtimeTxt"
                     android:layout_width="wrap_content"
@@ -117,7 +116,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/trailerBtn"
                 app:layout_constraintStart_toStartOf="@+id/trailerBtn"
                 app:layout_constraintTop_toBottomOf="@+id/trailerBtn" />
-
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -293,12 +291,12 @@
                             tools:text="8.2" />
 
                         <TextView
-                            android:textStyle="bold"
                             android:id="@+id/textView17"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:text="@string/genres"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@+id/statusTxt"
                             app:layout_constraintTop_toBottomOf="@+id/statusTxt" />
 

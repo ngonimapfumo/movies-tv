@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
@@ -36,7 +37,10 @@ class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
             }
         }
         if (data[position].site == "YouTube") {
-            binding!!.ytImg.visibility = VISIBLE
+          //  binding!!.ytImg.visibility = VISIBLE
+            Picasso.get().load("https://img.youtube.com/vi/${data[position].key}/mqdefault.jpg")
+                .into(binding!!.thumbView)
+
             holder.itemView.setOnClickListener {
                 //go to activity that extends youtube and display
                 val ytIntent = Intent(
@@ -50,7 +54,7 @@ class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
                 }
             }
         }
-        binding!!.textViewSiteTxt.text = data[position].site
+       // binding!!.textViewSiteTxt.text = data[position].site
         binding!!.textViewTypeTxt.text = data[position].type
         binding!!.textViewNameTxt.text = data[position].name
     }

@@ -82,7 +82,7 @@ class MovieActivity : AppCompatActivity() {
             binding.movieRatingTxt.text = buildString {
                 append((movie.voteAverage * 10).toInt().toString())
                 append("%")
-               // append(movie.voteCount)
+                append(" (${movie.voteCount} votes)")
             }
             binding.statusTxt.text = movie.status
         }
