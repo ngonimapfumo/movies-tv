@@ -36,7 +36,7 @@ data class TV(
     @SerializedName("poster_path")
     val posterPath: String?,
     @SerializedName("production_companies")
-    val productionCompanies: List<Any>,
+    val productionCompanies: ProductionCompany,
     val seasons: List<Season>,
     val status: String?,
     val tagline: String?,
@@ -97,5 +97,9 @@ data class TV(
         val posterPath: String,
         @SerializedName("season_number")
         val seasonNumber: Int
+    )
+
+    data class ProductionCompany(
+        val name: String
     )
 }

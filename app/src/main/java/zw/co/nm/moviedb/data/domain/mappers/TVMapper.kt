@@ -6,9 +6,17 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 object TVMapper {
 
     private var genre: ArrayList<String>? = arrayListOf()
+    private var productionCompany: ArrayList<String>? = arrayListOf()
     fun buildFrom(
         response: GetTVShowDetailResponse
     ): TV {
+
+        if (productionCompany!!.isNotEmpty()) {
+            productionCompany!!.clear()
+        }
+        response.productionCompanies.indices.forEach { i ->
+            productionCompany!!.add(response.productionCompanies[i].name)
+        }
 
         if (genre!!.isNotEmpty()) {
             genre!!.clear()
@@ -34,7 +42,10 @@ object TVMapper {
             posterPath = response.posterPath,
             adult = response.adult,
             backdropPath = response.backdropPath,
-            productionCompanies = response.productionCompanies,
+            productionCompanies = TV.ProductionCompany(
+                name = productionCompany.toString().replace("[", "")
+                    .replace("]", "")
+            ),
             firstAirDate = response.firstAirDate,
             inProduction = response.inProduction,
             languages = response.languages!!,
