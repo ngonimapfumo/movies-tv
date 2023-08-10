@@ -3,7 +3,7 @@ package zw.co.nm.moviedb.data.remote.networkmodel
 
 import com.google.gson.annotations.SerializedName
 
-data class GetTVShowDetailResponse(
+data class GetTvShowDetailResponse(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")

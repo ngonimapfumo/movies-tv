@@ -1,7 +1,6 @@
 package zw.co.nm.moviedb.ui.movie
 
 import android.os.Bundle
-import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +10,7 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.ui.adapters.CastAdapter
-import zw.co.nm.moviedb.ui.adapters.SimilarMoviesListAdapter
+import zw.co.nm.moviedb.ui.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
@@ -30,13 +29,13 @@ class MovieActivity : AppCompatActivity() {
 
         moviesViewModel.getSimilarMoviesList(movieId!!)
         moviesViewModel.getSimilarMovies.observe(this) { response ->
-            val adapter: SimilarMoviesListAdapter
+            val adapter: SuggestedMoviesListAdapter
             binding.recyclerView.layoutManager = LinearLayoutManager(
                 this@MovieActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
             val data = response.body()!!.results
-            adapter = SimilarMoviesListAdapter(data)
+            adapter = SuggestedMoviesListAdapter(data)
             binding.recyclerView.adapter = adapter
         }
 

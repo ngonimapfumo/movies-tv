@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import zw.co.nm.moviedb.data.domain.models.TV
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowDetailResponse
 import zw.co.nm.moviedb.repo.TvShowsRepo
 
 class TvShowsViewModel(application: Application) : AndroidViewModel(application) {
@@ -22,8 +22,8 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         _getPopularShows
 
     private val _getShowDetails =
-        MutableLiveData<TV?>()
-    val getShowDetails: LiveData<TV?> =
+        MutableLiveData<Response<GetTvShowDetailResponse>?>()
+    val getShowDetails: LiveData<Response<GetTvShowDetailResponse>?> =
         _getShowDetails
 
     fun getPopularTvShows() {

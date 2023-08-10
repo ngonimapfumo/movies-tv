@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
-class SimilarMoviesListAdapter(private var data: List<GetSimilarMoviesResponse.Result>) :
+class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null
@@ -23,7 +24,9 @@ class SimilarMoviesListAdapter(private var data: List<GetSimilarMoviesResponse.R
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
         //  binding!!.text.text = data[position].title
-        Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath).into(binding!!.imageView)
+        Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
+            .placeholder(R.drawable.sample_recycler_small)
+            .into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(
                 holder.itemView.context,

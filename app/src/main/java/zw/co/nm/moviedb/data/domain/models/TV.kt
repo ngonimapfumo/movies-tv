@@ -83,7 +83,11 @@ data class TV(
     )
 
     data class Season(
-        @SerializedName("air_date")
+
+
+        @SerializedName("poster_path")
+        val posterPath: String
+        /*@SerializedName("air_date")
         val airDate: String,
         @SerializedName("episode_count")
         val episodeCount: Int,
@@ -96,7 +100,7 @@ data class TV(
         @SerializedName("poster_path")
         val posterPath: String,
         @SerializedName("season_number")
-        val seasonNumber: Int
+        val seasonNumber: Int*/
     )
 
     data class ProductionCompany(

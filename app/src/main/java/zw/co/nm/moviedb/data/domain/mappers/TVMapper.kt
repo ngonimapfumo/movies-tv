@@ -1,14 +1,15 @@
 package zw.co.nm.moviedb.data.domain.mappers
 
 import zw.co.nm.moviedb.data.domain.models.TV
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowDetailResponse
 
 object TVMapper {
 
     private var genre: ArrayList<String>? = arrayListOf()
     private var productionCompany: ArrayList<String>? = arrayListOf()
+    private var seasons: ArrayList<String>? = arrayListOf()
     fun buildFrom(
-        response: GetTVShowDetailResponse
+        response: GetTvShowDetailResponse
     ): TV {
 
         if (productionCompany!!.isNotEmpty()) {
@@ -26,6 +27,20 @@ object TVMapper {
             genre!!.add(response.genres[i].name)
 
         }
+        if (seasons!!.isNotEmpty()) {
+            seasons!!.clear()
+        }
+
+        response.seasons.indices.forEach { i ->
+            seasons!!.add(response.seasons[i].posterPath)
+
+        }
+
+
+
+
+
+
         return TV(
             name = response.name,
             id = response.id,
@@ -69,7 +84,12 @@ object TVMapper {
             numberOfSeasons = response.numberOfSeasons,
             originalLanguage = response.originalLanguage,
             originalName = response.originalName,
-            seasons = emptyList(),
+            seasons = listOf(
+                TV.Season(
+                    posterPath = seasons.toString().replace("[", "")
+                        .replace("]", "")
+                )
+            ),
             type = response.type
 
         )
