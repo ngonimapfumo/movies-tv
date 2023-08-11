@@ -8,15 +8,16 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
+import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
 class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var binding: ItemMovieDetailBinding? = null
+    private var binding: ItemMovieMainBinding? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = ItemMovieDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemMovieMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemMovieViewHolder(binding!!)
     }
 
@@ -36,6 +37,6 @@ class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Resul
         return position
     }
 
-    class ItemMovieViewHolder(binding: ItemMovieDetailBinding) :
+    class ItemMovieViewHolder(binding: ItemMovieMainBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

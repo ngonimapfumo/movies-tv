@@ -11,7 +11,7 @@ import zw.co.nm.moviedb.ui.viewmodels.TvShowsViewModel
 class TVShowsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    lateinit var tvShowsViewModel: TvShowsViewModel
+    private lateinit var tvShowsViewModel: TvShowsViewModel
     private lateinit var adapter: TvShowsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

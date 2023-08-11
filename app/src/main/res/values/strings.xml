@@ -56,4 +56,5 @@
     <string name="no_trailer_found">no trailer available</string>
     <string name="user_score">User score</string>
     <string name="no_info">No information available</string>
+    <string name="season_poster">Season poster</string>
 </resources>
