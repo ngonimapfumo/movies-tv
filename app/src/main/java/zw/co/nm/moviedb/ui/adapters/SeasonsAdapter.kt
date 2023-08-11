@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowDetailResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
 import zw.co.nm.moviedb.utils.Constants
 
-class SeasonsAdapter(private var data: List<GetTvShowDetailResponse.Season>) :
+class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemSeasonDetailBinding? = null
@@ -22,7 +22,7 @@ class SeasonsAdapter(private var data: List<GetTvShowDetailResponse.Season>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        binding!!.seasonTxt.text = data[position].name
+        binding!!.seasonTxt.text = data[position].name.replace(" ","\n")
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
             .placeholder(R.drawable.sample_recycler_small)
             .into(binding!!.imageView)

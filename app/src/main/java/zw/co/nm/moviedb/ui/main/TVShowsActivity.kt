@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.TvShowsAdapter
-import zw.co.nm.moviedb.ui.viewmodels.TvShowsViewModel
+import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
 
 class TVShowsActivity : AppCompatActivity() {
 

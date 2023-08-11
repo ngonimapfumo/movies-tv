@@ -1,7 +1,7 @@
 package zw.co.nm.moviedb.data.domain.mappers
 
 import zw.co.nm.moviedb.data.domain.models.TV
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowDetailResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 
 object TVMapper {
 
@@ -9,7 +9,7 @@ object TVMapper {
     private var productionCompany: ArrayList<String>? = arrayListOf()
     private var seasons: ArrayList<String>? = arrayListOf()
     fun buildFrom(
-        response: GetTvShowDetailResponse
+        response: GetTVShowDetailResponse
     ): TV {
 
         if (productionCompany!!.isNotEmpty()) {

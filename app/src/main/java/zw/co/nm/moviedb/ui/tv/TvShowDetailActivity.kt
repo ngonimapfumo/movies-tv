@@ -8,7 +8,8 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityTvShowDetailBinding
 import zw.co.nm.moviedb.ui.adapters.SeasonsAdapter
-import zw.co.nm.moviedb.ui.viewmodels.TvShowsViewModel
+import zw.co.nm.moviedb.ui.adapters.TVCastAdapter
+import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 class TvShowDetailActivity : AppCompatActivity() {
@@ -25,7 +26,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)
-        tvShowsViewModel.getShowDetails.observe(this) { it ->
+        tvShowsViewModel.getShowDetails.observe(this) {
             val tv = it!!.body
             //we continue from here
             Picasso.get().load(IMAGE_BASE_URL + tv.posterPath)
@@ -42,6 +43,8 @@ class TvShowDetailActivity : AppCompatActivity() {
                 }
             }
 
+            binding.tvTitleTxt.text = tv.name
+            binding.yearTxt.text = "First air ${tv.firstAirDate}"
             binding.statusTxt.text = tv.status
             tv.productionCompanies.forEach { productionCompany ->
                 productionCompanies!!.add(productionCompany.name)
@@ -63,6 +66,18 @@ class TvShowDetailActivity : AppCompatActivity() {
             adapter = SeasonsAdapter(data)
             binding.recyclerView.adapter = adapter
 
+        }
+
+        tvShowsViewModel.getTvCredits(showId!!)
+        tvShowsViewModel.getTvCredits.observe(this) { response ->
+            val adapter: TVCastAdapter
+            binding.castRecyclerView.layoutManager = LinearLayoutManager(
+                this,
+                LinearLayoutManager.HORIZONTAL, false
+            )
+            val data = response!!.body.cast
+            adapter = TVCastAdapter(data)
+            binding.castRecyclerView.adapter = adapter
 
         }
 

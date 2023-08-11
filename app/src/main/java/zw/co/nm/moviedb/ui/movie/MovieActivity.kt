@@ -11,7 +11,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SuggestedMoviesListAdapter
-import zw.co.nm.moviedb.ui.viewmodels.MoviesViewModel
+import zw.co.nm.moviedb.ui.viewmodel.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 

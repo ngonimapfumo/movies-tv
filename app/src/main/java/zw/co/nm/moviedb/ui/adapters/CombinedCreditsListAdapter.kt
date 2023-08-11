@@ -25,7 +25,6 @@ class CombinedCreditsListAdapter(private var data: List<GetCombinedCreditsRespon
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
         Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
-            .placeholder(R.drawable.sample_recycler_small)
             .into(binding!!.imageView)
 
         holder.itemView.setOnClickListener {

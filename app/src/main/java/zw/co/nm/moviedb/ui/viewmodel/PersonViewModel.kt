@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodels
+package zw.co.nm.moviedb.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

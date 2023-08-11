@@ -11,12 +11,12 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.ui.adapters.CombinedCreditsListAdapter
-import zw.co.nm.moviedb.ui.viewmodels.PersonViewModel
+import zw.co.nm.moviedb.ui.viewmodel.PersonViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 class PersonActivity : AppCompatActivity() {
     lateinit var binding: ActivityPersonBinding
-    lateinit var personViewModel: PersonViewModel
+    private lateinit var personViewModel: PersonViewModel
     private var personId: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

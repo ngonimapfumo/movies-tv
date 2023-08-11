@@ -2,12 +2,11 @@ package zw.co.nm.moviedb.ui.trailers
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivityTrailerBinding
 import zw.co.nm.moviedb.ui.adapters.TrailersAdapter
-import zw.co.nm.moviedb.ui.viewmodels.TrailersViewModel
+import zw.co.nm.moviedb.ui.viewmodel.TrailersViewModel
 
 class TrailerActivity : AppCompatActivity() {
     lateinit var binding: ActivityTrailerBinding

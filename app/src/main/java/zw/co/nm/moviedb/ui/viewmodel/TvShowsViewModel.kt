@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodels
+package zw.co.nm.moviedb.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,7 +8,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowDetailResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.repo.TvShowsRepo
 
 class TvShowsViewModel(application: Application) : AndroidViewModel(application) {
@@ -22,9 +23,14 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         _getPopularShows
 
     private val _getShowDetails =
-        MutableLiveData<Response<GetTvShowDetailResponse>?>()
-    val getShowDetails: LiveData<Response<GetTvShowDetailResponse>?> =
+        MutableLiveData<Response<GetTVShowDetailResponse>?>()
+    val getShowDetails: LiveData<Response<GetTVShowDetailResponse>?> =
         _getShowDetails
+
+    private val _getTvCredits =
+        MutableLiveData<Response<GetTVCreditsResponse>?>()
+    val getTvCredits: LiveData<Response<GetTVCreditsResponse>?> =
+        _getTvCredits
 
     fun getPopularTvShows() {
         viewModelScope.launch {
@@ -37,6 +43,13 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             val response = tvShowsRepo.getTvShowDetails(showId)
             _getShowDetails.postValue(response)
+        }
+    }
+
+    fun getTvCredits(showId: Int) {
+        viewModelScope.launch {
+            val response = tvShowsRepo.getTvCredits(showId)
+            _getTvCredits.postValue(response)
         }
     }
 
