@@ -10,7 +10,7 @@ e.g. apiKey="121212121212121212"
 
 <img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/ea08a83b-4803-4090-8d01-454ba6282f6d" width= "300" height= "1250">
 
-<img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/d49e4288-b9fb-4511-8767-d7d8df9627f2" width= "300" height= "1200">
+<img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/1b5478bf-31af-405a-a9ef-cc5e63a82bac" width= "300" height= "1250">
 
 <img src ="https://github.com/ngonimapfumo/movies-tv/assets/14276738/8c5f963d-acf1-4fdf-82f0-25c36c33ed20" width= "300" height = "1100">
 
