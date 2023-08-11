@@ -25,7 +25,6 @@ class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse
         val imgPath = data[position].posterPath
         //  binding!!.text.text = data[position].title
         Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
-            .placeholder(R.drawable.sample_recycler_small)
             .into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(
