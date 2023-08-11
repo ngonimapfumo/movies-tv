@@ -7,7 +7,8 @@ e.g. apiKey="121212121212121212"
 ## version 1.0 screens
 
 
-<img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/acf29343-4b08-4b26-83ba-458f3dbc16bb" width= "300" height= "1200">
+
+<img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/ea08a83b-4803-4090-8d01-454ba6282f6d" width= "300" height= "1100">
 
 <img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/d49e4288-b9fb-4511-8767-d7d8df9627f2" width= "300" height= "1200">
 
