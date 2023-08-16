@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             navView.setNavigationItemSelectedListener {
                 when (it.itemId) {
-                    R.id.drawer_search -> {
+                    R.id.drawer_settings -> {
                         startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
                     }
 

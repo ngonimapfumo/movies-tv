@@ -16,10 +16,12 @@ import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
 
-class MovieActivity : AppCompatActivity() {
+class MovieDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var moviesViewModel: MoviesViewModel
     private var movieId: Int? = null
+    private var genres: ArrayList<String>? = arrayListOf()
+    private var productionCompanies: ArrayList<String>? = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,7 @@ class MovieActivity : AppCompatActivity() {
         moviesViewModel.getSimilarMovies.observe(this) { response ->
             val adapter: SuggestedMoviesListAdapter
             binding.recyclerView.layoutManager = LinearLayoutManager(
-                this@MovieActivity,
+                this@MovieDetailActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
             val data = response.body()!!.results
@@ -40,11 +42,20 @@ class MovieActivity : AppCompatActivity() {
         }
 
         moviesViewModel.getMovieDetail(movieId!!)
-        moviesViewModel.getMovieDetail.observe(this) { movie ->
+        moviesViewModel.getMovieDetail.observe(this) {
+            val movie = it!!.body
+            if (movie.belongsToCollection != null) {
+                Toast.makeText(
+                    this,
+                    "this belongs to a collection",
+                    Toast.LENGTH_SHORT
+                ).show()
 
+
+            }
             if (movie == null) {
                 Toast.makeText(
-                    this@MovieActivity,
+                    this@MovieDetailActivity,
                     "Mmmm null", Toast.LENGTH_SHORT
                 ).show()
                 return@observe
@@ -58,7 +69,7 @@ class MovieActivity : AppCompatActivity() {
             }
             binding.detailedSummaryTxt.text = movie.overview
             binding.detailedSummaryTxt.setOnClickListener {
-                AlertDialog.Builder(this@MovieActivity)
+                AlertDialog.Builder(this@MovieDetailActivity)
                     .setMessage(movie.overview)
                     .show()
             }
@@ -77,8 +88,17 @@ class MovieActivity : AppCompatActivity() {
                     binding.yearTxt.text = movie.releaseDate.substring(0, 4)
                 }
             }
-            binding.genre.text = movie.genres.name
-            binding.prodCompany.text = movie.productionCompanies.name
+            movie.genres.forEach { genre ->
+                genres!!.add(genre.name)
+                binding.genre.text = genres.toString().replace("[", "")
+                    .replace("]", "")
+
+            }
+            movie.productionCompanies.forEach { productionCompany ->
+                productionCompanies!!.add(productionCompany.name)
+                binding.prodCompany.text = productionCompanies.toString().replace("[", "")
+                    .replace("]", "")
+            }
             binding.movieRatingTxt.text = buildString {
                 append((movie.voteAverage * 10).toInt().toString())
                 append("%")
@@ -91,7 +111,7 @@ class MovieActivity : AppCompatActivity() {
         moviesViewModel.getMovieCredits.observe(this) { response ->
             val adapter: CastAdapter
             binding.castRecyclerView.layoutManager = LinearLayoutManager(
-                this@MovieActivity,
+                this@MovieDetailActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
             val data = response.body()!!.cast
@@ -107,7 +127,7 @@ class MovieActivity : AppCompatActivity() {
 
     private fun setUpView() {
         binding.trailerBtn.setOnClickListener {
-            PageNavUtils.toTrailersPage(this@MovieActivity, movieId!!)
+            PageNavUtils.toTrailersPage(this@MovieDetailActivity, movieId!!)
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]

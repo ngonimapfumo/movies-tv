@@ -1,11 +1,15 @@
 package zw.co.nm.moviedb.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.TvShowsAdapter
+import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
 
 class TVShowsActivity : AppCompatActivity() {
@@ -50,4 +54,24 @@ class TVShowsActivity : AppCompatActivity() {
         onBackPressedDispatcher.onBackPressed()
         return super.onSupportNavigateUp()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.app_bar_search -> {
+                startActivity(Intent(this, SearchActivity::class.java))
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
+
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"><![CDATA[TV & Movie Reviews]]></string>
+    <string name="app_name"><![CDATA[TV & Film Reviews]]></string>
     <string name="search">Search</string>
     <string name="ss"><![CDATA[<]]></string>
     <string name="ssw"><![CDATA[>]]></string>
@@ -58,4 +58,5 @@
     <string name="no_info">No information available</string>
     <string name="season_poster">Season poster</string>
     <string name="next">next</string>
+    <string name="starring">Starring</string>
 </resources>

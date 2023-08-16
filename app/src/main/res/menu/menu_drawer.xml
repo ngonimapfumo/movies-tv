@@ -15,7 +15,7 @@
         android:title="@string/tv_shows" />
 
     <item
-        android:id="@+id/drawer_search"
+        android:id="@+id/drawer_settings"
         android:title="@string/search_options" />
 
     <!--<item

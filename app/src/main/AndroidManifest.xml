@@ -29,7 +29,7 @@
             android:name=".ui.person.PersonActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.movie.MovieActivity"
+            android:name=".ui.movie.MovieDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.search.SearchActivity"

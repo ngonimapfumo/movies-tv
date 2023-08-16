@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import zw.co.nm.moviedb.data.domain.models.Movie
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
@@ -32,8 +33,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         _getPopularMovies
 
     private val _getMovieDetail =
-        MutableLiveData<Movie?>()
-    val getMovieDetail: LiveData<Movie?> =
+        MutableLiveData<zw.co.nm.moviedb.data.remote.Response<GetMovieDetailResponse>?>()
+    val getMovieDetail: LiveData<zw.co.nm.moviedb.data.remote.Response<GetMovieDetailResponse>?> =
         _getMovieDetail
 
     private val _getMovieCredits =

@@ -2,6 +2,7 @@ package zw.co.nm.moviedb.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
@@ -26,6 +27,11 @@ class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
             .placeholder(R.drawable.sample_recycler_small)
             .into(binding!!.imageView)
+
+        binding!!.imageView.setOnClickListener{
+            Toast.makeText(holder.itemView.context, data[position].name, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun getItemViewType(position: Int): Int {

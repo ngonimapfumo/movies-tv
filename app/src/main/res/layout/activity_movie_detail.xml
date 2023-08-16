@@ -6,7 +6,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.movie.MovieActivity">
+    tools:context=".ui.movie.MovieDetailActivity">
 
     <ScrollView
         android:id="@+id/scroller"
