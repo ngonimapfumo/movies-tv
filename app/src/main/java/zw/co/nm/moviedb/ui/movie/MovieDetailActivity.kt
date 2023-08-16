@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.ui.movie
 
 import android.os.Bundle
+import android.view.View.GONE
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -45,13 +46,12 @@ class MovieDetailActivity : AppCompatActivity() {
         moviesViewModel.getMovieDetail.observe(this) {
             val movie = it!!.body
             if (movie.belongsToCollection != null) {
-                Toast.makeText(
-                    this,
-                    "this belongs to a collection",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Picasso.get().load(IMAGE_BASE_URL + movie.belongsToCollection.posterPath)
+                    .into(binding.collectionImage)
+                binding.collectionName.text = movie.belongsToCollection.name
 
-
+            } else {
+                binding.collectionLayout.visibility = GONE
             }
             if (movie == null) {
                 Toast.makeText(

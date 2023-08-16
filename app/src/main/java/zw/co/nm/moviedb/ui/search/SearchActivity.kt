@@ -3,14 +3,14 @@ package zw.co.nm.moviedb.ui.search
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
 import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.viewmodel.MoviesViewModel
 
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class SearchActivity : AppCompatActivity(),
+    androidx.appcompat.widget.SearchView.OnQueryTextListener {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var adapter: SearchAdapter
@@ -38,14 +38,14 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             if (totalPages!! > 1) {
                 binding.constraintLayoutPages.visibility = VISIBLE
                 binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
-            } else  {
+            } else {
                 binding.constraintLayoutPages.visibility = GONE
             }
 
-            if (response.body.results.isEmpty()){
+            if (response.body.results.isEmpty()) {
                 binding.searchRecycler.visibility = GONE
                 binding.noResultLay.visibility = VISIBLE
-            }else{
+            } else {
                 binding.searchRecycler.visibility = VISIBLE
                 binding.noResultLay.visibility = GONE
             }

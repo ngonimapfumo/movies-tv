@@ -15,14 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
+            android:layout_margin="10dp"
             android:background="@drawable/search_bg"
-            android:iconifiedByDefault="true"
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:focusable="true"
-            android:queryHint="@string/search_movies_tv_series_actors"
+            app:queryHint="@string/search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
