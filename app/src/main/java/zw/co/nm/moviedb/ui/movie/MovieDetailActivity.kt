@@ -46,7 +46,7 @@ class MovieDetailActivity : AppCompatActivity() {
         moviesViewModel.getMovieDetail.observe(this) {
             val movie = it!!.body
             if (movie.belongsToCollection != null) {
-                Picasso.get().load(IMAGE_BASE_URL + movie.belongsToCollection.posterPath)
+                Picasso.get().load(IMAGE_BASE_URL + movie.belongsToCollection.backdropPath)
                     .into(binding.collectionImage)
                 binding.collectionName.text = movie.belongsToCollection.name
 
