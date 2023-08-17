@@ -24,7 +24,7 @@ class CastAdapter(private var data: List<GetCreditsResponse.Cast>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].profilePath
         binding!!.characterNameTxt.text = data[position].name
-        binding!!.characterTxt.text = data[position].character.replace(" ","\n")
+        binding!!.characterTxt.text = data[position].character
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.castImgView)
         holder.itemView.setOnClickListener {
                 PageNavUtils.toPersonDetailsPage(holder.itemView.context,
