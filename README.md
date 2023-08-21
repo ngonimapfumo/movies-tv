@@ -4,7 +4,7 @@ Android client powered by [TMDB API ](https://www.themoviedb.org/)
 to run this project:: add your tmdb api key in your local.properties file 
 e.g. apiKey="121212121212121212"
 
-## version 1.0 screens
+## version 0.1 screens
 
 
 <img src="https://github.com/ngonimapfumo/movies-tv/assets/14276738/ea08a83b-4803-4090-8d01-454ba6282f6d" width= "300" height= "1250">
