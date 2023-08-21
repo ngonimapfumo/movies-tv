@@ -7,6 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import zw.co.nm.moviedb.data.remote.interceptor.QueryParamInterceptor
+import zw.co.nm.moviedb.data.remote.service.CollectionService
 import zw.co.nm.moviedb.data.remote.service.MovieService
 import zw.co.nm.moviedb.data.remote.service.TvShowService
 import zw.co.nm.moviedb.utils.Constants
@@ -35,5 +36,6 @@ object NetworkManager {
         .build()
     var movieService: MovieService = retrofit.create(MovieService::class.java)
     var tvShowService: TvShowService = retrofit.create(TvShowService::class.java)
+    var collectionService: CollectionService = retrofit.create(CollectionService::class.java)
 
 }
