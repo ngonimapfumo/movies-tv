@@ -49,6 +49,9 @@ class MovieDetailActivity : AppCompatActivity() {
                 Picasso.get().load(IMAGE_BASE_URL + movie.belongsToCollection.backdropPath)
                     .into(binding.collectionImage)
                 binding.collectionName.text = movie.belongsToCollection.name
+                binding.collectionImage.setOnClickListener {
+                    PageNavUtils.toCollectionPage(this, movie.belongsToCollection.id)
+                }
 
             } else {
                 binding.collectionLayout.visibility = GONE

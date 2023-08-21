@@ -8,7 +8,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
@@ -27,39 +26,37 @@
                 android:layout_height="120dp"
                 android:scaleType="fitStart"
                 android:src="@drawable/sample_cover_small"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewMovieName"
-                android:layout_width="0dp"
+                android:layout_width="295dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:paddingStart="30dp"
                 android:paddingEnd="20dp"
-                tools:text="Mad Max 2"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mad Max 2" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/textViewShortSummary"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:paddingStart="30dp"
-                tools:text="@string/dummy_dummy"
-                android:visibility="visible"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="@+id/textViewMovieName"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textViewMovieName"
-                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName" />
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName"
+                tools:text="Over many missions and against impossible odds, Dom Toretto and his family have
+                 outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from
+                 the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom
+                 loves, forever." />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

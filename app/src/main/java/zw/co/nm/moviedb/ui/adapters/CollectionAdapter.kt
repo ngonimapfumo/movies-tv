@@ -12,7 +12,7 @@ import zw.co.nm.moviedb.databinding.ItemCollectionDetailBinding
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.PageNavUtils
 
-class CollectionAdapter(private var data: List<GetCollectionDetailResponse>) :
+class CollectionAdapter(private var data: List<GetCollectionDetailResponse.Part>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemCollectionDetailBinding? = null
@@ -24,12 +24,13 @@ class CollectionAdapter(private var data: List<GetCollectionDetailResponse>) :
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        binding!!.textViewMovieName.text = data[position].parts[position].title
-        binding!!.textViewShortSummary.text = data[position].parts[position].overview
-        val imgPath = data[position].parts[position].posterPath
+        binding!!.textViewMovieName.text = data[position].title
+        binding!!.textViewShortSummary.text = data[position].overview
+        val imgPath = data[position].posterPath
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-                PageNavUtils.toPersonDetailsPage(holder.itemView.context,
+           // todo: add filter media type filter
+                PageNavUtils.toMovieDetailsPage(holder.itemView.context,
                     data[position].id)
 
         }
