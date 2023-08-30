@@ -7,7 +7,7 @@
     tools:context=".ui.tv.season.SeasonActivity">
 
     <ImageView
-        android:id="@+id/collectionPoster"
+        android:id="@+id/seasonPoster"
         android:layout_width="166dp"
         android:layout_height="242dp"
         android:layout_marginStart="16dp"
@@ -25,10 +25,10 @@
         android:layout_marginStart="4dp"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/collectionPoster"
+        app:layout_constraintBottom_toBottomOf="@+id/seasonPoster"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/collectionPoster"
-        app:layout_constraintTop_toTopOf="@+id/collectionPoster"
+        app:layout_constraintStart_toEndOf="@+id/seasonPoster"
+        app:layout_constraintTop_toTopOf="@+id/seasonPoster"
         app:layout_constraintVertical_bias="0.0"
         tools:text="Season 1" />
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collectionPoster">
+        app:layout_constraintTop_toBottomOf="@+id/seasonPoster">
 
         <TextView
             android:ellipsize="end"

@@ -41,7 +41,7 @@ object PageNavUtils {
         context.startActivity(intent)
     }
 
-    fun toSeasonPage(context: Context?, id: Int) {
+    fun toSeasonPage(context: Context?,id: Int) {
         val intent = Intent(context, SeasonActivity::class.java)
         intent.putExtra(SeasonActivity.SEASON_ID, id)
         context!!.startActivity(intent)

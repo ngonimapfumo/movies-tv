@@ -4,10 +4,10 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
 
 interface TvShowService {
 
@@ -22,8 +22,11 @@ interface TvShowService {
     ): Response<GetTVShowDetailResponse>
 
 
-    @GET("tv/{id}/season/{season_number}")
-    suspend fun getTvSeasonDetails()
+    @GET("tv/{series_id}/season/{season_number}")
+    suspend fun getTvSeasonDetails(
+        @Path("series_id") tvShowId: Int,
+        @Path("season_number") season: Int
+    ): Response<GetTvSeasonDetail>
 
 
     @GET("tv/{id}/credits")

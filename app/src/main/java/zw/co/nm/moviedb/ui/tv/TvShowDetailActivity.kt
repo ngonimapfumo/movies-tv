@@ -10,6 +10,7 @@ import zw.co.nm.moviedb.databinding.ActivityTvShowDetailBinding
 import zw.co.nm.moviedb.ui.adapters.SeasonsAdapter
 import zw.co.nm.moviedb.ui.adapters.TVCastAdapter
 import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
+import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 class TvShowDetailActivity : AppCompatActivity() {
@@ -24,11 +25,11 @@ class TvShowDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
+
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)
         tvShowsViewModel.getShowDetails.observe(this) {
             val tv = it!!.body
-            //we continue from here
             Picasso.get().load(IMAGE_BASE_URL + tv.posterPath)
                 .placeholder(R.drawable.sample_cover_large)
                 .into(binding.tvBackgroundImm)

@@ -16,7 +16,8 @@ class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
 
     private var binding: ItemSeasonDetailBinding? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = ItemSeasonDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding =
+            ItemSeasonDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemMovieViewHolder(binding!!)
     }
 
@@ -24,14 +25,15 @@ class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        binding!!.seasonTxt.text = data[position].name.replace(" ","\n")
+        binding!!.seasonTxt.text = data[position].name.replace(" ", "\n")
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
             .placeholder(R.drawable.sample_recycler_small)
             .into(binding!!.imageView)
 
-        binding!!.imageView.setOnClickListener{
-            PageNavUtils.toSeasonPage(holder.itemView.context,
-                data[position].id)
+        binding!!.imageView.setOnClickListener {
+            PageNavUtils.toSeasonPage(
+                holder.itemView.context, data[position].seasonNumber
+            )
         }
 
     }
