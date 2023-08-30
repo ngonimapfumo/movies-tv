@@ -9,6 +9,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
 import zw.co.nm.moviedb.utils.Constants
+import zw.co.nm.moviedb.utils.PageNavUtils
 
 class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -29,7 +30,8 @@ class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
             .into(binding!!.imageView)
 
         binding!!.imageView.setOnClickListener{
-            Toast.makeText(holder.itemView.context, data[position].name, Toast.LENGTH_SHORT).show()
+            PageNavUtils.toSeasonPage(holder.itemView.context,
+                data[position].id)
         }
 
     }

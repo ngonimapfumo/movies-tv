@@ -7,6 +7,7 @@ import zw.co.nm.moviedb.ui.movie.MovieDetailActivity
 import zw.co.nm.moviedb.ui.person.PersonActivity
 import zw.co.nm.moviedb.ui.trailers.TrailerActivity
 import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity
+import zw.co.nm.moviedb.ui.tv.season.SeasonActivity
 
 object PageNavUtils {
 
@@ -38,6 +39,12 @@ object PageNavUtils {
         val intent = Intent(context, CollectionActivity::class.java)
         intent.putExtra(CollectionActivity.COLLECTION_ID, id)
         context.startActivity(intent)
+    }
+
+    fun toSeasonPage(context: Context?, id: Int) {
+        val intent = Intent(context, SeasonActivity::class.java)
+        intent.putExtra(SeasonActivity.SEASON_ID, id)
+        context!!.startActivity(intent)
     }
 
 }
