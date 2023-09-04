@@ -24,31 +24,38 @@
 
             <ImageView
                 android:id="@+id/thumbView"
-                android:layout_width="160dp"
-                android:layout_height="90dp"
+                android:layout_width="168dp"
+                android:layout_height="103dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_play_circle_24"
+                app:layout_constraintBottom_toBottomOf="@+id/thumbView"
+                app:layout_constraintEnd_toEndOf="@+id/thumbView"
+                app:layout_constraintStart_toStartOf="@+id/thumbView"
+                app:layout_constraintTop_toTopOf="@+id/thumbView" />
 
 
             <TextView
                 android:id="@+id/textViewNameTxt"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                app:layout_constraintBottom_toBottomOf="@+id/thumbView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/thumbView"
                 app:layout_constraintTop_toTopOf="@+id/thumbView"
-                app:layout_constraintVertical_bias="0.333"
+                app:layout_constraintVertical_bias="0.342"
                 tools:text="Hilarious Interview with Anthony Ramos, Dominique Fishback, and Toby Nwigwe" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/textViewNameTxt"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textViewNameTxt"
@@ -66,10 +73,10 @@
                     tools:text="Trailer" />
 
                 <TextView
-                    android:ellipsize="end"
                     android:id="@+id/textViewOfficialTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
