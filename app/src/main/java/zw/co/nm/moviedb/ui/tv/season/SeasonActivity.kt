@@ -1,22 +1,22 @@
 package zw.co.nm.moviedb.ui.tv.season
 
 import android.os.Bundle
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
+import zw.co.nm.moviedb.ui.adapters.EpisodeAdapter
+import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.viewmodel.SeasonViewModel
 import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID
 
 class SeasonActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySeasonBinding
+    private lateinit var binding: ActivitySeasonBinding
     private lateinit var seasonViewModel: SeasonViewModel
-
+    private lateinit var adapter: EpisodeAdapter
     private var seasonNumber: Int? = null
     private var tvShowId: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,18 +35,28 @@ class SeasonActivity : AppCompatActivity() {
 
             when {
                 it.body.overview.isEmpty() -> {
-                    binding.seasonOverView.text = getString(R.string.no_info)
+                    binding.seasonOverView.text = it.body.name
                 }
+
                 else -> {
                     binding.seasonOverView.text = it.body.overview
                 }
             }
             binding.seasonName.text = it.body.name
+            binding.episodeCount.text = "${it.body.episodes.size} Episodes"
+
+
+
+            val data = it.body.episodes
+            adapter = EpisodeAdapter(data)
+            binding.episodeRecycler.adapter = adapter
         }
+
 
     }
 
     companion object {
+        const val TV_NAME: String = "show_name"
         const val SEASON_ID: String = "season_id"
     }
 

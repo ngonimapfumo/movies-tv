@@ -27,11 +27,21 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/seasonPoster"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/seasonPoster"
         app:layout_constraintTop_toTopOf="@+id/seasonPoster"
-        app:layout_constraintVertical_bias="0.19"
+        app:layout_constraintVertical_bias="0.17"
         tools:text="Season 1" />
+
+    <TextView
+        android:id="@+id/episodeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="15 Episodes"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/seasonName"
+        app:layout_constraintStart_toStartOf="@+id/seasonName"
+        app:layout_constraintTop_toBottomOf="@+id/seasonName" />
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="10dp"

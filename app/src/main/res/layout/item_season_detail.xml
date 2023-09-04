@@ -24,6 +24,7 @@
 
 
     <TextView
+        android:maxLines="3"
         android:textAlignment="center"
         android:id="@+id/seasonTxt"
         android:layout_width="wrap_content"
