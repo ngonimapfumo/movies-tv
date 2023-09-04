@@ -17,3 +17,5 @@ e.g. apiKey="121212121212121212"
 
 <img src ="https://github.com/ngonimapfumo/movies-tv/assets/14276738/83792fae-c460-4fa9-97f2-532d4e4558bc" width = "300" height= "650">
 
+<img src ="https://github.com/ngonimapfumo/movies-tv/assets/14276738/da2f29f4-7c72-4e9f-bea7-cb10960d2811" width = "300" height= "700">
+
