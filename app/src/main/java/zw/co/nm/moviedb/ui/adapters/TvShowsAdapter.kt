@@ -2,14 +2,14 @@ package zw.co.nm.moviedb.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
+import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID
 import zw.co.nm.moviedb.utils.PageNavUtils
 
 class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Result>) :
@@ -24,10 +24,13 @@ class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Resul
     override fun getItemCount(): Int = data.size
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
+        Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small)
+            .into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-            PageNavUtils.toTvDetailsPage(holder.itemView.context,
-                data[position].id)
+            PageNavUtils.toTvDetailsPage(
+                holder.itemView.context,
+                data[position].id
+            )
 
         }
 

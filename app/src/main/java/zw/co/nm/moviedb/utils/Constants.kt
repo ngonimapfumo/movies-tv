@@ -12,4 +12,6 @@ object Constants {
     val MED_RES_IMAGE_BASE_URL
         get() = "https://image.tmdb.org/t/p/w300"
 
+    val SAVED_SHOW_ID
+        get() = "tvShowId"
 }

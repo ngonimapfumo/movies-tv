@@ -1,14 +1,17 @@
 package zw.co.nm.moviedb.ui.tv.season
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
-import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity.Companion.TV_SHOW_ID_EXTRA
 import zw.co.nm.moviedb.ui.viewmodel.SeasonViewModel
+import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants
+import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID
 
 class SeasonActivity : AppCompatActivity() {
     lateinit var binding: ActivitySeasonBinding
@@ -23,12 +26,22 @@ class SeasonActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         seasonViewModel = ViewModelProvider(this)[SeasonViewModel::class.java]
         seasonNumber = intent.getIntExtra(SEASON_ID, 0)
-        //tvshowid is missing here possible crash// continue from here
+        tvShowId = ConfigStore.getInt(this, SAVED_SHOW_ID)
         seasonViewModel.getSeasonDetail(tvShowId!!, seasonNumber!!)
         seasonViewModel.getSeasonDetail.observe(this) {
-
-            Picasso.get().load(Constants.IMAGE_BASE_URL+it.body.posterPath)
+            Picasso.get().load(Constants.IMAGE_BASE_URL + it.body.posterPath)
+                .placeholder(R.drawable.sample_cover_small)
                 .into(binding.seasonPoster)
+
+            when {
+                it.body.overview.isEmpty() -> {
+                    binding.seasonOverView.text = getString(R.string.no_info)
+                }
+                else -> {
+                    binding.seasonOverView.text = it.body.overview
+                }
+            }
+            binding.seasonName.text = it.body.name
         }
 
     }

@@ -24,4 +24,15 @@ object ConfigStore {
         val prefs = getPrefs(context)
         return prefs.getBoolean(key, false)
     }
+
+    fun saveIntConfig(context: Context, key: String, intId: Int) {
+        val editor = getPrefsEditor(context)
+        editor.putInt(key, intId)
+        editor.commit()
+    }
+
+    fun getInt(context: Context, key: String): Int {
+        val prefs = getPrefs(context)
+        return prefs.getInt(key, 0)
+    }
 }

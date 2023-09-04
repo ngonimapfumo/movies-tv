@@ -11,6 +11,7 @@ import zw.co.nm.moviedb.ui.adapters.SeasonsAdapter
 import zw.co.nm.moviedb.ui.adapters.TVCastAdapter
 import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
 import zw.co.nm.moviedb.utils.ConfigStore
+import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 
 class TvShowDetailActivity : AppCompatActivity() {
@@ -25,7 +26,8 @@ class TvShowDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
-
+        ConfigStore.saveIntConfig(this, Constants.SAVED_SHOW_ID,
+            showId!!)
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)
         tvShowsViewModel.getShowDetails.observe(this) {

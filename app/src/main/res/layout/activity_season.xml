@@ -17,19 +17,20 @@
         app:srcCompat="@drawable/sample_cover_small" />
 
     <TextView
-        android:textStyle="bold"
-        android:padding="5dp"
-        android:id="@+id/collectionName"
+        android:id="@+id/seasonName"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:padding="5dp"
         android:textAlignment="center"
         android:textSize="25sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/seasonPoster"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintStart_toEndOf="@+id/seasonPoster"
         app:layout_constraintTop_toTopOf="@+id/seasonPoster"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.19"
         tools:text="Season 1" />
 
     <androidx.cardview.widget.CardView
@@ -48,7 +49,7 @@
             android:maxLines="3"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:id="@+id/collectionOverView"
+            android:id="@+id/seasonOverView"
             android:padding="15dp"
             tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
             android:layout_width="wrap_content"
