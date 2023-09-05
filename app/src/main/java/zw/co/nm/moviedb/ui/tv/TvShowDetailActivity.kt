@@ -13,6 +13,8 @@ import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
 import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.PageNavUtils
+import java.time.LocalDate
 
 class TvShowDetailActivity : AppCompatActivity() {
 
@@ -26,8 +28,13 @@ class TvShowDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
-        ConfigStore.saveIntConfig(this, Constants.SAVED_SHOW_ID,
-            showId!!)
+        binding.reviewsBtn.setOnClickListener {
+            PageNavUtils.toReviewsPage(this, showId!!)
+        }
+        ConfigStore.saveIntConfig(
+            this, Constants.SAVED_SHOW_ID,
+            showId!!
+        )
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)
         tvShowsViewModel.getShowDetails.observe(this) {
@@ -47,7 +54,12 @@ class TvShowDetailActivity : AppCompatActivity() {
             }
 
             binding.tvTitleTxt.text = tv.name
-            binding.yearTxt.text = "First air ${tv.firstAirDate}"
+
+            val localDate = LocalDate.parse(tv.firstAirDate)
+            binding.yearTxt.text = buildString {
+                append("First air ")
+                append(localDate.year)
+            }
             binding.statusTxt.text = tv.status
             tv.productionCompanies.forEach { productionCompany ->
                 productionCompanies!!.add(productionCompany.name)

@@ -7,11 +7,11 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
 import zw.co.nm.moviedb.ui.adapters.EpisodeAdapter
-import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.viewmodel.SeasonViewModel
 import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID
+import java.time.LocalDate
 
 class SeasonActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySeasonBinding
@@ -29,7 +29,7 @@ class SeasonActivity : AppCompatActivity() {
         tvShowId = ConfigStore.getInt(this, SAVED_SHOW_ID)
         seasonViewModel.getSeasonDetail(tvShowId!!, seasonNumber!!)
         seasonViewModel.getSeasonDetail.observe(this) {
-            Picasso.get().load(Constants.IMAGE_BASE_URL + it.body.posterPath)
+            Picasso.get().load(Constants.IMAGE_BASE_URL + it!!.body.posterPath)
                 .placeholder(R.drawable.sample_cover_small)
                 .into(binding.seasonPoster)
 
@@ -43,9 +43,21 @@ class SeasonActivity : AppCompatActivity() {
                 }
             }
             binding.seasonName.text = it.body.name
-            binding.episodeCount.text = "${it.body.episodes.size} Episodes"
-
-
+            binding.episodeCount.text = buildString {
+                append(it.body.episodes.size)
+                append(" Episodes")
+            }
+            when {
+                it.body.airDate.isNullOrBlank() -> {
+                    binding.seasonAirDate.text = ""
+                }
+                else -> {
+                    val localDate = LocalDate.parse(it.body.airDate)
+                    binding.seasonAirDate.text = buildString {
+                        append(localDate.year)
+                    }
+                }
+            }
 
             val data = it.body.episodes
             adapter = EpisodeAdapter(data)

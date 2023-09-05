@@ -59,4 +59,6 @@
     <string name="season_poster">Season poster</string>
     <string name="next">next</string>
     <string name="starring">Starring</string>
+    <string name="no_review">No reviews found!</string>
+    <string name="air_date">Air date</string>
 </resources>
