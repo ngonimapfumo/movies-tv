@@ -33,7 +33,6 @@ class TrailerActivity : AppCompatActivity() {
             adapter = TrailersAdapter(data)
             binding.trailerRecycler.adapter = adapter
 
-
         }
 
     }

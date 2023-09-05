@@ -35,6 +35,9 @@ class TvShowDetailActivity : AppCompatActivity() {
             this, Constants.SAVED_SHOW_ID,
             showId!!
         )
+        binding.trailerBtn.setOnClickListener {
+            PageNavUtils.toTrailersPage(this, showId!!)
+        }
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)
         tvShowsViewModel.getShowDetails.observe(this) {
