@@ -42,6 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
+                android:layout_marginTop="20dp"
                 android:id="@+id/tvTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,13 +52,13 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="@+id/tv_background_imm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view"
                 tools:text="SpiderMan" />
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,36 +80,41 @@
 
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:id="@+id/buttonLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+
+
                 app:layout_constraintBottom_toTopOf="@+id/tvSummaryTxt"
-                android:weightSum="2">
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
                     android:id="@+id/reviewsBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_rate_review_24"
                     android:text="Reviews"
                     android:textColor="@color/black"
-                    android:visibility="visible"/>
+                    android:visibility="visible" />
 
                 <Space
                     android:layout_width="20dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_marginEnd="20dp"
-                    android:layout_weight="1"
                     android:id="@+id/trailerBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_play_arrow_24"
                     android:text="Trailers"
@@ -129,7 +135,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_background_imm"
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
-                app:layout_constraintStart_toStartOf="@+id/buttonLayout" />
+                app:layout_constraintStart_toStartOf="@+id/buttonLayout"
+                app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
