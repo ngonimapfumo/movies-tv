@@ -15,6 +15,7 @@ import zw.co.nm.moviedb.ui.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.ui.viewmodel.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
+import java.time.LocalDate
 
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -66,7 +67,7 @@ class MovieDetailActivity : AppCompatActivity() {
             Picasso.get().load(IMAGE_BASE_URL + movie.posterPath)
                 .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
             if (movie.tagline.isEmpty()) {
-                binding.movieSummaryTxt.text = movie.overview
+                binding.movieSummaryTxt.text = ""
             } else {
                 binding.movieSummaryTxt.text = movie.tagline
             }
@@ -78,17 +79,20 @@ class MovieDetailActivity : AppCompatActivity() {
             }
             binding.movieTitleTxt.text = movie.title
             binding.runtimeTxt.text = buildString {
-                append(movie.runtime)
-                append(" minutes")
+                append((movie.runtime)/60)
+                append("hr ")
+                append((movie.runtime)%60)
+                append("min")
             }
 
             when {
                 movie.releaseDate.isEmpty() -> {
-                    binding.yearTxt.text = "N/A"
+                    binding.yearTxt.text = ""
                 }
 
                 else -> {
-                    binding.yearTxt.text = movie.releaseDate.substring(0, 4)
+                    val localDate = LocalDate.parse(movie.releaseDate)
+                    binding.yearTxt.text = localDate.year.toString()
                 }
             }
             movie.genres.forEach { genre ->

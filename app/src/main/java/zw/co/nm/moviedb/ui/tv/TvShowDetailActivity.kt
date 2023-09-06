@@ -70,7 +70,7 @@ class TvShowDetailActivity : AppCompatActivity() {
                     .replace("]", "")
             }
             binding.tvRatingTxt.text = buildString {
-                append((tv.voteAverage!! * 10).toInt().toString())
+                append((tv.voteAverage * 10).toInt().toString())
                 append("%")
                 append(" (${tv.voteCount} votes)")
             }

@@ -35,7 +35,7 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="180dp"
                 android:background="@drawable/gradient"
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -45,23 +45,23 @@
                 android:id="@+id/movieTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/trailerBtn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="@+id/background_imm" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view"
+                tools:text="Sound of Freedom" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movieTitleTxt">
@@ -70,42 +70,67 @@
                     android:id="@+id/yearTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="12dp"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt" />
+                    android:textSize="@dimen/genre_year_txt"
+                    tools:text="2022" />
 
 
                 <TextView
                     android:id="@+id/runtimeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="12dp"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt" />
+                    android:textSize="@dimen/genre_year_txt"
+                    tools:text="199 mins" />
 
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/trailerBtn"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/buttonLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/baseline_play_arrow_24"
-                android:text="Trailers"
-                android:textColor="@color/black"
-                android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/ll_suggested"
-                app:layout_constraintEnd_toEndOf="@+id/background_imm"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="@+id/background_imm"
-                app:layout_constraintTop_toTopOf="@+id/background_imm"
-                app:layout_constraintVertical_bias="0.857" />
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/reviewsBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:drawableLeft="@drawable/baseline_rate_review_24"
+                    android:text="Reviews"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/trailerBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:drawableLeft="@drawable/baseline_play_arrow_24"
+                    android:text="Trailers"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
 
             <TextView
+                android:textSize="14sp"
                 android:id="@+id/movieSummaryTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:padding="10dp"
@@ -113,9 +138,10 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
-                app:layout_constraintEnd_toEndOf="@+id/trailerBtn"
-                app:layout_constraintStart_toStartOf="@+id/trailerBtn"
-                app:layout_constraintTop_toBottomOf="@+id/trailerBtn" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
+                tools:text="When his attempt to save his family inadvertently alters the future, Barry Allen becomes trapped in a reality in which General Zod has returned and there are no Super Heroes to turn to. In order to save" />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -124,7 +150,6 @@
                 android:orientation="vertical"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.035"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/background_imm">
 
