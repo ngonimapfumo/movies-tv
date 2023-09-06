@@ -61,4 +61,5 @@
     <string name="starring">Starring</string>
     <string name="no_review">No reviews found!</string>
     <string name="air_date">Air date</string>
+    <string name="born">Born</string>
 </resources>

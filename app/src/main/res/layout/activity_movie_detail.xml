@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,6 @@
             </LinearLayout>
 
             <TextView
-                android:textSize="14sp"
                 android:id="@+id/movieSummaryTxt"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
@@ -136,12 +135,13 @@
                 android:padding="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
+                app:layout_constraintStart_toStartOf="@+id/buttonLayout"
                 app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
-                tools:text="When his attempt to save his family inadvertently alters the future, Barry Allen becomes trapped in a reality in which General Zod has returned and there are no Super Heroes to turn to. In order to save" />
+                tools:text="The eye of the enemy is moving." />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"

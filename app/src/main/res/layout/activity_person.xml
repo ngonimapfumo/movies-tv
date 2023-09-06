@@ -128,7 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Birthday"
+                        android:text="@string/born"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView6"

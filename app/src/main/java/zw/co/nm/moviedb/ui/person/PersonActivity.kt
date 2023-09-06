@@ -13,6 +13,7 @@ import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.ui.adapters.CombinedCreditsListAdapter
 import zw.co.nm.moviedb.ui.viewmodel.PersonViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import java.time.LocalDate
 
 class PersonActivity : AppCompatActivity() {
     lateinit var binding: ActivityPersonBinding
@@ -43,7 +44,8 @@ class PersonActivity : AppCompatActivity() {
                 binding.biographyTxt.text = response.body()!!.biography
                 binding.nameTxt.text = response.body()!!.name
                 binding.knownForTxt.text = response.body()!!.knownForDepartment
-                binding.birthdayTxt.text = response.body()!!.birthday
+                val localDate = LocalDate.parse(response.body()!!.birthday)
+                binding.birthdayTxt.text = localDate.year.toString()
                 binding.birthplaceTxt.text = response.body()!!.placeOfBirth
             }
         }
