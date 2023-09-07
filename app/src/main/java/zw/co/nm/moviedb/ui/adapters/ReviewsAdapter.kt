@@ -22,6 +22,7 @@ class ReviewsAdapter(private var data: List<GetReviewsResponse.Result>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
        binding!!.textViewAuthorName.text = data[position].author
        binding!!.textViewContent.text = data[position].content
+        binding!!.reviewedDate.text = data[position].createdAt
         holder.itemView.setOnClickListener { AlertDialog.Builder(holder.itemView.context)
             .setMessage(data[position].content)
             .setPositiveButton("Dismiss",null)

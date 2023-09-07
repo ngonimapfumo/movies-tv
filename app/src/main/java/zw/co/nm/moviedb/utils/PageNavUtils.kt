@@ -9,6 +9,7 @@ import zw.co.nm.moviedb.ui.reviews.ReviewsActivity
 import zw.co.nm.moviedb.ui.trailers.TrailerActivity
 import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity
 import zw.co.nm.moviedb.ui.tv.season.SeasonActivity
+import zw.co.nm.moviedb.utils.Constants.TRAILER_TYPE
 
 object PageNavUtils {
 
@@ -30,9 +31,10 @@ object PageNavUtils {
         context.startActivity(intent)
     }
 
-    fun toTrailersPage(context: Context, movieId: Int) {
+    fun toTrailersPage(context: Context, trailerType: String, id: Int) {
         val intent = Intent(context, TrailerActivity::class.java)
-        intent.putExtra(TrailerActivity.MOVIE_ID_EXTRA, movieId)
+        intent.putExtra(TrailerActivity.MOVIE_ID_EXTRA, id)
+        intent.putExtra(TRAILER_TYPE, trailerType)
         context.startActivity(intent)
     }
 
@@ -48,10 +50,10 @@ object PageNavUtils {
         context!!.startActivity(intent)
     }
 
-    fun toReviewsPage(context: Context?,reviewType:String, id: Int) {
+    fun toReviewsPage(context: Context?, reviewType: String, id: Int) {
         val intent = Intent(context, ReviewsActivity::class.java)
         intent.putExtra(ReviewsActivity.ID, id)
-        intent.putExtra(Constants.REVIEW_TYPE,reviewType)
+        intent.putExtra(Constants.REVIEW_TYPE, reviewType)
         context!!.startActivity(intent)
     }
 

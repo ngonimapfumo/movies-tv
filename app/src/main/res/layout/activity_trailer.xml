@@ -7,19 +7,20 @@
     tools:context=".ui.trailers.TrailerActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/item_trailer"
         android:id="@+id/trailerRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_trailer">
 
     </androidx.recyclerview.widget.RecyclerView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/noResultLay"
         android:visibility="gone"

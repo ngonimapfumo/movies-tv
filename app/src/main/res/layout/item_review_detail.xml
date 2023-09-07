@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         app:cardElevation="8dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
@@ -34,22 +34,33 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Ngoni M" />
 
+
             <TextView
                 android:id="@+id/textViewContent"
                 android:layout_width="338dp"
-                android:layout_height="83dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintHorizontal_bias="0.16"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAuthorName"
+                app:layout_constraintVertical_bias="0.179"
                 tools:text="Over many missions and against impossible odds, Dom Toretto and his family have
                  outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from
                  the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom
                  loves, forever." />
+
+            <TextView
+                android:id="@+id/reviewedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="dsfdsfds"
+                app:layout_constraintEnd_toEndOf="@+id/textViewContent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewContent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

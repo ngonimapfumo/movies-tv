@@ -20,9 +20,20 @@ class TrailersViewModel(application: Application) :
     val getTrailers: LiveData<Response<GetTrailersResponse>> =
         _getTrailers
 
+    private val _getTVTrailers =
+        MutableLiveData<Response<GetTrailersResponse>>()
+    val getTVTrailers: LiveData<Response<GetTrailersResponse>> =
+        _getTrailers
+
     fun getTrailers(movieId: Int) {
         viewModelScope.launch {
             val response = trailersRepo.getTrailers(movieId)
+            _getTrailers.postValue(response)
+        }
+    }
+    fun getTvTrailers(tvShowId: Int) {
+        viewModelScope.launch {
+            val response = trailersRepo.getTVTrailers(tvShowId)
             _getTrailers.postValue(response)
         }
     }

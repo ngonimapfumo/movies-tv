@@ -17,9 +17,8 @@ class ReviewsActivity : AppCompatActivity() {
     private lateinit var adapter: ReviewsAdapter
     lateinit var binding: ActivityReviewsBinding
     private lateinit var reviewsViewModel: ReviewsViewModel
-    private var tvShowId: Int? = null
     private var reviewType: String? = null
-    private var movieId: Int? = null
+    private var mediaId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +26,17 @@ class ReviewsActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         reviewsViewModel = ViewModelProvider(this)[ReviewsViewModel::class.java]
-        tvShowId = intent.getIntExtra(ID, 0)
-        movieId = intent.getIntExtra(ID, 0)
+
+        mediaId = intent.getIntExtra(ID, 0)
         reviewType = intent.getStringExtra(REVIEW_TYPE)
         if (reviewType.equals(REVIEW_TV)) {
-            reviewsViewModel.getTvReviews(tvShowId!!)
+            reviewsViewModel.getTvReviews(mediaId!!)
             reviewsViewModel.getTvReviews.observe(this) {
                 adapter(it)
 
             }
         } else if (reviewType.equals(REVIEW_MOVIE)) {
-            reviewsViewModel.getMovieReviews(movieId!!)
+            reviewsViewModel.getMovieReviews(mediaId!!)
             reviewsViewModel.getMovieReviews.observe(this) {
                 adapter(it)
 
@@ -47,10 +46,13 @@ class ReviewsActivity : AppCompatActivity() {
     }
 
     private fun adapter(response: Response<GetReviewsResponse>) {
-        if (response.body.results.isEmpty()) {
-            binding.noResultLay.visibility = View.VISIBLE
-        } else {
-            binding.noResultLay.visibility = View.GONE
+        when {
+            response.body.results.isEmpty() -> {
+                binding.noResultLay.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.noResultLay.visibility = View.GONE
+            }
         }
         val data = response.body.results
         adapter = ReviewsAdapter(data)

@@ -14,6 +14,7 @@ import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
 import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.Constants.TRAILER_TYPE
 import zw.co.nm.moviedb.utils.PageNavUtils
 import java.time.LocalDate
 
@@ -37,7 +38,7 @@ class TvShowDetailActivity : AppCompatActivity() {
             showId!!
         )
         binding.trailerBtn.setOnClickListener {
-            PageNavUtils.toTrailersPage(this, showId!!)
+            PageNavUtils.toTrailersPage(this, "tv", showId!!)
         }
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)

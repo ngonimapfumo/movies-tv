@@ -20,6 +20,8 @@ object Constants {
         get() = "tv_show"
     val REVIEW_MOVIE
         get() = "movie"
+    val TRAILER_TYPE
+        get() = "trailer_type"
 
 
 }

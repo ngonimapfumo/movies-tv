@@ -14,6 +14,7 @@ import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.ui.viewmodel.MoviesViewModel
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.Constants.TRAILER_TYPE
 import zw.co.nm.moviedb.utils.PageNavUtils
 import java.time.LocalDate
 
@@ -140,7 +141,7 @@ class MovieDetailActivity : AppCompatActivity() {
             PageNavUtils.toReviewsPage(this,"movie", movieId!!)
         }
         binding.trailerBtn.setOnClickListener {
-            PageNavUtils.toTrailersPage(this@MovieDetailActivity, movieId!!)
+            PageNavUtils.toTrailersPage(this@MovieDetailActivity, "movie", movieId!!)
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
