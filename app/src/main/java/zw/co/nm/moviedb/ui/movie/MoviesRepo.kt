@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.repo
+package zw.co.nm.moviedb.ui.movie
 
 import android.content.Context
 import retrofit2.Response

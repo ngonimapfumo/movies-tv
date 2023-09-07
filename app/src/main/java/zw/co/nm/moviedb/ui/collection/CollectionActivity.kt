@@ -8,7 +8,6 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityCollectionBinding
 import zw.co.nm.moviedb.ui.adapters.CollectionAdapter
-import zw.co.nm.moviedb.ui.viewmodel.CollectionViewModel
 import zw.co.nm.moviedb.utils.Constants
 
 class CollectionActivity : AppCompatActivity() {

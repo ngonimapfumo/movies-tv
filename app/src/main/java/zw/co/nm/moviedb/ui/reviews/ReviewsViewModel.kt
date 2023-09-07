@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodel
+package zw.co.nm.moviedb.ui.reviews
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
-import zw.co.nm.moviedb.repo.ReviewsRepo
+import zw.co.nm.moviedb.ui.reviews.ReviewsRepo
 
 class ReviewsViewModel(application: Application) : AndroidViewModel(application) {
     private val reviewsRepo = ReviewsRepo()

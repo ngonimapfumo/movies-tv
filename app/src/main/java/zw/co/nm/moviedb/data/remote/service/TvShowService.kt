@@ -4,12 +4,13 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import zw.co.nm.moviedb.data.remote.networkmodel.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
-import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 
 interface TvShowService {
 
@@ -46,5 +47,11 @@ interface TvShowService {
         @Path("id") tvShowId: Int
     ): Response<GetTrailersResponse>
 
+    @GET("tv/{seriesId}/season/{seasonNumber}/episode/{episodeNumber}")
+    suspend fun getEpisodeDetails(
+        @Path("seriesId") seriesId: Int,
+        @Path("seasonNumber") seasonNumber: Int,
+        @Path("episodeNumber") episodeNumber: Int
+    ): Response<GetEpisodeDetailResponse>
 
 }

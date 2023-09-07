@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.repo
+package zw.co.nm.moviedb.ui.trailers
 
 import zw.co.nm.moviedb.data.remote.NetworkManager
 

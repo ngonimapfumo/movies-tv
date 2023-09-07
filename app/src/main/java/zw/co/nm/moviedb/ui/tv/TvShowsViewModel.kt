@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodel
+package zw.co.nm.moviedb.ui.tv
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,10 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
+import zw.co.nm.moviedb.data.remote.networkmodel.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
-import zw.co.nm.moviedb.repo.TvShowsRepo
 
 class TvShowsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -32,6 +32,11 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
     val getTvCredits: LiveData<Response<GetTVCreditsResponse>?> =
         _getTvCredits
 
+    private val _getEpisodeDetail =
+        MutableLiveData<Response<GetEpisodeDetailResponse>?>()
+    val getEpisodeDetail: LiveData<Response<GetEpisodeDetailResponse>?> =
+        _getEpisodeDetail
+
     fun getPopularTvShows() {
         viewModelScope.launch {
             val response = tvShowsRepo.getPopularTvShows(page)
@@ -50,6 +55,13 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             val response = tvShowsRepo.getTvCredits(showId)
             _getTvCredits.postValue(response)
+        }
+    }
+
+    fun getEpisodeDetail(seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
+        viewModelScope.launch {
+            val response = tvShowsRepo.getEpisodeDetail(seriesId, seasonNumber, episodeNumber)
+            _getEpisodeDetail.postValue(response)
         }
     }
 

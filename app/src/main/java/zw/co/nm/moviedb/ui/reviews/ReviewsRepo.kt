@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.repo
+package zw.co.nm.moviedb.ui.reviews
 
 import zw.co.nm.moviedb.data.remote.NetworkManager
 import zw.co.nm.moviedb.data.remote.Response

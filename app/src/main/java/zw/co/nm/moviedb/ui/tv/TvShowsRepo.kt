@@ -1,7 +1,8 @@
-package zw.co.nm.moviedb.repo
+package zw.co.nm.moviedb.ui.tv
 
 import zw.co.nm.moviedb.data.remote.NetworkManager
 import zw.co.nm.moviedb.data.remote.Response
+import zw.co.nm.moviedb.data.remote.networkmodel.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
@@ -16,4 +17,11 @@ class TvShowsRepo {
 
     suspend fun getTvCredits(path: Int): Response<GetTVCreditsResponse> =
         apiCall { NetworkManager.tvShowService.getTvCredits(path) }
+
+    suspend fun getEpisodeDetail(
+        seriesId: Int,
+        seasonNumber: Int,
+        episodeNumber: Int
+    ): Response<GetEpisodeDetailResponse> =
+        apiCall { NetworkManager.tvShowService.getEpisodeDetails(seriesId, seasonNumber, episodeNumber) }
 }

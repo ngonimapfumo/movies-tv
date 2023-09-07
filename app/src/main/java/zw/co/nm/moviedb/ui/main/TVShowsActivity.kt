@@ -10,7 +10,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.TvShowsAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
-import zw.co.nm.moviedb.ui.viewmodel.TvShowsViewModel
+import zw.co.nm.moviedb.ui.tv.TvShowsViewModel
 
 class TVShowsActivity : AppCompatActivity() {
 

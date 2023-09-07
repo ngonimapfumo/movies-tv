@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodel
+package zw.co.nm.moviedb.ui.trailers
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
-import zw.co.nm.moviedb.repo.TrailersRepo
+import zw.co.nm.moviedb.ui.trailers.TrailersRepo
 
 class TrailersViewModel(application: Application) :
     AndroidViewModel(application) {

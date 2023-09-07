@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodel
+package zw.co.nm.moviedb.ui.movie
 
 import android.app.Application
 import android.widget.Toast
@@ -8,13 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.data.domain.models.Movie
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
-import zw.co.nm.moviedb.repo.MoviesRepo
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {

@@ -2,12 +2,15 @@ package zw.co.nm.moviedb.utils
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import zw.co.nm.moviedb.ui.adapters.EpisodeAdapter
 import zw.co.nm.moviedb.ui.collection.CollectionActivity
 import zw.co.nm.moviedb.ui.movie.MovieDetailActivity
 import zw.co.nm.moviedb.ui.person.PersonActivity
 import zw.co.nm.moviedb.ui.reviews.ReviewsActivity
 import zw.co.nm.moviedb.ui.trailers.TrailerActivity
 import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity
+import zw.co.nm.moviedb.ui.tv.episode.EpisodeActivity
 import zw.co.nm.moviedb.ui.tv.season.SeasonActivity
 import zw.co.nm.moviedb.utils.Constants.TRAILER_TYPE
 
@@ -54,6 +57,16 @@ object PageNavUtils {
         val intent = Intent(context, ReviewsActivity::class.java)
         intent.putExtra(ReviewsActivity.ID, id)
         intent.putExtra(Constants.REVIEW_TYPE, reviewType)
+        context!!.startActivity(intent)
+    }
+
+    fun toEpisodePage(context: Context?, seriesId: Int,seasonNumber:Int,episodeNumber:Int) {
+        val extrasBundle = Bundle()
+        extrasBundle.putSerializable("seriesId",seriesId)
+        extrasBundle.putSerializable("seasonNumber",seasonNumber)
+        extrasBundle.putSerializable("episodeNumber",episodeNumber)
+        val intent = Intent(context, EpisodeActivity::class.java)
+        intent.putExtras(extrasBundle)
         context!!.startActivity(intent)
     }
 

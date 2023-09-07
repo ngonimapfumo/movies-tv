@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.repo
+package zw.co.nm.moviedb.ui.person
 
 import retrofit2.Response
 import zw.co.nm.moviedb.data.remote.NetworkManager

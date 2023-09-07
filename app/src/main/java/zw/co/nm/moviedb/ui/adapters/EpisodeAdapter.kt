@@ -4,11 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
 import zw.co.nm.moviedb.databinding.ItemEpisodeDetailBinding
-import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.PageNavUtils
 
@@ -31,7 +28,14 @@ class EpisodeAdapter(private var data: List<GetTvSeasonDetail.Episode>) :
         binding!!.textViewEpisodeNumber.text = "Episode ${data[position].episodeNumber}"
         Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
             .into(binding!!.imageView)
-
+        holder.itemView.setOnClickListener {
+            PageNavUtils.toEpisodePage(
+                holder.itemView.context,
+                data[position].showId,
+                data[position].seasonNumber,
+                data[position].episodeNumber,
+            )
+        }
     }
 
     override fun getItemViewType(position: Int): Int {

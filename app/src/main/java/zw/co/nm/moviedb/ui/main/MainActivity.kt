@@ -13,7 +13,7 @@ import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
-import zw.co.nm.moviedb.ui.viewmodel.MoviesViewModel
+import zw.co.nm.moviedb.ui.movie.MoviesViewModel
 
 
 class MainActivity : AppCompatActivity() {

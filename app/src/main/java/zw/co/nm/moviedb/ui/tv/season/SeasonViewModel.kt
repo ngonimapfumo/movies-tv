@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodel
+package zw.co.nm.moviedb.ui.tv.season
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
-import zw.co.nm.moviedb.repo.SeasonRepo
 
 class SeasonViewModel(application: Application) : AndroidViewModel(application) {
     private val seasonRepo = SeasonRepo()

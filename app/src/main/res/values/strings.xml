@@ -62,4 +62,5 @@
     <string name="no_review">no reviews found</string>
     <string name="air_date">Air date</string>
     <string name="born">Born</string>
+    <string name="about">About\n</string>
 </resources>

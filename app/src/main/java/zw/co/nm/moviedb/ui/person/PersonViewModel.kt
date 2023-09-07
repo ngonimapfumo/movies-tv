@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.viewmodel
+package zw.co.nm.moviedb.ui.person
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
-import zw.co.nm.moviedb.repo.PersonRepo
+import zw.co.nm.moviedb.ui.person.PersonRepo
 
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
