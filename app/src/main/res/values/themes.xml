@@ -3,7 +3,7 @@
     <style name="Theme.MovieDB" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
        <!-- <item name="android:windowBackground">@color/white</item>-->
-        <!--<item name="fontFamily">@font/googlesans</item>-->
+        <item name="fontFamily">@font/googlesans</item>
         <item name="colorPrimary">#303F9F</item>
         <item name="colorPrimaryVariant">#0d253f</item>
         <item name="colorOnPrimary">@color/white</item>
