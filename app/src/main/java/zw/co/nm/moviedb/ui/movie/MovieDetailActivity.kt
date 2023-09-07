@@ -127,6 +127,9 @@ class MovieDetailActivity : AppCompatActivity() {
             val data = response.body()!!.cast
             adapter = CastAdapter(data)
             binding.castRecyclerView.adapter = adapter
+            if (response.body()!!.cast.isEmpty()){
+                binding.textView8.visibility = GONE
+            }
 
         }
     }

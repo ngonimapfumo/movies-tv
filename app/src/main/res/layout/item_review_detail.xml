@@ -34,6 +34,7 @@
 
 
             <TextView
+                android:textStyle="italic"
                 android:id="@+id/textViewContent"
                 android:layout_width="338dp"
                 android:layout_height="wrap_content"
