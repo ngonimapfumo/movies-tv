@@ -28,7 +28,7 @@ class ReviewsAdapter(private var data: List<GetReviewsResponse.Result>) :
         binding!!.textViewAuthorName.text = data[position].author
         binding!!.textViewContent.text = data[position].content
         binding!!.reviewedDate.text = buildString {
-            append("--")
+            append("-")
             append(localDate.dayOfMonth)
             append(" ")
             append(localDate.month.getDisplayName(TextStyle.SHORT, Locale.ENGLISH))

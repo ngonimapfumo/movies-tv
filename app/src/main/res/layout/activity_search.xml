@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:text="@string/no_results_found"
             android:textColor="@color/blue_light"
-            android:textSize="28sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/textView12"
             app:layout_constraintStart_toStartOf="@+id/textView13"
