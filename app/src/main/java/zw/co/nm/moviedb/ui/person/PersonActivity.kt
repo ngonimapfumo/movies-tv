@@ -37,15 +37,24 @@ class PersonActivity : AppCompatActivity() {
                 }
                 binding.bioCard.setOnClickListener {
                     AlertDialog.Builder(this@PersonActivity)
-                        .setPositiveButton("OKAY",null)
+                        .setPositiveButton("OKAY", null)
                         .setMessage(response.body()!!.biography)
                         .show()
                 }
                 binding.biographyTxt.text = response.body()!!.biography
                 binding.nameTxt.text = response.body()!!.name
                 binding.knownForTxt.text = response.body()!!.knownForDepartment
-                val localDate = LocalDate.parse(response.body()!!.birthday)
-                binding.birthdayTxt.text = localDate.year.toString()
+                when {
+                    response.body()!!.birthday.isNullOrBlank() -> {
+                        binding.birthdayTxt.text = "N/A"
+                    }
+
+                    else -> {
+                        val localDate = LocalDate.parse(response.body()!!.birthday)
+                        binding.birthdayTxt.text = localDate.year.toString()
+                    }
+                }
+
                 binding.birthplaceTxt.text = response.body()!!.placeOfBirth
             }
         }

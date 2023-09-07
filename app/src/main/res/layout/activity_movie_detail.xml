@@ -20,12 +20,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constLay"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp">
 
             <ImageView
                 android:id="@+id/background_imm"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/sample_cover_large"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -149,9 +149,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/ll_about"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/background_imm">
+                app:layout_constraintTop_toBottomOf="@+id/background_imm"
+                app:layout_constraintVertical_bias="0.5">
 
                 <TextView
                     android:id="@+id/textView3"

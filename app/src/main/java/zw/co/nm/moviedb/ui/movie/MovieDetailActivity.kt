@@ -65,7 +65,9 @@ class MovieDetailActivity : AppCompatActivity() {
                 return@observe
             }
             Picasso.get().load(IMAGE_BASE_URL + movie.posterPath)
-                .placeholder(R.drawable.sample_cover_large).into(binding.backgroundImm)
+                .resize(500,750)
+                .placeholder(R.drawable.sample_cover_large)
+                .into(binding.backgroundImm)
             if (movie.tagline.isEmpty()) {
                 binding.movieSummaryTxt.text = ""
             } else {
