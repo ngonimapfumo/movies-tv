@@ -14,4 +14,12 @@ object Constants {
 
     val SAVED_SHOW_ID
         get() = "tvShowId"
+    val REVIEW_TYPE
+        get() = "review_type"
+    val REVIEW_TV
+        get() = "tv_show"
+    val REVIEW_MOVIE
+        get() = "movie"
+
+
 }

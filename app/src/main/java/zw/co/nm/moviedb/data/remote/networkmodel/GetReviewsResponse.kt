@@ -3,7 +3,7 @@ package zw.co.nm.moviedb.data.remote.networkmodel
 
 import com.google.gson.annotations.SerializedName
 
-data class GetTvShowReviews(
+data class GetReviewsResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("page")
@@ -37,7 +37,7 @@ data class GetTvShowReviews(
             @SerializedName("name")
             val name: String,
             @SerializedName("rating")
-            val rating: Int,
+            val rating: Double,
             @SerializedName("username")
             val username: String
         )

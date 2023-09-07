@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowReviews
+import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 
 interface TvShowService {
 
@@ -39,7 +39,7 @@ interface TvShowService {
     @GET("tv/{series_id}/reviews")
     suspend fun getTVReviews(
         @Path("series_id") tvId: Int
-    ): Response<GetTvShowReviews>
+    ): Response<GetReviewsResponse>
 
     @GET("tv/{id}/videos")
     suspend fun getTrailers(

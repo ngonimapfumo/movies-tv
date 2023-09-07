@@ -2,17 +2,12 @@ package zw.co.nm.moviedb.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvShowReviews
+import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ItemReviewDetailBinding
-import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.PageNavUtils
 
-class ReviewsAdapter(private var data: List<GetTvShowReviews.Result>) :
+class ReviewsAdapter(private var data: List<GetReviewsResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemReviewDetailBinding? = null
@@ -27,6 +22,10 @@ class ReviewsAdapter(private var data: List<GetTvShowReviews.Result>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
        binding!!.textViewAuthorName.text = data[position].author
        binding!!.textViewContent.text = data[position].content
+        holder.itemView.setOnClickListener { AlertDialog.Builder(holder.itemView.context)
+            .setMessage(data[position].content)
+            .setPositiveButton("Dismiss",null)
+            .show()}
 
     }
 

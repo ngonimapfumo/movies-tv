@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.ui.tv
 
 import android.os.Bundle
+import android.view.View.GONE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +30,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
         binding.reviewsBtn.setOnClickListener {
-            PageNavUtils.toReviewsPage(this, showId!!)
+            PageNavUtils.toReviewsPage(this,"tv_show", showId!!)
         }
         ConfigStore.saveIntConfig(
             this, Constants.SAVED_SHOW_ID,
@@ -97,6 +98,9 @@ class TvShowDetailActivity : AppCompatActivity() {
             val data = response!!.body.cast
             adapter = TVCastAdapter(data)
             binding.castRecyclerView.adapter = adapter
+            if (response.body.cast.isEmpty()){
+                binding.textView8.visibility = GONE
+            }
 
         }
 

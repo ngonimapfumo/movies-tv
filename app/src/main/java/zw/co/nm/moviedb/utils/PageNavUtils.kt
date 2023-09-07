@@ -48,9 +48,10 @@ object PageNavUtils {
         context!!.startActivity(intent)
     }
 
-    fun toReviewsPage(context: Context?, id: Int) {
+    fun toReviewsPage(context: Context?,reviewType:String, id: Int) {
         val intent = Intent(context, ReviewsActivity::class.java)
         intent.putExtra(ReviewsActivity.ID, id)
+        intent.putExtra(Constants.REVIEW_TYPE,reviewType)
         context!!.startActivity(intent)
     }
 

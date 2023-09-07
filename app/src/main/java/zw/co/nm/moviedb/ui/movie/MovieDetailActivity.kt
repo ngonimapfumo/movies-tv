@@ -135,6 +135,10 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+
+        binding.reviewsBtn.setOnClickListener {
+            PageNavUtils.toReviewsPage(this,"movie", movieId!!)
+        }
         binding.trailerBtn.setOnClickListener {
             PageNavUtils.toTrailersPage(this@MovieDetailActivity, movieId!!)
         }

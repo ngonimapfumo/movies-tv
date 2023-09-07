@@ -9,6 +9,7 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
@@ -56,5 +57,10 @@ interface MovieService {
     suspend fun getTrailers(
         @Path("id") movieId: Int
     ): Response<GetTrailersResponse>
+
+    @GET("movie/{id}/reviews")
+    suspend fun getMovieReviews(
+        @Path("id") tvId: Int
+    ): Response<GetReviewsResponse>
 
 }
