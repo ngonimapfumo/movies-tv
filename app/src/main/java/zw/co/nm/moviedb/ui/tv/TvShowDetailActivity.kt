@@ -64,12 +64,12 @@ class TvShowDetailActivity : AppCompatActivity() {
             if (tv.firstAirDate.isEmpty()) {
                 binding.yearTxt.text = ""
             } else {
-                val localDate = LocalDate.parse(tv.firstAirDate)
+                val simpleDate = LocalDate.parse(tv.firstAirDate)
                 binding.yearTxt.text = buildString {
                     append("First air ")
-                    append(localDate.year)
+                    append(simpleDate.year)
                     append(" ")
-                    append(localDate.month.getDisplayName(TextStyle.SHORT, Locale.ENGLISH))
+                    append(simpleDate.month.getDisplayName(TextStyle.SHORT, Locale.ENGLISH))
                 }
             }
             binding.statusTxt.text = tv.status
