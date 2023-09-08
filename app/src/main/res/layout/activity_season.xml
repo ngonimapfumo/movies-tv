@@ -37,8 +37,10 @@
         android:id="@+id/episodeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/seasonName"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="@+id/seasonName"
         app:layout_constraintTop_toBottomOf="@+id/seasonName"
         tools:text="15 Episodes" />
@@ -53,6 +55,20 @@
         app:layout_constraintStart_toStartOf="@+id/episodeCount"
         app:layout_constraintTop_toBottomOf="@+id/episodeCount"
         tools:text="1994" />
+
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/movieRatingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="30% user score \n(1000 votes)"
+        android:textSize="@dimen/info_detail_txt"
+        app:layout_constraintEnd_toEndOf="@+id/episodeCount"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/episodeCount"
+        app:layout_constraintTop_toBottomOf="@+id/seasonAirDate" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

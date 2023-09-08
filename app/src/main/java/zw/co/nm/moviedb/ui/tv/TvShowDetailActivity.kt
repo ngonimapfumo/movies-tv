@@ -15,6 +15,8 @@ import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 import java.time.LocalDate
+import java.time.format.TextStyle
+import java.util.Locale
 
 class TvShowDetailActivity : AppCompatActivity() {
 
@@ -29,7 +31,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
         binding.reviewsBtn.setOnClickListener {
-            PageNavUtils.toReviewsPage(this,"tv_show", showId!!)
+            PageNavUtils.toReviewsPage(this, "tv_show", showId!!)
         }
         ConfigStore.saveIntConfig(
             this, Constants.SAVED_SHOW_ID,
@@ -43,7 +45,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         tvShowsViewModel.getShowDetails.observe(this) {
             val tv = it!!.body
             Picasso.get().load(IMAGE_BASE_URL + tv.posterPath)
-                .resize(500,750)
+                .resize(500, 750)
                 .placeholder(R.drawable.sample_cover_large)
                 .into(binding.tvBackgroundImm)
             binding.tvSummaryTxt.text = tv.tagline
@@ -59,10 +61,16 @@ class TvShowDetailActivity : AppCompatActivity() {
 
             binding.tvTitleTxt.text = tv.name
 
-            val localDate = LocalDate.parse(tv.firstAirDate)
-            binding.yearTxt.text = buildString {
-                append("First air ")
-                append(localDate.year)
+            if (tv.firstAirDate.isEmpty()) {
+                binding.yearTxt.text = ""
+            } else {
+                val localDate = LocalDate.parse(tv.firstAirDate)
+                binding.yearTxt.text = buildString {
+                    append("First air ")
+                    append(localDate.year)
+                    append(" ")
+                    append(localDate.month.getDisplayName(TextStyle.SHORT, Locale.ENGLISH))
+                }
             }
             binding.statusTxt.text = tv.status
             tv.productionCompanies.forEach { productionCompany ->
@@ -97,7 +105,7 @@ class TvShowDetailActivity : AppCompatActivity() {
             val data = response!!.body.cast
             adapter = TVCastAdapter(data)
             binding.castRecyclerView.adapter = adapter
-            if (response.body.cast.isEmpty()){
+            if (response.body.cast.isEmpty()) {
                 binding.textView8.visibility = GONE
             }
 

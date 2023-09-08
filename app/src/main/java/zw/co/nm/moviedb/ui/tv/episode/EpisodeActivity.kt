@@ -1,11 +1,14 @@
 package zw.co.nm.moviedb.ui.tv.episode
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityEpisodeBinding
 import zw.co.nm.moviedb.ui.tv.TvShowsViewModel
+import zw.co.nm.moviedb.utils.Constants
 
 class EpisodeActivity : AppCompatActivity() {
     lateinit var binding: ActivityEpisodeBinding
@@ -25,11 +28,16 @@ class EpisodeActivity : AppCompatActivity() {
         seasonNumber = bundle.getInt("seasonNumber")
         episodeNumber = bundle.getInt("episodeNumber")
         tvViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
-        tvViewModel.getEpisodeDetail(seriesId!!,seasonNumber!!,episodeNumber!!)
-        tvViewModel.getEpisodeDetail.observe(this){
+        tvViewModel.getEpisodeDetail(seriesId!!, seasonNumber!!, episodeNumber!!)
+        tvViewModel.getEpisodeDetail.observe(this) {
+            Picasso.get()
+                .load(Constants.IMAGE_BASE_URL + it!!.body.stillPath)
+                .placeholder(R.drawable.sample_episode)
+                .into(binding.episodePoster)
+            binding.episodeName.text = it.body.name
+            binding.episodeOverView.text = it.body.overview
+            binding.cardView.visibility = VISIBLE
 
-
-            //todo: continue here
 
         }
 
