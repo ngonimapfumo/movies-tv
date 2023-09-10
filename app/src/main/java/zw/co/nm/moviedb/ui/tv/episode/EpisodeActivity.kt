@@ -3,6 +3,7 @@ package zw.co.nm.moviedb.ui.tv.episode
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,45 +38,49 @@ class EpisodeActivity : AppCompatActivity() {
         tvViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvViewModel.getEpisodeDetail(seriesId!!, seasonNumber!!, episodeNumber!!)
         tvViewModel.getEpisodeDetail.observe(this) {
-            Picasso.get()
-                .load(Constants.IMAGE_BASE_URL + it!!.body.stillPath)
-                .placeholder(R.drawable.sample_episode)
-                .into(binding.episodePoster)
-            binding.episodeName.text = it.body.name
-            binding.episodeOverView.text = it.body.overview
+            if (it!!.isSuccessful) {
+                binding.mainLayout.visibility = VISIBLE
+                Picasso.get()
+                    .load(Constants.IMAGE_BASE_URL + it.body.stillPath)
+                    .placeholder(R.drawable.sample_episode)
+                    .into(binding.episodePoster)
+                binding.episodeName.text = it.body.name
+                binding.episodeOverView.text = it.body.overview
 
-            binding.guestsRecycler.layoutManager = LinearLayoutManager(
-                this@EpisodeActivity,
-                LinearLayoutManager.HORIZONTAL, false
-            )
-            var adapter = GuestCastAdapter(it.body.guestStars)
-            binding.guestsRecycler.adapter = adapter
-
-            binding.ratingTxt.text = buildString {
-                append((it.body.voteAverage * 10).toInt().toString())
-                append("%")
-                append(" (${it.body.voteCount} votes)")
-            }
-            var simpleDate = LocalDate.parse(it.body.airDate)
-            binding.EpisodeAirDate.text = buildString {
-                append(simpleDate.dayOfMonth)
-                append(" ")
-                append(
-                    simpleDate.month.getDisplayName(
-                        TextStyle.SHORT,
-                        Locale.ENGLISH
-                    )
+                binding.guestsRecycler.layoutManager = LinearLayoutManager(
+                    this@EpisodeActivity,
+                    LinearLayoutManager.HORIZONTAL, false
                 )
-                append(" ")
-                append(simpleDate.year)
-            }
+                var adapter = GuestCastAdapter(it.body.guestStars)
+                binding.guestsRecycler.adapter = adapter
 
-            if (it.body.guestStars.isEmpty()){
-                binding.textView19.visibility = GONE
-            }
+                binding.ratingTxt.text = buildString {
+                    append((it.body.voteAverage * 10).toInt().toString())
+                    append("%")
+                    append(" (${it.body.voteCount} votes)")
+                }
+                var simpleDate = LocalDate.parse(it.body.airDate)
+                binding.EpisodeAirDate.text = buildString {
+                    append(simpleDate.dayOfMonth)
+                    append(" ")
+                    append(
+                        simpleDate.month.getDisplayName(
+                            TextStyle.SHORT,
+                            Locale.ENGLISH
+                        )
+                    )
+                    append(" ")
+                    append(simpleDate.year)
+                }
 
+                if (it.body.guestStars.isEmpty()) {
+                    binding.textView19.visibility = GONE
+                }
+
+            }else{
+                Toast.makeText(this, "yooo", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
 
     companion object {
