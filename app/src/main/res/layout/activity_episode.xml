@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mainLayout"
-    android:visibility="gone"
+    android:visibility="visible"
     tools:context=".ui.tv.episode.EpisodeActivity">
 
     <ScrollView
@@ -39,18 +39,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textViewEpisodeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/episodePoster" />
+
+            <TextView
                 android:id="@+id/episodeName"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:textAlignment="center"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="@+id/episodePoster"
-                app:layout_constraintTop_toBottomOf="@+id/episodePoster"
-                tools:text="David Beckham, Claire Danes, Bob
-                 Odenkirk" />
+                app:layout_constraintEnd_toEndOf="@+id/textViewEpisodeNumber"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="@+id/textViewEpisodeNumber"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEpisodeNumber"
+                 />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -73,7 +82,7 @@
                     android:padding="15dp"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum" />
+                     />
 
             </androidx.cardview.widget.CardView>
 
@@ -109,7 +118,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    tools:layout_editor_absoluteX="13dp"
+                    tools:layout_editor_absoluteY="18dp">
 
                     <TextView
                         android:id="@+id/textView2"
@@ -177,10 +188,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:padding="5dp"
                 android:id="@+id/guestsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
         </androidx.constraintlayout.widget.ConstraintLayout>

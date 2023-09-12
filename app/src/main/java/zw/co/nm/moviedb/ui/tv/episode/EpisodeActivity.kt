@@ -80,6 +80,10 @@ class EpisodeActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "yooo", Toast.LENGTH_SHORT).show()
             }
+            binding.textViewEpisodeNumber.text = buildString {
+                append("Episode ")
+                append(it.body.episodeNumber)
+            }
         }
     }
 

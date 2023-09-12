@@ -53,8 +53,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view"
-                tools:text="Sound of Freedom" />
+                app:layout_constraintTop_toTopOf="@+id/view" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -71,8 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt"
-                    tools:text="2022" />
+                    android:textSize="@dimen/genre_year_txt" />
 
 
                 <TextView
@@ -80,8 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt"
-                    tools:text="199 mins" />
+                    android:textSize="@dimen/genre_year_txt" />
 
             </LinearLayout>
 
@@ -141,7 +138,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
                 app:layout_constraintStart_toStartOf="@+id/buttonLayout"
                 app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
-                tools:text="The eye of the enemy is moving." />
+                />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
