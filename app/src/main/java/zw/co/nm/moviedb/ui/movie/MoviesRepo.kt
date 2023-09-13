@@ -1,7 +1,6 @@
 package zw.co.nm.moviedb.ui.movie
 
 import android.content.Context
-import retrofit2.Response
 import zw.co.nm.moviedb.data.remote.NetworkManager
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
@@ -21,11 +20,11 @@ class MoviesRepo(private val context: Context) {
         apiCall { NetworkManager.movieService.getMovieDetail(movieId) }
 
 
-    suspend fun getSimilarMoviesList(movieId: Int): Response<GetSimilarMoviesResponse> =
-        NetworkManager.movieService.getSimilarMoviesList(movieId)
+    suspend fun getSimilarMoviesList(movieId: Int): zw.co.nm.moviedb.data.remote.Response<GetSimilarMoviesResponse> =
+       apiCall {  NetworkManager.movieService.getSimilarMoviesList(movieId)}
 
-    suspend fun getCredits(movieId: Int): Response<GetCreditsResponse> =
-        NetworkManager.movieService.getCredits(movieId)
+    suspend fun getCredits(movieId: Int): zw.co.nm.moviedb.data.remote.Response<GetCreditsResponse> =
+       apiCall {  NetworkManager.movieService.getCredits(movieId)}
 
     suspend fun searchMulti(
         query: String,

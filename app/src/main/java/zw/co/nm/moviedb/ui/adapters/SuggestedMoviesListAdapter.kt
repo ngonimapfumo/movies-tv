@@ -7,7 +7,9 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
+import zw.co.nm.moviedb.utils.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.utils.PageNavUtils
 
 class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse.Result>) :
@@ -24,7 +26,8 @@ class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
         //  binding!!.text.text = data[position].title
-        Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
+        Picasso.get().load(MED_RES_IMAGE_BASE_URL + imgPath)
+            .resize(250,400)
             .into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(

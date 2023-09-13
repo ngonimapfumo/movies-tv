@@ -3,6 +3,9 @@ package zw.co.nm.moviedb.utils
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.view.View
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Response
 
 object GeneralUtil {
@@ -31,5 +34,10 @@ object GeneralUtil {
             .setNegativeButton(negativeButtonText, negativeDialogInterface)
             .show()
     }
+
+    fun displayGenToast(view: View, message: String) {
+
+    }
+
 
 }

@@ -37,7 +37,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 this@MovieDetailActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
-            val data = response.body()!!.results
+            val data = response.body!!.results
             adapter = SuggestedMoviesListAdapter(data)
             binding.recyclerView.adapter = adapter
         }
@@ -122,10 +122,10 @@ class MovieDetailActivity : AppCompatActivity() {
                 this@MovieDetailActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
-            val data = response.body()!!.cast
+            val data = response.body!!.cast
             adapter = CastAdapter(data)
             binding.castRecyclerView.adapter = adapter
-            if (response.body()!!.cast.isEmpty()){
+            if (response.body!!.cast.isEmpty()){
                 binding.textView8.visibility = GONE
             }
 

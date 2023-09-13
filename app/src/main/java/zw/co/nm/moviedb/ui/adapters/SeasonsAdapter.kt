@@ -25,7 +25,7 @@ class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
         binding!!.seasonTxt.text = data[position].name.replace(" ", "\n")
-        Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
+        Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
             .placeholder(R.drawable.sample_recycler_small)
             .into(binding!!.imageView)
 

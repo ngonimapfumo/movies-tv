@@ -8,12 +8,14 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
+import zw.co.nm.moviedb.ui.movie.MoviesViewModel
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
-import zw.co.nm.moviedb.ui.movie.MoviesViewModel
+import zw.co.nm.moviedb.utils.GeneralUtil.displayGenToast
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,9 +31,21 @@ class MainActivity : AppCompatActivity() {
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
-            val data = response.body.results
-            adapter = MoviesAdapter(data)
-            binding.recyclerView.adapter = adapter
+
+            when (response.data) {
+                null -> {
+                    Snackbar.make(binding.root,"Error getting data", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry"){
+                            moviesViewModel.getPopularMovies()
+                        }.show()
+                }
+
+                else -> {
+                    val data = response.body.results
+                    adapter = MoviesAdapter(data)
+                    binding.recyclerView.adapter = adapter
+                }
+            }
         }
 
         binding.apply {
@@ -50,7 +64,9 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
                     }
 
-                    R.id.drawer_tv ->{startActivity(Intent(this@MainActivity,TVShowsActivity::class.java))}
+                    R.id.drawer_tv -> {
+                        startActivity(Intent(this@MainActivity, TVShowsActivity::class.java))
+                    }
                 }
                 true
             }
