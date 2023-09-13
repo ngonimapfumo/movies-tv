@@ -25,13 +25,15 @@ class SearchActivity : AppCompatActivity(),
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-
+        binding.progressBar2.visibility = VISIBLE
         if (moviesViewModel.page > 1) {
             moviesViewModel.resetPages()
         }
 
         moviesViewModel.searchMulti(query!!)
         moviesViewModel.searchMulti.observe(this) { response ->
+
+            binding.progressBar2.visibility = GONE
             queryStr = query
             val data = response.body.results
             totalPages = response.body.totalPages
