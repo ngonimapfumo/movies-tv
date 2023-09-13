@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
@@ -25,6 +26,7 @@ class TVShowsActivity : AppCompatActivity() {
         setUpView()
         tvShowsViewModel.getPopularTvShows()
         tvShowsViewModel.getPopularShows.observe(this) { response ->
+            binding.progressBar.visibility = View.GONE
             val data = response.body.results
             adapter = TvShowsAdapter(data)
             binding.recyclerView.adapter = adapter

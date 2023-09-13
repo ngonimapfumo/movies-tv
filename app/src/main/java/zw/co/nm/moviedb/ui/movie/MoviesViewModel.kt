@@ -90,11 +90,7 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getPopularMovies() {
         viewModelScope.launch {
             val response = moviesRepo.getPopularMovies(page)
-            if (response.isSuccessful) {
-                _getPopularMovies.postValue(response)
-            } else {
-                _getPopularMovies.value = response
-            }
+            _getPopularMovies.value = response
 
         }
     }

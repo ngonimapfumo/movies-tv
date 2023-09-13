@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.GONE
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +16,6 @@ import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.movie.MoviesViewModel
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
-import zw.co.nm.moviedb.utils.GeneralUtil.displayGenToast
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,11 +31,11 @@ class MainActivity : AppCompatActivity() {
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
-
+            binding.progressBar.visibility = GONE
             when (response.data) {
                 null -> {
-                    Snackbar.make(binding.root,"Error getting data", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Retry"){
+                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry") {
                             moviesViewModel.getPopularMovies()
                         }.show()
                 }
