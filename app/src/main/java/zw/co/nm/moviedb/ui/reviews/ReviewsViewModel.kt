@@ -20,23 +20,13 @@ class ReviewsViewModel(application: Application) : AndroidViewModel(application)
 
     fun getTvReviews(id: Int) {
         viewModelScope.launch {
-            val response = reviewsRepo.getTvShowReviews(id)
-            if (response.isSuccessful) {
-                _getTvReviews.postValue(response)
-            } else {
-                //  displayGenToast(getApplication(), "An error occurred whilst getting data")
-            }
+            _getTvReviews.value = reviewsRepo.getTvShowReviews(id)
         }
     }
 
     fun getMovieReviews(id: Int) {
         viewModelScope.launch {
-            val response = reviewsRepo.getMovieReviews(id)
-            if (response.isSuccessful) {
-                _getMovieReviews.postValue(response)
-            } else {
-                // displayGenToast(getApplication(), "An error occurred whilst getting data")
-            }
+            _getMovieReviews.value = reviewsRepo.getMovieReviews(id)
         }
     }
 

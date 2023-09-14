@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ActivityReviewsBinding
@@ -30,14 +31,47 @@ class ReviewsActivity : AppCompatActivity() {
         reviewType = intent.getStringExtra(REVIEW_TYPE)
         if (reviewType.equals(REVIEW_TV)) {
             reviewsViewModel.getTvReviews(mediaId!!)
-            reviewsViewModel.getTvReviews.observe(this) {
-                adapter(it)
+            reviewsViewModel.getTvReviews.observe(this) { response ->
+                when (response.data) {
+                    null -> {
+                        Snackbar.make(
+                            binding.root,
+                            "Error getting data",
+                            Snackbar.LENGTH_INDEFINITE
+                        )
+                            .setAction("Retry") {
+                                reviewsViewModel.getTvReviews(mediaId!!)
+
+                            }.show()
+                    }
+
+                    else -> {
+                        adapter(response)
+                    }
+                }
 
             }
         } else if (reviewType.equals(REVIEW_MOVIE)) {
             reviewsViewModel.getMovieReviews(mediaId!!)
-            reviewsViewModel.getMovieReviews.observe(this) {
-                adapter(it)
+            reviewsViewModel.getMovieReviews.observe(this) { response ->
+                when (response.data) {
+                    null -> {
+                        Snackbar.make(
+                            binding.root,
+                            "Error getting data",
+                            Snackbar.LENGTH_INDEFINITE
+                        )
+                            .setAction("Retry") {
+                                reviewsViewModel.getMovieReviews(mediaId!!)
+
+                            }.show()
+                    }
+
+                    else -> {
+                        adapter(response)
+                    }
+                }
+
 
             }
         }
@@ -49,6 +83,7 @@ class ReviewsActivity : AppCompatActivity() {
             response.body.results.isEmpty() -> {
                 binding.noResultLay.visibility = View.VISIBLE
             }
+
             else -> {
                 binding.noResultLay.visibility = View.GONE
             }

@@ -65,7 +65,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
-            android:visibility="gone"
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
