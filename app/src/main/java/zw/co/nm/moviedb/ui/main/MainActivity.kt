@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -36,7 +37,9 @@ class MainActivity : AppCompatActivity() {
                 null -> {
                     Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Retry") {
+                            binding.progressBar.visibility = VISIBLE
                             moviesViewModel.getPopularMovies()
+
                         }.show()
                 }
 

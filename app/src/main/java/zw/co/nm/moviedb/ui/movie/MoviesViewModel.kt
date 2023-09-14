@@ -12,7 +12,6 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
-import zw.co.nm.moviedb.utils.GeneralUtil.displayGenToast
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
@@ -62,51 +61,25 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getCredits(movieId: Int) {
         viewModelScope.launch {
-            val response = moviesRepo.getCredits(movieId)
-            if (response.isSuccessful) {
-                _getMovieCredits.postValue(response)
-            } else {
-                displayGenToast(
-                    getApplication(),
-                    "An error occurred whilst getting data"
-                )
-            }
+            _getMovieCredits.value = moviesRepo.getCredits(movieId)
         }
     }
 
     fun searchMulti(query: String) {
         viewModelScope.launch {
-            val response = moviesRepo.searchMulti(query, page)
-            if (response.isSuccessful) {
-                _searchMulti.postValue(response)
-            } else {
-                displayGenToast(
-                    getApplication(),
-                    "An error occurred whilst getting data"
-                )
-            }
+            _searchMulti.value = moviesRepo.searchMulti(query, page)
         }
     }
 
     fun getPopularMovies() {
         viewModelScope.launch {
-            val response = moviesRepo.getPopularMovies(page)
-            _getPopularMovies.value = response
-
+            _getPopularMovies.value = moviesRepo.getPopularMovies(page)
         }
     }
 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch {
-            val response = moviesRepo.getMovieDetails(movieId)
-            if (response.isSuccessful) {
-                _getMovieDetail.postValue(response)
-            } else {
-                displayGenToast(
-                    getApplication(),
-                    "An error occurred whilst getting data"
-                )
-            }
+            _getMovieDetail.value = moviesRepo.getMovieDetails(movieId)
         }
     }
 

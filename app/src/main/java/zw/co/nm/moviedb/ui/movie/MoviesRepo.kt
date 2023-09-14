@@ -21,22 +21,19 @@ class MoviesRepo(private val context: Context) {
 
 
     suspend fun getSimilarMoviesList(movieId: Int): zw.co.nm.moviedb.data.remote.Response<GetSimilarMoviesResponse> =
-       apiCall {  NetworkManager.movieService.getSimilarMoviesList(movieId)}
+        apiCall { NetworkManager.movieService.getSimilarMoviesList(movieId) }
 
     suspend fun getCredits(movieId: Int): zw.co.nm.moviedb.data.remote.Response<GetCreditsResponse> =
-       apiCall {  NetworkManager.movieService.getCredits(movieId)}
+        apiCall { NetworkManager.movieService.getCredits(movieId) }
 
     suspend fun searchMulti(
         query: String,
         page: Int
-    ): zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse> {
-        return apiCall {
-            NetworkManager.movieService.searchMulti(
-                query,
-                page,
-                ConfigStore.getBool(context, SEARCH_CONFIG_KEY)
-            )
-        }
+    ): zw.co.nm.moviedb.data.remote.Response<SearchMultiResponse> = apiCall {
+        NetworkManager.movieService.searchMulti(
+            query,
+            page,
+            ConfigStore.getBool(context, SEARCH_CONFIG_KEY)
+        )
     }
-
 }

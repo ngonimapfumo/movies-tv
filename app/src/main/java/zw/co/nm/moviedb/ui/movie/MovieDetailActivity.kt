@@ -33,6 +33,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
         moviesViewModel.getSimilarMoviesList(movieId!!)
         moviesViewModel.getSimilarMovies.observe(this) { response ->
+
             binding.textView3.visibility = VISIBLE
             val adapter: SuggestedMoviesListAdapter
             binding.recyclerView.layoutManager = LinearLayoutManager(

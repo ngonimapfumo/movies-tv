@@ -8,9 +8,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
-import zw.co.nm.moviedb.ui.reviews.ReviewsRepo
-import zw.co.nm.moviedb.utils.GeneralUtil
-import zw.co.nm.moviedb.utils.GeneralUtil.displayGenToast
 
 class ReviewsViewModel(application: Application) : AndroidViewModel(application) {
     private val reviewsRepo = ReviewsRepo()
@@ -26,9 +23,8 @@ class ReviewsViewModel(application: Application) : AndroidViewModel(application)
             val response = reviewsRepo.getTvShowReviews(id)
             if (response.isSuccessful) {
                 _getTvReviews.postValue(response)
-            }
-            else{
-                displayGenToast(getApplication(),"An error occurred whilst getting data")
+            } else {
+                //  displayGenToast(getApplication(), "An error occurred whilst getting data")
             }
         }
     }
@@ -38,8 +34,8 @@ class ReviewsViewModel(application: Application) : AndroidViewModel(application)
             val response = reviewsRepo.getMovieReviews(id)
             if (response.isSuccessful) {
                 _getMovieReviews.postValue(response)
-            }else{
-                displayGenToast(getApplication(),"An error occurred whilst getting data")
+            } else {
+                // displayGenToast(getApplication(), "An error occurred whilst getting data")
             }
         }
     }
