@@ -3,7 +3,6 @@ package zw.co.nm.moviedb.utils
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import zw.co.nm.moviedb.ui.adapters.EpisodeAdapter
 import zw.co.nm.moviedb.ui.collection.CollectionActivity
 import zw.co.nm.moviedb.ui.movie.MovieDetailActivity
 import zw.co.nm.moviedb.ui.person.PersonActivity

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
-import zw.co.nm.moviedb.ui.adapters.EpisodeAdapter
+import zw.co.nm.moviedb.ui.tv.episode.EpisodeAdapter
 import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants
 import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID

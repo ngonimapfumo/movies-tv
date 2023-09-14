@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityTvShowDetailBinding
-import zw.co.nm.moviedb.ui.adapters.SeasonsAdapter
+import zw.co.nm.moviedb.ui.tv.season.SeasonsAdapter
 import zw.co.nm.moviedb.ui.adapters.TVCastAdapter
 import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants

@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.ui.search
 
 import android.content.Context
 import android.view.LayoutInflater

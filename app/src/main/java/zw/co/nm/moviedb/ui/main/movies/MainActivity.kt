@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.main
+package zw.co.nm.moviedb.ui.main.movies
 
 
 import android.content.Intent
@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
-import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
+import zw.co.nm.moviedb.ui.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.ui.movie.MoviesViewModel
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity

@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.ui.main.tvshows
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,9 +7,7 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
-import zw.co.nm.moviedb.utils.ConfigStore
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID
 import zw.co.nm.moviedb.utils.PageNavUtils
 
 class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Result>) :

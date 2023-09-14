@@ -8,7 +8,6 @@ import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ActivityReviewsBinding
-import zw.co.nm.moviedb.ui.adapters.ReviewsAdapter
 import zw.co.nm.moviedb.utils.Constants.REVIEW_MOVIE
 import zw.co.nm.moviedb.utils.Constants.REVIEW_TV
 import zw.co.nm.moviedb.utils.Constants.REVIEW_TYPE

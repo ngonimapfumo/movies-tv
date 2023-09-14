@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.ui.reviews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ItemReviewDetailBinding
-import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.TextStyle
 import java.util.Locale

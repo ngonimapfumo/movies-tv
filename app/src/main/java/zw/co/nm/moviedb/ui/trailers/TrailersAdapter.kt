@@ -1,10 +1,9 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.ui.trailers
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso

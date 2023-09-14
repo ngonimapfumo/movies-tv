@@ -1,11 +1,10 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.ui.main.movies
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL

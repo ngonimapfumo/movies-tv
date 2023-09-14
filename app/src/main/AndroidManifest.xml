@@ -32,7 +32,7 @@
             android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.TVShowsActivity"
+            android:name=".ui.main.tvshows.TVShowsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.tv.TvShowDetailActivity"
@@ -47,7 +47,7 @@
             android:name=".ui.search.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.main.movies.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

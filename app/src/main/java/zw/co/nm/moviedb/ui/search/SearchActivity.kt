@@ -6,7 +6,6 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
-import zw.co.nm.moviedb.ui.adapters.SearchAdapter
 import zw.co.nm.moviedb.ui.movie.MoviesViewModel
 
 class SearchActivity : AppCompatActivity(),

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 import zw.co.nm.moviedb.databinding.ActivityTrailerBinding
-import zw.co.nm.moviedb.ui.adapters.TrailersAdapter
 import zw.co.nm.moviedb.utils.Constants.TRAILER_TYPE
 
 class TrailerActivity : AppCompatActivity() {
