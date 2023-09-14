@@ -7,8 +7,10 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
+import zw.co.nm.moviedb.ui.adapters.MoviesAdapter
 import zw.co.nm.moviedb.ui.adapters.TvShowsAdapter
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.tv.TvShowsViewModel
@@ -27,9 +29,23 @@ class TVShowsActivity : AppCompatActivity() {
         tvShowsViewModel.getPopularTvShows()
         tvShowsViewModel.getPopularShows.observe(this) { response ->
             binding.progressBar.visibility = View.GONE
-            val data = response.body.results
-            adapter = TvShowsAdapter(data)
-            binding.recyclerView.adapter = adapter
+            when (response.data) {
+                null -> {
+                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry") {
+                            binding.progressBar.visibility = View.VISIBLE
+                            tvShowsViewModel.getPopularTvShows()
+
+                        }.show()
+                }
+
+                else -> {
+                    val data = response.body.results
+                    adapter = TvShowsAdapter(data)
+                    binding.recyclerView.adapter = adapter
+                }
+            }
+
 
         }
     }

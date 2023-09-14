@@ -3,7 +3,6 @@ package zw.co.nm.moviedb.ui.search
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
@@ -31,39 +30,29 @@ class SearchActivity : AppCompatActivity(),
             moviesViewModel.resetPages()
         }
 
+        //todo// fix loading progressbar when no network
         moviesViewModel.searchMulti(query!!)
         moviesViewModel.searchMulti.observe(this) { response ->
-
-            when (response.data) {
-                null -> {
-                    Toast.makeText(this, "ho ho ho", Toast.LENGTH_SHORT).show()
-                }
-
-                else -> {
-
-                    binding.progressBar2.visibility = GONE
-                    queryStr = query
-                    val data = response.body.results
-                    totalPages = response.body.totalPages
-                    if (totalPages!! > 1) {
-                        binding.constraintLayoutPages.visibility = VISIBLE
-                        binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
-                    } else {
-                        binding.constraintLayoutPages.visibility = GONE
-                    }
-
-                    if (response.body.results.isEmpty()) {
-                        binding.searchRecycler.visibility = GONE
-                        binding.noResultLay.visibility = VISIBLE
-                    } else {
-                        binding.searchRecycler.visibility = VISIBLE
-                        binding.noResultLay.visibility = GONE
-                    }
-                    adapter = SearchAdapter(data)
-                    binding.searchRecycler.adapter = adapter
-                }
+            binding.progressBar2.visibility = GONE
+            queryStr = query
+            val data = response.body.results
+            totalPages = response.body.totalPages
+            if (totalPages!! > 1) {
+                binding.constraintLayoutPages.visibility = VISIBLE
+                binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
+            } else {
+                binding.constraintLayoutPages.visibility = GONE
             }
 
+            if (response.body.results.isEmpty()) {
+                binding.searchRecycler.visibility = GONE
+                binding.noResultLay.visibility = VISIBLE
+            } else {
+                binding.searchRecycler.visibility = VISIBLE
+                binding.noResultLay.visibility = GONE
+            }
+            adapter = SearchAdapter(data)
+            binding.searchRecycler.adapter = adapter
         }
         return true
     }

@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.ui.movie
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -67,7 +68,12 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun searchMulti(query: String) {
         viewModelScope.launch {
-            _searchMulti.value = moviesRepo.searchMulti(query, page)
+            val data = moviesRepo.searchMulti(query, page)
+            if (data.isSuccessful) {
+                _searchMulti.value = moviesRepo.searchMulti(query, page)
+            }else{
+                Toast.makeText(getApplication(), "Something went wrong, please try again later", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
