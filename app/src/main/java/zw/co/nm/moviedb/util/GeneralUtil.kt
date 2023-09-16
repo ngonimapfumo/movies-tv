@@ -1,9 +1,8 @@
-package zw.co.nm.moviedb.utils
+package zw.co.nm.moviedb.util
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
-import com.google.android.material.snackbar.Snackbar
 import retrofit2.Response
 
 object GeneralUtil {

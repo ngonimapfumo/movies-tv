@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityCollectionBinding
-import zw.co.nm.moviedb.utils.Constants
+import zw.co.nm.moviedb.util.Constants
 
 class CollectionActivity : AppCompatActivity() {
     lateinit var binding: ActivityCollectionBinding

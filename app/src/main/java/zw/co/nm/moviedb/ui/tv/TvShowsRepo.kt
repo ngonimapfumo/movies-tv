@@ -6,7 +6,7 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
-import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
+import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class TvShowsRepo {
     suspend fun getPopularTvShows(page: Int): Response<GetPopularTVSeriesListResponse> =

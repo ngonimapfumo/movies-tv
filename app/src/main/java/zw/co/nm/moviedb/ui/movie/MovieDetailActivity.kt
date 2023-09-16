@@ -13,8 +13,8 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.ui.adapters.CastAdapter
 import zw.co.nm.moviedb.ui.adapters.SuggestedMoviesListAdapter
-import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
 
@@ -33,8 +33,12 @@ class MovieDetailActivity : AppCompatActivity() {
 
         moviesViewModel.getSimilarMoviesList(movieId!!)
         moviesViewModel.getSimilarMovies.observe(this) { response ->
+            if (response.body.results.isEmpty()) {
+                binding.textView3.visibility = GONE
+            } else {
+                binding.textView3.visibility = VISIBLE
+            }
 
-            binding.textView3.visibility = VISIBLE
             val adapter: SuggestedMoviesListAdapter
             binding.recyclerView.layoutManager = LinearLayoutManager(
                 this@MovieDetailActivity,
@@ -67,7 +71,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 return@observe
             }
             Picasso.get().load(IMAGE_BASE_URL + movie.posterPath)
-                .resize(500,750)
+                .resize(500, 750)
                 .placeholder(R.drawable.sample_cover_large)
                 .into(binding.backgroundImm)
             if (movie.tagline.isEmpty()) {
@@ -83,9 +87,9 @@ class MovieDetailActivity : AppCompatActivity() {
             }
             binding.movieTitleTxt.text = movie.title
             binding.runtimeTxt.text = buildString {
-                append((movie.runtime)/60)
+                append((movie.runtime) / 60)
                 append("hr ")
-                append((movie.runtime)%60)
+                append((movie.runtime) % 60)
                 append("min")
             }
 
@@ -128,7 +132,7 @@ class MovieDetailActivity : AppCompatActivity() {
             val data = response.body!!.cast
             adapter = CastAdapter(data)
             binding.castRecyclerView.adapter = adapter
-            if (response.body!!.cast.isEmpty()){
+            if (response.body!!.cast.isEmpty()) {
                 binding.textView8.visibility = GONE
             }
 
@@ -142,7 +146,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun setUpView() {
 
         binding.reviewsBtn.setOnClickListener {
-            PageNavUtils.toReviewsPage(this,"movie", movieId!!)
+            PageNavUtils.toReviewsPage(this, "movie", movieId!!)
         }
         binding.trailerBtn.setOnClickListener {
             PageNavUtils.toTrailersPage(this@MovieDetailActivity, "movie", movieId!!)

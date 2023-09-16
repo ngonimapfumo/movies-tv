@@ -7,9 +7,8 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
 import zw.co.nm.moviedb.databinding.ItemCastBinding
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.PageNavUtils
 
 class TVCastAdapter(private var data: List<GetTVCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

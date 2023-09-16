@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.Constants.LOW_RES_IMAGE_BASE_URL
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.PageNavUtils
 
 class CombinedCreditsListAdapter(private var data: List<GetCombinedCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -26,7 +24,7 @@ class CombinedCreditsListAdapter(private var data: List<GetCombinedCreditsRespon
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
         Picasso.get().load(Constants.MED_RES_IMAGE_BASE_URL + imgPath)
-            .resize(250,400)
+            .resize(270,400)
             .into(binding!!.imageView)
 
         holder.itemView.setOnClickListener {

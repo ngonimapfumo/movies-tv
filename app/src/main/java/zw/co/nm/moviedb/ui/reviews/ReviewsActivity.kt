@@ -8,9 +8,9 @@ import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ActivityReviewsBinding
-import zw.co.nm.moviedb.utils.Constants.REVIEW_MOVIE
-import zw.co.nm.moviedb.utils.Constants.REVIEW_TV
-import zw.co.nm.moviedb.utils.Constants.REVIEW_TYPE
+import zw.co.nm.moviedb.util.Constants.REVIEW_MOVIE
+import zw.co.nm.moviedb.util.Constants.REVIEW_TV
+import zw.co.nm.moviedb.util.Constants.REVIEW_TYPE
 
 class ReviewsActivity : AppCompatActivity() {
     private lateinit var adapter: ReviewsAdapter

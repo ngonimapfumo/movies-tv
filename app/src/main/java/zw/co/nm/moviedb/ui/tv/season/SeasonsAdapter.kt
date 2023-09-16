@@ -7,8 +7,8 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.PageNavUtils
 
 class SeasonsAdapter(private var data: List<GetTVShowDetailResponse.Season>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

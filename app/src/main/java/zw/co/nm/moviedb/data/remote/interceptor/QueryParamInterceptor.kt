@@ -13,7 +13,6 @@ object QueryParamInterceptor : Interceptor {
         val url: HttpUrl = chain.request()
             .url
             .newBuilder()
-            /*storing api key in local.properties file for now*/
             .addQueryParameter("api_key", BuildConfig.API_KEY)
             .addQueryParameter("language", "en-US")
             .build()

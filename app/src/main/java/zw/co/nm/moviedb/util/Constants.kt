@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.utils
+package zw.co.nm.moviedb.util
 
 object Constants {
 

@@ -10,7 +10,7 @@ import zw.co.nm.moviedb.data.remote.interceptor.QueryParamInterceptor
 import zw.co.nm.moviedb.data.remote.service.CollectionService
 import zw.co.nm.moviedb.data.remote.service.MovieService
 import zw.co.nm.moviedb.data.remote.service.TvShowService
-import zw.co.nm.moviedb.utils.Constants
+import zw.co.nm.moviedb.util.Constants
 import java.util.concurrent.TimeUnit
 
 

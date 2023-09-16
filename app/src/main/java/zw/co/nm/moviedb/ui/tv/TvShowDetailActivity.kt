@@ -10,10 +10,10 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityTvShowDetailBinding
 import zw.co.nm.moviedb.ui.tv.season.SeasonsAdapter
 import zw.co.nm.moviedb.ui.adapters.TVCastAdapter
-import zw.co.nm.moviedb.utils.ConfigStore
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale

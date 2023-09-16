@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
 import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.GeneralUtil
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.GeneralUtil
+import zw.co.nm.moviedb.util.PageNavUtils
 
 class SearchAdapter(private var data: List<SearchMultiResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

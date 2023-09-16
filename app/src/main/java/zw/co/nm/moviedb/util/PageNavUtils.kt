@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.utils
+package zw.co.nm.moviedb.util
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import zw.co.nm.moviedb.ui.trailers.TrailerActivity
 import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity
 import zw.co.nm.moviedb.ui.tv.episode.EpisodeActivity
 import zw.co.nm.moviedb.ui.tv.season.SeasonActivity
-import zw.co.nm.moviedb.utils.Constants.TRAILER_TYPE
+import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
 
 object PageNavUtils {
 

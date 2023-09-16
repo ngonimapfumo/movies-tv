@@ -7,8 +7,8 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.networkmodel.GetCollectionDetailResponse
 import zw.co.nm.moviedb.databinding.ItemCollectionDetailBinding
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.PageNavUtils
 
 class CollectionAdapter(private var data: List<GetCollectionDetailResponse.Part>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

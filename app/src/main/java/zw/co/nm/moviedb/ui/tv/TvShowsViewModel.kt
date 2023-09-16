@@ -39,29 +39,26 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
 
     fun getPopularTvShows() {
         viewModelScope.launch {
-            val response = tvShowsRepo.getPopularTvShows(page)
-            _getPopularShows.postValue(response)
+            _getPopularShows.value = tvShowsRepo.getPopularTvShows(page)
         }
     }
 
     fun getShowDetails(showId: Int) {
         viewModelScope.launch {
-            val response = tvShowsRepo.getTvShowDetails(showId)
-            _getShowDetails.postValue(response)
+            _getShowDetails.value = tvShowsRepo.getTvShowDetails(showId)
         }
     }
 
     fun getTvCredits(showId: Int) {
         viewModelScope.launch {
-            val response = tvShowsRepo.getTvCredits(showId)
-            _getTvCredits.postValue(response)
+            _getTvCredits.value = tvShowsRepo.getTvCredits(showId)
         }
     }
 
     fun getEpisodeDetail(seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
         viewModelScope.launch {
-            val response = tvShowsRepo.getEpisodeDetail(seriesId, seasonNumber, episodeNumber)
-            _getEpisodeDetail.postValue(response)
+            _getEpisodeDetail.value =
+                tvShowsRepo.getEpisodeDetail(seriesId, seasonNumber, episodeNumber)
         }
     }
 

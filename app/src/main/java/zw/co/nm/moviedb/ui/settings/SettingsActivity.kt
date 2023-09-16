@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.databinding.ActivitySettingsBinding
-import zw.co.nm.moviedb.utils.ConfigStore
-import zw.co.nm.moviedb.utils.ConfigStore.SEARCH_CONFIG_KEY
+import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
 
 class SettingsActivity : AppCompatActivity() {
 

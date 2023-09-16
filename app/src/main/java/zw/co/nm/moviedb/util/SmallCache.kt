@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.utils
+package zw.co.nm.moviedb.util
 
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse

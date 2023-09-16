@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.utils
+package zw.co.nm.moviedb.util
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -7,9 +7,9 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
 import zw.co.nm.moviedb.ui.tv.episode.EpisodeAdapter
-import zw.co.nm.moviedb.utils.ConfigStore
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.Constants.SAVED_SHOW_ID
+import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.Constants.SAVED_SHOW_ID
 import java.time.LocalDate
 
 class SeasonActivity : AppCompatActivity() {

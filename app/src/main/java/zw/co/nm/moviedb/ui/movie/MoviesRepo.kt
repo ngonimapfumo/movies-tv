@@ -7,9 +7,9 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
-import zw.co.nm.moviedb.utils.ConfigStore
-import zw.co.nm.moviedb.utils.ConfigStore.SEARCH_CONFIG_KEY
-import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
+import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
+import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class MoviesRepo(private val context: Context) {
 

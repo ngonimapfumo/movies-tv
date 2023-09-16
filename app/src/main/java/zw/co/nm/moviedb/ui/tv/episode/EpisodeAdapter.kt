@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
 import zw.co.nm.moviedb.databinding.ItemEpisodeDetailBinding
-import zw.co.nm.moviedb.utils.Constants
-import zw.co.nm.moviedb.utils.PageNavUtils
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.PageNavUtils
 
 class EpisodeAdapter(private var data: List<GetTvSeasonDetail.Episode>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

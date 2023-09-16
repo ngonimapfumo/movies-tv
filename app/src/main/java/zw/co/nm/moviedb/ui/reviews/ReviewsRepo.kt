@@ -3,8 +3,7 @@ package zw.co.nm.moviedb.ui.reviews
 import zw.co.nm.moviedb.data.remote.NetworkManager
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
-import zw.co.nm.moviedb.utils.GeneralUtil
-import zw.co.nm.moviedb.utils.GeneralUtil.apiCall
+import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class ReviewsRepo {
 

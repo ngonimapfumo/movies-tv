@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.ui.adapters.CombinedCreditsListAdapter
-import zw.co.nm.moviedb.utils.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import java.time.LocalDate
 
 class PersonActivity : AppCompatActivity() {
