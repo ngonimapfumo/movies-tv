@@ -3,6 +3,7 @@ package zw.co.nm.moviedb.ui.tv.season
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
@@ -28,39 +29,53 @@ class SeasonActivity : AppCompatActivity() {
         tvShowId = ConfigStore.getInt(this, SAVED_SHOW_ID)
         seasonViewModel.getSeasonDetail(tvShowId!!, seasonNumber!!)
         seasonViewModel.getSeasonDetail.observe(this) {
-            Picasso.get().load(Constants.IMAGE_BASE_URL + it!!.body.posterPath)
-                .placeholder(R.drawable.sample_cover_small)
-                .into(binding.seasonPoster)
 
-            when {
-                it.body.overview.isEmpty() -> {
-                    binding.seasonOverView.text = it.body.name
+            when (it.data) {
+                null -> {
+                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry") {
+                            seasonViewModel.getSeasonDetail(tvShowId!!, seasonNumber!!)
+                        }.show()
                 }
 
                 else -> {
-                    binding.seasonOverView.text = it.body.overview
-                }
-            }
-            binding.seasonName.text = it.body.name
-            binding.episodeCount.text = buildString {
-                append(it.body.episodes.size)
-                append(" Episodes")
-            }
-            when {
-                it.body.airDate.isNullOrBlank() -> {
-                    binding.seasonAirDate.text = ""
-                }
-                else -> {
-                    val localDate = LocalDate.parse(it.body.airDate)
-                    binding.seasonAirDate.text = buildString {
-                        append(localDate.year)
+                    Picasso.get().load(Constants.IMAGE_BASE_URL + it!!.body.posterPath)
+                        .placeholder(R.drawable.sample_cover_small)
+                        .into(binding.seasonPoster)
+
+                    when {
+                        it.body.overview.isEmpty() -> {
+                            binding.seasonOverView.text = it.body.name
+                        }
+
+                        else -> {
+                            binding.seasonOverView.text = it.body.overview
+                        }
                     }
+                    binding.seasonName.text = it.body.name
+                    binding.episodeCount.text = buildString {
+                        append(it.body.episodes.size)
+                        append(" Episodes")
+                    }
+                    when {
+                        it.body.airDate.isNullOrBlank() -> {
+                            binding.seasonAirDate.text = ""
+                        }
+
+                        else -> {
+                            val localDate = LocalDate.parse(it.body.airDate)
+                            binding.seasonAirDate.text = buildString {
+                                append(localDate.year)
+                            }
+                        }
+                    }
+
+                    val data = it.body.episodes
+                    adapter = EpisodeAdapter(data)
+                    binding.episodeRecycler.adapter = adapter
                 }
             }
 
-            val data = it.body.episodes
-            adapter = EpisodeAdapter(data)
-            binding.episodeRecycler.adapter = adapter
         }
 
 

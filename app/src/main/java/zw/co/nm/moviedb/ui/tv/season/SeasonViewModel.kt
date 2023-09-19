@@ -17,10 +17,7 @@ class SeasonViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getSeasonDetail(tvShowId: Int, season: Int) {
         viewModelScope.launch {
-            val response = seasonRepo.getSeasonDetail(tvShowId, season)
-            if (response.isSuccessful) {
-                _getSeasonDetail.postValue(response)
-            }
+            _getSeasonDetail.value = seasonRepo.getSeasonDetail(tvShowId, season)
         }
     }
 

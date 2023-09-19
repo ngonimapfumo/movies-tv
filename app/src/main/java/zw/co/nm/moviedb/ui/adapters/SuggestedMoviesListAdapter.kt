@@ -2,6 +2,7 @@ package zw.co.nm.moviedb.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
@@ -35,6 +36,7 @@ class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse
                 data[position].id
             )
         }
+
 
     }
 
