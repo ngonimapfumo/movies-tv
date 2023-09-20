@@ -34,6 +34,7 @@ object NetworkManager {
         .client(client)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
+
     var movieService: MovieService = retrofit.create(MovieService::class.java)
     var tvShowService: TvShowService = retrofit.create(TvShowService::class.java)
     var collectionService: CollectionService = retrofit.create(CollectionService::class.java)

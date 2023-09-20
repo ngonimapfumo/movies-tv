@@ -6,13 +6,13 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.adapters.GuestCastAdapter
 import zw.co.nm.moviedb.databinding.ActivityEpisodeBinding
-import zw.co.nm.moviedb.ui.adapters.GuestCastAdapter
 import zw.co.nm.moviedb.ui.tv.TvShowsViewModel
 import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
@@ -41,13 +41,9 @@ class EpisodeActivity : AppCompatActivity() {
           //  binding.progressBar4.visibility = GONE
             when (it!!.data) {
                 null -> {
-                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Retry") {
-                        //    binding.progressBar4.visibility = VISIBLE
-                            tvViewModel.getEpisodeDetail(seriesId!!, seasonNumber!!, episodeNumber!!)
-
-                        }.show()
-
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        tvViewModel.getEpisodeDetail(seriesId!!, seasonNumber!!, episodeNumber!!)
+                    }
                 }
 
                 else -> {

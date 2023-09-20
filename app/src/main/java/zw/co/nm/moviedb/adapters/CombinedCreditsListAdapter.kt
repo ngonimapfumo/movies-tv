@@ -1,18 +1,16 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse.Result>) :
+class CombinedCreditsListAdapter(private var data: List<GetCombinedCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null
@@ -25,23 +23,37 @@ class SuggestedMoviesListAdapter(private var data: List<GetSimilarMoviesResponse
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        //  binding!!.text.text = data[position].title
-        Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
-            .placeholder(R.drawable.sample_suggested)
+        Picasso.get().load(Constants.MED_RES_IMAGE_BASE_URL + imgPath)
             .resize(270,400)
             .into(binding!!.imageView)
-        holder.itemView.setOnClickListener {
-            PageNavUtils.toMovieDetailsPage(
-                holder.itemView.context,
-                data[position].id
-            )
-        }
 
+        holder.itemView.setOnClickListener {
+            when (data[position].mediaType) {
+                "movie" -> {
+                        proceedToMovie(holder.itemView.context,position)
+                }
+
+                "tv" -> {
+                    PageNavUtils.toTvDetailsPage(
+                        holder.itemView.context,
+                        data[position].id
+                    )
+
+                }
+            }
+        }
 
     }
 
     override fun getItemViewType(position: Int): Int {
         return position
+    }
+
+    fun proceedToMovie(context: Context, position: Int){
+        PageNavUtils.toMovieDetailsPage(
+            context,
+            data[position].id
+        )
     }
 
     class ItemMovieViewHolder(binding: ItemMovieDetailBinding) :

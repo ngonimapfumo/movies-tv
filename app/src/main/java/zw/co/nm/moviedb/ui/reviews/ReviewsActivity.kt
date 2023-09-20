@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ActivityReviewsBinding
 import zw.co.nm.moviedb.util.Constants.REVIEW_MOVIE
 import zw.co.nm.moviedb.util.Constants.REVIEW_TV
 import zw.co.nm.moviedb.util.Constants.REVIEW_TYPE
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 class ReviewsActivity : AppCompatActivity() {
     private lateinit var adapter: ReviewsAdapter
@@ -33,15 +33,9 @@ class ReviewsActivity : AppCompatActivity() {
             reviewsViewModel.getTvReviews.observe(this) { response ->
                 when (response.data) {
                     null -> {
-                        Snackbar.make(
-                            binding.root,
-                            "Error getting data",
-                            Snackbar.LENGTH_INDEFINITE
-                        )
-                            .setAction("Retry") {
-                                reviewsViewModel.getTvReviews(mediaId!!)
-
-                            }.show()
+                        actionSnack(binding.root, "Error getting data", "Retry") {
+                            reviewsViewModel.getTvReviews(mediaId!!)
+                        }
                     }
 
                     else -> {
@@ -55,15 +49,9 @@ class ReviewsActivity : AppCompatActivity() {
             reviewsViewModel.getMovieReviews.observe(this) { response ->
                 when (response.data) {
                     null -> {
-                        Snackbar.make(
-                            binding.root,
-                            "Error getting data",
-                            Snackbar.LENGTH_INDEFINITE
-                        )
-                            .setAction("Retry") {
-                                reviewsViewModel.getMovieReviews(mediaId!!)
-
-                            }.show()
+                        actionSnack(binding.root, "Error getting data", "Retry") {
+                            reviewsViewModel.getMovieReviews(mediaId!!)
+                        }
                     }
 
                     else -> {

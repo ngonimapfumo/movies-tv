@@ -10,13 +10,13 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.ui.movie.MoviesViewModel
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.settings.SettingsActivity
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,12 +35,10 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = GONE
             when (response.data) {
                 null -> {
-                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Retry") {
-                            binding.progressBar.visibility = VISIBLE
-                            moviesViewModel.getPopularMovies()
-
-                        }.show()
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        binding.progressBar.visibility = VISIBLE
+                        moviesViewModel.getPopularMovies()
+                    }
                 }
 
                 else -> {

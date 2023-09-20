@@ -17,10 +17,7 @@ class CollectionViewModel(application: Application) : AndroidViewModel(applicati
 
     fun getCollectionDetail(id: Int) {
         viewModelScope.launch {
-            val response = collectionRepo.getCollectionDetail(id)
-            if (response.isSuccessful) {
-                _getCollectionDetail.postValue(response)
-            }
+                _getCollectionDetail.value = collectionRepo.getCollectionDetail(id)
         }
     }
 }

@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.adapters.CastAdapter
+import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
-import zw.co.nm.moviedb.ui.adapters.CastAdapter
-import zw.co.nm.moviedb.ui.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
@@ -32,8 +32,8 @@ class MovieDetailActivity : AppCompatActivity() {
         setUpView()
 
         moviesViewModel.getSimilarMoviesList(movieId!!)
-        moviesViewModel.getSimilarMovies.observe(this) { response ->
-            if (response.body.results.isEmpty()) {
+        moviesViewModel.getSimilarMovies.observe(this) {
+            if (it.body.results.isEmpty()) {
                 binding.textView3.visibility = GONE
             } else {
                 binding.textView3.visibility = VISIBLE
@@ -44,7 +44,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 this@MovieDetailActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
-            val data = response.body.results
+            val data = it.body.results
             adapter = SuggestedMoviesListAdapter(data)
             binding.recyclerView.adapter = adapter
         }
@@ -129,10 +129,10 @@ class MovieDetailActivity : AppCompatActivity() {
                 this@MovieDetailActivity,
                 LinearLayoutManager.HORIZONTAL, false
             )
-            val data = response.body!!.cast
+            val data = response.body.cast
             adapter = CastAdapter(data)
             binding.castRecyclerView.adapter = adapter
-            if (response.body!!.cast.isEmpty()) {
+            if (response.body.cast.isEmpty()) {
                 binding.textView8.visibility = GONE
             }
 

@@ -36,11 +36,6 @@ object TVMapper {
 
         }
 
-
-
-
-
-
         return TV(
             name = response.name,
             id = response.id,
@@ -63,10 +58,10 @@ object TVMapper {
             ),
             firstAirDate = response.firstAirDate,
             inProduction = response.inProduction,
-            languages = response.languages!!,
+            languages = response.languages,
             lastAirDate = response.lastAirDate,
             lastEpisodeToAir = TV.LastEpisodeToAir(
-                airDate = response.lastEpisodeToAir!!.airDate,
+                airDate = response.lastEpisodeToAir.airDate,
                 episodeNumber = response.lastEpisodeToAir.episodeNumber,
                 voteAverage = response.lastEpisodeToAir.voteAverage,
                 overview = response.lastEpisodeToAir.overview,

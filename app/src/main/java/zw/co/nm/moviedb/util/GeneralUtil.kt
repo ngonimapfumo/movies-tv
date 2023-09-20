@@ -3,6 +3,9 @@ package zw.co.nm.moviedb.util
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.view.View
+import android.view.View.OnClickListener
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Response
 
 object GeneralUtil {
@@ -31,4 +34,13 @@ object GeneralUtil {
             .setNegativeButton(negativeButtonText, negativeDialogInterface)
             .show()
     }
+
+    fun actionSnack(view: View, msg: String, actionMsg: String, listener: OnClickListener) {
+        Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE)
+            .setAction(actionMsg) {
+                listener.onClick(it)
+            }.show()
+    }
+
+
 }

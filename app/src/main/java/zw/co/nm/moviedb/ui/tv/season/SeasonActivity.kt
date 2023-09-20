@@ -3,7 +3,6 @@ package zw.co.nm.moviedb.ui.tv.season
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
@@ -11,6 +10,7 @@ import zw.co.nm.moviedb.ui.tv.episode.EpisodeAdapter
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.SAVED_SHOW_ID
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import java.time.LocalDate
 
 class SeasonActivity : AppCompatActivity() {
@@ -32,10 +32,9 @@ class SeasonActivity : AppCompatActivity() {
 
             when (it.data) {
                 null -> {
-                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Retry") {
-                            seasonViewModel.getSeasonDetail(tvShowId!!, seasonNumber!!)
-                        }.show()
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        seasonViewModel.getSeasonDetail(tvShowId!!, seasonNumber!!)
+                    }
                 }
 
                 else -> {

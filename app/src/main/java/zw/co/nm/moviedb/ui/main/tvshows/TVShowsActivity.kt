@@ -7,11 +7,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.ui.search.SearchActivity
 import zw.co.nm.moviedb.ui.tv.TvShowsViewModel
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 class TVShowsActivity : AppCompatActivity() {
 
@@ -29,12 +29,10 @@ class TVShowsActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             when (response.data) {
                 null -> {
-                    Snackbar.make(binding.root, "Error getting data", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Retry") {
-                            binding.progressBar.visibility = View.VISIBLE
-                            tvShowsViewModel.getPopularTvShows()
-
-                        }.show()
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        binding.progressBar.visibility = View.VISIBLE
+                        tvShowsViewModel.getPopularTvShows()
+                    }
                 }
 
                 else -> {
@@ -86,8 +84,6 @@ class TVShowsActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 
 
 }

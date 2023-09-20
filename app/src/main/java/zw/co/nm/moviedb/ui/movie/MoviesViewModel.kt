@@ -47,15 +47,6 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
-            //val response = moviesRepo.getSimilarMoviesList(movieId)
-//            if (response.isSuccessful) {
-//                _getSimilarMovies.postValue(response)
-//            } else {
-//                displayGenToast(
-//                    getApplication(),
-//                    "An error occurred whilst getting data"
-//                )
-//            }
             _getSimilarMovies.value = moviesRepo.getSimilarMoviesList(movieId)
         }
     }

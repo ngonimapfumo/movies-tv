@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.ui.adapters
+package zw.co.nm.moviedb.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

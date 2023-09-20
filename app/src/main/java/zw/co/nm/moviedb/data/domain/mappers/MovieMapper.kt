@@ -34,7 +34,7 @@ object MovieMapper {
             originalTitle = response.originalTitle,
             overview = response.overview,
             popularity = response.popularity,
-            posterPath = response.posterPath!!,
+            posterPath = response.posterPath,
             productionCompanies = Movie.ProductionCompany(
                 name = productionCompany.toString().replace("[", "")
                     .replace("]", "")
