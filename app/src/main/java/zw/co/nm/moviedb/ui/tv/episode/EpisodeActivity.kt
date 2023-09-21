@@ -38,7 +38,8 @@ class EpisodeActivity : AppCompatActivity() {
         tvViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvViewModel.getEpisodeDetail(seriesId!!, seasonNumber!!, episodeNumber!!)
         tvViewModel.getEpisodeDetail.observe(this) {
-          //  binding.progressBar4.visibility = GONE
+            val episode = it!!.body
+            //  binding.progressBar4.visibility = GONE
             when (it!!.data) {
                 null -> {
                     actionSnack(binding.root, "Error getting data", "Retry") {
@@ -49,46 +50,55 @@ class EpisodeActivity : AppCompatActivity() {
                 else -> {
                     binding.mainLayout.visibility = VISIBLE
                     Picasso.get()
-                        .load(Constants.IMAGE_BASE_URL + it.body.stillPath)
+                        .load(Constants.IMAGE_BASE_URL + episode.stillPath)
                         .placeholder(R.drawable.sample_episode)
                         .into(binding.episodePoster)
-                    binding.episodeName.text = it.body.name
-                    binding.episodeOverView.text = it.body.overview
+                    binding.episodeName.text = episode.name
+                    binding.episodeOverView.text = episode.overview
 
                     binding.guestsRecycler.layoutManager = LinearLayoutManager(
                         this@EpisodeActivity,
                         LinearLayoutManager.HORIZONTAL, false
                     )
-                    var adapter = GuestCastAdapter(it.body.guestStars)
+                    var adapter = GuestCastAdapter(episode.guestStars)
                     binding.guestsRecycler.adapter = adapter
 
                     binding.ratingTxt.text = buildString {
-                        append((it.body.voteAverage * 10).toInt().toString())
+                        append((episode.voteAverage * 10).toInt().toString())
                         append("%")
-                        append(" (${it.body.voteCount} votes)")
+                        append(" (${episode.voteCount} votes)")
                     }
-                    var simpleDate = LocalDate.parse(it.body.airDate)
-                    binding.EpisodeAirDate.text = buildString {
-                        append(simpleDate.dayOfMonth)
-                        append(" ")
-                        append(
-                            simpleDate.month.getDisplayName(
-                                TextStyle.SHORT,
-                                Locale.ENGLISH
-                            )
-                        )
-                        append(" ")
-                        append(simpleDate.year)
+                    when (episode.airDate) {
+                        null -> {
+                            binding.EpisodeAirDate.text = "N/A"
+                        }
+
+                        else -> {
+                            var simpleDate = LocalDate.parse(episode.airDate)
+                            binding.EpisodeAirDate.text = buildString {
+                                append(simpleDate.dayOfMonth)
+                                append(" ")
+                                append(
+                                    simpleDate.month.getDisplayName(
+                                        TextStyle.SHORT,
+                                        Locale.ENGLISH
+                                    )
+                                )
+                                append(" ")
+                                append(simpleDate.year)
+                            }
+                        }
                     }
 
-                    if (it.body.guestStars.isEmpty()) {
+
+                    if (episode.guestStars.isEmpty()) {
                         binding.textView19.visibility = GONE
                     }
 
 
                     binding.textViewEpisodeNumber.text = buildString {
                         append("Episode ")
-                        append(it.body.episodeNumber)
+                        append(episode.episodeNumber)
                     }
                 }
 
