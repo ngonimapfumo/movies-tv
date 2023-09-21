@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import retrofit2.Response
+import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
-import zw.co.nm.moviedb.ui.trailers.TrailersRepo
 
 class TrailersViewModel(application: Application) :
     AndroidViewModel(application) {
@@ -27,14 +26,13 @@ class TrailersViewModel(application: Application) :
 
     fun getTrailers(movieId: Int) {
         viewModelScope.launch {
-            val response = trailersRepo.getTrailers(movieId)
-            _getTrailers.postValue(response)
+            _getTrailers.value = trailersRepo.getTrailers(movieId)
         }
     }
+
     fun getTvTrailers(tvShowId: Int) {
         viewModelScope.launch {
-            val response = trailersRepo.getTVTrailers(tvShowId)
-            _getTrailers.postValue(response)
+            _getTrailers.value = trailersRepo.getTVTrailers(tvShowId)
         }
     }
 

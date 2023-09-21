@@ -26,6 +26,7 @@ class TVShowsActivity : AppCompatActivity() {
         setUpView()
         tvShowsViewModel.getPopularTvShows()
         tvShowsViewModel.getPopularShows.observe(this) { response ->
+            binding.prevB.isEnabled = response.body.page != 1
             binding.progressBar.visibility = View.GONE
             when (response.data) {
                 null -> {

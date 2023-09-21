@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
+            binding.prevB.isEnabled = response.body.page != 1
             binding.progressBar.visibility = GONE
             when (response.data) {
                 null -> {

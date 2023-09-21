@@ -55,6 +55,9 @@ class SearchActivity : AppCompatActivity(),
                     }.start()
                 }
 
+                binding.textView14.text = buildString {
+                    append("No results found")
+                }
                 binding.searchRecycler.visibility = GONE
                 binding.noResultLay.visibility = VISIBLE
             } else {

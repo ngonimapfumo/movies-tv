@@ -8,52 +8,54 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:visibility="gone"
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:cardCornerRadius="4dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                app:thumbTint="@color/blue_light"
                 android:id="@+id/switchMaterial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@color/green_light"
+                app:trackTint="@color/grey" />
 
             <TextView
+                android:textSize="15sp"
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/include_explicit_content_txt"
-                android:textSize="25sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/switchMaterial"
                 app:layout_constraintEnd_toStartOf="@+id/switchMaterial"
-                app:layout_constraintHorizontal_bias="0.055"
+                app:layout_constraintHorizontal_bias="0.084"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/switchMaterial" />
+                app:layout_constraintTop_toTopOf="@+id/switchMaterial"
+                app:layout_constraintVertical_bias="0.241" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mature_content_txt"
                 android:textAlignment="textStart"
-                android:textSize="12sp"
-                android:textStyle="bold"
+                android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView15"
                 app:layout_constraintHorizontal_bias="0.0"
