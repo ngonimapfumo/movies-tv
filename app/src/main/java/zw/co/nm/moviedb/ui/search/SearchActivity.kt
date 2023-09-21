@@ -32,6 +32,7 @@ class SearchActivity : AppCompatActivity(),
         //todo// fix loading progressbar when no network
         moviesViewModel.searchMulti(query!!)
         moviesViewModel.searchMulti.observe(this) { response ->
+
             binding.progressBar2.visibility = GONE
             queryStr = query
             val data = response.body.results
@@ -44,6 +45,16 @@ class SearchActivity : AppCompatActivity(),
             }
 
             if (response.body.results.isEmpty()) {
+                binding.textView10.animate().apply {
+                    duration = 1000
+                    rotationYBy(360f)
+                }.withEndAction {
+                    binding.textView10.animate().apply {
+                        duration = 1000
+                        rotationYBy(3600f)
+                    }.start()
+                }
+
                 binding.searchRecycler.visibility = GONE
                 binding.noResultLay.visibility = VISIBLE
             } else {
