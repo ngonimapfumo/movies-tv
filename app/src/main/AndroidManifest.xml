@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MovieDB"
         tools:targetApi="31">
         <activity
+            android:name=".ui.videoplayer.ExoPlayerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.tv.episode.EpisodeActivity"
             android:exported="false" />
         <activity
