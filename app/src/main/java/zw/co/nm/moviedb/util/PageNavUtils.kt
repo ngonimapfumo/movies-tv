@@ -3,14 +3,14 @@ package zw.co.nm.moviedb.util
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import zw.co.nm.moviedb.ui.collection.CollectionActivity
-import zw.co.nm.moviedb.ui.movie.MovieDetailActivity
-import zw.co.nm.moviedb.ui.person.PersonActivity
-import zw.co.nm.moviedb.ui.reviews.ReviewsActivity
-import zw.co.nm.moviedb.ui.trailers.TrailerActivity
-import zw.co.nm.moviedb.ui.tv.TvShowDetailActivity
-import zw.co.nm.moviedb.ui.tv.episode.EpisodeActivity
-import zw.co.nm.moviedb.ui.tv.season.SeasonActivity
+import zw.co.nm.moviedb.presentation.collection.CollectionActivity
+import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
+import zw.co.nm.moviedb.presentation.person.PersonActivity
+import zw.co.nm.moviedb.presentation.reviews.ReviewsActivity
+import zw.co.nm.moviedb.presentation.trailers.TrailerActivity
+import zw.co.nm.moviedb.presentation.tv.TvShowDetailActivity
+import zw.co.nm.moviedb.presentation.tv.episode.EpisodeActivity
+import zw.co.nm.moviedb.presentation.tv.season.SeasonActivity
 import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
 
 object PageNavUtils {

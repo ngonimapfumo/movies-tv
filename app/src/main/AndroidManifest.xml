@@ -14,43 +14,43 @@
         android:theme="@style/Theme.MovieDB"
         tools:targetApi="31">
         <activity
-            android:name=".ui.videoplayer.ExoPlayerActivity"
+            android:name=".presentation.videoplayer.ExoPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tv.episode.EpisodeActivity"
+            android:name=".presentation.tv.episode.EpisodeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.reviews.ReviewsActivity"
+            android:name=".presentation.reviews.ReviewsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tv.season.SeasonActivity"
+            android:name=".presentation.tv.season.SeasonActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.collection.CollectionActivity"
+            android:name=".presentation.collection.CollectionActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.trailers.TrailerActivity"
+            android:name=".presentation.trailers.TrailerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.settings.SettingsActivity"
+            android:name=".presentation.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.tvshows.TVShowsActivity"
+            android:name=".presentation.main.tvshows.TVShowsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tv.TvShowDetailActivity"
+            android:name=".presentation.tv.TvShowDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.person.PersonActivity"
+            android:name=".presentation.person.PersonActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.movie.MovieDetailActivity"
+            android:name=".presentation.movie.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.search.SearchActivity"
+            android:name=".presentation.search.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.movies.MainActivity"
+            android:name=".presentation.main.movies.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

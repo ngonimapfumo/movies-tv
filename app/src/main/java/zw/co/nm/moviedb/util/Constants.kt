@@ -23,5 +23,18 @@ object Constants {
     val TRAILER_TYPE
         get() = "trailer_type"
 
+    val PREMIERE
+        get() = 1
+    val THEATRICAL_LIMITED
+        get() = 2
+    val THEATRICAL
+        get() = 3
+    val DIGITAL
+        get() = 4
+    val PHYSICAL
+        get() = 5
+    val TV
+        get() = 6
+
 
 }
