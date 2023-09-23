@@ -14,7 +14,7 @@ import zw.co.nm.moviedb.adapters.CastAdapter
 import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.util.Constants.PREMIERE
+import zw.co.nm.moviedb.util.Constants.THEATRICAL
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
@@ -145,10 +145,14 @@ class MovieDetailActivity : AppCompatActivity() {
                 //todo: get this from interceptor
                 if (result.iso31661 == "US") {
                     result.releaseDates.forEach { movie ->
-                        if (movie.type == PREMIERE) {
-                            //todo: continue here
-                        }
+                        if (movie.type == THEATRICAL) {
+                            if (movie.certification.isEmpty()) {
+                                binding.certifications.text = "N/A"
+                            } else {
+                                binding.certifications.text = movie.certification
+                            }
 
+                        }
                     }
                 }
             }

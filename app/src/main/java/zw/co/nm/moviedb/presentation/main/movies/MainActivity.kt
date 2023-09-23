@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
-            binding.prevB.isEnabled = response.body.page != 1
             binding.progressBar.visibility = GONE
             when (response.data) {
                 null -> {
@@ -43,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 else -> {
+                    binding.prevB.isEnabled = response.body.page != 1
                     val data = response.body.results
                     adapter = MoviesAdapter(data)
                     binding.recyclerView.adapter = adapter

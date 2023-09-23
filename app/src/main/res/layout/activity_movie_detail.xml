@@ -362,15 +362,34 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
                         <TextView
-                            android:id="@+id/textView8"
+                            android:id="@+id/certficationsTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="Cast"
-                            android:textSize="@dimen/info_txt_size"
+                            android:text="@string/certfications"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@+id/genre"
                             app:layout_constraintTop_toBottomOf="@+id/genre" />
+
+
+                        <TextView
+                            android:id="@+id/certifications"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/genre_year_txt"
+                            app:layout_constraintStart_toStartOf="@+id/certficationsTextView"
+                            app:layout_constraintTop_toBottomOf="@+id/certficationsTextView" />
+
+                        <TextView
+                            android:layout_marginTop="15dp"
+                            android:id="@+id/textView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cast"
+                            android:textSize="@dimen/info_txt_size"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/certifications"
+                            app:layout_constraintTop_toBottomOf="@+id/certifications" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/castRecyclerView"
