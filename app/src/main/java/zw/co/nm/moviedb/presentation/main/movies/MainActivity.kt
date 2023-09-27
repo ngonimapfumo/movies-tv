@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //  AppCompatDelegate.setDefaultNightMode(ConfigStore.getInt(this, "THEME"))
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->

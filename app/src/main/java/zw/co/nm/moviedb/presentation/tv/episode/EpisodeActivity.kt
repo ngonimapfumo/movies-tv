@@ -54,7 +54,12 @@ class EpisodeActivity : AppCompatActivity() {
                         .placeholder(R.drawable.sample_episode)
                         .into(binding.episodePoster)
                     binding.episodeName.text = episode.name
-                    binding.episodeOverView.text = episode.overview
+                    if (episode.overview.isEmpty()) {
+                        binding.episodeOverView.text = "No information available"
+                    } else {
+                        binding.episodeOverView.text = episode.overview
+                    }
+
 
                     binding.guestsRecycler.layoutManager = LinearLayoutManager(
                         this@EpisodeActivity,
