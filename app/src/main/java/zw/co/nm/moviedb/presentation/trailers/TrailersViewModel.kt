@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 
 class TrailersViewModel(application: Application) :
     AndroidViewModel(application) {
@@ -15,13 +14,13 @@ class TrailersViewModel(application: Application) :
     private val trailersRepo = TrailersRepo()
 
     private val _getTrailers =
-        MutableLiveData<Response<GetTrailersResponse>>()
-    val getTrailers: LiveData<Response<GetTrailersResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse>>()
+    val getTrailers: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse>> =
         _getTrailers
 
     private val _getTVTrailers =
-        MutableLiveData<Response<GetTrailersResponse>>()
-    val getTVTrailers: LiveData<Response<GetTrailersResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse>>()
+    val getTVTrailers: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse>> =
         _getTrailers
 
     fun getTrailers(movieId: Int) {

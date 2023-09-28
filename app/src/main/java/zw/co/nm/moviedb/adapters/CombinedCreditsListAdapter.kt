@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class CombinedCreditsListAdapter(private var data: List<GetCombinedCreditsResponse.Cast>) :
+class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCombinedCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null

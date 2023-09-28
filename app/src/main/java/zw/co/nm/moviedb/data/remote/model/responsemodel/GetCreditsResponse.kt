@@ -1,13 +1,13 @@
-package zw.co.nm.moviedb.data.remote.networkmodel
+package zw.co.nm.moviedb.data.remote.model.responsemodel
 
 
 import com.google.gson.annotations.SerializedName
 
 data class GetCreditsResponse(
     @SerializedName("cast")
-    val cast: List<Cast>,
+    val cast: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCreditsResponse.Cast>,
     @SerializedName("crew")
-    val crew: List<Crew>,
+    val crew: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCreditsResponse.Crew>,
     @SerializedName("id")
     val id: Int
 ) {

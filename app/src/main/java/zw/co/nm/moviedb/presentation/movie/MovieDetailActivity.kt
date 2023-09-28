@@ -15,6 +15,7 @@ import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
+import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
@@ -110,11 +111,16 @@ class MovieDetailActivity : AppCompatActivity() {
                     .replace("\\[".toRegex(), "").replace("\\]".toRegex(), "")
 
             }
-            movie.productionCompanies.forEach { productionCompany ->
-                productionCompanies!!.add(productionCompany.name)
-                binding.prodCompany.text = productionCompanies.toString()
-                    .replace("\\[".toRegex(), "").replace("\\]".toRegex(), "")
+            if (movie.productionCompanies.isEmpty()) {
+                binding.prodCompany.text = "n/a"
+            } else {
+                movie.productionCompanies.forEach { productionCompany ->
+                    productionCompanies!!.add(productionCompany.name)
+                    binding.prodCompany.text = productionCompanies.toString()
+                        .replace("\\[".toRegex(), "").replace("\\]".toRegex(), "")
+                }
             }
+
             binding.movieRatingTxt.text = buildString {
                 append((movie.voteAverage * 10).toInt().toString())
                 append("%")
@@ -145,9 +151,12 @@ class MovieDetailActivity : AppCompatActivity() {
                 //todo: get this from interceptor
                 if (result.iso31661 == "US") {
                     result.releaseDates.forEach { movie ->
-                        if (movie.type == THEATRICAL) {
+                        //  Toast.makeText(this, movie.type.toString(), Toast.LENGTH_SHORT).show()
+                        if (movie.type == THEATRICAL ||
+                            movie.type == THEATRICAL_LIMITED
+                        ) {
                             if (movie.certification.isEmpty()) {
-                                binding.certifications.text = "N/A"
+                                binding.certifications.text = "n/a"
                             } else {
                                 binding.certifications.text = movie.certification
                             }

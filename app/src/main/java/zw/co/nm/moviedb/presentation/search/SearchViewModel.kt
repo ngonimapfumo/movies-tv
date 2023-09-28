@@ -8,15 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
 
 class SearchViewModel(application: Application) : AndroidViewModel(application) {
     private val searchRepo = SearchRepo(application)
     var page: Int = 1
 
     private val _searchMulti =
-        MutableLiveData<Response<SearchMultiResponse>>()
-    val searchMulti: LiveData<Response<SearchMultiResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.SearchMultiResponse>>()
+    val searchMulti: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.SearchMultiResponse>> =
         _searchMulti
 
     fun searchMulti(query: String) {

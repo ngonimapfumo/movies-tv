@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
 
 
-class TrailersAdapter(private var data: List<GetTrailersResponse.Result>) :
+class TrailersAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemTrailerBinding? = null

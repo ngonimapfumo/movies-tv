@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.networkmodel
+package zw.co.nm.moviedb.data.remote.model.responsemodel
 
 
 import com.google.gson.annotations.SerializedName

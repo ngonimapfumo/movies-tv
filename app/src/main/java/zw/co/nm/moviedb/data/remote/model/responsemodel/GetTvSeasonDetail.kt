@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.networkmodel
+package zw.co.nm.moviedb.data.remote.model.responsemodel
 
 
 import com.google.gson.annotations.SerializedName
@@ -7,7 +7,7 @@ data class GetTvSeasonDetail(
     @SerializedName("air_date")
     val airDate: String,
     @SerializedName("episodes")
-    val episodes: List<Episode>,
+    val episodes: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail.Episode>,
     val _id: String,
     val id: Int,
     @SerializedName("name")
@@ -25,13 +25,13 @@ data class GetTvSeasonDetail(
         @SerializedName("air_date")
         val airDate: String,
         @SerializedName("crew")
-        val crew: List<Crew>,
+        val crew: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail.Episode.Crew>,
         @SerializedName("episode_number")
         val episodeNumber: Int,
         @SerializedName("episode_type")
         val episodeType: String,
         @SerializedName("guest_stars")
-        val guestStars: List<GuestStar>,
+        val guestStars: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail.Episode.GuestStar>,
         @SerializedName("id")
         val id: Int,
         @SerializedName("name")

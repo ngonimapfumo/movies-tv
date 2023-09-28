@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.data.remote.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTrailersResponse
 import zw.co.nm.moviedb.databinding.ActivityTrailerBinding
 import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
@@ -72,7 +71,7 @@ class TrailerActivity : AppCompatActivity() {
         const val MOVIE_ID_EXTRA: String = "movieId"
     }
 
-    private fun adapter(response: Response<GetTrailersResponse>) {
+    private fun adapter(response: Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse>) {
         if (response.body.results.isEmpty()) {
             binding.noResultLay.visibility = View.VISIBLE
         } else {

@@ -7,20 +7,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCombinedCreditsResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetPersonResponse
 
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
     private val personRepo = PersonRepo()
 
     private val _getPerson =
-        MutableLiveData<Response<GetPersonResponse>>()
-    val getPerson: LiveData<Response<GetPersonResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPersonResponse>>()
+    val getPerson: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPersonResponse>> =
         _getPerson
 
-    private val _getCombinedCreditsResponse = MutableLiveData<Response<GetCombinedCreditsResponse>>()
-    val getCombinedCreditsResponse: LiveData<Response<GetCombinedCreditsResponse>> = _getCombinedCreditsResponse
+    private val _getCombinedCreditsResponse =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCombinedCreditsResponse>>()
+    val getCombinedCreditsResponse: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCombinedCreditsResponse>> =
+        _getCombinedCreditsResponse
 
 
     fun getPerson(personId: Int) {

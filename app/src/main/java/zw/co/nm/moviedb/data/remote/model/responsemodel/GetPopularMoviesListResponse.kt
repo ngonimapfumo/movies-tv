@@ -1,23 +1,19 @@
-package zw.co.nm.moviedb.data.remote.networkmodel
+package zw.co.nm.moviedb.data.remote.model.responsemodel
 
 
 import com.google.gson.annotations.SerializedName
 
-data class GetCollectionDetailResponse(
-    @SerializedName("backdrop_path")
-    val backdropPath: String,
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("overview")
-    val overview: String,
-    @SerializedName("parts")
-    val parts: List<Part>,
-    @SerializedName("poster_path")
-    val posterPath: String
+data class GetPopularMoviesListResponse(
+    @SerializedName("page")
+    val page: Int,
+    @SerializedName("results")
+    val results: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularMoviesListResponse.Result>,
+    @SerializedName("total_pages")
+    val totalPages: Int,
+    @SerializedName("total_results")
+    val totalResults: Int
 ) {
-    data class Part(
+    data class Result(
         @SerializedName("adult")
         val adult: Boolean,
         @SerializedName("backdrop_path")
@@ -26,8 +22,6 @@ data class GetCollectionDetailResponse(
         val genreIds: List<Int>,
         @SerializedName("id")
         val id: Int,
-        @SerializedName("media_type")
-        val mediaType: String,
         @SerializedName("original_language")
         val originalLanguage: String,
         @SerializedName("original_title")

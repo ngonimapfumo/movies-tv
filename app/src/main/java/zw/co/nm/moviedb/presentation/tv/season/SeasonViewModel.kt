@@ -7,13 +7,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
 
 class SeasonViewModel(application: Application) : AndroidViewModel(application) {
     private val seasonRepo = SeasonRepo()
 
-    private val _getSeasonDetail = MutableLiveData<Response<GetTvSeasonDetail>>()
-    val getSeasonDetail: LiveData<Response<GetTvSeasonDetail>> = _getSeasonDetail
+    private val _getSeasonDetail =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail>>()
+    val getSeasonDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail>> =
+        _getSeasonDetail
 
     fun getSeasonDetail(tvShowId: Int, season: Int) {
         viewModelScope.launch {

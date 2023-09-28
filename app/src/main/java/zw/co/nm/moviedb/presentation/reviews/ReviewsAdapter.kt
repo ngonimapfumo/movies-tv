@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import zw.co.nm.moviedb.data.remote.networkmodel.GetReviewsResponse
 import zw.co.nm.moviedb.databinding.ItemReviewDetailBinding
 import java.time.OffsetDateTime
 import java.time.format.TextStyle
 import java.util.Locale
 
-class ReviewsAdapter(private var data: List<GetReviewsResponse.Result>) :
+class ReviewsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemReviewDetailBinding? = null

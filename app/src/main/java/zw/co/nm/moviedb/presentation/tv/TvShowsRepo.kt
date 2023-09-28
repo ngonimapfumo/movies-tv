@@ -2,26 +2,28 @@ package zw.co.nm.moviedb.presentation.tv
 
 import zw.co.nm.moviedb.data.remote.NetworkManager
 import zw.co.nm.moviedb.data.remote.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetEpisodeDetailResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTVCreditsResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTVShowDetailResponse
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class TvShowsRepo {
-    suspend fun getPopularTvShows(page: Int): Response<GetPopularTVSeriesListResponse> =
+    suspend fun getPopularTvShows(page: Int): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularTVSeriesListResponse> =
         apiCall { NetworkManager.tvShowService.getPopularTvShows(page) }
 
-    suspend fun getTvShowDetails(showId: Int): Response<GetTVShowDetailResponse> =
+    suspend fun getTvShowDetails(showId: Int): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVShowDetailResponse> =
         apiCall { NetworkManager.tvShowService.getTvShowDetails(showId) }
 
-    suspend fun getTvCredits(path: Int): Response<GetTVCreditsResponse> =
+    suspend fun getTvCredits(path: Int): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVCreditsResponse> =
         apiCall { NetworkManager.tvShowService.getTvCredits(path) }
 
     suspend fun getEpisodeDetail(
         seriesId: Int,
         seasonNumber: Int,
         episodeNumber: Int
-    ): Response<GetEpisodeDetailResponse> =
-        apiCall { NetworkManager.tvShowService.getEpisodeDetails(seriesId, seasonNumber, episodeNumber) }
+    ): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetEpisodeDetailResponse> =
+        apiCall {
+            NetworkManager.tvShowService.getEpisodeDetails(
+                seriesId,
+                seasonNumber,
+                episodeNumber
+            )
+        }
 }

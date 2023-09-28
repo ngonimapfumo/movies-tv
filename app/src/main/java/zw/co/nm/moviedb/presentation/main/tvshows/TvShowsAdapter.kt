@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class TvShowsAdapter(private var data: List<GetPopularTVSeriesListResponse.Result>) :
+class TvShowsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularTVSeriesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieMainBinding? = null

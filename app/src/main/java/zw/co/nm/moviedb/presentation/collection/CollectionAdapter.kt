@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCollectionDetailResponse
 import zw.co.nm.moviedb.databinding.ItemCollectionDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class CollectionAdapter(private var data: List<GetCollectionDetailResponse.Part>) :
+class CollectionAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCollectionDetailResponse.Part>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemCollectionDetailBinding? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = ItemCollectionDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding =
+            ItemCollectionDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemMovieViewHolder(binding!!)
     }
 

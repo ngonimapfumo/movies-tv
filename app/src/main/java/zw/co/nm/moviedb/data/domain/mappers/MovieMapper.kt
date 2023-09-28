@@ -1,13 +1,12 @@
 package zw.co.nm.moviedb.data.domain.mappers
 
 import zw.co.nm.moviedb.data.domain.models.Movie
-import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 
 object MovieMapper {
 
     private var productionCompany: ArrayList<String>? = arrayListOf()
     private var genre: ArrayList<String>? = arrayListOf()
-    fun buildFrom(response: GetMovieDetailResponse): Movie {
+    fun buildFrom(response: zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse): Movie {
         if (genre!!.isNotEmpty()) {
             genre!!.clear()
         }

@@ -7,11 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.Response
-import zw.co.nm.moviedb.data.remote.networkmodel.GetCreditsResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetReleaseDatesResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
@@ -20,28 +15,28 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     var page: Int = 1
 
     private val _getPopularMovies =
-        MutableLiveData<Response<GetPopularMoviesListResponse>>()
-    val getPopularMovies: LiveData<Response<GetPopularMoviesListResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularMoviesListResponse>>()
+    val getPopularMovies: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularMoviesListResponse>> =
         _getPopularMovies
 
     private val _getMovieDetail =
-        MutableLiveData<Response<GetMovieDetailResponse>?>()
-    val getMovieDetail: LiveData<Response<GetMovieDetailResponse>?> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse>?>()
+    val getMovieDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse>?> =
         _getMovieDetail
 
     private val _getMovieCredits =
-        MutableLiveData<Response<GetCreditsResponse>>()
-    val getMovieCredits: LiveData<Response<GetCreditsResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCreditsResponse>>()
+    val getMovieCredits: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCreditsResponse>> =
         _getMovieCredits
 
     private val _getSimilarMovies =
-        MutableLiveData<Response<GetSimilarMoviesResponse>>()
-    val getSimilarMovies: LiveData<Response<GetSimilarMoviesResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetSimilarMoviesResponse>>()
+    val getSimilarMovies: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetSimilarMoviesResponse>> =
         _getSimilarMovies
 
     private val _getMovieReleaseDates =
-        MutableLiveData<Response<GetReleaseDatesResponse>>()
-    val getMovieReleaseDates: LiveData<Response<GetReleaseDatesResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReleaseDatesResponse>>()
+    val getMovieReleaseDates: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReleaseDatesResponse>> =
         _getMovieReleaseDates
 
     fun getSimilarMoviesList(movieId: Int) {

@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class MoviesAdapter(private var data: List<GetPopularMoviesListResponse.Result>) :
+class MoviesAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularMoviesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieMainBinding? = null

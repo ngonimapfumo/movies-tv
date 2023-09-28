@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.networkmodel
+package zw.co.nm.moviedb.data.remote.model.responsemodel
 
 
 import com.google.gson.annotations.SerializedName
@@ -11,7 +11,7 @@ data class GetEpisodeDetailResponse(
     @SerializedName("episode_number")
     val episodeNumber: Int,
     @SerializedName("guest_stars")
-    val guestStars: List<GuestStar>,
+    val guestStars: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetEpisodeDetailResponse.GuestStar>,
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

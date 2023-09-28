@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.networkmodel.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.databinding.ItemCastBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class GuestCastAdapter(private var data: List<GetEpisodeDetailResponse.GuestStar>) :
+class GuestCastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetEpisodeDetailResponse.GuestStar>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemCastBinding? = null

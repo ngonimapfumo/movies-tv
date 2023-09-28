@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.data.remote.networkmodel.GetTvSeasonDetail
 import zw.co.nm.moviedb.databinding.ItemEpisodeDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class EpisodeAdapter(private var data: List<GetTvSeasonDetail.Episode>) :
+class EpisodeAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail.Episode>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemEpisodeDetailBinding? = null
