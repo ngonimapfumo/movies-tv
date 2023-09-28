@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import zw.co.nm.moviedb.data.remote.Response
 import zw.co.nm.moviedb.data.remote.model.response.CreateSessionResponse
+import zw.co.nm.moviedb.data.remote.util.Response
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
     private val authRepo = AuthRepo()

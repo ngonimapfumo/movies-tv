@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import zw.co.nm.moviedb.data.remote.Response
+import zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse
+import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.databinding.ActivityReviewsBinding
 import zw.co.nm.moviedb.util.Constants.REVIEW_MOVIE
 import zw.co.nm.moviedb.util.Constants.REVIEW_TV
@@ -64,7 +65,7 @@ class ReviewsActivity : AppCompatActivity() {
 
     }
 
-    private fun adapter(response: Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse>) {
+    private fun adapter(response: Response<GetReviewsResponse>) {
         when {
             response.body.results.isEmpty() -> {
                 binding.noResultLay.visibility = View.VISIBLE

@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote
+package zw.co.nm.moviedb.data.remote.util
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

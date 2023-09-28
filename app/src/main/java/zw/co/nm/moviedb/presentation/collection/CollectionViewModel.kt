@@ -6,14 +6,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import zw.co.nm.moviedb.data.remote.Response
+import zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse
+import zw.co.nm.moviedb.data.remote.util.Response
 
 class CollectionViewModel(application: Application) : AndroidViewModel(application) {
     private val collectionRepo = CollectionRepo()
 
     private val _getCollectionDetail =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse>>()
-    val getCollectionDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse>> =
+        MutableLiveData<Response<GetCollectionDetailResponse>>()
+    val getCollectionDetail: LiveData<Response<GetCollectionDetailResponse>> =
         _getCollectionDetail
 
     fun getCollectionDetail(id: Int) {
