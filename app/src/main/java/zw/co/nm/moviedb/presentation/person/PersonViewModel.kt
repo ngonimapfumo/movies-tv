@@ -13,13 +13,13 @@ class PersonViewModel(application: Application) :
     private val personRepo = PersonRepo()
 
     private val _getPerson =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPersonResponse>>()
-    val getPerson: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPersonResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse>>()
+    val getPerson: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse>> =
         _getPerson
 
     private val _getCombinedCreditsResponse =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCombinedCreditsResponse>>()
-    val getCombinedCreditsResponse: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCombinedCreditsResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse>>()
+    val getCombinedCreditsResponse: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse>> =
         _getCombinedCreditsResponse
 
 

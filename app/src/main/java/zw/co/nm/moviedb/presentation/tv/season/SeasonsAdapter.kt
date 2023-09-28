@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class SeasonsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVShowDetailResponse.Season>) :
+class SeasonsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse.Season>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemSeasonDetailBinding? = null

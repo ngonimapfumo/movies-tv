@@ -12,13 +12,13 @@ class ReviewsViewModel(application: Application) : AndroidViewModel(application)
     private val reviewsRepo = ReviewsRepo()
 
     private val _getTvReviews =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse>>()
-    val getTvReviews: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse>>()
+    val getTvReviews: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse>> =
         _getTvReviews
 
     private val _getMovieReviews =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse>>()
-    val getMovieReviews: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse>>()
+    val getMovieReviews: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse>> =
         _getMovieReviews
 
     fun getTvReviews(id: Int) {

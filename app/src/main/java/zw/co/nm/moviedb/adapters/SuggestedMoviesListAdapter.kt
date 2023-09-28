@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.util.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class SuggestedMoviesListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetSimilarMoviesResponse.Result>) :
+class SuggestedMoviesListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null

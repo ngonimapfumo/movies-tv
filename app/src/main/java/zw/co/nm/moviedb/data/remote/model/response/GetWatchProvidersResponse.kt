@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.model.responsemodel
+package zw.co.nm.moviedb.data.remote.model.response
 
 
 import com.google.gson.annotations.SerializedName
@@ -7,193 +7,193 @@ data class GetWatchProvidersResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("results")
-    val results: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results
+    val results: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results
 ) {
     data class Results(
         @SerializedName("AD")
-        val aD: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AD,
+        val aD: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AD,
         @SerializedName("AE")
-        val aE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AE,
+        val aE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AE,
         @SerializedName("AL")
-        val aL: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AL,
+        val aL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL,
         @SerializedName("AO")
-        val aO: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AO,
+        val aO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AO,
         @SerializedName("AR")
-        val aR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AR,
+        val aR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR,
         @SerializedName("AT")
-        val aT: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AT,
+        val aT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT,
         @SerializedName("AU")
-        val aU: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AU,
+        val aU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU,
         @SerializedName("BA")
-        val bA: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BA,
+        val bA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BA,
         @SerializedName("BE")
-        val bE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BE,
+        val bE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE,
         @SerializedName("BF")
-        val bF: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BF,
+        val bF: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BF,
         @SerializedName("BG")
-        val bG: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BG,
+        val bG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG,
         @SerializedName("BO")
-        val bO: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BO,
+        val bO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BO,
         @SerializedName("BR")
-        val bR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BR,
+        val bR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BR,
         @SerializedName("BZ")
-        val bZ: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BZ,
+        val bZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BZ,
         @SerializedName("CA")
-        val cA: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CA,
+        val cA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA,
         @SerializedName("CH")
-        val cH: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CH,
+        val cH: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH,
         @SerializedName("CL")
-        val cL: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CL,
+        val cL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL,
         @SerializedName("CO")
-        val cO: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CO,
+        val cO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO,
         @SerializedName("CR")
-        val cR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CR,
+        val cR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CR,
         @SerializedName("CY")
-        val cY: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CY,
+        val cY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CY,
         @SerializedName("CZ")
-        val cZ: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CZ,
+        val cZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ,
         @SerializedName("DE")
-        val dE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DE,
+        val dE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE,
         @SerializedName("DK")
-        val dK: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DK,
+        val dK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK,
         @SerializedName("DO")
-        val dO: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DO,
+        val dO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DO,
         @SerializedName("EC")
-        val eC: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EC,
+        val eC: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC,
         @SerializedName("EE")
-        val eE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EE,
+        val eE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE,
         @SerializedName("EG")
-        val eG: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EG,
+        val eG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EG,
         @SerializedName("ES")
-        val eS: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ES,
+        val eS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES,
         @SerializedName("FI")
-        val fI: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FI,
+        val fI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI,
         @SerializedName("FJ")
-        val fJ: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FJ,
+        val fJ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FJ,
         @SerializedName("FR")
-        val fR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FR,
+        val fR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR,
         @SerializedName("GB")
-        val gB: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GB,
+        val gB: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB,
         @SerializedName("GR")
-        val gR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GR,
+        val gR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR,
         @SerializedName("GT")
-        val gT: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GT,
+        val gT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GT,
         @SerializedName("HK")
-        val hK: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HK,
+        val hK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HK,
         @SerializedName("HN")
-        val hN: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HN,
+        val hN: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HN,
         @SerializedName("HR")
-        val hR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HR,
+        val hR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR,
         @SerializedName("HU")
-        val hU: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HU,
+        val hU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU,
         @SerializedName("ID")
-        val iD: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ID,
+        val iD: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ID,
         @SerializedName("IE")
-        val iE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IE,
+        val iE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE,
         @SerializedName("IL")
-        val iL: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IL,
+        val iL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IL,
         @SerializedName("IN")
-        val iN: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IN,
+        val iN: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN,
         @SerializedName("IS")
-        val iS: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IS,
+        val iS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS,
         @SerializedName("IT")
-        val iT: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IT,
+        val iT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT,
         @SerializedName("JP")
-        val jP: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.JP,
+        val jP: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP,
         @SerializedName("KR")
-        val kR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.KR,
+        val kR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.KR,
         @SerializedName("LI")
-        val lI: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LI,
+        val lI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LI,
         @SerializedName("LT")
-        val lT: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LT,
+        val lT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT,
         @SerializedName("LU")
-        val lU: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LU,
+        val lU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU,
         @SerializedName("LV")
-        val lV: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LV,
+        val lV: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV,
         @SerializedName("MD")
-        val mD: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MD,
+        val mD: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MD,
         @SerializedName("ME")
-        val mE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ME,
+        val mE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ME,
         @SerializedName("MK")
-        val mK: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MK,
+        val mK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MK,
         @SerializedName("MT")
-        val mT: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MT,
+        val mT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT,
         @SerializedName("MX")
-        val mX: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MX,
+        val mX: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MX,
         @SerializedName("MY")
-        val mY: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MY,
+        val mY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MY,
         @SerializedName("NE")
-        val nE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NE,
+        val nE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NE,
         @SerializedName("NI")
-        val nI: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NI,
+        val nI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NI,
         @SerializedName("NL")
-        val nL: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NL,
+        val nL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL,
         @SerializedName("NO")
-        val nO: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NO,
+        val nO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO,
         @SerializedName("NZ")
-        val nZ: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NZ,
+        val nZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ,
         @SerializedName("PA")
-        val pA: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PA,
+        val pA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PA,
         @SerializedName("PE")
-        val pE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PE,
+        val pE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE,
         @SerializedName("PH")
-        val pH: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PH,
+        val pH: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PH,
         @SerializedName("PL")
-        val pL: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PL,
+        val pL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL,
         @SerializedName("PT")
-        val pT: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PT,
+        val pT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT,
         @SerializedName("PY")
-        val pY: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PY,
+        val pY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PY,
         @SerializedName("RO")
-        val rO: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RO,
+        val rO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RO,
         @SerializedName("RS")
-        val rS: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RS,
+        val rS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RS,
         @SerializedName("RU")
-        val rU: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RU,
+        val rU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU,
         @SerializedName("SA")
-        val sA: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SA,
+        val sA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SA,
         @SerializedName("SE")
-        val sE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SE,
+        val sE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE,
         @SerializedName("SG")
-        val sG: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SG,
+        val sG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SG,
         @SerializedName("SI")
-        val sI: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SI,
+        val sI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI,
         @SerializedName("SK")
-        val sK: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SK,
+        val sK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK,
         @SerializedName("SM")
-        val sM: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SM,
+        val sM: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SM,
         @SerializedName("SN")
-        val sN: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SN,
+        val sN: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SN,
         @SerializedName("SV")
-        val sV: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SV,
+        val sV: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SV,
         @SerializedName("TH")
-        val tH: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TH,
+        val tH: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TH,
         @SerializedName("TR")
-        val tR: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TR,
+        val tR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR,
         @SerializedName("TW")
-        val tW: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TW,
+        val tW: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TW,
         @SerializedName("TZ")
-        val tZ: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TZ,
+        val tZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TZ,
         @SerializedName("UA")
-        val uA: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UA,
+        val uA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UA,
         @SerializedName("UG")
-        val uG: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UG,
+        val uG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UG,
         @SerializedName("US")
-        val uS: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.US,
+        val uS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US,
         @SerializedName("UY")
-        val uY: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UY,
+        val uY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UY,
         @SerializedName("VE")
-        val vE: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.VE,
+        val vE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE,
         @SerializedName("ZA")
-        val zA: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZA,
+        val zA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA,
         @SerializedName("ZM")
-        val zM: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZM,
+        val zM: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZM,
         @SerializedName("ZW")
-        val zW: zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZW
+        val zW: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZW
     ) {
         data class AD(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AD.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AD.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -211,11 +211,11 @@ data class GetWatchProvidersResponse(
 
         data class AE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AE.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -242,13 +242,13 @@ data class GetWatchProvidersResponse(
 
         data class AL(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AL.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AL.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AL.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -286,11 +286,11 @@ data class GetWatchProvidersResponse(
 
         data class AO(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AO.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AO.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AO.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AO.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -317,13 +317,13 @@ data class GetWatchProvidersResponse(
 
         data class AR(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AR.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AR.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -361,13 +361,13 @@ data class GetWatchProvidersResponse(
 
         data class AT(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AT.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AT.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AT.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -405,13 +405,13 @@ data class GetWatchProvidersResponse(
 
         data class AU(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AU.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AU.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.AU.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -449,7 +449,7 @@ data class GetWatchProvidersResponse(
 
         data class BA(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BA.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BA.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -467,13 +467,13 @@ data class GetWatchProvidersResponse(
 
         data class BE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -511,11 +511,11 @@ data class GetWatchProvidersResponse(
 
         data class BF(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BF.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BF.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BF.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BF.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -542,13 +542,13 @@ data class GetWatchProvidersResponse(
 
         data class BG(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BG.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BG.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BG.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -586,7 +586,7 @@ data class GetWatchProvidersResponse(
 
         data class BO(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BO.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BO.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -604,7 +604,7 @@ data class GetWatchProvidersResponse(
 
         data class BR(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BR.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -622,7 +622,7 @@ data class GetWatchProvidersResponse(
 
         data class BZ(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.BZ.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BZ.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -640,13 +640,13 @@ data class GetWatchProvidersResponse(
 
         data class CA(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CA.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CA.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CA.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -684,13 +684,13 @@ data class GetWatchProvidersResponse(
 
         data class CH(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CH.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CH.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CH.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -728,13 +728,13 @@ data class GetWatchProvidersResponse(
 
         data class CL(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CL.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CL.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CL.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -772,13 +772,13 @@ data class GetWatchProvidersResponse(
 
         data class CO(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CO.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CO.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CO.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -816,7 +816,7 @@ data class GetWatchProvidersResponse(
 
         data class CR(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CR.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -834,11 +834,11 @@ data class GetWatchProvidersResponse(
 
         data class CY(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CY.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CY.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CY.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CY.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -865,13 +865,13 @@ data class GetWatchProvidersResponse(
 
         data class CZ(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CZ.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CZ.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.CZ.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -909,13 +909,13 @@ data class GetWatchProvidersResponse(
 
         data class DE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -953,13 +953,13 @@ data class GetWatchProvidersResponse(
 
         data class DK(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DK.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DK.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DK.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -997,7 +997,7 @@ data class GetWatchProvidersResponse(
 
         data class DO(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.DO.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DO.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1015,13 +1015,13 @@ data class GetWatchProvidersResponse(
 
         data class EC(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EC.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EC.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EC.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1059,13 +1059,13 @@ data class GetWatchProvidersResponse(
 
         data class EE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1103,11 +1103,11 @@ data class GetWatchProvidersResponse(
 
         data class EG(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EG.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EG.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.EG.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EG.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1134,13 +1134,13 @@ data class GetWatchProvidersResponse(
 
         data class ES(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ES.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ES.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ES.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1178,13 +1178,13 @@ data class GetWatchProvidersResponse(
 
         data class FI(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FI.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FI.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FI.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1222,11 +1222,11 @@ data class GetWatchProvidersResponse(
 
         data class FJ(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FJ.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FJ.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FJ.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FJ.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1253,13 +1253,13 @@ data class GetWatchProvidersResponse(
 
         data class FR(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FR.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.FR.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1297,13 +1297,13 @@ data class GetWatchProvidersResponse(
 
         data class GB(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GB.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GB.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GB.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1341,13 +1341,13 @@ data class GetWatchProvidersResponse(
 
         data class GR(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GR.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GR.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1385,7 +1385,7 @@ data class GetWatchProvidersResponse(
 
         data class GT(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.GT.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GT.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1403,7 +1403,7 @@ data class GetWatchProvidersResponse(
 
         data class HK(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HK.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HK.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1421,7 +1421,7 @@ data class GetWatchProvidersResponse(
 
         data class HN(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HN.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HN.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1439,13 +1439,13 @@ data class GetWatchProvidersResponse(
 
         data class HR(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HR.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HR.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1483,13 +1483,13 @@ data class GetWatchProvidersResponse(
 
         data class HU(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HU.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HU.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.HU.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1527,7 +1527,7 @@ data class GetWatchProvidersResponse(
 
         data class ID(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ID.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ID.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1545,13 +1545,13 @@ data class GetWatchProvidersResponse(
 
         data class IE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1589,11 +1589,11 @@ data class GetWatchProvidersResponse(
 
         data class IL(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IL.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IL.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IL.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IL.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1620,13 +1620,13 @@ data class GetWatchProvidersResponse(
 
         data class IN(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IN.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IN.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IN.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1664,13 +1664,13 @@ data class GetWatchProvidersResponse(
 
         data class IS(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IS.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IS.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IS.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1708,13 +1708,13 @@ data class GetWatchProvidersResponse(
 
         data class IT(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IT.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IT.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.IT.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1752,13 +1752,13 @@ data class GetWatchProvidersResponse(
 
         data class JP(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.JP.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.JP.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.JP.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1796,9 +1796,9 @@ data class GetWatchProvidersResponse(
 
         data class KR(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.KR.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.KR.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.KR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.KR.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1827,7 +1827,7 @@ data class GetWatchProvidersResponse(
 
         data class LI(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LI.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LI.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -1845,13 +1845,13 @@ data class GetWatchProvidersResponse(
 
         data class LT(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LT.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LT.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LT.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1889,13 +1889,13 @@ data class GetWatchProvidersResponse(
 
         data class LU(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LU.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LU.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LU.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1933,13 +1933,13 @@ data class GetWatchProvidersResponse(
 
         data class LV(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LV.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LV.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.LV.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -1977,11 +1977,11 @@ data class GetWatchProvidersResponse(
 
         data class MD(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MD.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MD.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MD.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MD.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2008,7 +2008,7 @@ data class GetWatchProvidersResponse(
 
         data class ME(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ME.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ME.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2026,7 +2026,7 @@ data class GetWatchProvidersResponse(
 
         data class MK(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MK.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MK.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2044,13 +2044,13 @@ data class GetWatchProvidersResponse(
 
         data class MT(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MT.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MT.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MT.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2088,7 +2088,7 @@ data class GetWatchProvidersResponse(
 
         data class MX(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MX.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MX.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2106,7 +2106,7 @@ data class GetWatchProvidersResponse(
 
         data class MY(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.MY.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MY.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2124,11 +2124,11 @@ data class GetWatchProvidersResponse(
 
         data class NE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NE.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2155,7 +2155,7 @@ data class GetWatchProvidersResponse(
 
         data class NI(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NI.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NI.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2173,13 +2173,13 @@ data class GetWatchProvidersResponse(
 
         data class NL(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NL.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NL.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NL.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2217,13 +2217,13 @@ data class GetWatchProvidersResponse(
 
         data class NO(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NO.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NO.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NO.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2261,13 +2261,13 @@ data class GetWatchProvidersResponse(
 
         data class NZ(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NZ.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NZ.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.NZ.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2305,7 +2305,7 @@ data class GetWatchProvidersResponse(
 
         data class PA(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PA.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PA.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2323,13 +2323,13 @@ data class GetWatchProvidersResponse(
 
         data class PE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2367,7 +2367,7 @@ data class GetWatchProvidersResponse(
 
         data class PH(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PH.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PH.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2385,13 +2385,13 @@ data class GetWatchProvidersResponse(
 
         data class PL(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PL.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PL.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PL.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2429,13 +2429,13 @@ data class GetWatchProvidersResponse(
 
         data class PT(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PT.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PT.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PT.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2473,7 +2473,7 @@ data class GetWatchProvidersResponse(
 
         data class PY(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.PY.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PY.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2491,7 +2491,7 @@ data class GetWatchProvidersResponse(
 
         data class RO(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RO.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RO.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2509,7 +2509,7 @@ data class GetWatchProvidersResponse(
 
         data class RS(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RS.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RS.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2527,13 +2527,13 @@ data class GetWatchProvidersResponse(
 
         data class RU(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RU.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RU.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.RU.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2571,11 +2571,11 @@ data class GetWatchProvidersResponse(
 
         data class SA(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SA.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SA.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SA.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SA.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2602,13 +2602,13 @@ data class GetWatchProvidersResponse(
 
         data class SE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2646,7 +2646,7 @@ data class GetWatchProvidersResponse(
 
         data class SG(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SG.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SG.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2664,13 +2664,13 @@ data class GetWatchProvidersResponse(
 
         data class SI(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SI.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SI.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SI.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2708,13 +2708,13 @@ data class GetWatchProvidersResponse(
 
         data class SK(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SK.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SK.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SK.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2752,7 +2752,7 @@ data class GetWatchProvidersResponse(
 
         data class SM(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SM.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SM.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2770,11 +2770,11 @@ data class GetWatchProvidersResponse(
 
         data class SN(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SN.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SN.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SN.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SN.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2801,7 +2801,7 @@ data class GetWatchProvidersResponse(
 
         data class SV(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.SV.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SV.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2819,7 +2819,7 @@ data class GetWatchProvidersResponse(
 
         data class TH(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TH.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TH.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2837,13 +2837,13 @@ data class GetWatchProvidersResponse(
 
         data class TR(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TR.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TR.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TR.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2881,7 +2881,7 @@ data class GetWatchProvidersResponse(
 
         data class TW(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TW.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TW.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -2899,11 +2899,11 @@ data class GetWatchProvidersResponse(
 
         data class TZ(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TZ.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TZ.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.TZ.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TZ.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2930,11 +2930,11 @@ data class GetWatchProvidersResponse(
 
         data class UA(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UA.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UA.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UA.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UA.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2961,11 +2961,11 @@ data class GetWatchProvidersResponse(
 
         data class UG(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UG.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UG.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UG.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UG.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -2992,13 +2992,13 @@ data class GetWatchProvidersResponse(
 
         data class US(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.US.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.US.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.US.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -3036,7 +3036,7 @@ data class GetWatchProvidersResponse(
 
         data class UY(
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.UY.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UY.Flatrate>,
             @SerializedName("link")
             val link: String
         ) {
@@ -3054,13 +3054,13 @@ data class GetWatchProvidersResponse(
 
         data class VE(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.VE.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.VE.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.VE.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -3098,13 +3098,13 @@ data class GetWatchProvidersResponse(
 
         data class ZA(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZA.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA.Buy>,
             @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZA.Flatrate>,
+            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA.Flatrate>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZA.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -3142,11 +3142,11 @@ data class GetWatchProvidersResponse(
 
         data class ZM(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZM.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZM.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZM.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZM.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")
@@ -3173,11 +3173,11 @@ data class GetWatchProvidersResponse(
 
         data class ZW(
             @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZW.Buy>,
+            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZW.Buy>,
             @SerializedName("link")
             val link: String,
             @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetWatchProvidersResponse.Results.ZW.Rent>
+            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZW.Rent>
         ) {
             data class Buy(
                 @SerializedName("display_priority")

@@ -8,7 +8,7 @@ object TVMapper {
     private var productionCompany: ArrayList<String>? = arrayListOf()
     private var seasons: ArrayList<String>? = arrayListOf()
     fun buildFrom(
-        response: zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVShowDetailResponse
+        response: zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
     ): TV {
 
         if (productionCompany!!.isNotEmpty()) {

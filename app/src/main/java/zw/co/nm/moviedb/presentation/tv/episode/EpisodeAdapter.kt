@@ -8,7 +8,7 @@ import zw.co.nm.moviedb.databinding.ItemEpisodeDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class EpisodeAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail.Episode>) :
+class EpisodeAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetTvSeasonDetail.Episode>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemEpisodeDetailBinding? = null

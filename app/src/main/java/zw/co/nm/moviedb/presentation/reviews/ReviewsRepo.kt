@@ -6,9 +6,9 @@ import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class ReviewsRepo {
 
-    suspend fun getTvShowReviews(tvShowId: Int): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse> =
+    suspend fun getTvShowReviews(tvShowId: Int): Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse> =
         apiCall { NetworkManager.tvShowService.getTVReviews(tvShowId) }
 
-    suspend fun getMovieReviews(id: Int): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse> =
+    suspend fun getMovieReviews(id: Int): Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse> =
         apiCall { NetworkManager.movieService.getMovieReviews(id) }
 }

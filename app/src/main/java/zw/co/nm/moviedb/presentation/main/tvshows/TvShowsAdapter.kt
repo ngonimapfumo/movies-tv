@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class TvShowsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularTVSeriesListResponse.Result>) :
+class TvShowsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieMainBinding? = null

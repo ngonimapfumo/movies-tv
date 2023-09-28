@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.databinding.ItemCastBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class CastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCreditsResponse.Cast>) :
+class CastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemCastBinding? = null

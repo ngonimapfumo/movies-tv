@@ -64,7 +64,7 @@ class ReviewsActivity : AppCompatActivity() {
 
     }
 
-    private fun adapter(response: Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse>) {
+    private fun adapter(response: Response<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse>) {
         when {
             response.body.results.isEmpty() -> {
                 binding.noResultLay.visibility = View.VISIBLE

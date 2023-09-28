@@ -8,7 +8,7 @@ class SeasonRepo {
     suspend fun getSeasonDetail(
         tvShowId: Int,
         season: Int
-    ): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail> =
+    ): Response<zw.co.nm.moviedb.data.remote.model.response.GetTvSeasonDetail> =
         GeneralUtil.apiCall { NetworkManager.tvShowService.getTvSeasonDetails(tvShowId, season) }
 
 }

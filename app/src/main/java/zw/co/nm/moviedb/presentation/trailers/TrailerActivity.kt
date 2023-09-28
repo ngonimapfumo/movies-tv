@@ -71,7 +71,7 @@ class TrailerActivity : AppCompatActivity() {
         const val MOVIE_ID_EXTRA: String = "movieId"
     }
 
-    private fun adapter(response: Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse>) {
+    private fun adapter(response: Response<zw.co.nm.moviedb.data.remote.model.response.GetTrailersResponse>) {
         if (response.body.results.isEmpty()) {
             binding.noResultLay.visibility = View.VISIBLE
         } else {

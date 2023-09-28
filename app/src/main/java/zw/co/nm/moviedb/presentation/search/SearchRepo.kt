@@ -11,7 +11,7 @@ class SearchRepo(private val context: Context) {
     suspend fun searchMulti(
         query: String,
         page: Int
-    ): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.SearchMultiResponse> =
+    ): Response<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse> =
         GeneralUtil.apiCall {
             NetworkManager.movieService.searchMulti(
                 query,

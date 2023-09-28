@@ -9,7 +9,7 @@ import java.time.OffsetDateTime
 import java.time.format.TextStyle
 import java.util.Locale
 
-class ReviewsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse.Result>) :
+class ReviewsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemReviewDetailBinding? = null

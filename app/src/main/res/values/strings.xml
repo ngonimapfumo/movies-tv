@@ -64,4 +64,6 @@
     <string name="born">Born</string>
     <string name="about">About\n</string>
     <string name="certfications">Rated</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login">Login</string>
 </resources>

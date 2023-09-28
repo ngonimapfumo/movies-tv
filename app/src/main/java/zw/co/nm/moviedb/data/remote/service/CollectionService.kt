@@ -8,5 +8,5 @@ interface CollectionService {
     @GET("collection/{id}")
     suspend fun getCollectionDetail(
         @Path("id") collectionId: Int
-    ): Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCollectionDetailResponse>
+    ): Response<zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse>
 }

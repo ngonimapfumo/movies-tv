@@ -5,5 +5,5 @@ import zw.co.nm.moviedb.data.remote.Response
 object SmallCache {
 
     val cacheMap =
-        mutableMapOf<Int, Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse>>()
+        mutableMapOf<Int, Response<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse>>()
 }

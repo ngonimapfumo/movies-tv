@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
+import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //  AppCompatDelegate.setDefaultNightMode(ConfigStore.getInt(this, "THEME"))
         setUpView()
         moviesViewModel.getPopularMovies()
         moviesViewModel.getPopularMovies.observe(this) { response ->
@@ -69,6 +69,14 @@ class MainActivity : AppCompatActivity() {
 
                     R.id.drawer_tv -> {
                         startActivity(Intent(this@MainActivity, TVShowsActivity::class.java))
+                    }
+
+                    R.id.drawer_search -> {
+                        startActivity(Intent(this@MainActivity, SearchActivity::class.java))
+                    }
+
+                    R.id.drawer_login -> {
+                        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     }
                 }
                 true

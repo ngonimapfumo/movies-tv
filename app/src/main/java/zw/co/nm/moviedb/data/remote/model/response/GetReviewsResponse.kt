@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.model.responsemodel
+package zw.co.nm.moviedb.data.remote.model.response
 
 
 import com.google.gson.annotations.SerializedName
@@ -9,7 +9,7 @@ data class GetReviewsResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse.Result>,
+    val results: List<zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse.Result>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")
@@ -19,7 +19,7 @@ data class GetReviewsResponse(
         @SerializedName("author")
         val author: String,
         @SerializedName("author_details")
-        val authorDetails: zw.co.nm.moviedb.data.remote.model.responsemodel.GetReviewsResponse.Result.AuthorDetails,
+        val authorDetails: zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse.Result.AuthorDetails,
         @SerializedName("content")
         val content: String,
         @SerializedName("created_at")

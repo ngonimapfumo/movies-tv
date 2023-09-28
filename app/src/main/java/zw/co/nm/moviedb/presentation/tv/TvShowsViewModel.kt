@@ -14,23 +14,23 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
     private val tvShowsRepo = TvShowsRepo()
 
     private val _getPopularShows =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularTVSeriesListResponse>>()
-    val getPopularShows: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularTVSeriesListResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse>>()
+    val getPopularShows: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse>> =
         _getPopularShows
 
     private val _getShowDetails =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVShowDetailResponse>?>()
-    val getShowDetails: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVShowDetailResponse>?> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse>?>()
+    val getShowDetails: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse>?> =
         _getShowDetails
 
     private val _getTvCredits =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVCreditsResponse>?>()
-    val getTvCredits: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTVCreditsResponse>?> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse>?>()
+    val getTvCredits: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse>?> =
         _getTvCredits
 
     private val _getEpisodeDetail =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetEpisodeDetailResponse>?>()
-    val getEpisodeDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetEpisodeDetailResponse>?> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetEpisodeDetailResponse>?>()
+    val getEpisodeDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetEpisodeDetailResponse>?> =
         _getEpisodeDetail
 
     fun getPopularTvShows() {

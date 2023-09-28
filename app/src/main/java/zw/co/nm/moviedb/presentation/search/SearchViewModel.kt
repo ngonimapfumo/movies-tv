@@ -14,8 +14,8 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     var page: Int = 1
 
     private val _searchMulti =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.SearchMultiResponse>>()
-    val searchMulti: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.SearchMultiResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse>>()
+    val searchMulti: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse>> =
         _searchMulti
 
     fun searchMulti(query: String) {

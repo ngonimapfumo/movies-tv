@@ -12,8 +12,8 @@ class CollectionViewModel(application: Application) : AndroidViewModel(applicati
     private val collectionRepo = CollectionRepo()
 
     private val _getCollectionDetail =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCollectionDetailResponse>>()
-    val getCollectionDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCollectionDetailResponse>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse>>()
+    val getCollectionDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse>> =
         _getCollectionDetail
 
     fun getCollectionDetail(id: Int) {

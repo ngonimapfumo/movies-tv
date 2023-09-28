@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.model.responsemodel
+package zw.co.nm.moviedb.data.remote.model.response
 
 
 import com.google.gson.annotations.SerializedName
@@ -7,13 +7,13 @@ data class GetReleaseDatesResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("results")
-    val results: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReleaseDatesResponse.Result>
+    val results: List<zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse.Result>
 ) {
     data class Result(
         @SerializedName("iso_3166_1")
         val iso31661: String,
         @SerializedName("release_dates")
-        val releaseDates: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetReleaseDatesResponse.Result.ReleaseDate>
+        val releaseDates: List<zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse.Result.ReleaseDate>
     ) {
         data class ReleaseDate(
             @SerializedName("certification")

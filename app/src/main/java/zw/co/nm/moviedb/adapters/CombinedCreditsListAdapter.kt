@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCombinedCreditsResponse.Cast>) :
+class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemMovieDetailBinding? = null

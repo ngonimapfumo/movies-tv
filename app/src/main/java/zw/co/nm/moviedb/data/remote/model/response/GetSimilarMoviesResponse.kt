@@ -1,13 +1,13 @@
-package zw.co.nm.moviedb.data.remote.model.responsemodel
+package zw.co.nm.moviedb.data.remote.model.response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class GetPopularMoviesListResponse(
+data class GetSimilarMoviesResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetPopularMoviesListResponse.Result>,
+    val results: List<zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse.Result>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")

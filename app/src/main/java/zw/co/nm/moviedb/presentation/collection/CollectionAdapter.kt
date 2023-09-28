@@ -9,7 +9,7 @@ import zw.co.nm.moviedb.databinding.ItemCollectionDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class CollectionAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetCollectionDetailResponse.Part>) :
+class CollectionAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse.Part>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemCollectionDetailBinding? = null

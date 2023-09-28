@@ -6,7 +6,7 @@ object MovieMapper {
 
     private var productionCompany: ArrayList<String>? = arrayListOf()
     private var genre: ArrayList<String>? = arrayListOf()
-    fun buildFrom(response: zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse): Movie {
+    fun buildFrom(response: zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse): Movie {
         if (genre!!.isNotEmpty()) {
             genre!!.clear()
         }

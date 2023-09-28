@@ -11,7 +11,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
 
 
-class TrailersAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTrailersResponse.Result>) :
+class TrailersAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetTrailersResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemTrailerBinding? = null

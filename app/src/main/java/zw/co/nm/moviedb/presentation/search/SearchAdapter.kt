@@ -10,7 +10,7 @@ import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.responsemodel.SearchMultiResponse.Result>) :
+class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var binding: ItemSearchDetailBinding? = null

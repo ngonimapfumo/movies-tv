@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.data.remote.model.responsemodel
+package zw.co.nm.moviedb.data.remote.model.response
 
 
 import com.google.gson.annotations.SerializedName
@@ -9,11 +9,11 @@ data class GetMovieDetailResponse(
     @SerializedName("backdrop_path")
     val backdropPath: String,
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse.BelongsToCollection,
+    val belongsToCollection: zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.BelongsToCollection,
     @SerializedName("budget")
     val budget: Int,
     @SerializedName("genres")
-    val genres: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse.Genre>,
+    val genres: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.Genre>,
     @SerializedName("homepage")
     val homepage: String,
     @SerializedName("id")
@@ -31,9 +31,9 @@ data class GetMovieDetailResponse(
     @SerializedName("poster_path")
     val posterPath: String,
     @SerializedName("production_companies")
-    val productionCompanies: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse.ProductionCompany>,
+    val productionCompanies: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.ProductionCompany>,
     @SerializedName("production_countries")
-    val productionCountries: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse.ProductionCountry>,
+    val productionCountries: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.ProductionCountry>,
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("revenue")
@@ -41,7 +41,7 @@ data class GetMovieDetailResponse(
     @SerializedName("runtime")
     val runtime: Int,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<zw.co.nm.moviedb.data.remote.model.responsemodel.GetMovieDetailResponse.SpokenLanguage>,
+    val spokenLanguages: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.SpokenLanguage>,
     @SerializedName("status")
     val status: String,
     @SerializedName("tagline")

@@ -12,8 +12,8 @@ class SeasonViewModel(application: Application) : AndroidViewModel(application) 
     private val seasonRepo = SeasonRepo()
 
     private val _getSeasonDetail =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail>>()
-    val getSeasonDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.responsemodel.GetTvSeasonDetail>> =
+        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetTvSeasonDetail>>()
+    val getSeasonDetail: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetTvSeasonDetail>> =
         _getSeasonDetail
 
     fun getSeasonDetail(tvShowId: Int, season: Int) {

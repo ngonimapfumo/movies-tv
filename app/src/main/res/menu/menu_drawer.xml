@@ -15,12 +15,18 @@
         android:title="@string/tv_shows" />
 
     <item
+        android:id="@+id/drawer_search"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/drawer_login"
+        android:title="@string/login" />
+
+    <item
         android:id="@+id/drawer_settings"
         android:title="@string/about" />
 
     <!--todo:: about -> settings />-->
-
-
 
 
 </menu>
