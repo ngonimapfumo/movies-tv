@@ -6,12 +6,11 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
-import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 
 class SearchActivity : AppCompatActivity(),
     androidx.appcompat.widget.SearchView.OnQueryTextListener {
     private lateinit var binding: ActivitySearchBinding
-    private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var searchViewModel: SearchViewModel
     private lateinit var adapter: SearchAdapter
     private var queryStr: String? = null
     private var totalPages: Int? = null
@@ -25,13 +24,12 @@ class SearchActivity : AppCompatActivity(),
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         binding.progressBar2.visibility = VISIBLE
-        if (moviesViewModel.page > 1) {
-            moviesViewModel.resetPages()
+        if (searchViewModel.page > 1) {
+            searchViewModel.resetPages()
         }
 
-        //todo// fix loading progressbar when no network
-        moviesViewModel.searchMulti(query!!)
-        moviesViewModel.searchMulti.observe(this) { response ->
+        searchViewModel.searchMulti(query!!)
+        searchViewModel.searchMulti.observe(this) { response ->
 
             binding.progressBar2.visibility = GONE
             queryStr = query
@@ -39,7 +37,7 @@ class SearchActivity : AppCompatActivity(),
             totalPages = response.body.totalPages
             if (totalPages!! > 1) {
                 binding.constraintLayoutPages.visibility = VISIBLE
-                binding.nextB.isEnabled = moviesViewModel.page != response.body.totalPages
+                binding.nextB.isEnabled = searchViewModel.page != response.body.totalPages
             } else {
                 binding.constraintLayoutPages.visibility = GONE
             }
@@ -71,22 +69,23 @@ class SearchActivity : AppCompatActivity(),
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
+        //  searchViewModel.searchMulti(newText!!)
         return false
     }
 
     private fun setUpView() {
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
-        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.nextB.setOnClickListener {
-            moviesViewModel.page++
-            moviesViewModel.searchMulti(queryStr!!)
+            searchViewModel.page++
+            searchViewModel.searchMulti(queryStr!!)
         }
         binding.prevB.setOnClickListener {
-            if (moviesViewModel.page != 1) {
-                moviesViewModel.page--
-                moviesViewModel.searchMulti(queryStr!!)
+            if (searchViewModel.page != 1) {
+                searchViewModel.page--
+                searchViewModel.searchMulti(queryStr!!)
             } else {
                 return@setOnClickListener
             }

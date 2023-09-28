@@ -8,9 +8,6 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
-import zw.co.nm.moviedb.util.ConfigStore
-import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class MoviesRepo(private val context: Context) {
@@ -28,16 +25,6 @@ class MoviesRepo(private val context: Context) {
     suspend fun getCredits(movieId: Int): Response<GetCreditsResponse> =
         apiCall { NetworkManager.movieService.getCredits(movieId) }
 
-    suspend fun searchMulti(
-        query: String,
-        page: Int
-    ): Response<SearchMultiResponse> = apiCall {
-        NetworkManager.movieService.searchMulti(
-            query,
-            page,
-            ConfigStore.getBool(context, SEARCH_CONFIG_KEY)
-        )
-    }
 
     suspend fun getMovieReleaseDates(movieId: Int): Response<GetReleaseDatesResponse> =
         apiCall { NetworkManager.movieService.getMovieReleaseDates(movieId) }

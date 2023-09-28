@@ -1,7 +1,6 @@
 package zw.co.nm.moviedb.presentation.movie
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,18 +12,12 @@ import zw.co.nm.moviedb.data.remote.networkmodel.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.networkmodel.GetSimilarMoviesResponse
-import zw.co.nm.moviedb.data.remote.networkmodel.SearchMultiResponse
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val moviesRepo = MoviesRepo(application)
     var page: Int = 1
-
-    private val _searchMulti =
-        MutableLiveData<Response<SearchMultiResponse>>()
-    val searchMulti: LiveData<Response<SearchMultiResponse>> =
-        _searchMulti
 
     private val _getPopularMovies =
         MutableLiveData<Response<GetPopularMoviesListResponse>>()
@@ -63,16 +56,6 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun searchMulti(query: String) {
-        viewModelScope.launch {
-            val data = moviesRepo.searchMulti(query, page)
-            if (data.isSuccessful) {
-                _searchMulti.value = moviesRepo.searchMulti(query, page)
-            }else{
-                Toast.makeText(getApplication(), "Something went wrong, please try again later", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
 
     fun getPopularMovies() {
         viewModelScope.launch {
@@ -92,9 +75,5 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-
-    fun resetPages() {
-        page = 1
-    }
 
 }
