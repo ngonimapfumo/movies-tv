@@ -20,25 +20,24 @@
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/imageViewLayout"
+            <ImageView
+                android:id="@+id/backImageView"
+                android:layout_height="302dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient_color">
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="265dp"
-                    android:layout_height="302dp"
-                    android:src="@drawable/sample_people"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                android:layout_width="265dp"
+                android:layout_height="302dp"
+                android:src="@drawable/sample_people_exp"
+                app:layout_constraintBottom_toBottomOf="@+id/backImageView"
+                app:layout_constraintEnd_toEndOf="@+id/backImageView"
+                app:layout_constraintStart_toStartOf="@+id/backImageView"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/bioCard"
@@ -51,10 +50,10 @@
                 app:cardUseCompatPadding="true"
                 app:contentPadding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewLayout"
+                app:layout_constraintEnd_toEndOf="@+id/backImageView"
                 app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintStart_toStartOf="@+id/imageViewLayout"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewLayout"
+                app:layout_constraintStart_toStartOf="@+id/backImageView"
+                app:layout_constraintTop_toBottomOf="@+id/backImageView"
                 app:layout_constraintVertical_bias="0.028">
 
                 <TextView

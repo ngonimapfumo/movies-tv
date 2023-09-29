@@ -65,6 +65,7 @@ class MovieDetailActivity : AppCompatActivity() {
             } else {
                 binding.collectionLayout.visibility = GONE
             }
+            //todo: what the hell was this
             if (movie == null) {
                 Toast.makeText(
                     this@MovieDetailActivity,
@@ -74,7 +75,7 @@ class MovieDetailActivity : AppCompatActivity() {
             }
             Picasso.get().load(IMAGE_BASE_URL + movie.posterPath)
                 .resize(500, 750)
-                .placeholder(R.drawable.sample_cover_large)
+                .placeholder(R.drawable.sample_cover_large_exp)
                 .into(binding.backgroundImm)
             if (movie.tagline.isEmpty()) {
                 binding.movieSummaryTxt.text = ""

@@ -1,18 +1,22 @@
 package zw.co.nm.moviedb.presentation.person
 
+import android.graphics.RenderEffect
+import android.graphics.Shader
+import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CombinedCreditsListAdapter
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import java.time.LocalDate
+
 
 class PersonActivity : AppCompatActivity() {
     lateinit var binding: ActivityPersonBinding
@@ -30,7 +34,8 @@ class PersonActivity : AppCompatActivity() {
                 binding.bioCard.visibility = VISIBLE
                 binding.infoCard.visibility = VISIBLE
                 Picasso.get().load(IMAGE_BASE_URL + response.body()!!.profilePath)
-                    .placeholder(R.drawable.sample_people).into(binding.imageView)
+                    .placeholder(zw.co.nm.moviedb.R.drawable.sample_people_exp)
+                    .into(binding.imageView)
                 if (response.body()!!.biography.isEmpty()) {
                     binding.bioCard.visibility = GONE
                 }
@@ -54,7 +59,21 @@ class PersonActivity : AppCompatActivity() {
                     }
                 }
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    binding.backImageView.setRenderEffect(
+                        RenderEffect.createBlurEffect(
+                            50F, 50F, Shader.TileMode.MIRROR
+                        )
+                    )
+                } else {
+                    binding.backImageView.visibility = INVISIBLE
+                }
+
+
                 binding.birthplaceTxt.text = response.body()!!.placeOfBirth
+                Picasso.get()
+                    .load(IMAGE_BASE_URL + response.body()!!.profilePath)
+                    .into(binding.backImageView)
             }
         }
 
@@ -81,6 +100,7 @@ class PersonActivity : AppCompatActivity() {
     private fun setUpView() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         personId = intent.getIntExtra(PERSON_ID_EXTRA, 0)
+
 
     }
 

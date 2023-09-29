@@ -13,7 +13,6 @@ interface AuthService {
     @GET("authentication/token/new")
     suspend fun getAuthToken(): Response<CreateRequestTokenResponse>
 
-    /*@Body body: RegisterCustomerRequest*/
     @POST("authentication/token/validate_with_login")
     suspend fun createSession(@Body body: SessionLoginRequest): Response<CreateSessionResponse>
 }
