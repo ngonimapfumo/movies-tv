@@ -3,7 +3,7 @@ package zw.co.nm.moviedb.data.remote.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class GetRequestTokenResponse(
+data class CreateRequestTokenResponse(
     @SerializedName("expires_at")
     val expiresAt: String,
     @SerializedName("request_token")

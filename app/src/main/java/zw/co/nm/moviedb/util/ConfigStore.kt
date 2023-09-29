@@ -31,6 +31,17 @@ object ConfigStore {
         editor.commit()
     }
 
+    fun saveStringConfig(context: Context, key: String, strId: String) {
+        val editor = getPrefsEditor(context)
+        editor.putString(key, strId)
+        editor.commit()
+    }
+
+    fun getString(context: Context, key: String): String? {
+        val prefs = getPrefs(context)
+        return prefs.getString(key, "n/a")
+    }
+
     fun getInt(context: Context, key: String): Int {
         val prefs = getPrefs(context)
         return prefs.getInt(key, 0)

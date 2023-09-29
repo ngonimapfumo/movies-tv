@@ -19,9 +19,6 @@
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.MovieDB" />
         <activity
-            android:name=".presentation.videoplayer.ExoPlayerActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.tv.episode.EpisodeActivity"
             android:exported="false" />
         <activity
