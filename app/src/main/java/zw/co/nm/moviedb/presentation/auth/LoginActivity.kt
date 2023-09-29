@@ -10,8 +10,8 @@ import zw.co.nm.moviedb.util.ConfigStore.saveStringConfig
 import zw.co.nm.moviedb.util.Constants.REQ_TOKEN
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
-    lateinit var authViewModel: AuthViewModel
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var authViewModel: AuthViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
