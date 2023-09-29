@@ -5,13 +5,14 @@ import android.graphics.Shader
 import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
-import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CombinedCreditsListAdapter
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
@@ -65,15 +66,17 @@ class PersonActivity : AppCompatActivity() {
                             50F, 50F, Shader.TileMode.MIRROR
                         )
                     )
+                    Picasso.get()
+                        .load(IMAGE_BASE_URL + response.body()!!.profilePath)
+                        .into(binding.backImageView)
                 } else {
-                    binding.backImageView.visibility = INVISIBLE
+                    binding.backImageView.background =
+                        ContextCompat.getDrawable(this, R.drawable.gradient_color)
                 }
 
 
                 binding.birthplaceTxt.text = response.body()!!.placeOfBirth
-                Picasso.get()
-                    .load(IMAGE_BASE_URL + response.body()!!.profilePath)
-                    .into(binding.backImageView)
+
             }
         }
 
