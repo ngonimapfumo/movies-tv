@@ -53,7 +53,8 @@ class CollectionActivity : AppCompatActivity() {
                             .show()
                     }
                     Picasso.get().load(Constants.IMAGE_BASE_URL + data.posterPath)
-                        .placeholder(R.drawable.sample_cover_large).into(binding.collectionPoster)
+                        .placeholder(R.drawable.sample_cover_large_exp)
+                        .into(binding.collectionPoster)
                 }
             }
 

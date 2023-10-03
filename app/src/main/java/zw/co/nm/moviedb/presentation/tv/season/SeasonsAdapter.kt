@@ -25,7 +25,7 @@ class SeasonsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.r
         val imgPath = data[position].posterPath
         binding!!.seasonTxt.text = data[position].name.replace(" ", "\n")
         Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
-            .placeholder(R.drawable.sample_recycler_small)
+            .placeholder(R.drawable.sample_recycler_small_exp)
             .into(binding!!.imageView)
 
         binding!!.imageView.setOnClickListener {

@@ -46,7 +46,7 @@ class TvShowDetailActivity : AppCompatActivity() {
             val tv = it!!.body
             Picasso.get().load(IMAGE_BASE_URL + tv.posterPath)
                 .resize(500, 750)
-                .placeholder(R.drawable.sample_cover_large)
+                .placeholder(R.drawable.sample_cover_large_exp)
                 .into(binding.tvBackgroundImm)
             binding.tvSummaryTxt.text = tv.tagline
             when {

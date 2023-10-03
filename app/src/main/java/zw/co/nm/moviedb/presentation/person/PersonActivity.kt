@@ -37,6 +37,8 @@ class PersonActivity : AppCompatActivity() {
                 null -> {
                     GeneralUtil.actionSnack(binding.root, "Error getting data", "Retry") {
                         personViewModel.getPerson(personId!!)
+                        personViewModel.getCombinedCredits(personId!!)
+
                     }
                 }
 
@@ -97,6 +99,7 @@ class PersonActivity : AppCompatActivity() {
                 null -> {
                     GeneralUtil.actionSnack(binding.root, "Error getting data", "Retry") {
                         personViewModel.getCombinedCredits(personId!!)
+                        personViewModel.getPerson(personId!!)
                     }
                 }
 

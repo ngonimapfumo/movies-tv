@@ -27,10 +27,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/sample_cover_large"
+                android:src="@drawable/sample_cover_large_exp"
+                app:layout_constraintBottom_toTopOf="@+id/ll_suggested"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
 
             <View
                 android:id="@+id/view"
@@ -42,10 +44,10 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/tvTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
                 android:padding="5dp"
@@ -58,10 +60,10 @@
                 tools:text="SpiderMan" />
 
             <LinearLayout
-                android:layout_marginTop="5dp"
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
