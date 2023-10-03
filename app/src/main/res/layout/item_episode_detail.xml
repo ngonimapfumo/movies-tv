@@ -25,7 +25,7 @@
                 android:layout_width="100dp"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sample_episode"
+                android:src="@drawable/sample_episode_exp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +45,7 @@
                 android:id="@+id/textViewEpisodeNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Episode 2"
+                tools:text="Episode 2"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textViewEpisodeName"
                 app:layout_constraintEnd_toEndOf="@+id/textViewEpisodeName"

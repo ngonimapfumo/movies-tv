@@ -6,34 +6,34 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import retrofit2.Response
+import zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse
+import zw.co.nm.moviedb.data.remote.util.Response
 
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
     private val personRepo = PersonRepo()
 
     private val _getPerson =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse>>()
-    val getPerson: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse>> =
+        MutableLiveData<Response<GetPersonResponse>>()
+    val getPerson: LiveData<Response<GetPersonResponse>> =
         _getPerson
 
     private val _getCombinedCreditsResponse =
-        MutableLiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse>>()
-    val getCombinedCreditsResponse: LiveData<Response<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse>> =
+        MutableLiveData<Response<GetCombinedCreditsResponse>>()
+    val getCombinedCreditsResponse: LiveData<Response<GetCombinedCreditsResponse>> =
         _getCombinedCreditsResponse
 
 
     fun getPerson(personId: Int) {
         viewModelScope.launch {
-            val response = personRepo.getPerson(personId)
-            _getPerson.postValue(response)
+            _getPerson.value = personRepo.getPerson(personId)
         }
     }
 
     fun getCombinedCredits(personId: Int) {
         viewModelScope.launch {
-            val response = personRepo.getCombinedCredits(personId)
-            _getCombinedCreditsResponse.postValue(response)
+            _getCombinedCreditsResponse.value = personRepo.getCombinedCredits(personId)
         }
 
     }

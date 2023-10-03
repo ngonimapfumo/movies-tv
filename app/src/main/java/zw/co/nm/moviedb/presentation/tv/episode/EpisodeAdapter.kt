@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemEpisodeDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.PageNavUtils
@@ -26,6 +27,7 @@ class EpisodeAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.r
         binding!!.textViewShortSummary.text = data[position].overview
         binding!!.textViewEpisodeNumber.text = "Episode ${data[position].episodeNumber}"
         Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
+            .placeholder(R.drawable.sample_episode_exp)
             .into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toEpisodePage(

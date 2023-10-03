@@ -51,7 +51,7 @@ class EpisodeActivity : AppCompatActivity() {
                     binding.mainLayout.visibility = VISIBLE
                     Picasso.get()
                         .load(Constants.IMAGE_BASE_URL + episode.stillPath)
-                        .placeholder(R.drawable.sample_episode)
+                        .placeholder(R.drawable.sample_episode_exp)
                         .into(binding.episodePoster)
                     binding.episodeName.text = episode.name
                     if (episode.overview.isEmpty()) {
