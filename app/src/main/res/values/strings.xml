@@ -66,4 +66,5 @@
     <string name="certfications">Rated</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">Login</string>
+    <string name="in_app_update_exception">in-app-update-exception</string>
 </resources>
