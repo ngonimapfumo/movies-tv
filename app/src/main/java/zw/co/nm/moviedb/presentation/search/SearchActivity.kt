@@ -95,7 +95,6 @@ class SearchActivity : AppCompatActivity(),
             }
         }
 
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

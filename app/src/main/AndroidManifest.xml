@@ -17,43 +17,56 @@
             android:name=".presentation.auth.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
+            android:screenOrientation="locked"
             android:theme="@style/Theme.MovieDB" />
         <activity
             android:name=".presentation.tv.episode.EpisodeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.reviews.ReviewsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.tv.season.SeasonActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.collection.CollectionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.trailers.TrailerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.settings.SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.main.tvshows.TVShowsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.tv.TvShowDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.person.PersonActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.movie.MovieDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.search.SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".presentation.main.movies.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
