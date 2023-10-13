@@ -14,7 +14,7 @@ object QueryParamInterceptor : Interceptor {
             .url
             .newBuilder()
             .addQueryParameter("api_key", BuildConfig.API_KEY)
-            .addQueryParameter("language", "en-US")
+            .addQueryParameter("language", "en-UK")
             .build()
         val request: Request = chain.request()
             .newBuilder()

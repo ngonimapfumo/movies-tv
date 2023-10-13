@@ -2,14 +2,26 @@ package zw.co.nm.moviedb.presentation.main.movies
 
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateInfo
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.InstallState
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
@@ -25,6 +37,51 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: MoviesAdapter
     private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var toggle: ActionBarDrawerToggle
+
+    private lateinit var appUpdateManager: AppUpdateManager
+    private var updateAvailable = MutableLiveData<Boolean>().apply {
+        value = false
+    }
+    private var updateInfo: AppUpdateInfo? = null
+    private var updateListener = InstallStateUpdatedListener { state: InstallState ->
+        if (state.installStatus() == InstallStatus.DOWNLOADED) {
+            updateStatusSnack()
+
+        }
+    }
+
+    private fun updateStatusSnack() {
+        try {
+            Snackbar.make(
+                binding.drawerLayout,
+                "An update has just been downloaded",
+                Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction("RESTART") { appUpdateManager.completeUpdate() }
+                .setActionTextColor(Color.parseColor("#ffff4444"))
+                .show()
+        } catch (e: Exception) {
+            Log.e(getString(R.string.in_app_update_exception), "updateStatusSnack: ", e)
+        }
+    }
+
+    private fun checkForUpdate() {
+        appUpdateManager.appUpdateInfo.addOnSuccessListener { update ->
+            if (update.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
+                update.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)
+            ) {
+                updateInfo = update
+                updateAvailable.value = true
+                startUpdate(updateInfo)
+            }
+        }
+    }
+
+    private fun startUpdate(updateInfo: AppUpdateInfo?) {
+        appUpdateManager.startUpdateFlowForResult(updateInfo!!, AppUpdateType.FLEXIBLE, this, 1101)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -82,6 +139,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+        try {
+            appUpdateManager = AppUpdateManagerFactory.create(this)
+            appUpdateManager.registerListener(updateListener)
+            checkForUpdate()
+        } catch (e: Exception) {
+            Log.e("In-app-update-exception", "OnCreate: ", e)
+        }
     }
 
     private fun setUpView() {
@@ -119,6 +184,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        try {
+            appUpdateManager.unregisterListener(updateListener)
+        } catch (e: java.lang.Exception) {
+            Log.e("In-app-update-exception", "OnDestroy: ", e)
         }
     }
 }

@@ -23,16 +23,26 @@ class SearchActivity : AppCompatActivity(),
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
+        /*binding.progressBar2.visibility = VISIBLE
+        if (searchViewModel.page > 1) {
+            searchViewModel.resetPages()
+        }*/
+
+        //   searchViewModel.searchMulti(query!!)
+
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
         binding.progressBar2.visibility = VISIBLE
         if (searchViewModel.page > 1) {
             searchViewModel.resetPages()
         }
-
-        searchViewModel.searchMulti(query!!)
+        searchViewModel.searchMulti(newText!!)
         searchViewModel.searchMulti.observe(this) { response ->
 
             binding.progressBar2.visibility = GONE
-            queryStr = query
+            queryStr = newText
             val data = response.body.results
             totalPages = response.body.totalPages
             if (totalPages!! > 1) {
@@ -42,8 +52,8 @@ class SearchActivity : AppCompatActivity(),
                 binding.constraintLayoutPages.visibility = GONE
             }
 
-            if (response.body.results.isEmpty()) {
-                binding.textView10.animate().apply {
+            if (response.body.results.isEmpty() && queryStr!!.isNotEmpty()) {
+                /*binding.textView10.animate().apply {
                     duration = 1000
                     rotationYBy(360f)
                 }.withEndAction {
@@ -51,8 +61,7 @@ class SearchActivity : AppCompatActivity(),
                         duration = 1000
                         rotationYBy(3600f)
                     }.start()
-                }
-
+                }*/
                 binding.textView14.text = buildString {
                     append("No results found")
                 }
@@ -68,15 +77,10 @@ class SearchActivity : AppCompatActivity(),
         return true
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        //  searchViewModel.searchMulti(newText!!)
-        return false
-    }
-
     private fun setUpView() {
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
-        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.nextB.setOnClickListener {
             searchViewModel.page++
@@ -90,7 +94,6 @@ class SearchActivity : AppCompatActivity(),
                 return@setOnClickListener
             }
         }
-
 
     }
 

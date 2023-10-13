@@ -28,7 +28,6 @@ class TVCastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
         holder.itemView.setOnClickListener {
                 PageNavUtils.toPersonDetailsPage(holder.itemView.context,
                     data[position].id)
-
         }
 
     }
