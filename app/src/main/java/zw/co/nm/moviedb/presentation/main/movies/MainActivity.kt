@@ -24,6 +24,7 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
+import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
@@ -131,9 +132,9 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this@MainActivity, SearchActivity::class.java))
                     }
 
-                    /*R.id.drawer_login -> {
+                    R.id.drawer_login -> {
                         startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    }*/
+                    }
                 }
                 true
             }
