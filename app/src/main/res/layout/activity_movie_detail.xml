@@ -45,7 +45,6 @@
                 android:id="@+id/movieTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/white"
@@ -53,7 +52,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view" />
+                app:layout_constraintTop_toTopOf="@+id/view"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"

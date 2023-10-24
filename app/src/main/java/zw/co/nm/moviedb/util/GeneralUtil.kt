@@ -3,10 +3,12 @@ package zw.co.nm.moviedb.util
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.res.Resources
 import android.view.View
 import android.view.View.OnClickListener
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Response
+
 
 object GeneralUtil {
 
@@ -42,5 +44,12 @@ object GeneralUtil {
             }.show()
     }
 
+    fun getScreenWidth(): Int {
+        return Resources.getSystem().displayMetrics.widthPixels
+    }
+
+    fun dpToPx(dp: Int): Int {
+        return (dp * Resources.getSystem().displayMetrics.density).toInt()
+    }
 
 }

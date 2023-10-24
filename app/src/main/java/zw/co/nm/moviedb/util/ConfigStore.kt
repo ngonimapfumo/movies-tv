@@ -22,7 +22,7 @@ object ConfigStore {
 
     fun getBool(context: Context, key: String): Boolean {
         val prefs = getPrefs(context)
-        return prefs.getBoolean(key, false)
+        return prefs.getBoolean(key, true)
     }
 
     fun saveIntConfig(context: Context, key: String, intId: Int) {
