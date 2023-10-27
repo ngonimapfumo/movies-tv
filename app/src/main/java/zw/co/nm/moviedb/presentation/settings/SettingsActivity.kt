@@ -1,9 +1,12 @@
 package zw.co.nm.moviedb.presentation.settings
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.databinding.ActivitySettingsBinding
+import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
 import zw.co.nm.moviedb.util.ConfigStore.getBool
 import zw.co.nm.moviedb.util.ConfigStore.saveBoolConfig
@@ -11,6 +14,7 @@ import zw.co.nm.moviedb.util.ConfigStore.saveBoolConfig
 class SettingsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySettingsBinding
+    private lateinit var configViewModel: ConfigViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
@@ -28,6 +32,13 @@ class SettingsActivity : AppCompatActivity() {
             } else {
                 saveBoolConfig(this@SettingsActivity, SEARCH_CONFIG_KEY, false)
             }
+        }
+
+        configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
+
+        configViewModel.getTranslations()
+        configViewModel.getTranslations.observe(this){
+            Toast.makeText(this, it.body.toString(), Toast.LENGTH_SHORT).show()
         }
 
         /*binding.switchMaterialTheme.isChecked =
