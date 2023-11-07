@@ -11,13 +11,15 @@ class SearchRepo(private val context: Context) {
 
     suspend fun searchMulti(
         query: String,
-        page: Int
+        page: Int,
+        language: String
     ): Response<SearchMultiResponse> =
         GeneralUtil.apiCall {
             NetworkManager.movieService.searchMulti(
                 query,
                 page,
-                ConfigStore.getBool(context, ConfigStore.SEARCH_CONFIG_KEY)
+                ConfigStore.getBool(context, ConfigStore.SEARCH_CONFIG_KEY),
+                language
             )
         }
 }

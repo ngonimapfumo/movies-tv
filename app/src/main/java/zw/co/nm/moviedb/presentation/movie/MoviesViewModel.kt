@@ -12,11 +12,14 @@ import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.util.Response
+import zw.co.nm.moviedb.util.ConfigStore
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val moviesRepo = MoviesRepo(application)
+    private val moviesRepo = MoviesRepo()
+    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+
     var page: Int = 1
 
     private val _getPopularMovies =
@@ -46,32 +49,32 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
-            _getSimilarMovies.value = moviesRepo.getSimilarMoviesList(movieId)
+            _getSimilarMovies.value = moviesRepo.getSimilarMoviesList(movieId, language!!)
         }
     }
 
     fun getCredits(movieId: Int) {
         viewModelScope.launch {
-            _getMovieCredits.value = moviesRepo.getCredits(movieId)
+            _getMovieCredits.value = moviesRepo.getCredits(movieId, language!!)
         }
     }
 
 
     fun getPopularMovies() {
         viewModelScope.launch {
-            _getPopularMovies.value = moviesRepo.getPopularMovies(page)
+            _getPopularMovies.value = moviesRepo.getPopularMovies(page, language!!)
         }
     }
 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch {
-            _getMovieDetail.value = moviesRepo.getMovieDetails(movieId)
+            _getMovieDetail.value = moviesRepo.getMovieDetails(movieId, language!!)
         }
     }
 
     fun getMovieReleaseDates(movieId: Int) {
         viewModelScope.launch {
-            _getMovieReleaseDates.value = moviesRepo.getMovieReleaseDates(movieId)
+            _getMovieReleaseDates.value = moviesRepo.getMovieReleaseDates(movieId, language!!)
         }
     }
 

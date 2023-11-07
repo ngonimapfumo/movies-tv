@@ -6,7 +6,10 @@ import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class CollectionRepo {
-    suspend fun getCollectionDetail(id: Int): Response<GetCollectionDetailResponse> =
-        apiCall { NetworkManager.collectionService.getCollectionDetail(id) }
+    suspend fun getCollectionDetail(
+        id: Int,
+        language: String
+    ): Response<GetCollectionDetailResponse> =
+        apiCall { NetworkManager.collectionService.getCollectionDetail(id, language) }
 
 }

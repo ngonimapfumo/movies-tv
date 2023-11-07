@@ -9,7 +9,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
@@ -25,7 +24,6 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainBinding
-import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
@@ -197,4 +195,6 @@ class MainActivity : AppCompatActivity() {
             Log.e("In-app-update-exception", "OnDestroy: ", e)
         }
     }
+
+
 }

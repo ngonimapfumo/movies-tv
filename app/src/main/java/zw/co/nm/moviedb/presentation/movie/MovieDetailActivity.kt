@@ -68,6 +68,9 @@ class MovieDetailActivity : AppCompatActivity() {
                     } else {
                         binding.movieSummaryTxt.text = movie.tagline
                     }
+                    if (movie.overview.isEmpty()) {
+                        binding.aboutCard.visibility = GONE
+                    }
                     binding.detailedSummaryTxt.text = movie.overview
                     binding.detailedSummaryTxt.setOnClickListener {
                         AlertDialog.Builder(this@MovieDetailActivity)
@@ -203,7 +206,6 @@ class MovieDetailActivity : AppCompatActivity() {
                         //todo: get this from interceptor
                         if (result.iso31661 == "US") {
                             result.releaseDates.forEach { movie ->
-                                //  Toast.makeText(this, movie.type.toString(), Toast.LENGTH_SHORT).show()
                                 if (movie.type == THEATRICAL ||
                                     movie.type == THEATRICAL_LIMITED
                                 ) {

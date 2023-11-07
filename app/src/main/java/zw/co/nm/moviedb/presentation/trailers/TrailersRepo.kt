@@ -5,10 +5,10 @@ import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class TrailersRepo {
 
-    suspend fun getTrailers(movieId: Int) =
-        apiCall { NetworkManager.movieService.getTrailers(movieId) }
+    suspend fun getTrailers(movieId: Int, language: String) =
+        apiCall { NetworkManager.movieService.getTrailers(movieId, language) }
 
-    suspend fun getTVTrailers(tvShowId: Int) =
-        apiCall { NetworkManager.tvShowService.getTrailers(tvShowId) }
+    suspend fun getTVTrailers(tvShowId: Int, language: String) =
+        apiCall { NetworkManager.tvShowService.getTrailers(tvShowId, language) }
 
 }

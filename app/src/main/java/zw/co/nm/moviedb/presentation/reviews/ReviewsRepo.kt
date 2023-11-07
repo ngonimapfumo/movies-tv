@@ -7,9 +7,9 @@ import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class ReviewsRepo {
 
-    suspend fun getTvShowReviews(tvShowId: Int): Response<GetReviewsResponse> =
-        apiCall { NetworkManager.tvShowService.getTVReviews(tvShowId) }
+    suspend fun getTvShowReviews(tvShowId: Int, language: String): Response<GetReviewsResponse> =
+        apiCall { NetworkManager.tvShowService.getTVReviews(tvShowId, language) }
 
-    suspend fun getMovieReviews(id: Int): Response<GetReviewsResponse> =
-        apiCall { NetworkManager.movieService.getMovieReviews(id) }
+    suspend fun getMovieReviews(id: Int, language: String): Response<GetReviewsResponse> =
+        apiCall { NetworkManager.movieService.getMovieReviews(id, language) }
 }

@@ -9,9 +9,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse
 import zw.co.nm.moviedb.data.remote.util.Response
+import zw.co.nm.moviedb.util.ConfigStore
 
 class SearchViewModel(application: Application) : AndroidViewModel(application) {
     private val searchRepo = SearchRepo(application)
+    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
     var page: Int = 1
 
     private val _searchMulti =
@@ -21,9 +23,9 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
 
     fun searchMulti(query: String) {
         viewModelScope.launch {
-            val data = searchRepo.searchMulti(query, page)
+            val data = searchRepo.searchMulti(query, page, language!!)
             if (data.isSuccessful) {
-                _searchMulti.value = searchRepo.searchMulti(query, page)
+                _searchMulti.value = searchRepo.searchMulti(query, page, language!!)
             } else {
                 Toast.makeText(
                     getApplication(),

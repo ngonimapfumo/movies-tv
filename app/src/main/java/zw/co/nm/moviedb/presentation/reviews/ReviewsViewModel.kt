@@ -8,10 +8,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse
 import zw.co.nm.moviedb.data.remote.util.Response
+import zw.co.nm.moviedb.util.ConfigStore
 
 class ReviewsViewModel(application: Application) : AndroidViewModel(application) {
     private val reviewsRepo = ReviewsRepo()
-
+    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
     private val _getTvReviews =
         MutableLiveData<Response<GetReviewsResponse>>()
     val getTvReviews: LiveData<Response<GetReviewsResponse>> =
@@ -24,13 +25,13 @@ class ReviewsViewModel(application: Application) : AndroidViewModel(application)
 
     fun getTvReviews(id: Int) {
         viewModelScope.launch {
-            _getTvReviews.value = reviewsRepo.getTvShowReviews(id)
+            _getTvReviews.value = reviewsRepo.getTvShowReviews(id, language!!)
         }
     }
 
     fun getMovieReviews(id: Int) {
         viewModelScope.launch {
-            _getMovieReviews.value = reviewsRepo.getMovieReviews(id)
+            _getMovieReviews.value = reviewsRepo.getMovieReviews(id, language!!)
         }
     }
 
