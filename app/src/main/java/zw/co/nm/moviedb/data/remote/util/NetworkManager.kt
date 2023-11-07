@@ -34,8 +34,7 @@ object NetworkManager {
 
     }
     private val client = OkHttpClient.Builder()
-        .addInterceptor(
-            QueryParamInterceptor/*Interceptor { chain: Interceptor.Chain ->
+        .addInterceptor(QueryParamInterceptor)/*Interceptor { chain: Interceptor.Chain ->
             Response
             val url: HttpUrl = chain.request()
                 .url
@@ -49,7 +48,6 @@ object NetworkManager {
                 .build()
             chain.proceed(request)
         }*/
-        )
         .addInterceptor(loggingInterceptor)
         .readTimeout(1, TimeUnit.MINUTES)
         .connectTimeout(1, TimeUnit.MINUTES)

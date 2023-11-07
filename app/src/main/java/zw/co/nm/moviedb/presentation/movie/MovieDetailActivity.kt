@@ -68,6 +68,9 @@ class MovieDetailActivity : AppCompatActivity() {
                     } else {
                         binding.movieSummaryTxt.text = movie.tagline
                     }
+                    if (movie.overview.isEmpty()) {
+                        binding.aboutCard.visibility = GONE
+                    }
                     binding.detailedSummaryTxt.text = movie.overview
                     binding.detailedSummaryTxt.setOnClickListener {
                         AlertDialog.Builder(this@MovieDetailActivity)
