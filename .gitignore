@@ -9,3 +9,4 @@
 .cxx
 local.properties
 /.fleet/run.json
+/app/release
