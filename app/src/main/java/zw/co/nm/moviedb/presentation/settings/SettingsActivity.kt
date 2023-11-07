@@ -21,6 +21,7 @@ class SettingsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySettingsBinding
     private lateinit var configViewModel: ConfigViewModel
+    lateinit var languageName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
@@ -41,6 +42,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
+        /*configViewModel.getCountries()
+        configViewModel.getCountries.observe(this) { countries ->}*/
         configViewModel.getTranslations()
         configViewModel.getTranslations.observe(this) {
             binding.autoComplete.setText(ConfigStore.getString(this, "LANGUAGE_KEY"))
