@@ -42,8 +42,6 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
-        /*configViewModel.getCountries()
-        configViewModel.getCountries.observe(this) { countries ->}*/
         configViewModel.getTranslations()
         configViewModel.getTranslations.observe(this) {
             binding.autoComplete.setText(ConfigStore.getString(this, "LANGUAGE_KEY"))
