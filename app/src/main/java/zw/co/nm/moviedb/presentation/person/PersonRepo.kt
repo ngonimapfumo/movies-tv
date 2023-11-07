@@ -7,9 +7,12 @@ import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class PersonRepo {
-    suspend fun getPerson(query: Int): Response<GetPersonResponse> =
-        apiCall { NetworkManager.movieService.getPerson(query) }
+    suspend fun getPerson(query: Int, language: String): Response<GetPersonResponse> =
+        apiCall { NetworkManager.movieService.getPerson(query, language) }
 
-    suspend fun getCombinedCredits(query: Int): Response<GetCombinedCreditsResponse> =
-        apiCall { NetworkManager.movieService.getCombinedCredits(query) }
+    suspend fun getCombinedCredits(
+        query: Int,
+        language: String
+    ): Response<GetCombinedCreditsResponse> =
+        apiCall { NetworkManager.movieService.getCombinedCredits(query, language) }
 }

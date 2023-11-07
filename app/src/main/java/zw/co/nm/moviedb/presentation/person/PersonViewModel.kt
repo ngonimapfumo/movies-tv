@@ -9,11 +9,12 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse
 import zw.co.nm.moviedb.data.remote.util.Response
+import zw.co.nm.moviedb.util.ConfigStore
 
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
     private val personRepo = PersonRepo()
-
+    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
     private val _getPerson =
         MutableLiveData<Response<GetPersonResponse>>()
     val getPerson: LiveData<Response<GetPersonResponse>> =
@@ -27,13 +28,13 @@ class PersonViewModel(application: Application) :
 
     fun getPerson(personId: Int) {
         viewModelScope.launch {
-            _getPerson.value = personRepo.getPerson(personId)
+            _getPerson.value = personRepo.getPerson(personId, language!!)
         }
     }
 
     fun getCombinedCredits(personId: Int) {
         viewModelScope.launch {
-            _getCombinedCreditsResponse.value = personRepo.getCombinedCredits(personId)
+            _getCombinedCreditsResponse.value = personRepo.getCombinedCredits(personId, language!!)
         }
 
     }

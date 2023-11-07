@@ -11,12 +11,13 @@ import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListRespons
 import zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.util.Response
+import zw.co.nm.moviedb.util.ConfigStore
 
 class TvShowsViewModel(application: Application) : AndroidViewModel(application) {
 
     var page: Int = 1
     private val tvShowsRepo = TvShowsRepo()
-
+    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
     private val _getPopularShows =
         MutableLiveData<Response<GetPopularTVSeriesListResponse>>()
     val getPopularShows: LiveData<Response<GetPopularTVSeriesListResponse>> =
@@ -39,26 +40,26 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
 
     fun getPopularTvShows() {
         viewModelScope.launch {
-            _getPopularShows.value = tvShowsRepo.getPopularTvShows(page)
+            _getPopularShows.value = tvShowsRepo.getPopularTvShows(page, language!!)
         }
     }
 
     fun getShowDetails(showId: Int) {
         viewModelScope.launch {
-            _getShowDetails.value = tvShowsRepo.getTvShowDetails(showId)
+            _getShowDetails.value = tvShowsRepo.getTvShowDetails(showId, language!!)
         }
     }
 
     fun getTvCredits(showId: Int) {
         viewModelScope.launch {
-            _getTvCredits.value = tvShowsRepo.getTvCredits(showId)
+            _getTvCredits.value = tvShowsRepo.getTvCredits(showId, language!!)
         }
     }
 
     fun getEpisodeDetail(seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
         viewModelScope.launch {
             _getEpisodeDetail.value =
-                tvShowsRepo.getEpisodeDetail(seriesId, seasonNumber, episodeNumber)
+                tvShowsRepo.getEpisodeDetail(seriesId, seasonNumber, episodeNumber, language!!)
         }
     }
 
