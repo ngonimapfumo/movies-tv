@@ -1,24 +1,22 @@
 <resources>
-    <string name="app_name"><![CDATA[TV & Film Reviews]]></string>
+    <string name="app_name" translatable="false"><![CDATA[TV & Film Reviews]]></string>
     <string name="search">Search</string>
-    <string name="ss"><![CDATA[<]]></string>
-    <string name="ssw"><![CDATA[>]]></string>
-    <string name="dummy_dummy">Dummy</string>
+    <string name="dummy_dummy" translatable="false">Dummy</string>
     <string name="search_movies_tv_series_actors">Search</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="credits">Credits</string>
@@ -68,4 +66,19 @@
     <string name="login">Login</string>
     <string name="in_app_update_exception">in-app-update-exception</string>
     <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">NOTICE! \nThis product uses the TMDB API but is not endorsed or certified by TMDB.</string>
+    <string name="cast_guest">Cast/Guest</string>
+    <string name="information">Information</string>
+    <string name="prev">prev</string>
+    <string name="reviews">Reviews</string>
+    <string name="trailers">Trailers</string>
+    <string name="suggested_films">Suggested films</string>
+    <string name="production">Production</string>
+    <string name="status">Status</string>
+    <string name="cast">Cast</string>
+    <string name="collection">Collection</string>
+    <string name="name">Name</string>
+    <string name="birth_place">Birth place</string>
+    <string name="known_for">Known for</string>
+    <string name="language_translations">Language translations</string>
+    <string name="episode_preview">episode preview</string>
 </resources>

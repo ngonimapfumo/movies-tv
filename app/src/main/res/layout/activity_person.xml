@@ -27,7 +27,9 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></ImageView>
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
@@ -88,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Information"
+                        android:text="@string/information"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Name"
+                        android:text="@string/name"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView2"
@@ -147,7 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Birth place"
+                        android:text="@string/birth_place"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
@@ -168,7 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Known for"
+                        android:text="@string/known_for"
                         android:textSize="@dimen/info_txt_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView4"
