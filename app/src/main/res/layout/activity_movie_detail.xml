@@ -42,13 +42,14 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
+                android:textAllCaps="true"
                 android:id="@+id/movieTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,9 +94,11 @@
 
 
                 <com.google.android.material.button.MaterialButton
+                    android:layout_height="50dp"
+                    android:ellipsize="end"
                     android:id="@+id/reviewsBtn"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
@@ -109,6 +112,8 @@
                     android:layout_height="wrap_content" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/trailerBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

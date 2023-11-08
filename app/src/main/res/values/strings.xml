@@ -60,7 +60,7 @@
     <string name="no_review">no reviews found</string>
     <string name="air_date">Air date</string>
     <string name="born">Born</string>
-    <string name="about">About\n</string>
+    <string name="about">About</string>
     <string name="certfications">Rated</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">Login</string>
@@ -81,4 +81,9 @@
     <string name="known_for">Known for</string>
     <string name="language_translations">Language translations</string>
     <string name="episode_preview">episode preview</string>
+    <string name="alert">Alert!</string>
+    <string name="language_change_requires_a_restart">language change requires a restart\n\n</string>
+    <string name="translation_warning">please note! some information might not show due to missing language translations.</string>
+    <string name="restart_now">Restart Now</string>
+    <string name="not_now">Not Now</string>
 </resources>

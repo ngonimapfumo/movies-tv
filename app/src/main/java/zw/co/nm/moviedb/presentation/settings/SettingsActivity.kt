@@ -61,17 +61,17 @@ class SettingsActivity : AppCompatActivity() {
                 )
 
                 AlertDialog.Builder(this)
-                    .setTitle("Alert")
+                    .setTitle(getString(zw.co.nm.moviedb.R.string.alert))
                     .setMessage(
-                        "language change requires a restart\n\n" +
-                                "please note! some information might not show due to missing language translations."
+                        getString(zw.co.nm.moviedb.R.string.language_change_requires_a_restart) +
+                                getString(zw.co.nm.moviedb.R.string.translation_warning)
                     )
                     .setPositiveButton(
-                        "Restart Now",
+                        getString(zw.co.nm.moviedb.R.string.restart_now),
                         DialogInterface.OnClickListener { dialog, which ->
                             ProcessPhoenix.triggerRebirth(applicationContext)
                         })
-                    .setNegativeButton("Not Now", null)
+                    .setNegativeButton(getString(zw.co.nm.moviedb.R.string.not_now), null)
                     .show()
             }
 
