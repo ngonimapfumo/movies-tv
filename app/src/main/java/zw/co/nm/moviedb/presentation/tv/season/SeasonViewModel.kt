@@ -12,7 +12,7 @@ import zw.co.nm.moviedb.util.ConfigStore
 
 class SeasonViewModel(application: Application) : AndroidViewModel(application) {
     private val seasonRepo = SeasonRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
     private val _getSeasonDetail =
         MutableLiveData<Response<GetTvSeasonDetail>>()
     val getSeasonDetail: LiveData<Response<GetTvSeasonDetail>> =

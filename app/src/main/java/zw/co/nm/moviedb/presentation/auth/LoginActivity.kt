@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
-            val token = ConfigStore.getString(this, REQ_TOKEN)
+            val token = ConfigStore.getStringLang(this, REQ_TOKEN)
             authViewModel.createSession(
                 binding.userNameField.text.toString(),
                 binding.passwordField.text.toString(), token!!

@@ -12,7 +12,7 @@ import zw.co.nm.moviedb.util.ConfigStore
 
 class ReviewsViewModel(application: Application) : AndroidViewModel(application) {
     private val reviewsRepo = ReviewsRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
     private val _getTvReviews =
         MutableLiveData<Response<GetReviewsResponse>>()
     val getTvReviews: LiveData<Response<GetReviewsResponse>> =

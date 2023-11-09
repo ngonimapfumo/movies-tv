@@ -18,7 +18,7 @@ import zw.co.nm.moviedb.util.ConfigStore
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val moviesRepo = MoviesRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
 
     var page: Int = 1
 

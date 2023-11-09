@@ -12,7 +12,7 @@ import zw.co.nm.moviedb.util.ConfigStore
 
 class CollectionViewModel(application: Application) : AndroidViewModel(application) {
     private val collectionRepo = CollectionRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
     private val _getCollectionDetail =
         MutableLiveData<Response<GetCollectionDetailResponse>>()
     val getCollectionDetail: LiveData<Response<GetCollectionDetailResponse>> =

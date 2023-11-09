@@ -44,7 +44,7 @@ class SettingsActivity : AppCompatActivity() {
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
         configViewModel.getTranslations()
         configViewModel.getTranslations.observe(this) {
-            binding.autoComplete.setText(ConfigStore.getString(this, "LANGUAGE_KEY"))
+            binding.autoComplete.setText(ConfigStore.getStringLang(this, "LANGUAGE_KEY"))
             binding.autoComplete.setAdapter(
                 ArrayAdapter(
                     this,
