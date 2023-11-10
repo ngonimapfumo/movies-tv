@@ -14,7 +14,7 @@ class TrailersViewModel(application: Application) :
     AndroidViewModel(application) {
 
     private val trailersRepo = TrailersRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
     private val _getTrailers =
         MutableLiveData<Response<GetTrailersResponse>>()
     val getTrailers: LiveData<Response<GetTrailersResponse>> =

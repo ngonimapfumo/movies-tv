@@ -14,7 +14,7 @@ import zw.co.nm.moviedb.util.ConfigStore
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
     private val personRepo = PersonRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
     private val _getPerson =
         MutableLiveData<Response<GetPersonResponse>>()
     val getPerson: LiveData<Response<GetPersonResponse>> =

@@ -21,6 +21,7 @@ object NetworkManager {
     private val gson: Gson = GsonBuilder()
         .enableComplexMapKeySerialization()
         .create()
+
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = when {
             BuildConfig.DEBUG -> {

@@ -47,12 +47,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view"/>
+                app:layout_constraintTop_toTopOf="@+id/view" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -69,7 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt" />
+                    android:textSize="@dimen/genre_year_txt"
+                    android:textStyle="bold" />
 
 
                 <TextView
@@ -77,7 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/genre_year_txt" />
+                    android:textSize="@dimen/genre_year_txt"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -93,14 +96,17 @@
 
 
                 <com.google.android.material.button.MaterialButton
+                    android:layout_height="wrap_content"
                     android:id="@+id/reviewsBtn"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_rate_review_24"
-                    android:text="Reviews"
+                    android:maxLines="1"
+                    android:textAlignment="viewStart"
+                    android:text="@string/reviews"
                     android:textColor="@color/black"
                     android:visibility="visible" />
 
@@ -116,7 +122,10 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_play_arrow_24"
-                    android:text="Trailers"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/trailers"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/black" />
 
 
@@ -136,8 +145,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
                 app:layout_constraintStart_toStartOf="@+id/buttonLayout"
-                app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -153,13 +161,13 @@
                 app:layout_constraintVertical_bias="0.5">
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
-                    android:text="Suggested films"
-                    android:textStyle="bold" />
+                    android:text="@string/suggested_films"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
@@ -202,7 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="About"
+                            android:text="@string/about"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -259,7 +267,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Information"
+                            android:text="@string/information"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -272,7 +280,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="Production"
+                            android:text="@string/production"
                             android:textSize="@dimen/info_txt_size"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/textView2"
@@ -320,7 +328,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="Status"
+                            android:text="@string/status"
                             android:textSize="@dimen/info_txt_size"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/textView6"
@@ -380,11 +388,11 @@
                             app:layout_constraintTop_toBottomOf="@+id/certficationsTextView" />
 
                         <TextView
-                            android:layout_marginTop="15dp"
                             android:id="@+id/textView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cast"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/cast"
                             android:textSize="@dimen/info_txt_size"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@+id/certifications"
@@ -414,7 +422,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Collection"
+                                android:text="@string/collection"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toTopOf="@+id/collectionCard"
                                 app:layout_constraintStart_toStartOf="parent"

@@ -37,9 +37,9 @@ object ConfigStore {
         editor.commit()
     }
 
-    fun getString(context: Context, key: String): String? {
+    fun getStringLang(context: Context, key: String): String? {
         val prefs = getPrefs(context)
-        return prefs.getString(key, "n/a")
+        return prefs.getString(key, "en-US")
     }
 
     fun getInt(context: Context, key: String): Int {

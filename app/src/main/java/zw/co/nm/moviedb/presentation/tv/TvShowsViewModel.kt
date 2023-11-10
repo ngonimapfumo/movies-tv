@@ -17,7 +17,7 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
 
     var page: Int = 1
     private val tvShowsRepo = TvShowsRepo()
-    private var language = ConfigStore.getString(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
     private val _getPopularShows =
         MutableLiveData<Response<GetPopularTVSeriesListResponse>>()
     val getPopularShows: LiveData<Response<GetPopularTVSeriesListResponse>> =

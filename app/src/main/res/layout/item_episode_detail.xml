@@ -27,6 +27,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/sample_episode_exp"
                 app:layout_constraintStart_toStartOf="parent"
+                android:contentDescription="@string/episode_preview"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="search_movies_tv_series_actors">Procurar</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="credits">Credits</string>
+    <string name="title_activity_main4">MainActivity4</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="search">Procurar</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="open">Abrir\n</string>
+    <string name="close">Fechar</string>
+    <string name="app_version">Versão</string>
+    <string name="search_options">Configurações</string>
+    <string name="tv_shows">Programas de televisão</string>
+    <string name="movies">Filmes</string>
+    <string name="type">type</string>
+    <string name="site">site</string>
+    <string name="title">title</string>
+    <string name="official">Official</string>
+    <string name="unofficial">Unofficial</string>
+    <string name="q_mark">\?</string>
+    <string name="no_results_found">Nenhum resultado encontrado</string>
+    <string name="try_another_search">Tente outra pesquisa</string>
+    <string name="powered_by">distribuído por</string>
+    <string name="mature_content_txt">você pode obter resultados que contenham maturidade \nou conteúdo sexualmente explícito ativando esta opção!</string>
+    <string name="include_explicit_content_txt">include explicit content</string>
+    <string name="top_rated_movies">Filmes mais bem avaliados</string>
+    <string name="trending_today">Tendências hoje</string>
+    <string name="genres">Gêneros</string>
+    <string name="no_trailer_found">nenhum trailer disponível</string>
+    <string name="user_score">Pontuação do usuário</string>
+    <string name="no_info">Nenhuma informação disponível</string>
+    <string name="season_poster">Cartaz da temporada</string>
+    <string name="next">próxima</string>
+    <string name="starring">Estrelando</string>
+    <string name="no_review">nenhum comentário encontrado</string>
+    <string name="air_date">Data de transmissão</string>
+    <string name="born">Nascer</string>
+    <string name="about">Sobre</string>
+    <string name="certfications">Avaliada</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login">Login</string>
+    <string name="in_app_update_exception">in-app-update-exception</string>
+    <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">PERCEBER! \nTseu produto usa a API TMDB, mas não é endossado ou certificado pelo TMDB.</string>
+    <string name="cast_guest">Cast/Convidada</string>
+    <string name="information">Informações</string>
+    <string name="prev">Anterior</string>
+    <string name="reviews">Avaliações</string>
+    <string name="trailers">Prévios</string>
+    <string name="suggested_films">Filmes sugeridos</string>
+    <string name="production">Produção</string>
+    <string name="status">Status</string>
+    <string name="cast">Cast</string>
+    <string name="collection">Coleção</string>
+    <string name="name">Nome</string>
+    <string name="birth_place">Local de nascimento</string>
+    <string name="known_for">Conhecido por</string>
+    <string name="language_translations">Traduções de idiomas</string>
+    <string name="episode_preview">prévia do episódio</string>
+    <string name="alert">Alerta!</string>
+    <string name="language_change_requires_a_restart">a mudança de idioma requer uma reinicialização\n\n</string>
+    <string name="translation_warning">Observe! algumas informações podem não ser exibidas devido à falta de traduções de idiomas.</string>
+    <string name="restart_now">Reinicie agora</string>
+    <string name="not_now">Agora não</string>
+</resources>
