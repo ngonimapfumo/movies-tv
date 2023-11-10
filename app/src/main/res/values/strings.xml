@@ -86,4 +86,5 @@
     <string name="translation_warning">please note! some information might not show due to missing language translations.</string>
     <string name="restart_now">Restart Now</string>
     <string name="not_now">Not Now</string>
+    <string name="title_activity_cmp_movie" translatable="false">CmpMovieActivity</string>
 </resources>
