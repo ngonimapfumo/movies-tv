@@ -6,6 +6,10 @@ import android.content.DialogInterface
 import android.content.res.Resources
 import android.view.View
 import android.view.View.OnClickListener
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Response
 
@@ -50,6 +54,20 @@ object GeneralUtil {
 
     fun dpToPx(dp: Int): Int {
         return (dp * Resources.getSystem().displayMetrics.density).toInt()
+    }
+
+    @Composable
+    fun gradientBackground(isverticalGrad: Boolean, colors: List<Color>): Brush {
+        val endOffset = if (isverticalGrad) {
+            Offset(0f, Float.POSITIVE_INFINITY)
+        } else {
+            Offset(Float.POSITIVE_INFINITY, 0f)
+        }
+        return Brush.linearGradient(
+            colors = colors,
+            start = Offset.Zero,
+            end = endOffset
+        )
     }
 
 }

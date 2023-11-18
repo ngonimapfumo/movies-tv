@@ -12,13 +12,12 @@ import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
 import zw.co.nm.moviedb.data.remote.util.Response
-import zw.co.nm.moviedb.util.ConfigStore
 
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val moviesRepo = MoviesRepo()
-    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
+    private var language = "en-US"
 
     var page: Int = 1
 
