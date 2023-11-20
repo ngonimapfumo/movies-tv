@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil
 import zw.co.nm.moviedb.util.PageNavUtils
+import java.time.LocalDate
 
 class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse.Result>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -25,19 +27,40 @@ class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var imgPath: Any? = null
 
+        binding!!.textMediaType.text = data[position].mediaType
         when (data[position].mediaType) {
             "person" -> {
                 imgPath = data[position].profilePath
                 binding!!.textViewName.text = data[position].originalName
-
             }
             "movie" -> {
                 imgPath = data[position].posterPath
                 binding!!.textViewName.text = data[position].originalTitle
+                when {
+                    data[position].releaseDate.isEmpty() -> {
+                        binding!!.textViewRelease.text = ""
+                    }
+
+                    else -> {
+                        binding!!.textViewRelease.text =
+                            LocalDate.parse(data[position].releaseDate).year.toString()
+                    }
+                }
             }
+
             "tv" -> {
                 imgPath = data[position].posterPath
                 binding!!.textViewName.text = data[position].originalName
+                when {
+                    data[position].firstAirDate.isEmpty() -> {
+                        binding!!.textViewRelease.text = ""
+                    }
+
+                    else -> {
+                        binding!!.textViewRelease.text =
+                            LocalDate.parse(data[position].firstAirDate).year.toString()
+                    }
+                }
             }
         }
 
@@ -53,11 +76,11 @@ class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
                     if (data[position].adult) {
                         GeneralUtil.generalAlertDialog(
                             holder.itemView.context,
-                            "Warning!",
-                            "Content may contain explicit images!",
-                            "Proceed",
-                            "Cancel",
-                            { _, _ -> proceedToMovie(holder.itemView.context, position)},
+                            holder.itemView.context.getString(R.string.warning),
+                            holder.itemView.context.getString(R.string.content_may_contain_explicit_images),
+                            holder.itemView.context.getString(R.string.proceed),
+                            holder.itemView.context.getString(R.string.cancel),
+                            { _, _ -> proceedToMovie(holder.itemView.context, position) },
                             null
                         )
                     } else
