@@ -1,6 +1,7 @@
 package zw.co.nm.moviedb.presentation.settings
 
 import android.R
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -22,6 +23,8 @@ class SettingsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySettingsBinding
     private lateinit var configViewModel: ConfigViewModel
+
+    @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
