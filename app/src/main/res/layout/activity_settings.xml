@@ -170,7 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="View Mode"
+        android:text="@string/view_mode"
         android:textAllCaps="true"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -208,17 +208,19 @@
                     android:id="@+id/sysDefaultRad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="System default" />
+                    android:text="@string/system_default" />
 
                 <RadioButton
+                    android:id="@+id/lightThemeRad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Light" />
+                    android:text="@string/light" />
 
                 <RadioButton
+                    android:id="@+id/darkThemeRad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dark" />
+                    android:text="@string/dark" />
 
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>

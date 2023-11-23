@@ -2,11 +2,11 @@ package zw.co.nm.moviedb.presentation.settings
 
 import android.R
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.jakewharton.processphoenix.ProcessPhoenix
 import zw.co.nm.moviedb.BuildConfig
@@ -15,6 +15,7 @@ import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
 import zw.co.nm.moviedb.util.ConfigStore.getBool
+import zw.co.nm.moviedb.util.ConfigStore.getInt
 import zw.co.nm.moviedb.util.ConfigStore.saveBoolConfig
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
@@ -80,10 +81,10 @@ class SettingsActivity : AppCompatActivity() {
                                         getString(zw.co.nm.moviedb.R.string.translation_warning)
                             )
                             .setPositiveButton(
-                                getString(zw.co.nm.moviedb.R.string.restart_now),
-                                DialogInterface.OnClickListener { dialog, which ->
-                                    ProcessPhoenix.triggerRebirth(applicationContext)
-                                })
+                                getString(zw.co.nm.moviedb.R.string.restart_now)
+                            ) { _, _ ->
+                                ProcessPhoenix.triggerRebirth(applicationContext)
+                            }
                             .setNegativeButton(getString(zw.co.nm.moviedb.R.string.not_now), null)
                             .show()
                     }
@@ -92,19 +93,54 @@ class SettingsActivity : AppCompatActivity() {
             }
 
         }
-
-        /*binding.switchMaterialTheme.isChecked =
-            AppCompatDelegate.getDefaultNightMode() == getInt(this,"THEME")
-
-        binding.switchMaterialTheme.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                ConfigStore.saveIntConfig(this,"THEME",AppCompatDelegate.MODE_NIGHT_YES)
-               // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                ConfigStore.saveIntConfig(this,"THEME",AppCompatDelegate.MODE_NIGHT_NO)
-             //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        when {
+            AppCompatDelegate.MODE_NIGHT_YES == getInt(this, "THEME") -> {
+                binding.darkThemeRad.isChecked = true
             }
-        }*/
+
+            AppCompatDelegate.MODE_NIGHT_NO == getInt(this, "THEME") -> {
+                binding.lightThemeRad.isChecked = true
+            }
+
+            else -> {
+                binding.sysDefaultRad.isChecked = true
+            }
+        }
+
+
+        binding.radioGroup.apply {
+            setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    zw.co.nm.moviedb.R.id.lightThemeRad -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        ConfigStore.saveIntConfig(
+                            this@SettingsActivity,
+                            "THEME",
+                            AppCompatDelegate.MODE_NIGHT_NO
+                        )
+                    }
+
+                    zw.co.nm.moviedb.R.id.darkThemeRad -> {
+                        ConfigStore.saveIntConfig(
+                            this@SettingsActivity,
+                            "THEME",
+                            AppCompatDelegate.MODE_NIGHT_YES
+                        )
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+
+                    zw.co.nm.moviedb.R.id.sysDefaultRad -> {
+                        ConfigStore.saveIntConfig(
+                            this@SettingsActivity,
+                            "THEME",
+                            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                        )
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    }
+                }
+            }
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -65,7 +65,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">Login</string>
     <string name="in_app_update_exception">in-app-update-exception</string>
-    <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">NOTICE! \nThis product uses the TMDB API but is not endorsed or certified by TMDB.</string>
+    <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">NOTICE! \n\nThis product uses the TMDB API but is NOT endorsed or certified by TMDB.</string>
     <string name="cast_guest">Cast/Guest</string>
     <string name="information">Information</string>
     <string name="prev">prev</string>
@@ -90,4 +90,10 @@
     <string name="content_may_contain_explicit_images">Content may contain explicit images!</string>
     <string name="proceed">Proceed</string>
     <string name="cancel">Cancel</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System default</string>
+    <string name="light">Light</string>
+    <string name="view_mode">View Mode</string>
+    <string name="notice">Notice!</string>
+    <string name="settings">Settings</string>
 </resources>

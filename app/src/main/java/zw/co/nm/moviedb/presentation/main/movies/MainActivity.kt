@@ -10,7 +10,9 @@ import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -28,6 +30,7 @@ import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
+import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
@@ -131,9 +134,13 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this@MainActivity, SearchActivity::class.java))
                     }
 
-                    /*R.id.drawer_login -> {
-                        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    }*/
+                    R.id.drawer_notice -> {
+                        AlertDialog.Builder(this@MainActivity).apply {
+                            setMessage(R.string.notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb)
+                            setPositiveButton("OKAY", null)
+                            show()
+                        }
+                    }
                 }
                 true
             }
@@ -151,6 +158,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpView() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+        AppCompatDelegate.setDefaultNightMode(ConfigStore.getInt(this, "THEME"))
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             moviesViewModel.getPopularMovies()

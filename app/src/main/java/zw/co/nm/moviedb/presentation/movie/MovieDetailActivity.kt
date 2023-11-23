@@ -74,6 +74,7 @@ class MovieDetailActivity : AppCompatActivity() {
                     binding.detailedSummaryTxt.text = movie.overview
                     binding.detailedSummaryTxt.setOnClickListener {
                         AlertDialog.Builder(this@MovieDetailActivity)
+                            .setPositiveButton("OKAY", null)
                             .setMessage(movie.overview)
                             .show()
                     }
