@@ -15,7 +15,7 @@ import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
 import zw.co.nm.moviedb.util.ConfigStore.getBool
-import zw.co.nm.moviedb.util.ConfigStore.getInt
+import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.ConfigStore.saveBoolConfig
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
@@ -94,11 +94,11 @@ class SettingsActivity : AppCompatActivity() {
 
         }
         when {
-            AppCompatDelegate.MODE_NIGHT_YES == getInt(this, "THEME") -> {
+            AppCompatDelegate.MODE_NIGHT_YES == getThemeConfig(this, "THEME") -> {
                 binding.darkThemeRad.isChecked = true
             }
 
-            AppCompatDelegate.MODE_NIGHT_NO == getInt(this, "THEME") -> {
+            AppCompatDelegate.MODE_NIGHT_NO == getThemeConfig(this, "THEME") -> {
                 binding.lightThemeRad.isChecked = true
             }
 

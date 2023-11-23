@@ -46,4 +46,9 @@ object ConfigStore {
         val prefs = getPrefs(context)
         return prefs.getInt(key, 0)
     }
+
+    fun getThemeConfig(context: Context, key: String): Int {
+        val prefs = getPrefs(context)
+        return prefs.getInt(key, -1)
+    }
 }

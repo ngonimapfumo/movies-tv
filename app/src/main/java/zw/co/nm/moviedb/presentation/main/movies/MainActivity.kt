@@ -30,7 +30,7 @@ import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
-import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
@@ -158,7 +158,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpView() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
-        AppCompatDelegate.setDefaultNightMode(ConfigStore.getInt(this, "THEME"))
+        AppCompatDelegate.setDefaultNightMode(getThemeConfig(this, "THEME"))
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             moviesViewModel.getPopularMovies()
