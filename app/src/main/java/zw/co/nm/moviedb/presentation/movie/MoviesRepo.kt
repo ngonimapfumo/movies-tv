@@ -5,6 +5,7 @@ import zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.model.response.NN
 import zw.co.nm.moviedb.data.remote.util.NetworkManager
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
@@ -20,6 +21,9 @@ class MoviesRepo {
 
     suspend fun getMovieDetails(movieId: Int, language: String): Response<GetMovieDetailResponse> =
         apiCall { NetworkManager.movieService.getMovieDetail(movieId, language) }
+
+    suspend fun getNN(movieId: Int, language: String): NN =
+        NetworkManager.movieService.getNN(movieId, language)
 
 
     suspend fun getSimilarMoviesList(

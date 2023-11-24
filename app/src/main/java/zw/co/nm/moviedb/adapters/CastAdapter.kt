@@ -7,7 +7,6 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemCastBinding
 import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.PageNavUtils
 
 class CastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse.Cast>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -25,11 +24,7 @@ class CastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.resp
         binding!!.characterNameTxt.text = data[position].name
         binding!!.characterTxt.text = data[position].character
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.castImgView)
-        holder.itemView.setOnClickListener {
-                PageNavUtils.toPersonDetailsPage(holder.itemView.context,
-                    data[position].id)
 
-        }
 
     }
 

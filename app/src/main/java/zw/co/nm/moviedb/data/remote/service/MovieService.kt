@@ -13,6 +13,12 @@ interface MovieService {
         @Query("language") language: String
     ): Response<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse>
 
+    @GET("movie/{id}")
+    suspend fun getNN(
+        @Path("id") movieId: Int,
+        @Query("language") language: String
+    ): zw.co.nm.moviedb.data.remote.model.response.NN
+
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int,

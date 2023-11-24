@@ -3,7 +3,6 @@ package zw.co.nm.moviedb.presentation.movie.cmp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,28 +32,27 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse
-import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
+import zw.co.nm.moviedb.data.remote.model.response.NN
 import zw.co.nm.moviedb.presentation.movie.cmp.ui.theme.MovieDBTheme
+import zw.co.nm.moviedb.presentation.movie.newViewModel
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil.gradientBackground
 
 
 class CmpMovieActivity : ComponentActivity() {
-    private val viewModel by viewModels<MoviesViewModel>()
-    private var getMovieDetailResponse: GetMovieDetailResponse? = null
+    private lateinit var viewModel: newViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getMovieDetail(2)
-        viewModel.getMovieDetail.observe(this) {
-            getMovieDetailResponse = it!!.body
-        }
-        // moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+        viewModel = ViewModelProvider(this@CmpMovieActivity)[newViewModel::class.java]
+
         setContent {
             MovieDBTheme {
                 // A surface container using the 'background' color from the theme
@@ -62,195 +60,195 @@ class CmpMovieActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    viewModel.getMovieDetail(11, "en-US")
+                    movieDetail(viewModel.movieDetail)
 
-                    movieDetail(getMovieDetailResponse = getMovieDetailResponse!!)
                 }
             }
         }
 
     }
-}
-
-@Composable
-fun movieDetail(getMovieDetailResponse: GetMovieDetailResponse) {
 
 
-    val gradientColorList = listOf(
-        Color(0xFFAF7F6),
-        Color(0xFF000000)
-    )
+    @Composable
+    fun movieDetail(movieDetailResponse: NN) {
+        val gradientColorList = listOf(
+            Color(0xFFAF7F6),
+            Color(0xFF000000)
+        )
 
-    Column(
-        modifier = Modifier.verticalScroll(rememberScrollState())
-    ) {
-        Box(
-            contentAlignment = Alignment.BottomCenter,
-            modifier = Modifier.wrapContentSize()
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState())
         ) {
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(Constants.IMAGE_BASE_URL + getMovieDetailResponse.posterPath)
-                    .crossfade(true)
-                    .build(),
-                placeholder = painterResource(R.drawable.sample_cover_large_exp),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.height(550.dp)
-            )
-            Column(
-                Modifier.background(
-                    gradientBackground(
-                        isverticalGrad = true,
-                        colors = gradientColorList
+            Box(
+                contentAlignment = Alignment.BottomCenter,
+                modifier = Modifier.wrapContentSize()
+            ) {
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(Constants.IMAGE_BASE_URL + movieDetailResponse.posterPath)
+                        .crossfade(true)
+                        .build(),
+                    placeholder = painterResource(R.drawable.sample_cover_large_exp),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(550.dp)
+                )
+                Column(
+                    Modifier.background(
+                        gradientBackground(
+                            isverticalGrad = true,
+                            colors = gradientColorList
+                        )
+                    )
+                ) {
+                    Row {
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                text = movieDetailResponse.title.toString(), modifier = Modifier
+                                    .align(alignment = Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.ExtraBold, fontSize = 18.sp
+
+                            )
+                            Text(
+                                text = movieDetailResponse.releaseDate.toString(),
+                                modifier = Modifier
+                                    .align(alignment = Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.ExtraBold
+                            )
+
+                        }
+                    }
+
+                    Row(
+                        modifier = Modifier.padding(8.dp)
+                    ) {
+                        FilledTonalButton(
+                            onClick = { /*TODO*/ },
+                            Modifier
+                                .weight(1f),
+                            shape = RoundedCornerShape(20),
+                        ) {
+                            Text(text = "Reviews")
+                        }
+                        Spacer(modifier = Modifier.width(15.dp))
+                        FilledTonalButton(
+                            onClick = { /*TODO*/ },
+                            Modifier.weight(1f), shape = RoundedCornerShape(20)
+                        ) {
+                            Text(text = "Previews")
+                        }
+                    }
+
+                    Text(
+                        text = movieDetailResponse.tagline.toString(),
+                        modifier = Modifier
+                            .align(alignment = Alignment.CenterHorizontally)
+                            .padding(5.dp), color = Color.White
+
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                }
+            }
+
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp, 4.dp)
+                        .height(110.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 4.dp
                     )
                 )
-            ) {
-                Row {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            text = "FAST X", modifier = Modifier
-                                .align(alignment = Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.ExtraBold, fontSize = 18.sp
-
-                        )
-                        Text(
-                            text = "2023", modifier = Modifier
-                                .align(alignment = Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.ExtraBold
-                        )
-
-                    }
-                }
-
-                Row(
-                    modifier = Modifier.padding(8.dp)
-                ) {
-                    FilledTonalButton(
-                        onClick = { /*TODO*/ },
-                        Modifier
-                            .weight(1f),
-                        shape = RoundedCornerShape(20),
-                    ) {
-                        Text(text = "Reviews")
-                    }
-                    Spacer(modifier = Modifier.width(15.dp))
-                    FilledTonalButton(
-                        onClick = { /*TODO*/ },
-                        Modifier.weight(1f), shape = RoundedCornerShape(20)
-                    ) {
-                        Text(text = "Previews")
-                    }
-                }
-
-                Text(
-                    text = "The world forever changes.",
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterHorizontally)
-                        .padding(5.dp), color = Color.White
-
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-
-            }
-        }
-
-
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp, 4.dp)
-                    .height(110.dp),
-                shape = RoundedCornerShape(8.dp),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp
-                )
-            )
-            {
-                Text(
-                    text = "About",
-                    modifier = Modifier.padding(5.dp),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "The story of J. Robert Oppenheimer’s role in the development of the atomic bomb during World War II.",
-                    modifier = Modifier.padding(5.dp)
-                )
-            }
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp, 4.dp)
-                    .height(110.dp),
-                shape = RoundedCornerShape(8.dp),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp
-                )
-            )
-            {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                {
                     Text(
-                        text = "Information",
+                        text = "About",
+                        modifier = Modifier.padding(5.dp),
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )
+                    Text(
+                        text = movieDetailResponse.overview.toString(),
+                        modifier = Modifier.padding(5.dp)
+                    )
+                }
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp, 4.dp)
+                        .height(110.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 4.dp
+                    )
+                )
+                {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = "Information",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
 
+                        Text(
+                            text = "Production",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                }
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp, 4.dp)
+                        .height(110.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 4.dp
+                    )
+                )
+                {
+                    Text(text = "Information", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                     Text(
                         text = "Production",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
+                        fontSize = 18.sp
+                    )
+                }
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp, 4.dp)
+                        .height(110.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 4.dp
+                    )
+                )
+                {
+                    Text(text = "Information", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    Text(
+                        text = "Production",
+                        fontSize = 18.sp
                     )
                 }
 
             }
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp, 4.dp)
-                    .height(110.dp),
-                shape = RoundedCornerShape(8.dp),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp
-                )
-            )
-            {
-                Text(text = "Information", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                Text(
-                    text = "Production",
-                    fontSize = 18.sp
-                )
-            }
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp, 4.dp)
-                    .height(110.dp),
-                shape = RoundedCornerShape(8.dp),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp
-                )
-            )
-            {
-                Text(text = "Information", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                Text(
-                    text = "Production",
-                    fontSize = 18.sp
-                )
-            }
+
 
         }
+    }
 
 
+    @Preview(showBackground = true)
+    @Composable
+    fun DefaultPreview() {
+        MovieDBTheme {
+            movieDetail(movieDetailResponse = NN())
+        }
     }
 }
-
-
-/*
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MovieDBTheme {
-        movieDetail()
-    }
-}*/

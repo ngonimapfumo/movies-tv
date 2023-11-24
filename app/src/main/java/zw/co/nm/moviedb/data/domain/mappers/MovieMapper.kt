@@ -1,3 +1,4 @@
+/*
 package zw.co.nm.moviedb.data.domain.mappers
 
 import zw.co.nm.moviedb.data.domain.models.Movie
@@ -48,4 +49,4 @@ object MovieMapper {
         )
     }
 
-}
+}*/
