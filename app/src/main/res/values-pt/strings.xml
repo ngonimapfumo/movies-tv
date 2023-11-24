@@ -53,7 +53,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">Login</string>
     <string name="in_app_update_exception">in-app-update-exception</string>
-    <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">PERCEBER! \nTseu produto usa a API TMDB, mas não é endossado ou certificado pelo TMDB.</string>
+    <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">PERCEBER! \n\nTseu produto usa a API TMDB, mas não é endossado ou certificado pelo TMDB.</string>
     <string name="cast_guest">Cast/Convidada</string>
     <string name="information">Informações</string>
     <string name="prev">Anterior</string>
@@ -74,4 +74,14 @@
     <string name="translation_warning">Observe! algumas informações podem não ser exibidas devido à falta de traduções de idiomas.</string>
     <string name="restart_now">Reinicie agora</string>
     <string name="not_now">Agora não</string>
+    <string name="warning">Warning!</string>
+    <string name="content_may_contain_explicit_images">O conteúdo pode conter imagens explícitas!</string>
+    <string name="proceed">Continuar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">Sistema padrão</string>
+    <string name="light">Luz</string>
+    <string name="view_mode">Modo de visualização</string>
+    <string name="notice">Perceber!</string>
+    <string name="settings">Configurações</string>
 </resources>

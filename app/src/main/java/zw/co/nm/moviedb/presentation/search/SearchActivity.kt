@@ -71,6 +71,7 @@ class SearchActivity : AppCompatActivity(),
                 binding.searchRecycler.visibility = VISIBLE
                 binding.noResultLay.visibility = GONE
             }
+            binding.prevB.isEnabled = response.body.page != 1
             adapter = SearchAdapter(data)
             binding.searchRecycler.adapter = adapter
         }

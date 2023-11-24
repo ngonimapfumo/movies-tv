@@ -24,7 +24,11 @@
 
     <item
         android:id="@+id/drawer_settings"
-        android:title="@string/about" />
+        android:title="@string/settings" />
+
+    <item
+        android:id="@+id/drawer_notice"
+        android:title="@string/notice" />
 
     <!--todo:: about -> settings />-->
 
