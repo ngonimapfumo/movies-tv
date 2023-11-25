@@ -48,7 +48,6 @@ import zw.co.nm.moviedb.util.GeneralUtil.gradientBackground
 
 class CmpMovieActivity : ComponentActivity() {
     private lateinit var viewModel: newViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this@CmpMovieActivity)[newViewModel::class.java]
@@ -72,6 +71,7 @@ class CmpMovieActivity : ComponentActivity() {
 
     @Composable
     fun movieDetail(movieDetailResponse: NN) {
+
         val gradientColorList = listOf(
             Color(0xFFAF7F6),
             Color(0xFF000000)
@@ -107,14 +107,16 @@ class CmpMovieActivity : ComponentActivity() {
                             Text(
                                 text = movieDetailResponse.title.toString(), modifier = Modifier
                                     .align(alignment = Alignment.CenterHorizontally),
-                                fontWeight = FontWeight.ExtraBold, fontSize = 18.sp
+                                fontWeight = FontWeight.ExtraBold, fontSize = 25.sp,
+                                color = Color.White
 
                             )
                             Text(
                                 text = movieDetailResponse.releaseDate.toString(),
                                 modifier = Modifier
                                     .align(alignment = Alignment.CenterHorizontally),
-                                fontWeight = FontWeight.ExtraBold
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color.White
                             )
 
                         }
@@ -127,14 +129,14 @@ class CmpMovieActivity : ComponentActivity() {
                             onClick = { /*TODO*/ },
                             Modifier
                                 .weight(1f),
-                            shape = RoundedCornerShape(20),
+                            shape = RoundedCornerShape(10),
                         ) {
                             Text(text = "Reviews")
                         }
                         Spacer(modifier = Modifier.width(15.dp))
                         FilledTonalButton(
                             onClick = { /*TODO*/ },
-                            Modifier.weight(1f), shape = RoundedCornerShape(20)
+                            Modifier.weight(1f), shape = RoundedCornerShape(10)
                         ) {
                             Text(text = "Previews")
                         }
@@ -157,8 +159,7 @@ class CmpMovieActivity : ComponentActivity() {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp, 4.dp)
-                        .height(110.dp),
+                        .padding(8.dp, 4.dp),
                     shape = RoundedCornerShape(8.dp),
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = 4.dp
@@ -179,8 +180,7 @@ class CmpMovieActivity : ComponentActivity() {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp, 4.dp)
-                        .height(110.dp),
+                        .padding(8.dp, 4.dp),
                     shape = RoundedCornerShape(8.dp),
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = 4.dp
@@ -199,6 +199,7 @@ class CmpMovieActivity : ComponentActivity() {
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold
                         )
+                        ListShower(movieDetailResponse.productionCompanies)
                     }
 
                 }
@@ -240,6 +241,16 @@ class CmpMovieActivity : ComponentActivity() {
             }
 
 
+        }
+    }
+
+    @Composable
+    private fun ListShower(movieDetailResponse: List<NN.ProductionCompany>?) {
+        val prodCompanies = listOf(movieDetailResponse)
+        Column {
+            prodCompanies.forEach { company ->
+                Text(text = company.toString())
+            }
         }
     }
 
