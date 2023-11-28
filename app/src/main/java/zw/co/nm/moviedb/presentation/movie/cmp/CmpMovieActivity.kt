@@ -48,6 +48,7 @@ import zw.co.nm.moviedb.util.GeneralUtil.gradientBackground
 
 class CmpMovieActivity : ComponentActivity() {
     private lateinit var viewModel: newViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this@CmpMovieActivity)[newViewModel::class.java]
@@ -199,7 +200,8 @@ class CmpMovieActivity : ComponentActivity() {
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold
                         )
-                        ListShower(movieDetailResponse.productionCompanies)
+
+                        Text(text = movieDetailResponse.productionCompanies.toString())
                     }
 
                 }
@@ -245,13 +247,19 @@ class CmpMovieActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun ListShower(movieDetailResponse: List<NN.ProductionCompany>?) {
-        val prodCompanies = listOf(movieDetailResponse)
-        Column {
-            prodCompanies.forEach { company ->
-                Text(text = company.toString())
+    private fun ListShower(movieDetailResponse: List<NN.ProductionCompany>) {
+        if (movieDetailResponse != null) {
+            var productionCompanies: ArrayList<String>? = arrayListOf()
+            movieDetailResponse.forEach { company ->
+                productionCompanies!!.add(company.name)
             }
+            Column {
+                Text(text = "zd")
+            }
+        } else {
+            Text(text = "sdkskds")
         }
+
     }
 
 
