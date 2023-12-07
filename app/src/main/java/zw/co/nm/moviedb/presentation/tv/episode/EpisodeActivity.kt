@@ -40,7 +40,7 @@ class EpisodeActivity : AppCompatActivity() {
         tvViewModel.getEpisodeDetail.observe(this) {
             val episode = it!!.body
             //  binding.progressBar4.visibility = GONE
-            when (it!!.data) {
+            when (it.data) {
                 null -> {
                     actionSnack(binding.root, "Error getting data", "Retry") {
                         tvViewModel.getEpisodeDetail(seriesId!!, seasonNumber!!, episodeNumber!!)
