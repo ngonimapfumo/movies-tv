@@ -44,6 +44,12 @@ class SettingsActivity : AppCompatActivity() {
                 saveBoolConfig(this@SettingsActivity, SEARCH_CONFIG_KEY, false)
             }
         }
+        binding.imageView2.setOnClickListener {
+            AlertDialog.Builder(this).apply {
+                setMessage(zw.co.nm.moviedb.R.string.notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb)
+                setPositiveButton("OKAY", null)
+                show()}
+        }
 
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
         configViewModel.getTranslations()
