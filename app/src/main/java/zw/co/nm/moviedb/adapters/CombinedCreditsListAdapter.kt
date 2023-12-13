@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
-import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
 class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse.Cast>) :
@@ -22,20 +22,22 @@ class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.re
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
-        Picasso.get().load(Constants.MED_RES_IMAGE_BASE_URL + imgPath)
-            .resize(270,400)
+        val mediaType = data[position].mediaType
+        val id = data[position].id
+
+        Picasso.get().load(MED_RES_IMAGE_BASE_URL + imgPath)
+            .resize(270, 400)
             .into(binding!!.imageView)
 
         holder.itemView.setOnClickListener {
-            when (data[position].mediaType) {
+            when (mediaType) {
                 "movie" -> {
-                        proceedToMovie(holder.itemView.context,position)
+                    proceedToMovie(holder.itemView.context, position)
                 }
 
                 "tv" -> {
                     PageNavUtils.toTvDetailsPage(
-                        holder.itemView.context,
-                        data[position].id
+                        holder.itemView.context, id
                     )
 
                 }
@@ -48,7 +50,7 @@ class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.re
         return position
     }
 
-    fun proceedToMovie(context: Context, position: Int){
+    private fun proceedToMovie(context: Context, position: Int) {
         PageNavUtils.toMovieDetailsPage(
             context,
             data[position].id
