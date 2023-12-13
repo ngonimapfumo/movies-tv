@@ -27,6 +27,7 @@
         android:title="@string/settings" />
 
     <item
+        android:visible="false"
         android:id="@+id/drawer_notice"
         android:title="@string/notice" />
 
