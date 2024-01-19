@@ -2,6 +2,7 @@ package zw.co.nm.moviedb.presentation.movie
 
 import zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
@@ -37,4 +38,8 @@ class MoviesRepo {
         language: String
     ): Response<GetReleaseDatesResponse> =
         apiCall { NetworkManager.movieService.getMovieReleaseDates(movieId, language) }
+
+    suspend fun getMovieImages(movieId: Int):Response<GetMovieImagesResponse> = apiCall {
+        NetworkManager.movieService.getMovieImages(movieId)
+    }
 }
