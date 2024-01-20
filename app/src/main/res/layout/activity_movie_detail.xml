@@ -96,17 +96,17 @@
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_height="wrap_content"
                     android:id="@+id/reviewsBtn"
                     android:layout_width="0dp"
-                    android:ellipsize="end"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_rate_review_24"
+                    android:ellipsize="end"
                     android:maxLines="1"
-                    android:textAlignment="viewStart"
                     android:text="@string/reviews"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/black"
                     android:visibility="visible" />
 
@@ -297,7 +297,7 @@
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView4"
                             app:layout_constraintTop_toBottomOf="@+id/textView4"
-                            tools:text="Lucasfilm Ltd" />
+                            />
 
                         <TextView
                             android:id="@+id/textView6"
@@ -321,7 +321,7 @@
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView6"
                             app:layout_constraintTop_toBottomOf="@+id/textView6"
-                            tools:text="3" />
+                            />
 
                         <TextView
                             android:id="@+id/textView7"
@@ -345,7 +345,7 @@
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView7"
                             app:layout_constraintTop_toBottomOf="@+id/textView7"
-                            tools:text="8.2" />
+                             />
 
                         <TextView
                             android:id="@+id/textView17"
@@ -406,12 +406,9 @@
                             app:layout_constraintStart_toStartOf="@+id/textView8"
                             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/collectionLayout"
-                            android:layout_width="wrap_content"
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/tv_lay_marginTop_txt"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.013"
@@ -419,58 +416,129 @@
                             app:layout_constraintTop_toBottomOf="@+id/castRecyclerView"
                             app:layout_constraintVertical_bias="0.0">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/collection"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toTopOf="@+id/collectionCard"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.0" />
+                                android:foregroundGravity="center"
+                                android:orientation="horizontal">
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/collectionLayout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/tv_lay_marginTop_txt">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/collection"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toTopOf="@+id/collectionCard"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.0" />
 
 
-                            <androidx.cardview.widget.CardView
+                                    <androidx.cardview.widget.CardView
 
-                                android:id="@+id/collectionCard"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:elevation="15dp"
-                                app:cardCornerRadius="10dp"
-                                app:cardUseCompatPadding="true"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.5">
+                                        android:id="@+id/collectionCard"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:elevation="15dp"
+                                        app:cardCornerRadius="10dp"
+                                        app:cardUseCompatPadding="true"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.5"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.5">
 
-                                <ImageView
-                                    android:id="@+id/collectionImage"
-                                    android:layout_width="500px"
-                                    android:layout_height="281px"
-                                    app:layout_constraintBottom_toTopOf="@+id/collectionName" />
-
-
-                            </androidx.cardview.widget.CardView>
+                                        <ImageView
+                                            android:id="@+id/collectionImage"
+                                            android:layout_width="500px"
+                                            android:layout_height="281px"
+                                            app:layout_constraintBottom_toTopOf="@+id/collectionName" />
 
 
-                            <TextView
-                                android:id="@+id/collectionName"
-                                android:layout_width="85dp"
-                                android:layout_height="wrap_content"
-                                android:textAlignment="center"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="@+id/collectionCard"
-                                app:layout_constraintHorizontal_bias="0.06"
-                                app:layout_constraintStart_toStartOf="@+id/collectionCard"
-                                app:layout_constraintTop_toBottomOf="@+id/collectionCard"
-                                app:layout_constraintVertical_bias="0.0"
-                                tools:text="terminator collection" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
 
 
+                                    <TextView
+                                        android:id="@+id/collectionName"
+                                        android:layout_width="85dp"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="@+id/collectionCard"
+                                        app:layout_constraintHorizontal_bias="0.06"
+                                        app:layout_constraintStart_toStartOf="@+id/collectionCard"
+                                        app:layout_constraintTop_toBottomOf="@+id/collectionCard"
+                                        app:layout_constraintVertical_bias="0.0"
+                                        tools:text="terminator collection" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/postersLayout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/tv_lay_marginTop_txt">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/posters"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toTopOf="@+id/postersCard"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.0" />
+
+
+                                    <androidx.cardview.widget.CardView
+
+                                        android:id="@+id/postersCard"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:elevation="15dp"
+                                        app:cardCornerRadius="10dp"
+                                        app:cardUseCompatPadding="true"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.5"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.5">
+
+                                        <ImageView
+                                            android:id="@+id/postersImage"
+                                            android:layout_width="500px"
+                                            android:layout_height="281px"
+                                            app:layout_constraintBottom_toTopOf="@+id/collectionName" />
+
+
+                                    </androidx.cardview.widget.CardView>
+
+
+                                    <TextView
+                                        android:id="@+id/postersName"
+                                        android:layout_width="85dp"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="@+id/postersCard"
+                                        app:layout_constraintHorizontal_bias="0.06"
+                                        app:layout_constraintStart_toStartOf="@+id/postersCard"
+                                        app:layout_constraintTop_toBottomOf="@+id/postersCard"
+                                        app:layout_constraintVertical_bias="0.0"
+                                        android:text="@string/poster_collection" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>

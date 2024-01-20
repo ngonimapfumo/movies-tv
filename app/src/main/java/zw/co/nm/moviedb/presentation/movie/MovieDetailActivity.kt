@@ -112,7 +112,7 @@ class MovieDetailActivity : AppCompatActivity() {
                         movie.productionCompanies.forEach { productionCompany ->
                             productionCompanies!!.add(productionCompany.name)
                             binding.prodCompany.text = productionCompanies.toString()
-                                .replace("\\[".toRegex(), "").replace("\\]".toRegex(), "")
+                                .replace("\\[".toRegex(), "").replace("]".toRegex(), "")
                         }
                     }
 
@@ -122,9 +122,15 @@ class MovieDetailActivity : AppCompatActivity() {
                         append(" (${movie.voteCount} votes)")
                     }
                     binding.statusTxt.text = movie.status
+
+                    Picasso.get().load(IMAGE_BASE_URL + movie.backdropPath)
+                        .into(binding.postersImage)
+                    binding.postersCard.setOnClickListener {
+                        PageNavUtils.toMoviePostersPage(this, movieId!!)
+                    }
+
                 }
             }
-
 
         }
 
@@ -261,6 +267,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 startActivity(Intent(this, SearchActivity::class.java))
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
