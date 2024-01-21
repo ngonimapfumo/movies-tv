@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".presentation.movie.PostersImagesActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postersRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:listitem="@layout/item_poster_detail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

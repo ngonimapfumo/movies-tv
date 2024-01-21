@@ -60,19 +60,19 @@ object PageNavUtils {
         context!!.startActivity(intent)
     }
 
-    fun toEpisodePage(context: Context?, seriesId: Int,seasonNumber:Int,episodeNumber:Int) {
+    fun toEpisodePage(context: Context?, seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
         val extrasBundle = Bundle()
-        extrasBundle.putSerializable("seriesId",seriesId)
-        extrasBundle.putSerializable("seasonNumber",seasonNumber)
-        extrasBundle.putSerializable("episodeNumber",episodeNumber)
+        extrasBundle.putSerializable("seriesId", seriesId)
+        extrasBundle.putSerializable("seasonNumber", seasonNumber)
+        extrasBundle.putSerializable("episodeNumber", episodeNumber)
         val intent = Intent(context, EpisodeActivity::class.java)
         intent.putExtras(extrasBundle)
         context!!.startActivity(intent)
     }
 
-    fun toMoviePostersPage(context: Context?, movieId: Int){
+    fun toMoviePostersPage(context: Context?, movieId: Int) {
         val intent = Intent(context, PostersImagesActivity::class.java)
-        intent.putExtra(PostersImagesActivity.MOVIE_ID,movieId)
+        intent.putExtra(PostersImagesActivity.MOVIE_ID, movieId)
         context!!.startActivity(intent)
     }
 
