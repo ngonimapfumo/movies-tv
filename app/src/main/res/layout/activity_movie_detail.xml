@@ -427,16 +427,18 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/tv_lay_marginTop_txt">
 
+
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/collection"
                                         android:textStyle="bold"
                                         app:layout_constraintBottom_toTopOf="@+id/collectionCard"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.052"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
                                         app:layout_constraintVertical_bias="0.0" />
-
 
                                     <androidx.cardview.widget.CardView
 
@@ -485,16 +487,18 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/tv_lay_marginTop_txt">
 
+
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/posters"
                                         android:textStyle="bold"
                                         app:layout_constraintBottom_toTopOf="@+id/postersCard"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.064"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
                                         app:layout_constraintVertical_bias="0.0" />
-
 
                                     <androidx.cardview.widget.CardView
 

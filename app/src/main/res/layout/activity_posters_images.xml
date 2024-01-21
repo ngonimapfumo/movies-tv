@@ -14,4 +14,14 @@
         app:spanCount="3"
         tools:listitem="@layout/item_poster_detail" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/postersRecycler"
+        app:layout_constraintEnd_toEndOf="@+id/postersRecycler"
+        app:layout_constraintStart_toStartOf="@+id/postersRecycler"
+        app:layout_constraintTop_toTopOf="@+id/postersRecycler" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

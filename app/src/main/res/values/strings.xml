@@ -99,4 +99,5 @@
     <string name="posters">Movie posters</string>
     <string name="poster_collection">Poster collection</string>
     <string name="posterimage">PosterImage</string>
+    <string name="poster">poster</string>
 </resources>

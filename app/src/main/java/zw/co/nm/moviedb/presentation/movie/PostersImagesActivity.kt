@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPostersImagesBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
+import zw.co.nm.moviedb.util.GeneralUtil
 
 class PostersImagesActivity : AppCompatActivity() {
 
@@ -25,10 +27,24 @@ class PostersImagesActivity : AppCompatActivity() {
         movieId = intent.getIntExtra(MOVIE_ID, 0)
         moviesViewModel.getMovieImages(movieId!!)
         moviesViewModel.getMovieImages.observe(this) { movie ->
+            binding.progressBar.visibility = View.GONE
+            when (movie!!.data) {
+                null -> {
+                    GeneralUtil.actionSnack(binding.root, "Error getting data", "Retry") {
+                        binding.progressBar.visibility = View.VISIBLE
+                        moviesViewModel.getMovieImages(movieId!!)
+                    }
+                }
 
-            val data = movie.body.posters
-            adapter = PosterAdapter(data)
-            binding.postersRecycler.adapter = adapter
+                else -> {
+                    //    Toast.makeText(this, movie.body.posters[0].iso6391, Toast.LENGTH_SHORT).show()
+
+                    val data = movie.body.posters
+                    adapter = PosterAdapter(data)
+                    binding.postersRecycler.adapter = adapter
+                }
+            }
+
         }
     }
 

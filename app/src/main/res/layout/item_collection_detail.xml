@@ -31,16 +31,15 @@
 
             <TextView
                 android:id="@+id/textViewMovieName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_width="220dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="16dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.038"
+                app:layout_constraintHorizontal_bias="0.183"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Mad Max 2" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:visibility="gone"
