@@ -96,4 +96,8 @@
     <string name="view_mode">View Mode</string>
     <string name="notice">Notice!</string>
     <string name="settings">Settings</string>
+    <string name="posters">Movie posters</string>
+    <string name="poster_collection">Poster collection</string>
+    <string name="posterimage">PosterImage</string>
+    <string name="poster">poster</string>
 </resources>

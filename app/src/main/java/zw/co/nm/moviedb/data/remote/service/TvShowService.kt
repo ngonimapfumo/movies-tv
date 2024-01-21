@@ -54,4 +54,8 @@ interface TvShowService {
         @Query("language") language: String
     ): Response<zw.co.nm.moviedb.data.remote.model.response.GetEpisodeDetailResponse>
 
+    @GET("")
+    suspend fun getTvShowPosters()
+
+
 }

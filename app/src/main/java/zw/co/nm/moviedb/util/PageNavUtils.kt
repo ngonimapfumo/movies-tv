@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import zw.co.nm.moviedb.presentation.collection.CollectionActivity
 import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
+import zw.co.nm.moviedb.presentation.movie.PostersImagesActivity
 import zw.co.nm.moviedb.presentation.person.PersonActivity
 import zw.co.nm.moviedb.presentation.reviews.ReviewsActivity
 import zw.co.nm.moviedb.presentation.trailers.TrailerActivity
@@ -59,13 +60,19 @@ object PageNavUtils {
         context!!.startActivity(intent)
     }
 
-    fun toEpisodePage(context: Context?, seriesId: Int,seasonNumber:Int,episodeNumber:Int) {
+    fun toEpisodePage(context: Context?, seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
         val extrasBundle = Bundle()
-        extrasBundle.putSerializable("seriesId",seriesId)
-        extrasBundle.putSerializable("seasonNumber",seasonNumber)
-        extrasBundle.putSerializable("episodeNumber",episodeNumber)
+        extrasBundle.putSerializable("seriesId", seriesId)
+        extrasBundle.putSerializable("seasonNumber", seasonNumber)
+        extrasBundle.putSerializable("episodeNumber", episodeNumber)
         val intent = Intent(context, EpisodeActivity::class.java)
         intent.putExtras(extrasBundle)
+        context!!.startActivity(intent)
+    }
+
+    fun toMoviePostersPage(context: Context?, movieId: Int) {
+        val intent = Intent(context, PostersImagesActivity::class.java)
+        intent.putExtra(PostersImagesActivity.MOVIE_ID, movieId)
         context!!.startActivity(intent)
     }
 
