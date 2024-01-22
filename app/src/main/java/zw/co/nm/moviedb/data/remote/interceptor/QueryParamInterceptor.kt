@@ -8,7 +8,6 @@ import zw.co.nm.moviedb.BuildConfig
 import java.io.IOException
 
 object QueryParamInterceptor : Interceptor {
-    private const val language = "en-US"
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val url: HttpUrl = chain.request()
