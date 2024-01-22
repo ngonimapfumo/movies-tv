@@ -37,8 +37,6 @@ class PostersImagesActivity : AppCompatActivity() {
                 }
 
                 else -> {
-                    //    Toast.makeText(this, movie.body.posters[0].iso6391, Toast.LENGTH_SHORT).show()
-
                     val data = movie.body.posters
                     adapter = PosterAdapter(data)
                     binding.postersRecycler.adapter = adapter
