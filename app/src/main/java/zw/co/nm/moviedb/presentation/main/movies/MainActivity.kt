@@ -4,11 +4,13 @@ package zw.co.nm.moviedb.presentation.main.movies
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +32,9 @@ import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
+import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
+import zw.co.nm.moviedb.util.Constants.COUNTRY_ISO
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
@@ -157,6 +161,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+
+        val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
+        val countryIsoValue = tm.networkCountryIso
+        ConfigStore.saveStringConfig(this, COUNTRY_ISO, countryIsoValue)
+
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         AppCompatDelegate.setDefaultNightMode(getThemeConfig(this, "THEME"))
         binding.nextB.setOnClickListener {

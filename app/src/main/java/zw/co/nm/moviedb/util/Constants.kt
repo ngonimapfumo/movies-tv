@@ -38,6 +38,8 @@ object Constants {
         get() = 5
     val TV
         get() = 6
+    val COUNTRY_ISO
+        get() = "countryIsoVal"
 
 
 }
