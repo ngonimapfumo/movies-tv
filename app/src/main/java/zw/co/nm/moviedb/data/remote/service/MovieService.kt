@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 
 interface MovieService {
 
@@ -72,5 +73,8 @@ interface MovieService {
 
     @GET("movie/{id}/images")
     suspend fun getMovieImages(@Path("id") movieId: Int): Response<GetMovieImagesResponse>
+
+    @GET("movie/{id}/watch/providers")
+    suspend fun getWatchProviders(@Path("id") movieId: Int): Response<GetWatchProvidersResponse>
 
 }

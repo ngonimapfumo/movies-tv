@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.presentation.movie
+package zw.co.nm.moviedb.presentation.movie.posters
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityPostersImagesBinding
+import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.GeneralUtil
 

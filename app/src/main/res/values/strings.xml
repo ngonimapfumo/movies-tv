@@ -100,4 +100,5 @@
     <string name="poster_collection">Poster collection</string>
     <string name="posterimage">PosterImage</string>
     <string name="poster">poster</string>
+    <string name="watch_providers">Where to watch</string>
 </resources>

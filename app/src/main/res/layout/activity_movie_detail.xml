@@ -84,22 +84,21 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/buttonLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background_imm"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout3"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/reviewsBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_rate_review_24"
@@ -108,17 +107,16 @@
                     android:text="@string/reviews"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:visibility="visible" />
-
-                <Space
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content" />
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/trailerBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="44dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_play_arrow_24"
@@ -126,14 +124,37 @@
                     android:maxLines="1"
                     android:text="@string/trailers"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/watchProviderBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:drawableLeft="@drawable/baseline_play_arrow_24"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/watch_providers"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/trailerBtn"
+                    app:layout_constraintStart_toStartOf="@+id/reviewsBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/reviewsBtn" />
 
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
+                android:layout_width="match_parent"
+                android:background="@color/black"
+                android:textAllCaps="true"
                 android:id="@+id/movieSummaryTxt"
-                android:layout_width="370dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="3"
@@ -142,10 +163,9 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/background_imm"
-                app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
-                app:layout_constraintStart_toStartOf="@+id/buttonLayout"
-                app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background_imm"
+                tools:text="The tide is turning" />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -153,12 +173,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/ll_about"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/background_imm"
-                app:layout_constraintVertical_bias="0.5">
+                app:layout_constraintTop_toBottomOf="@+id/movieSummaryTxt">
 
                 <TextView
                     android:id="@+id/textView3"
@@ -296,8 +313,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView4"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView4"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4"
-                            />
+                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                         <TextView
                             android:id="@+id/textView6"
@@ -320,8 +336,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView6"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView6"
-                            app:layout_constraintTop_toBottomOf="@+id/textView6"
-                            />
+                            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                         <TextView
                             android:id="@+id/textView7"
@@ -344,8 +359,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView7"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView7"
-                            app:layout_constraintTop_toBottomOf="@+id/textView7"
-                             />
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                         <TextView
                             android:id="@+id/textView17"
@@ -421,6 +435,7 @@
                                 android:layout_height="wrap_content"
                                 android:foregroundGravity="center"
                                 android:orientation="horizontal">
+
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/collectionLayout"
                                     android:layout_width="wrap_content"
@@ -529,14 +544,14 @@
                                         android:id="@+id/postersName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
+                                        android:text="@string/poster_collection"
                                         android:textAlignment="center"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="@+id/postersCard"
                                         app:layout_constraintHorizontal_bias="0.06"
                                         app:layout_constraintStart_toStartOf="@+id/postersCard"
                                         app:layout_constraintTop_toBottomOf="@+id/postersCard"
-                                        app:layout_constraintVertical_bias="0.0"
-                                        android:text="@string/poster_collection" />
+                                        app:layout_constraintVertical_bias="0.0" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 

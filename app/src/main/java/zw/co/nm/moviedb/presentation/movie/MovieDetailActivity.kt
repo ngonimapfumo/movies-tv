@@ -15,6 +15,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CastAdapter
 import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
+import zw.co.nm.moviedb.presentation.movie.watchproviders.WatchProvidersActivity
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
@@ -237,6 +238,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
         }
 
+
     }
 
     companion object {
@@ -254,6 +256,14 @@ class MovieDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
+
+        binding.watchProviderBtn.setOnClickListener {
+            //add movie id
+            startActivity(
+                Intent(this, WatchProvidersActivity::class.java)
+                    .putExtra("mId", movieId)
+            )
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

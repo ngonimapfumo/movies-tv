@@ -4,6 +4,7 @@ package zw.co.nm.moviedb.presentation.main.movies
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -30,6 +31,7 @@ import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
+import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
@@ -159,6 +161,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpView() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         AppCompatDelegate.setDefaultNightMode(getThemeConfig(this, "THEME"))
+        val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
+        ConfigStore.saveStringConfig(this, "COUNTRY_ISO", tm.networkCountryIso)
+
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             moviesViewModel.getPopularMovies()

@@ -4,3201 +4,2648 @@ package zw.co.nm.moviedb.data.remote.model.response
 import com.google.gson.annotations.SerializedName
 
 data class GetWatchProvidersResponse(
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("results")
-    val results: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results
+    val id: Int?,
+    val results: Results?
 ) {
     data class Results(
         @SerializedName("AD")
-        val aD: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AD,
+        val aD: AD?,
         @SerializedName("AE")
-        val aE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AE,
+        val aE: AE?,
         @SerializedName("AL")
-        val aL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL,
+        val aL: AL?,
         @SerializedName("AO")
-        val aO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AO,
+        val aO: AO?,
         @SerializedName("AR")
-        val aR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR,
+        val aR: AR?,
         @SerializedName("AT")
-        val aT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT,
+        val aT: AT?,
         @SerializedName("AU")
-        val aU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU,
+        val aU: AU?,
         @SerializedName("BA")
-        val bA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BA,
+        val bA: BA?,
         @SerializedName("BE")
-        val bE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE,
+        val bE: BE?,
         @SerializedName("BF")
-        val bF: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BF,
+        val bF: BF?,
         @SerializedName("BG")
-        val bG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG,
+        val bG: BG?,
         @SerializedName("BO")
-        val bO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BO,
+        val bO: BO?,
         @SerializedName("BR")
-        val bR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BR,
+        val bR: BR?,
         @SerializedName("BZ")
-        val bZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BZ,
+        val bZ: BZ?,
         @SerializedName("CA")
-        val cA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA,
+        val cA: CA?,
         @SerializedName("CH")
-        val cH: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH,
+        val cH: CH?,
         @SerializedName("CL")
-        val cL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL,
+        val cL: CL?,
         @SerializedName("CO")
-        val cO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO,
+        val cO: CO?,
         @SerializedName("CR")
-        val cR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CR,
+        val cR: CR?,
         @SerializedName("CY")
-        val cY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CY,
+        val cY: CY?,
         @SerializedName("CZ")
-        val cZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ,
+        val cZ: CZ?,
         @SerializedName("DE")
-        val dE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE,
+        val dE: DE?,
         @SerializedName("DK")
-        val dK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK,
+        val dK: DK?,
         @SerializedName("DO")
-        val dO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DO,
+        val dO: DO?,
         @SerializedName("EC")
-        val eC: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC,
+        val eC: EC?,
         @SerializedName("EE")
-        val eE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE,
+        val eE: EE?,
         @SerializedName("EG")
-        val eG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EG,
+        val eG: EG?,
         @SerializedName("ES")
-        val eS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES,
+        val eS: ES?,
         @SerializedName("FI")
-        val fI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI,
-        @SerializedName("FJ")
-        val fJ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FJ,
+        val fI: FI?,
         @SerializedName("FR")
-        val fR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR,
+        val fR: FR?,
         @SerializedName("GB")
-        val gB: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB,
+        val gB: GB?,
         @SerializedName("GR")
-        val gR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR,
+        val gR: GR?,
         @SerializedName("GT")
-        val gT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GT,
+        val gT: GT?,
         @SerializedName("HK")
-        val hK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HK,
+        val hK: HK?,
         @SerializedName("HN")
-        val hN: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HN,
+        val hN: HN?,
         @SerializedName("HR")
-        val hR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR,
+        val hR: HR?,
         @SerializedName("HU")
-        val hU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU,
+        val hU: HU?,
         @SerializedName("ID")
-        val iD: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ID,
+        val iD: ID?,
         @SerializedName("IE")
-        val iE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE,
+        val iE: IE?,
         @SerializedName("IL")
-        val iL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IL,
+        val iL: IL?,
         @SerializedName("IN")
-        val iN: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN,
+        val iN: IN?,
         @SerializedName("IS")
-        val iS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS,
+        val iS: IS?,
         @SerializedName("IT")
-        val iT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT,
+        val iT: IT?,
         @SerializedName("JP")
-        val jP: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP,
+        val jP: JP?,
         @SerializedName("KR")
-        val kR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.KR,
+        val kR: KR?,
         @SerializedName("LI")
-        val lI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LI,
+        val lI: LI?,
         @SerializedName("LT")
-        val lT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT,
+        val lT: LT?,
         @SerializedName("LU")
-        val lU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU,
+        val lU: LU?,
         @SerializedName("LV")
-        val lV: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV,
-        @SerializedName("MD")
-        val mD: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MD,
+        val lV: LV?,
         @SerializedName("ME")
-        val mE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ME,
+        val mE: ME?,
         @SerializedName("MK")
-        val mK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MK,
+        val mK: MK?,
         @SerializedName("MT")
-        val mT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT,
+        val mT: MT?,
         @SerializedName("MX")
-        val mX: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MX,
+        val mX: MX?,
         @SerializedName("MY")
-        val mY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MY,
-        @SerializedName("NE")
-        val nE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NE,
+        val mY: MY?,
         @SerializedName("NI")
-        val nI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NI,
+        val nI: NI?,
         @SerializedName("NL")
-        val nL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL,
+        val nL: NL?,
         @SerializedName("NO")
-        val nO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO,
+        val nO: NO?,
         @SerializedName("NZ")
-        val nZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ,
+        val nZ: NZ?,
         @SerializedName("PA")
-        val pA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PA,
+        val pA: PA?,
         @SerializedName("PE")
-        val pE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE,
+        val pE: PE?,
         @SerializedName("PH")
-        val pH: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PH,
+        val pH: PH?,
         @SerializedName("PL")
-        val pL: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL,
+        val pL: PL?,
         @SerializedName("PT")
-        val pT: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT,
+        val pT: PT?,
         @SerializedName("PY")
-        val pY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PY,
+        val pY: PY?,
         @SerializedName("RO")
-        val rO: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RO,
+        val rO: RO?,
         @SerializedName("RS")
-        val rS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RS,
+        val rS: RS?,
         @SerializedName("RU")
-        val rU: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU,
+        val rU: RU?,
         @SerializedName("SA")
-        val sA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SA,
+        val sA: SA?,
         @SerializedName("SE")
-        val sE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE,
+        val sE: SE?,
         @SerializedName("SG")
-        val sG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SG,
+        val sG: SG?,
         @SerializedName("SI")
-        val sI: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI,
+        val sI: SI?,
         @SerializedName("SK")
-        val sK: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK,
+        val sK: SK?,
         @SerializedName("SM")
-        val sM: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SM,
-        @SerializedName("SN")
-        val sN: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SN,
+        val sM: SM?,
         @SerializedName("SV")
-        val sV: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SV,
+        val sV: SV?,
         @SerializedName("TH")
-        val tH: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TH,
+        val tH: TH?,
         @SerializedName("TR")
-        val tR: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR,
+        val tR: TR?,
         @SerializedName("TW")
-        val tW: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TW,
+        val tW: TW?,
         @SerializedName("TZ")
-        val tZ: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TZ,
+        val tZ: TZ?,
         @SerializedName("UA")
-        val uA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UA,
-        @SerializedName("UG")
-        val uG: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UG,
+        val uA: UA?,
         @SerializedName("US")
-        val uS: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US,
+        val uS: US?,
         @SerializedName("UY")
-        val uY: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UY,
+        val uY: UY?,
         @SerializedName("VE")
-        val vE: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE,
+        val vE: VE?,
         @SerializedName("ZA")
-        val zA: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA,
-        @SerializedName("ZM")
-        val zM: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZM,
+        val zA: ZA?,
         @SerializedName("ZW")
-        val zW: zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZW
+        val zW: ZW?
     ) {
         data class AD(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AD.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class AE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AE.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AE.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class AL(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AL.Rent>
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class AO(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AO.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AO.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class AR(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AR.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class AT(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AT.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class AU(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.AU.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BA(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BA.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BF(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BF.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BF.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BG(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BG.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BO(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BO.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BR(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BR.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class BZ(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.BZ.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CA(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CA.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CH(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CH.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CL(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CL.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CO(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CO.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CR(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CR.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CY(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CY.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CY.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class CZ(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.CZ.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class DE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class DK(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DK.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class DO(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.DO.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class EC(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EC.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class EE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class EG(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EG.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.EG.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
+            )
+
+            data class Flatrate(
+                @SerializedName("display_priority")
+                val displayPriority: Int?,
+                @SerializedName("logo_path")
+                val logoPath: String?,
+                @SerializedName("provider_id")
+                val providerId: Int?,
+                @SerializedName("provider_name")
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class ES(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ES.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class FI(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FI.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-        }
-
-        data class FJ(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FJ.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FJ.Rent>
-        ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class FR(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.FR.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class GB(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GB.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class GR(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GR.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class GT(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.GT.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class HK(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HK.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class HN(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HN.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class HR(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HR.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class HU(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.HU.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class ID(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ID.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class IE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class IL(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IL.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IL.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class IN(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IN.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class IS(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IS.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class IT(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.IT.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class JP(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.JP.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class KR(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.KR.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.KR.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class LI(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LI.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class LT(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LT.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class LU(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LU.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class LV(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.LV.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-        }
-
-        data class MD(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MD.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MD.Rent>
-        ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class ME(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ME.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class MK(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MK.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class MT(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MT.Rent>
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class MX(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MX.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class MY(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.MY.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-        }
-
-        data class NE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NE.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NE.Rent>
-        ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class NI(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NI.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class NL(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NL.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class NO(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NO.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class NZ(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.NZ.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class PA(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PA.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class PE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class PH(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PH.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class PL(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PL.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class PT(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PT.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class PY(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.PY.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class RO(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RO.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class RS(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RS.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class RU(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.RU.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SA(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SA.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SA.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SG(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SG.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SI(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SI.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SK(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SK.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SM(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SM.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-        }
-
-        data class SN(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SN.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SN.Rent>
-        ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class SV(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.SV.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class TH(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TH.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class TR(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TR.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class TW(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TW.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class TZ(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TZ.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.TZ.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class UA(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UA.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UA.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-        }
-
-        data class UG(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UG.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UG.Rent>
-        ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class US(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.US.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class UY(
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.UY.Flatrate>,
-            @SerializedName("link")
-            val link: String
+            val flatrate: List<Flatrate?>?,
+            val link: String?
         ) {
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class VE(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.VE.Rent>
+            val buy: List<Buy?>?,
+            val flatrate: List<Flatrate?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Flatrate(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class ZA(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA.Buy>,
-            @SerializedName("flatrate")
-            val flatrate: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA.Flatrate>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZA.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Flatrate(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
-            )
-        }
-
-        data class ZM(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZM.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZM.Rent>
-        ) {
-            data class Buy(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
-            )
-
-            data class Rent(
-                @SerializedName("display_priority")
-                val displayPriority: Int,
-                @SerializedName("logo_path")
-                val logoPath: String,
-                @SerializedName("provider_id")
-                val providerId: Int,
-                @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
 
         data class ZW(
-            @SerializedName("buy")
-            val buy: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZW.Buy>,
-            @SerializedName("link")
-            val link: String,
-            @SerializedName("rent")
-            val rent: List<zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse.Results.ZW.Rent>
+            val buy: List<Buy?>?,
+            val link: String?,
+            val rent: List<Rent?>?
         ) {
             data class Buy(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
 
             data class Rent(
                 @SerializedName("display_priority")
-                val displayPriority: Int,
+                val displayPriority: Int?,
                 @SerializedName("logo_path")
-                val logoPath: String,
+                val logoPath: String?,
                 @SerializedName("provider_id")
-                val providerId: Int,
+                val providerId: Int?,
                 @SerializedName("provider_name")
-                val providerName: String
+                val providerName: String?
             )
         }
     }

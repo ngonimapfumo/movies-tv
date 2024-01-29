@@ -12,6 +12,7 @@ import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
 
@@ -51,6 +52,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     private val _getMovieImages = MutableLiveData<Response<GetMovieImagesResponse>>()
     val getMovieImages: LiveData<Response<GetMovieImagesResponse>> = _getMovieImages
 
+    private val _getWatchProviders = MutableLiveData<Response<GetWatchProvidersResponse>>()
+    val getWatchProviders: LiveData<Response<GetWatchProvidersResponse>> = _getWatchProviders
 
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
@@ -83,9 +86,15 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun getMovieImages(movieId: Int){
+    fun getMovieImages(movieId: Int) {
         viewModelScope.launch {
             _getMovieImages.value = moviesRepo.getMovieImages(movieId)
+        }
+    }
+
+    fun getWatchProviders(movieId: Int) {
+        viewModelScope.launch {
+            _getWatchProviders.value = moviesRepo.getWatchProviders(movieId)
         }
     }
 

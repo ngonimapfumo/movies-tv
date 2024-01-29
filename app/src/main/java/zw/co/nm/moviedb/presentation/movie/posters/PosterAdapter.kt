@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.presentation.movie
+package zw.co.nm.moviedb.presentation.movie.posters
 
 import android.view.LayoutInflater
 import android.view.View

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import zw.co.nm.moviedb.presentation.collection.CollectionActivity
 import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
-import zw.co.nm.moviedb.presentation.movie.PostersImagesActivity
+import zw.co.nm.moviedb.presentation.movie.posters.PostersImagesActivity
 import zw.co.nm.moviedb.presentation.person.PersonActivity
 import zw.co.nm.moviedb.presentation.reviews.ReviewsActivity
 import zw.co.nm.moviedb.presentation.trailers.TrailerActivity
