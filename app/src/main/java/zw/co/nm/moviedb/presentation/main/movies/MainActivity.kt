@@ -34,6 +34,7 @@ import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -162,7 +163,10 @@ class MainActivity : AppCompatActivity() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         AppCompatDelegate.setDefaultNightMode(getThemeConfig(this, "THEME"))
         val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
-        ConfigStore.saveStringConfig(this, "COUNTRY_ISO", tm.networkCountryIso)
+        ConfigStore.saveStringConfig(
+            this, "COUNTRY_ISO",
+            tm.networkCountryIso.uppercase(Locale.ROOT)
+        )
 
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
