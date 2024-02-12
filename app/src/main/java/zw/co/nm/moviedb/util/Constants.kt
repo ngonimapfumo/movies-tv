@@ -40,6 +40,8 @@ object Constants {
         get() = 6
     val COUNTRY_ISO
         get() = "countryIsoVal"
+    val NETWORK_ERROR_MSG
+        get() = "Error getting data"
 
 
 }

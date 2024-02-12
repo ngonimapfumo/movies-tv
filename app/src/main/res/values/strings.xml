@@ -100,4 +100,5 @@
     <string name="poster_collection">Poster collection</string>
     <string name="posterimage" translatable="false">PosterImage</string>
     <string name="poster" translatable="false">poster</string>
+    <string name="movie_logo">movie logo</string>
 </resources>

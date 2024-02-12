@@ -35,25 +35,52 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="220dp"
                 android:background="@drawable/gradient"
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/movieTitleTxt"
-                android:layout_width="wrap_content"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constMedia"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view" />
+                app:layout_constraintTop_toTopOf="@+id/view">
+
+
+                <ImageView
+                    android:id="@+id/movieLogo"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:contentDescription="@string/movie_logo"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/movieTitleTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -61,9 +88,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/movieTitleTxt">
+                app:layout_constraintTop_toBottomOf="@+id/constMedia"
+                tools:layout_editor_absoluteX="0dp">
 
                 <TextView
                     android:id="@+id/yearTxt"
@@ -91,6 +117,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout3"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
@@ -144,8 +171,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
+                app:layout_constraintHorizontal_bias="0.487"
                 app:layout_constraintStart_toStartOf="@+id/buttonLayout"
-                app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
+                app:layout_constraintVertical_bias="0.666" />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -296,8 +325,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView4"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView4"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4"
-                            />
+                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                         <TextView
                             android:id="@+id/textView6"
@@ -320,8 +348,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView6"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView6"
-                            app:layout_constraintTop_toBottomOf="@+id/textView6"
-                            />
+                            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                         <TextView
                             android:id="@+id/textView7"
@@ -344,8 +371,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView7"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView7"
-                            app:layout_constraintTop_toBottomOf="@+id/textView7"
-                             />
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                         <TextView
                             android:id="@+id/textView17"
@@ -421,6 +447,7 @@
                                 android:layout_height="wrap_content"
                                 android:foregroundGravity="center"
                                 android:orientation="horizontal">
+
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/collectionLayout"
                                     android:layout_width="wrap_content"
@@ -529,14 +556,14 @@
                                         android:id="@+id/postersName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
+                                        android:text="@string/poster_collection"
                                         android:textAlignment="center"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="@+id/postersCard"
                                         app:layout_constraintHorizontal_bias="0.06"
                                         app:layout_constraintStart_toStartOf="@+id/postersCard"
                                         app:layout_constraintTop_toBottomOf="@+id/postersCard"
-                                        app:layout_constraintVertical_bias="0.0"
-                                        android:text="@string/poster_collection" />
+                                        app:layout_constraintVertical_bias="0.0" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 

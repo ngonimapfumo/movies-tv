@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.Constants.NETWORK_ERROR_MSG
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
@@ -42,7 +44,7 @@ class MovieDetailActivity : AppCompatActivity() {
         moviesViewModel.getMovieDetail.observe(this) {
             when (it!!.data) {
                 null -> {
-                    actionSnack(binding.root, "Error getting data", "Retry") {
+                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
@@ -139,7 +141,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
             when (it.data) {
                 null -> {
-                    actionSnack(binding.root, "Error getting data", "Retry") {
+                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
@@ -172,7 +174,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
             when (response.data) {
                 null -> {
-                    actionSnack(binding.root, "Error getting data", "Retry") {
+                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
@@ -204,7 +206,7 @@ class MovieDetailActivity : AppCompatActivity() {
         moviesViewModel.getMovieReleaseDates.observe(this) {
             when (it.data) {
                 null -> {
-                    actionSnack(binding.root, "Error getting data", "Retry") {
+                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
@@ -234,6 +236,30 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
 
             }
+
+        }
+
+        moviesViewModel.getMovieImages(movieId!!)
+        moviesViewModel.getMovieImages.observe(this) { movie ->
+
+            when (movie.data) {
+                null -> {
+                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                        moviesViewModel.getMovieImages(movieId!!)
+                    }
+                }
+
+                else -> {
+                    movie.body.logos.forEach {
+                        if (it.iso6391 == "en") {
+                            binding.movieLogo.visibility = VISIBLE
+                            binding.movieTitleTxt.visibility = GONE
+                            Picasso.get().load(IMAGE_BASE_URL + it.filePath).into(binding.movieLogo)
+                        }
+                    }
+                }
+            }
+
 
         }
 
