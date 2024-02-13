@@ -31,32 +31,33 @@
 
             <TextView
                 android:id="@+id/textViewMovieName"
-                android:layout_width="220dp"
-                android:layout_height="75dp"
+                android:layout_width="190dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="5dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.183"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewShortSummary"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/textViewShortSummary"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
                 android:ellipsize="end"
-                android:maxLines="3"
+                android:maxLines="2"
                 android:padding="5dp"
-                app:layout_constraintEnd_toEndOf="@+id/textViewMovieName"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.072"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName"
-                tools:text="Over many missions and against impossible odds, Dom Toretto and his family have
-                 outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from
-                 the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom
-                 loves, forever." />
-
+                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName"/>
+                                                                                                    crime bosses. As events turn deadly, McCall knows what he has to do: become his friends' protector by taking on the
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

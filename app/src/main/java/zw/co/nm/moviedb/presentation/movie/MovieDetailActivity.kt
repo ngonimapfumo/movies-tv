@@ -31,6 +31,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var moviesViewModel: MoviesViewModel
     private var movieId: Int? = null
     private var genres: ArrayList<String>? = arrayListOf()
+    private var logos: ArrayList<String>? = arrayListOf()
     private var productionCompanies: ArrayList<String>? = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,6 +134,41 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 }
             }
+
+        }
+
+        moviesViewModel.getMovieImages(movieId!!)
+        moviesViewModel.getMovieImages.observe(this) { movie ->
+
+            when (movie.data) {
+                null -> {
+                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                        moviesViewModel.getMovieImages(movieId!!)
+                    }
+                }
+
+                else -> {
+                    movie.body.logos.forEach {
+                        when (it.iso6391) {
+                            "en" -> {
+                                binding.movieLogo.visibility = VISIBLE
+                                binding.movieTitleTxt.visibility = GONE
+                                logos!!.add(IMAGE_BASE_URL+it.filePath)
+                            }
+
+
+                        }
+                    }
+
+                    when (logos!!.size) {
+                        0 -> {
+                            binding.movieTitleTxt.visibility = VISIBLE
+                        }
+                        else -> Picasso.get().load( logos!![0]).into(binding.movieLogo)
+                    }
+                }
+            }
+
 
         }
 
@@ -239,29 +275,6 @@ class MovieDetailActivity : AppCompatActivity() {
 
         }
 
-        moviesViewModel.getMovieImages(movieId!!)
-        moviesViewModel.getMovieImages.observe(this) { movie ->
-
-            when (movie.data) {
-                null -> {
-                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
-                        moviesViewModel.getMovieImages(movieId!!)
-                    }
-                }
-
-                else -> {
-                    movie.body.logos.forEach {
-                        if (it.iso6391 == "en") {
-                            binding.movieLogo.visibility = VISIBLE
-                            binding.movieTitleTxt.visibility = GONE
-                            Picasso.get().load(IMAGE_BASE_URL + it.filePath).into(binding.movieLogo)
-                        }
-                    }
-                }
-            }
-
-
-        }
 
     }
 
