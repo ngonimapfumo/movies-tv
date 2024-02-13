@@ -46,6 +46,7 @@ class MovieDetailActivity : AppCompatActivity() {
             when (it!!.data) {
                 null -> {
                     actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                        moviesViewModel.getMovieImages(movieId!!)
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
