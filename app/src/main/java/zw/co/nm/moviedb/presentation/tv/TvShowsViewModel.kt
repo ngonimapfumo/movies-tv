@@ -12,12 +12,13 @@ import zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 
 class TvShowsViewModel(application: Application) : AndroidViewModel(application) {
 
     var page: Int = 1
     private val tvShowsRepo = TvShowsRepo()
-    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
     private val _getPopularShows =
         MutableLiveData<Response<GetPopularTVSeriesListResponse>>()
     val getPopularShows: LiveData<Response<GetPopularTVSeriesListResponse>> =

@@ -9,12 +9,13 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.GetTrailersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 
 class TrailersViewModel(application: Application) :
     AndroidViewModel(application) {
 
     private val trailersRepo = TrailersRepo()
-    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
     private val _getTrailers =
         MutableLiveData<Response<GetTrailersResponse>>()
     val getTrailers: LiveData<Response<GetTrailersResponse>> =

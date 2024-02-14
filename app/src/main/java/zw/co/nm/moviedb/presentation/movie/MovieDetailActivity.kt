@@ -24,6 +24,7 @@ import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
+import java.util.Locale
 
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -39,7 +40,6 @@ class MovieDetailActivity : AppCompatActivity() {
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpView()
-
 
         moviesViewModel.getMovieDetail(movieId!!)
         moviesViewModel.getMovieDetail.observe(this) {
@@ -149,9 +149,10 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
 
                 else -> {
+
                     movie.body.logos.forEach {
                         when (it.iso6391) {
-                            "en" -> {
+                            Locale.getDefault().language -> {
                                 binding.movieLogo.visibility = VISIBLE
                                 binding.movieTitleTxt.visibility = GONE
                                 logos!!.add(IMAGE_BASE_URL+it.filePath)

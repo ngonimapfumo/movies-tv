@@ -43,5 +43,8 @@ object Constants {
     val NETWORK_ERROR_MSG
         get() = "Error getting data"
 
+    val LANGUAGE_KEY
+        get() = "lang"
+
 
 }

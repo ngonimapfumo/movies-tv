@@ -17,6 +17,7 @@ import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
 import zw.co.nm.moviedb.util.ConfigStore.getBool
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.ConfigStore.saveBoolConfig
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
@@ -64,7 +65,7 @@ class SettingsActivity : AppCompatActivity() {
 
                 else -> {
 
-                    binding.autoComplete.setText(ConfigStore.getStringLang(this, "LANGUAGE_KEY"))
+                    binding.autoComplete.setText(ConfigStore.getStringLang(this, LANGUAGE_KEY))
                     binding.autoComplete.setAdapter(
                         ArrayAdapter(
                             this,
@@ -76,7 +77,7 @@ class SettingsActivity : AppCompatActivity() {
                     binding.autoComplete.setOnItemClickListener { _, _, _, _ ->
                         ConfigStore.saveStringConfig(
                             this,
-                            "LANGUAGE_KEY",
+                            LANGUAGE_KEY,
                             binding.autoComplete.text.toString()
                         )
 

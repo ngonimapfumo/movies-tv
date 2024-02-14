@@ -10,10 +10,11 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 
 class SearchViewModel(application: Application) : AndroidViewModel(application) {
     private val searchRepo = SearchRepo(application)
-    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
     var page: Int = 1
 
     private val _searchMulti =

@@ -10,11 +10,12 @@ import zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 
 class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
     private val personRepo = PersonRepo()
-    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
     private val _getPerson =
         MutableLiveData<Response<GetPersonResponse>>()
     val getPerson: LiveData<Response<GetPersonResponse>> =

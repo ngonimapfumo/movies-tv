@@ -9,10 +9,11 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 
 class ReviewsViewModel(application: Application) : AndroidViewModel(application) {
     private val reviewsRepo = ReviewsRepo()
-    private var language = ConfigStore.getStringLang(application, "LANGUAGE_KEY")
+    private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
     private val _getTvReviews =
         MutableLiveData<Response<GetReviewsResponse>>()
     val getTvReviews: LiveData<Response<GetReviewsResponse>> =
