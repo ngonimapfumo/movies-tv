@@ -9,6 +9,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.text.capitalize
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -17,7 +18,9 @@ import zw.co.nm.moviedb.adapters.CastAdapter
 import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
+import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 import zw.co.nm.moviedb.util.Constants.NETWORK_ERROR_MSG
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
@@ -34,6 +37,8 @@ class MovieDetailActivity : AppCompatActivity() {
     private var genres: ArrayList<String>? = arrayListOf()
     private var logos: ArrayList<String>? = arrayListOf()
     private var productionCompanies: ArrayList<String>? = arrayListOf()
+    private var iso6391: String? = null
+    private var iso31661: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -152,13 +157,11 @@ class MovieDetailActivity : AppCompatActivity() {
 
                     movie.body.logos.forEach {
                         when (it.iso6391) {
-                            Locale.getDefault().language -> {
+                            iso6391 -> {
                                 binding.movieLogo.visibility = VISIBLE
                                 binding.movieTitleTxt.visibility = GONE
-                                logos!!.add(IMAGE_BASE_URL+it.filePath)
+                                logos!!.add(IMAGE_BASE_URL + it.filePath)
                             }
-
-
                         }
                     }
 
@@ -166,7 +169,8 @@ class MovieDetailActivity : AppCompatActivity() {
                         0 -> {
                             binding.movieTitleTxt.visibility = VISIBLE
                         }
-                        else -> Picasso.get().load( logos!![0]).into(binding.movieLogo)
+
+                        else -> Picasso.get().load(logos!![0]).into(binding.movieLogo)
                     }
                 }
             }
@@ -254,8 +258,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 else -> {
                     it.body.results.forEach { result ->
-                        //todo: get this from interceptor
-                        if (result.iso31661 == "US") {
+                        if (result.iso31661 == iso31661!!.uppercase()) {
                             result.releaseDates.forEach { movie ->
                                 if (movie.type == THEATRICAL ||
                                     movie.type == THEATRICAL_LIMITED
@@ -285,7 +288,8 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
-
+        iso6391 = ConfigStore.getStringLang(this, LANGUAGE_KEY)!!.substring(0, 2)
+        iso31661 = ConfigStore.getStringLang(this, LANGUAGE_KEY)!!.substring(3)
         binding.reviewsBtn.setOnClickListener {
             PageNavUtils.toReviewsPage(this, "movie", movieId!!)
         }
