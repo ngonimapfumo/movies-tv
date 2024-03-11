@@ -3,9 +3,11 @@ package zw.co.nm.moviedb.presentation.main.movies
 
 import android.content.Intent
 import android.graphics.Color
+import android.hardware.display.DisplayManager
 import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.util.Log
+import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
@@ -15,6 +17,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -35,6 +38,7 @@ import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.Constants.COUNTRY_ISO
+import zw.co.nm.moviedb.util.Constants.DISPLAY_METRICS_WIDTH
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
@@ -181,6 +185,10 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
         }
+
+        val displayMetrics =
+            this.getSystemService<DisplayManager>()?.getDisplay(Display.DEFAULT_DISPLAY)
+        ConfigStore.saveIntConfig(this, DISPLAY_METRICS_WIDTH, displayMetrics!!.mode.physicalWidth)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

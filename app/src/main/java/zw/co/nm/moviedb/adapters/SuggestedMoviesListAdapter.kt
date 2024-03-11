@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
+import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants.DISPLAY_METRICS_WIDTH
 import zw.co.nm.moviedb.util.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
@@ -22,11 +24,14 @@ class SuggestedMoviesListAdapter(private var data: List<zw.co.nm.moviedb.data.re
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val imgPath = data[position].posterPath
+        val displayMetrics = ConfigStore.getInt(holder.itemView.context, DISPLAY_METRICS_WIDTH)
         //  binding!!.text.text = data[position].title
-        Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
-            .placeholder(R.drawable.sample_suggested)
-            .resize(270,400)
-            .into(binding!!.imageView)
+        val picasso = Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
+        picasso.placeholder(R.drawable.sample_suggested)
+        if (displayMetrics >= 1080) {
+            picasso.resize(270, 400)
+        }
+        picasso.into(binding!!.imageView)
         holder.itemView.setOnClickListener {
             PageNavUtils.toMovieDetailsPage(
                 holder.itemView.context,

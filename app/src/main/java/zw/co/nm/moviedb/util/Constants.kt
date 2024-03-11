@@ -46,5 +46,7 @@ object Constants {
     val LANGUAGE_KEY
         get() = "lang"
 
+    val DISPLAY_METRICS_WIDTH
+        get() = "display_metrics"
 
 }
