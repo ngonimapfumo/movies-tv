@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
+import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.Constants.LOW_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
@@ -24,10 +27,16 @@ class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.re
         val imgPath = data[position].posterPath
         val mediaType = data[position].mediaType
         val id = data[position].id
+        val displayMetricsWidth = ConfigStore.getInt(
+            holder.itemView.context,
+            Constants.DISPLAY_METRICS_WIDTH
+        )
 
-        Picasso.get().load(MED_RES_IMAGE_BASE_URL + imgPath)
-            .resize(270, 400)
-            .into(binding!!.imageView)
+        val picasso = Picasso.get().load(LOW_RES_IMAGE_BASE_URL + imgPath)
+        if (displayMetricsWidth >= 1080) {
+            picasso.resize(270, 400)
+        }
+        picasso.into(binding!!.imageView)
 
         holder.itemView.setOnClickListener {
             when (mediaType) {

@@ -484,9 +484,10 @@
 
                                         <ImageView
                                             android:id="@+id/collectionImage"
-                                            android:layout_width="500px"
-                                            android:layout_height="281px"
-                                            app:layout_constraintBottom_toTopOf="@+id/collectionName" />
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:layout_constraintBottom_toTopOf="@+id/collectionName"
+                                            android:contentDescription="@string/movie_collection" />
 
 
                                     </androidx.cardview.widget.CardView>
@@ -544,9 +545,10 @@
 
                                         <ImageView
                                             android:id="@+id/postersImage"
-                                            android:layout_width="500px"
-                                            android:layout_height="281px"
-                                            app:layout_constraintBottom_toTopOf="@+id/collectionName" />
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:layout_constraintBottom_toTopOf="@+id/collectionName"
+                                            android:contentDescription="@string/poster_collection" />
 
 
                                     </androidx.cardview.widget.CardView>

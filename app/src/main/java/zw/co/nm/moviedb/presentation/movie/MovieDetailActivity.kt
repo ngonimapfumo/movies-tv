@@ -6,10 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.text.capitalize
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -19,6 +17,7 @@ import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.ConfigStore
+import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 import zw.co.nm.moviedb.util.Constants.NETWORK_ERROR_MSG
@@ -27,7 +26,6 @@ import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
-import java.util.Locale
 
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -39,6 +37,8 @@ class MovieDetailActivity : AppCompatActivity() {
     private var productionCompanies: ArrayList<String>? = arrayListOf()
     private var iso6391: String? = null
     private var iso31661: String? = null
+    private var displayMetricsWidth: Int? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +61,16 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 else -> {
                     val movie = it.body
+
                     if (movie.belongsToCollection != null) {
-                        Picasso.get().load(IMAGE_BASE_URL + movie.belongsToCollection.backdropPath)
-                            .into(binding.collectionImage)
+                        val picasso = Picasso.get()
+                            .load(IMAGE_BASE_URL + movie.belongsToCollection.backdropPath)
+                        if (displayMetricsWidth!! >= 1080) {
+                            picasso.resize(500, 281)
+                        } else {
+                            picasso.resize(350, 200)
+                        }
+                        picasso.into(binding.collectionImage)
                         binding.collectionName.text = movie.belongsToCollection.name
                         binding.collectionImage.setOnClickListener {
                             PageNavUtils.toCollectionPage(this, movie.belongsToCollection.id)
@@ -132,8 +139,13 @@ class MovieDetailActivity : AppCompatActivity() {
                     }
                     binding.statusTxt.text = movie.status
 
-                    Picasso.get().load(IMAGE_BASE_URL + movie.backdropPath)
-                        .into(binding.postersImage)
+                    val picasso = Picasso.get().load(IMAGE_BASE_URL + movie.backdropPath)
+                    if (displayMetricsWidth!! >= 1080) {
+                        picasso.resize(500, 281)
+                    } else {
+                        picasso.resize(350, 200)
+                    }
+                    picasso.into(binding.postersImage)
                     binding.postersCard.setOnClickListener {
                         PageNavUtils.toMoviePostersPage(this, movieId!!)
                     }
@@ -288,6 +300,7 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+        displayMetricsWidth = ConfigStore.getInt(this, Constants.DISPLAY_METRICS_WIDTH)
         iso6391 = ConfigStore.getStringLang(this, LANGUAGE_KEY)!!.substring(0, 2)
         iso31661 = ConfigStore.getStringLang(this, LANGUAGE_KEY)!!.substring(3)
         binding.reviewsBtn.setOnClickListener {
