@@ -61,7 +61,6 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 else -> {
                     val movie = it.body
-
                     if (movie.belongsToCollection != null) {
                         val picasso = Picasso.get()
                             .load(IMAGE_BASE_URL + movie.belongsToCollection.backdropPath)
