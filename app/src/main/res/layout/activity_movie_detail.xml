@@ -494,6 +494,7 @@
 
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/collectionName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
@@ -555,6 +556,7 @@
 
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/postersName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
