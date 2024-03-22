@@ -37,14 +37,6 @@ class SettingsActivity : AppCompatActivity() {
             append(BuildConfig.VERSION_NAME)
         }
 
-        binding.switchMaterial.isChecked = getBool(this, SEARCH_CONFIG_KEY)
-        binding.switchMaterial.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                saveBoolConfig(this@SettingsActivity, SEARCH_CONFIG_KEY, true)
-            } else {
-                saveBoolConfig(this@SettingsActivity, SEARCH_CONFIG_KEY, false)
-            }
-        }
         binding.imageView2.setOnClickListener {
             AlertDialog.Builder(this).apply {
                 setMessage(zw.co.nm.moviedb.R.string.notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb)

@@ -494,6 +494,7 @@
 
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/collectionName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
@@ -547,18 +548,19 @@
                                             android:id="@+id/postersImage"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            app:layout_constraintBottom_toTopOf="@+id/collectionName"
-                                            android:contentDescription="@string/poster_collection" />
+                                            android:contentDescription="@string/poster_collection"
+                                            app:layout_constraintBottom_toTopOf="@+id/collectionName" />
 
 
                                     </androidx.cardview.widget.CardView>
 
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/postersName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/poster_collection"
+                                        tools:text="@string/poster_collection"
                                         android:textAlignment="center"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="@+id/postersCard"
