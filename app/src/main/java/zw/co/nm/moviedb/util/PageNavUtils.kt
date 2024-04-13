@@ -1,5 +1,7 @@
 package zw.co.nm.moviedb.util
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -44,7 +46,7 @@ object PageNavUtils {
     fun toCollectionPage(context: Context, id: Int) {
         val intent = Intent(context, CollectionActivity::class.java)
         intent.putExtra(CollectionActivity.COLLECTION_ID, id)
-        context.startActivity(intent)
+        context.startActivity(intent/*,ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()*/)
     }
 
     fun toSeasonPage(context: Context?, id: Int) {

@@ -13,10 +13,7 @@ import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.databinding.ActivitySettingsBinding
 import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.util.ConfigStore
-import zw.co.nm.moviedb.util.ConfigStore.SEARCH_CONFIG_KEY
-import zw.co.nm.moviedb.util.ConfigStore.getBool
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
-import zw.co.nm.moviedb.util.ConfigStore.saveBoolConfig
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
@@ -41,7 +38,8 @@ class SettingsActivity : AppCompatActivity() {
             AlertDialog.Builder(this).apply {
                 setMessage(zw.co.nm.moviedb.R.string.notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb)
                 setPositiveButton("OKAY", null)
-                show()}
+                show()
+            }
         }
 
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
