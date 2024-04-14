@@ -64,7 +64,7 @@ class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
             }
         }
 
-        Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath)
+        Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
             .into(binding!!.imageView)
 
 

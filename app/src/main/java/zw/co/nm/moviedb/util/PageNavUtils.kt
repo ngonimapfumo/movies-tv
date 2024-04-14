@@ -33,7 +33,8 @@ object PageNavUtils {
     fun toPersonDetailsPage(context: Context, personId: Int) {
         val intent = Intent(context, PersonActivity::class.java)
         intent.putExtra(PersonActivity.PERSON_ID_EXTRA, personId)
-        context.startActivity(intent)
+        context.startActivity(intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
     }
 
     fun toTrailersPage(context: Context, trailerType: String, id: Int) {
@@ -46,13 +47,15 @@ object PageNavUtils {
     fun toCollectionPage(context: Context, id: Int) {
         val intent = Intent(context, CollectionActivity::class.java)
         intent.putExtra(CollectionActivity.COLLECTION_ID, id)
-        context.startActivity(intent/*,ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()*/)
+        context.startActivity(intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
     }
 
     fun toSeasonPage(context: Context?, id: Int) {
         val intent = Intent(context, SeasonActivity::class.java)
         intent.putExtra(SeasonActivity.SEASON_ID, id)
-        context!!.startActivity(intent)
+        context!!.startActivity(intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
     }
 
     fun toReviewsPage(context: Context?, reviewType: String, id: Int) {
@@ -75,7 +78,8 @@ object PageNavUtils {
     fun toMoviePostersPage(context: Context?, movieId: Int) {
         val intent = Intent(context, PostersImagesActivity::class.java)
         intent.putExtra(PostersImagesActivity.MOVIE_ID, movieId)
-        context!!.startActivity(intent)
+        context!!.startActivity(intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
     }
 
 }
