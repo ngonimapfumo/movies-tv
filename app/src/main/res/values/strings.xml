@@ -101,6 +101,7 @@
     <string name="posterimage" translatable="false">PosterImage</string>
     <string name="poster" translatable="false">poster</string>
     <string name="movie_logo" translatable="false">movie logo</string>
-    <string name="movie_collection">movie collection</string>
-    <string name="search_image">search image</string>
+    <string name="movie_collection" translatable="false">movie collection</string>
+    <string name="search_image" translatable="false">search image</string>
+    <string name="tv_logo" translatable="false">tv logo</string>
 </resources>

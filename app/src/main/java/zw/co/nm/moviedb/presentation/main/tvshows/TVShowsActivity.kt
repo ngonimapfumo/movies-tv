@@ -26,8 +26,7 @@ class TVShowsActivity : AppCompatActivity() {
         setUpView()
         tvShowsViewModel.getPopularTvShows()
         tvShowsViewModel.getPopularShows.observe(this) { response ->
-            binding.prevB.isEnabled = response.body.page != 1
-            binding.progressBar.visibility = View.GONE
+
             when (response.data) {
                 null -> {
                     actionSnack(binding.root, "Error getting data", "Retry") {
@@ -37,6 +36,8 @@ class TVShowsActivity : AppCompatActivity() {
                 }
 
                 else -> {
+                    binding.prevB.isEnabled = response.body.page != 1
+                    binding.progressBar.visibility = View.GONE
                     val data = response.body.results
                     adapter = TvShowsAdapter(data)
                     binding.recyclerView.adapter = adapter

@@ -3,6 +3,7 @@ package zw.co.nm.moviedb.presentation.tv
 import zw.co.nm.moviedb.data.remote.model.response.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.util.NetworkManager
 import zw.co.nm.moviedb.data.remote.util.Response
@@ -34,4 +35,7 @@ class TvShowsRepo {
                 language = language
             )
         }
+
+    suspend fun getTvImages(seriesId: Int): Response<GetTVImagesResponse> =
+        apiCall { NetworkManager.tvShowService.getTvImages(seriesId) }
 }

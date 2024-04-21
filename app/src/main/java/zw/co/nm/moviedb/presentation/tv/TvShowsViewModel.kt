@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.GetEpisodeDetailResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
@@ -25,8 +26,8 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         _getPopularShows
 
     private val _getShowDetails =
-        MutableLiveData<Response<GetTVShowDetailResponse>?>()
-    val getShowDetails: LiveData<Response<GetTVShowDetailResponse>?> =
+        MutableLiveData<Response<GetTVShowDetailResponse>>()
+    val getShowDetails: LiveData<Response<GetTVShowDetailResponse>> =
         _getShowDetails
 
     private val _getTvCredits =
@@ -38,6 +39,11 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         MutableLiveData<Response<GetEpisodeDetailResponse>?>()
     val getEpisodeDetail: LiveData<Response<GetEpisodeDetailResponse>?> =
         _getEpisodeDetail
+
+    private val _getTVImages =
+        MutableLiveData<Response<GetTVImagesResponse>>()
+    val getTVImages: LiveData<Response<GetTVImagesResponse>> =
+        _getTVImages
 
     fun getPopularTvShows() {
         viewModelScope.launch {
@@ -61,6 +67,13 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             _getEpisodeDetail.value =
                 tvShowsRepo.getEpisodeDetail(seriesId, seasonNumber, episodeNumber, language!!)
+        }
+    }
+
+    fun getTvImages(seriesId: Int) {
+        viewModelScope.launch {
+            _getTVImages.value =
+                tvShowsRepo.getTvImages(seriesId)
         }
     }
 
