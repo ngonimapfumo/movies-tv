@@ -89,14 +89,14 @@ class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
                 }
 
                 "person" -> {
-                    PageNavUtils.toPersonDetailsPage(
+                    PageNavUtils.navPersonDetailsPage(
                         holder.itemView.context,
                         data[position].id
                     )
                 }
 
                 "tv" -> {
-                    PageNavUtils.toTvDetailsPage(
+                    PageNavUtils.navTvDetailsPage(
                         holder.itemView.context,
                         data[position].id
                     )
@@ -109,7 +109,7 @@ class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
     }
 
     private fun proceedToMovie(context: Context?, position: Int) {
-        PageNavUtils.toMovieDetailsPage(
+        PageNavUtils.navMovieDetailsPage(
             context!!,
             data[position].id
         )

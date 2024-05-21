@@ -23,7 +23,7 @@ class MoviesAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
         val imgPath = data[position].posterPath
         Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-            PageNavUtils.toMovieDetailsPage(holder.itemView.context,
+            PageNavUtils.navMovieDetailsPage(holder.itemView.context,
                 data[position].id)
         }
 

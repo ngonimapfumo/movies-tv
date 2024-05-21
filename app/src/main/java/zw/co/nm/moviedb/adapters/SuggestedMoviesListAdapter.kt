@@ -33,7 +33,7 @@ class SuggestedMoviesListAdapter(private var data: List<zw.co.nm.moviedb.data.re
         }
         picasso.into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-            PageNavUtils.toMovieDetailsPage(
+            PageNavUtils.navMovieDetailsPage(
                 holder.itemView.context,
                 data[position].id
             )

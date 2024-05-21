@@ -30,4 +30,9 @@
     <style name="Theme.MovieDB.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <color name="grey_white">#C9C9CC</color>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MovieDB" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
 </resources>

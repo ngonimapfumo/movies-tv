@@ -18,54 +18,60 @@ import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
 
 object PageNavUtils {
 
-    fun toMovieDetailsPage(context: Context, movieId: Int) {
+    fun navMovieDetailsPage(context: Context, movieId: Int) {
         val intent = Intent(context, MovieDetailActivity::class.java)
         intent.putExtra(MovieDetailActivity.MOVIE_ID_EXTRA, movieId)
         context.startActivity(intent)
     }
 
-    fun toTvDetailsPage(context: Context, tvShowId: Int) {
+    fun navTvDetailsPage(context: Context, tvShowId: Int) {
         val intent = Intent(context, TvShowDetailActivity::class.java)
         intent.putExtra(TvShowDetailActivity.TV_SHOW_ID_EXTRA, tvShowId)
         context.startActivity(intent)
     }
 
-    fun toPersonDetailsPage(context: Context, personId: Int) {
+    fun navPersonDetailsPage(context: Context, personId: Int) {
         val intent = Intent(context, PersonActivity::class.java)
         intent.putExtra(PersonActivity.PERSON_ID_EXTRA, personId)
-        context.startActivity(intent,
-            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
+        context.startActivity(
+            intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()
+        )
     }
 
-    fun toTrailersPage(context: Context, trailerType: String, id: Int) {
+    fun navTrailersPage(context: Context, trailerType: String, id: Int) {
         val intent = Intent(context, TrailerActivity::class.java)
         intent.putExtra(TrailerActivity.MOVIE_ID_EXTRA, id)
         intent.putExtra(TRAILER_TYPE, trailerType)
         context.startActivity(intent)
     }
 
-    fun toCollectionPage(context: Context, id: Int) {
+    fun navCollectionPage(context: Context, id: Int) {
         val intent = Intent(context, CollectionActivity::class.java)
         intent.putExtra(CollectionActivity.COLLECTION_ID, id)
-        context.startActivity(intent,
-            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
+        context.startActivity(
+            intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()
+        )
     }
 
-    fun toSeasonPage(context: Context?, id: Int) {
+    fun navSeasonPage(context: Context?, id: Int) {
         val intent = Intent(context, SeasonActivity::class.java)
         intent.putExtra(SeasonActivity.SEASON_ID, id)
-        context!!.startActivity(intent,
-            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
+        context!!.startActivity(
+            intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()
+        )
     }
 
-    fun toReviewsPage(context: Context?, reviewType: String, id: Int) {
+    fun navReviewsPage(context: Context?, reviewType: String, id: Int) {
         val intent = Intent(context, ReviewsActivity::class.java)
         intent.putExtra(ReviewsActivity.ID, id)
         intent.putExtra(Constants.REVIEW_TYPE, reviewType)
         context!!.startActivity(intent)
     }
 
-    fun toEpisodePage(context: Context?, seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
+    fun navEpisodePage(context: Context?, seriesId: Int, seasonNumber: Int, episodeNumber: Int) {
         val extrasBundle = Bundle()
         extrasBundle.putSerializable("seriesId", seriesId)
         extrasBundle.putSerializable("seasonNumber", seasonNumber)
@@ -75,11 +81,13 @@ object PageNavUtils {
         context!!.startActivity(intent)
     }
 
-    fun toMoviePostersPage(context: Context?, movieId: Int) {
+    fun navMoviePostersPage(context: Context?, movieId: Int) {
         val intent = Intent(context, PostersImagesActivity::class.java)
         intent.putExtra(PostersImagesActivity.MOVIE_ID, movieId)
-        context!!.startActivity(intent,
-            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle())
+        context!!.startActivity(
+            intent,
+            ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()
+        )
     }
 
 }

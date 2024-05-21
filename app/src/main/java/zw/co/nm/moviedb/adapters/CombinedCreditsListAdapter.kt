@@ -9,7 +9,6 @@ import zw.co.nm.moviedb.databinding.ItemMovieDetailBinding
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.LOW_RES_IMAGE_BASE_URL
-import zw.co.nm.moviedb.util.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
 class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse.Cast>) :
@@ -45,7 +44,7 @@ class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.re
                 }
 
                 "tv" -> {
-                    PageNavUtils.toTvDetailsPage(
+                    PageNavUtils.navTvDetailsPage(
                         holder.itemView.context, id
                     )
 
@@ -60,7 +59,7 @@ class CombinedCreditsListAdapter(private var data: List<zw.co.nm.moviedb.data.re
     }
 
     private fun proceedToMovie(context: Context, position: Int) {
-        PageNavUtils.toMovieDetailsPage(
+        PageNavUtils.navMovieDetailsPage(
             context,
             data[position].id
         )

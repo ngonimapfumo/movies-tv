@@ -28,7 +28,7 @@ class CollectionAdapter(private var data: List<zw.co.nm.moviedb.data.remote.mode
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
         holder.itemView.setOnClickListener {
            // todo: add filter media type filter
-                PageNavUtils.toMovieDetailsPage(holder.itemView.context,
+                PageNavUtils.navMovieDetailsPage(holder.itemView.context,
                     data[position].id)
 
         }

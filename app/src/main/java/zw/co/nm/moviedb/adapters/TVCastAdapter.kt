@@ -26,7 +26,7 @@ class TVCastAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.re
         binding!!.characterTxt.text = data[position].character.replace(" ","\n")
         Picasso.get().load(Constants.LOW_RES_IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.castImgView)
         holder.itemView.setOnClickListener {
-                PageNavUtils.toPersonDetailsPage(holder.itemView.context,
+                PageNavUtils.navPersonDetailsPage(holder.itemView.context,
                     data[position].id)
         }
 

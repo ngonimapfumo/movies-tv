@@ -93,7 +93,7 @@ class MovieDetailActivity : AppCompatActivity() {
                         }
                         binding.collectionName.text = movie.belongsToCollection.name
                         binding.collectionImage.setOnClickListener {
-                            PageNavUtils.toCollectionPage(this, movie.belongsToCollection.id)
+                            PageNavUtils.navCollectionPage(this, movie.belongsToCollection.id)
                         }
 
                     } else {
@@ -186,7 +186,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
                     }
                     binding.postersCard.setOnClickListener {
-                        PageNavUtils.toMoviePostersPage(this, movieId!!)
+                        PageNavUtils.navMoviePostersPage(this, movieId!!)
                     }
 
                 }
@@ -343,10 +343,10 @@ class MovieDetailActivity : AppCompatActivity() {
         iso6391 = ConfigStore.getStringLang(this, LANGUAGE_KEY)!!.substring(0, 2)
         iso31661 = ConfigStore.getStringLang(this, LANGUAGE_KEY)!!.substring(3)
         binding.reviewsBtn.setOnClickListener {
-            PageNavUtils.toReviewsPage(this, "movie", movieId!!)
+            PageNavUtils.navReviewsPage(this, "movie", movieId!!)
         }
         binding.trailerBtn.setOnClickListener {
-            PageNavUtils.toTrailersPage(this@MovieDetailActivity, "movie", movieId!!)
+            PageNavUtils.navTrailersPage(this@MovieDetailActivity, "movie", movieId!!)
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]

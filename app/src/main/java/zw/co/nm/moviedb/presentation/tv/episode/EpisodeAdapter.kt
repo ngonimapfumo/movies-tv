@@ -33,7 +33,7 @@ class EpisodeAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.r
             .placeholder(R.drawable.sample_episode_exp)
             .into(binding!!.imageView)
         holder.itemView.setOnClickListener {
-            PageNavUtils.toEpisodePage(
+            PageNavUtils.navEpisodePage(
                 holder.itemView.context,
                 data[position].showId,
                 data[position].seasonNumber,

@@ -29,7 +29,7 @@ class SeasonsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.r
             .into(binding!!.imageView)
 
         binding!!.imageView.setOnClickListener {
-            PageNavUtils.toSeasonPage(
+            PageNavUtils.navSeasonPage(
                 holder.itemView.context, data[position].seasonNumber
             )
         }

@@ -43,14 +43,14 @@ class TvShowDetailActivity : AppCompatActivity() {
         iso31661 = ConfigStore.getStringLang(this, Constants.LANGUAGE_KEY)!!.substring(3)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
         binding.reviewsBtn.setOnClickListener {
-            PageNavUtils.toReviewsPage(this, "tv_show", showId!!)
+            PageNavUtils.navReviewsPage(this, "tv_show", showId!!)
         }
         ConfigStore.saveIntConfig(
             this, Constants.SAVED_SHOW_ID,
             showId!!
         )
         binding.trailerBtn.setOnClickListener {
-            PageNavUtils.toTrailersPage(this, "tv", showId!!)
+            PageNavUtils.navTrailersPage(this, "tv", showId!!)
         }
         val tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
         tvShowsViewModel.getShowDetails(showId!!)

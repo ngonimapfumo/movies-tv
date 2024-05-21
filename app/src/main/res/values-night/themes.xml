@@ -19,4 +19,9 @@
         <item name="android:windowExitTransition">@transition/anim</item>
 
     </style>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MovieDB" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
 </resources>
