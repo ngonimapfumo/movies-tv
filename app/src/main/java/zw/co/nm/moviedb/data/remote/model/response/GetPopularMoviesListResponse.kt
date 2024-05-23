@@ -7,7 +7,7 @@ data class GetPopularMoviesListResponse(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse.Result>,
+    val results: List<Result>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")

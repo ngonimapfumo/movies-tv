@@ -169,7 +169,6 @@ class MainActivity : AppCompatActivity() {
         val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
         val countryIsoValue = tm.networkCountryIso
         ConfigStore.saveStringConfig(this, COUNTRY_ISO, countryIsoValue)
-
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         AppCompatDelegate.setDefaultNightMode(getThemeConfig(this, "THEME"))
         binding.nextB.setOnClickListener {

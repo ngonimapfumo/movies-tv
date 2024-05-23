@@ -8,6 +8,7 @@ import android.os.Bundle
 import zw.co.nm.moviedb.presentation.collection.CollectionActivity
 import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
 import zw.co.nm.moviedb.presentation.movie.PostersImagesActivity
+import zw.co.nm.moviedb.presentation.movie.watchproviders.MovieWatchProvidersActivity
 import zw.co.nm.moviedb.presentation.person.PersonActivity
 import zw.co.nm.moviedb.presentation.reviews.ReviewsActivity
 import zw.co.nm.moviedb.presentation.trailers.TrailerActivity
@@ -88,6 +89,12 @@ object PageNavUtils {
             intent,
             ActivityOptions.makeSceneTransitionAnimation(context as Activity?).toBundle()
         )
+    }
+
+    fun navMovieWatchProviders(context: Context, movieId: Int) {
+        val intent = Intent(context, MovieWatchProvidersActivity::class.java)
+        intent.putExtra(MovieWatchProvidersActivity.MOVIE_ID_EXTRA, movieId)
+        context.startActivity(intent)
     }
 
 }

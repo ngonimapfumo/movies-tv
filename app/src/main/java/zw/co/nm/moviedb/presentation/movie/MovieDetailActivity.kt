@@ -15,6 +15,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CastAdapter
 import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
+import zw.co.nm.moviedb.presentation.movie.watchproviders.MovieWatchProvidersActivity
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
@@ -346,7 +347,9 @@ class MovieDetailActivity : AppCompatActivity() {
             PageNavUtils.navReviewsPage(this, "movie", movieId!!)
         }
         binding.trailerBtn.setOnClickListener {
-            PageNavUtils.navTrailersPage(this@MovieDetailActivity, "movie", movieId!!)
+           // PageNavUtils.navTrailersPage(this@MovieDetailActivity, "movie", movieId!!)
+            PageNavUtils.navMovieWatchProviders(this@MovieDetailActivity,  movieId!!)
+
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
