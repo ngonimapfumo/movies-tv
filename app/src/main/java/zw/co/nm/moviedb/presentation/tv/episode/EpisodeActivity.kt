@@ -31,8 +31,7 @@ class EpisodeActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val bundle = intent.extras
-        bundle!!.getBundle(BUNDLE_EXTRAS)
-        seriesId = bundle.getInt("seriesId")
+        seriesId = bundle!!.getInt("seriesId")
         seasonNumber = bundle.getInt("seasonNumber")
         episodeNumber = bundle.getInt("episodeNumber")
         tvViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
@@ -110,10 +109,6 @@ class EpisodeActivity : AppCompatActivity() {
             }
 
         }
-    }
-
-    companion object {
-        const val BUNDLE_EXTRAS: String = "extras"
     }
 
     override fun onSupportNavigateUp(): Boolean {

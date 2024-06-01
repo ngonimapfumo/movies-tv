@@ -54,8 +54,12 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     val getMovieImages: LiveData<Response<GetMovieImagesResponse>> = _getMovieImages
 
     private val _getMovieGenres = MutableLiveData<Response<GetMovieGenres>>()
-    val getMovieGenres: LiveData<Response<GetMovieGenres>> =_getMovieGenres
+    val getMovieGenres: LiveData<Response<GetMovieGenres>> = _getMovieGenres
 
+    private val _getMovieByGenreId =
+        MutableLiveData<Response<GetPopularMoviesListResponse>>()
+    val getMovieByGenreId: LiveData<Response<GetPopularMoviesListResponse>> =
+        _getMovieByGenreId
 
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
@@ -88,15 +92,21 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun getMovieImages(movieId: Int){
+    fun getMovieImages(movieId: Int) {
         viewModelScope.launch {
             _getMovieImages.value = moviesRepo.getMovieImages(movieId)
         }
     }
 
-    fun getMovieGenres(){
+    fun getMovieGenres() {
         viewModelScope.launch {
             _getMovieGenres.value = moviesRepo.getMovieGenres(language!!)
+        }
+    }
+
+    fun getMoviesByGenreId(genreId: Int) {
+        viewModelScope.launch {
+            _getMovieByGenreId.value = moviesRepo.getMovieByGenreId(page, language!!, genreId)
         }
     }
 

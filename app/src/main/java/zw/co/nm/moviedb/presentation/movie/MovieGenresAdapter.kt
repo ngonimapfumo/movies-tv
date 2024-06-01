@@ -1,18 +1,13 @@
 package zw.co.nm.moviedb.presentation.movie
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.databinding.ItemGenreBinding
-import zw.co.nm.moviedb.databinding.ItemPosterDetailBinding
-import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.presentation.main.movies.MainActivity
 
 class MovieGenresAdapter(private var data: List<GetMovieGenres.Genre?>?) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -27,9 +22,14 @@ class MovieGenresAdapter(private var data: List<GetMovieGenres.Genre?>?) :
     override fun getItemCount(): Int = data!!.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val view = holder.itemView
+        val extrasBundle = Bundle()
         binding!!.genreName.text = data!![position]!!.name
-        holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, data!![position]!!.id!!.toString(), Toast.LENGTH_SHORT).show()
+        view.setOnClickListener {
+            extrasBundle.putSerializable("identifier", "from_genre")
+            extrasBundle.putSerializable("genre_id", data!![position]!!.id)
+            view.context
+                .startActivity(Intent(view.context,MainActivity::class.java).putExtras(extrasBundle))
         }
     }
 

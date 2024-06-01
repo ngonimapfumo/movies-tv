@@ -40,10 +40,21 @@ class MoviesRepo {
     ): Response<GetReleaseDatesResponse> =
         apiCall { NetworkManager.movieService.getMovieReleaseDates(movieId, language) }
 
-    suspend fun getMovieImages(movieId: Int):Response<GetMovieImagesResponse> = apiCall {
+    suspend fun getMovieImages(movieId: Int): Response<GetMovieImagesResponse> = apiCall {
         NetworkManager.movieService.getMovieImages(movieId)
     }
-    suspend fun getMovieGenres(language: String):Response<GetMovieGenres> =
-        apiCall {NetworkManager.movieService.getMovieGenres(language)
+
+    suspend fun getMovieGenres(language: String): Response<GetMovieGenres> =
+        apiCall {
+            NetworkManager.movieService.getMovieGenres(language)
+        }
+
+    suspend fun getMovieByGenreId(
+        page: Int,
+        language: String,
+        genreId: Int
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.movieService.getMoviesByGenreId(page, language, genreId)
         }
 }
