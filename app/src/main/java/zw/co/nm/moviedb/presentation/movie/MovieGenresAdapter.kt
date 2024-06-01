@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.databinding.ItemGenreBinding
-import zw.co.nm.moviedb.presentation.main.movies.MainActivity
+import zw.co.nm.moviedb.presentation.main.movies.MainListActivity
 
 class MovieGenresAdapter(private var data: List<GetMovieGenres.Genre?>?) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -29,7 +29,7 @@ class MovieGenresAdapter(private var data: List<GetMovieGenres.Genre?>?) :
             extrasBundle.putSerializable("identifier", "from_genre")
             extrasBundle.putSerializable("genre_id", data!![position]!!.id)
             view.context
-                .startActivity(Intent(view.context,MainActivity::class.java).putExtras(extrasBundle))
+                .startActivity(Intent(view.context,MainListActivity::class.java).putExtras(extrasBundle))
         }
     }
 

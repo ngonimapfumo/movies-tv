@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.presentation.movie
+package zw.co.nm.moviedb.presentation.main.movies
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,13 +9,10 @@ import android.util.Log
 import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.getSystemService
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,20 +26,24 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.databinding.ActivityGenresBinding
-import zw.co.nm.moviedb.presentation.main.movies.MainActivity
+import zw.co.nm.moviedb.databinding.ActivityHomeBinding
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
+import zw.co.nm.moviedb.presentation.movie.MovieGenresAdapter
+import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.GeneralUtil
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
-class GenresActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityGenresBinding
+    private lateinit var binding: ActivityHomeBinding
     private lateinit var viewModel: MoviesViewModel
     private lateinit var adapter: MovieGenresAdapter
-    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var movieAdapter: MoviesAdapter
+    private var toggle: ActionBarDrawerToggle? = null
 
     private lateinit var appUpdateManager: AppUpdateManager
     private var updateAvailable = MutableLiveData<Boolean>().apply {
@@ -87,49 +88,75 @@ class GenresActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGenresBinding.inflate(
+        binding = ActivityHomeBinding.inflate(
             layoutInflater
         )
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
 
+        viewModel.getPopularMovies()
+        viewModel.getPopularMovies.observe(this){
+
+            when (it.data) {
+                null -> {
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        viewModel.getPopularMovies()
+                    }
+                }
+                else -> {
+                    val data = it.body.results
+                    movieAdapter = MoviesAdapter(data)
+                    binding.recyclerHome.adapter = movieAdapter
+                }
+            }
+        }
         viewModel.getMovieGenres()
         viewModel.getMovieGenres.observe(this) {
-            val data = it.body.genres
 
-            binding.recyclerView.layoutManager = LinearLayoutManager(
-                this,
-                LinearLayoutManager.HORIZONTAL, false
-            )
-            adapter = MovieGenresAdapter(data)
-            binding.recyclerView.adapter = adapter
+
+            when (it.data) {
+                null -> {
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        viewModel.getMovieGenres()
+                    }
+                }
+                else -> {
+                    val data = it.body.genres
+                    binding.recyclerView.layoutManager = LinearLayoutManager(
+                        this,
+                        LinearLayoutManager.HORIZONTAL, false
+                    )
+                    adapter = MovieGenresAdapter(data)
+                    binding.recyclerView.adapter = adapter
+                }
+            }
 
             binding.apply {
                 toggle = ActionBarDrawerToggle(
-                    this@GenresActivity,
+                    this@HomeActivity,
                     drawerLayout,
                     R.string.open,
                     R.string.close
                 )
-                drawerLayout.addDrawerListener(toggle)
-                toggle.syncState()
+                drawerLayout.addDrawerListener(toggle!!)
+                toggle!!.syncState()
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 navView.setNavigationItemSelectedListener {
                     when (it.itemId) {
                         R.id.drawer_settings -> {
-                            startActivity(Intent(this@GenresActivity, SettingsActivity::class.java))
+                            startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
                         }
 
                         R.id.drawer_tv -> {
-                            startActivity(Intent(this@GenresActivity, TVShowsActivity::class.java))
+                            startActivity(Intent(this@HomeActivity, TVShowsActivity::class.java))
                         }
 
                         R.id.drawer_search -> {
-                            startActivity(Intent(this@GenresActivity, SearchActivity::class.java))
+                            startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
                         }
 
                         R.id.drawer_movies -> {
-                            startActivity(Intent(this@GenresActivity, MainActivity::class.java))
+                            startActivity(Intent(this@HomeActivity, MainListActivity::class.java))
                         }
                     }
                     true
@@ -140,9 +167,8 @@ class GenresActivity : AppCompatActivity() {
 
         }
 
+        binding.moreText.setOnClickListener { startActivity(Intent(this,MainListActivity::class.java)) }
         configurations()
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -152,13 +178,13 @@ class GenresActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (toggle.onOptionsItemSelected(item)) {
+        if (toggle!!.onOptionsItemSelected(item)) {
             true
         }
 
         return when (item.itemId) {
             R.id.app_bar_search -> {
-                startActivity(Intent(this@GenresActivity, SearchActivity::class.java))
+                startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
                 true
             }
 
