@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 
@@ -76,5 +77,13 @@ interface MovieService {
 
     @GET("movie/{id}/watch/providers")
     suspend fun getWatchProviders(@Path("id")movieId: Int): Response<GetWatchProvidersResponse>
+
+    @GET("genre/movie/list")
+    suspend fun getMovieGenres(@Query("language") language: String):Response<GetMovieGenres>
+
+    @GET("")
+    suspend fun get(@Query("page") page: Int,
+                    @Query("language") language: String,
+                    @Query("with_genres") with_genres: Int)
 
 }

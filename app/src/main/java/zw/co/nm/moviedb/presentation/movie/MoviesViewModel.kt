@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
@@ -52,6 +53,9 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     private val _getMovieImages = MutableLiveData<Response<GetMovieImagesResponse>>()
     val getMovieImages: LiveData<Response<GetMovieImagesResponse>> = _getMovieImages
 
+    private val _getMovieGenres = MutableLiveData<Response<GetMovieGenres>>()
+    val getMovieGenres: LiveData<Response<GetMovieGenres>> =_getMovieGenres
+
 
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
@@ -87,6 +91,12 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getMovieImages(movieId: Int){
         viewModelScope.launch {
             _getMovieImages.value = moviesRepo.getMovieImages(movieId)
+        }
+    }
+
+    fun getMovieGenres(){
+        viewModelScope.launch {
+            _getMovieGenres.value = moviesRepo.getMovieGenres(language!!)
         }
     }
 
