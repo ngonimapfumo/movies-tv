@@ -93,7 +93,6 @@ class MainListActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
-        AppCompatDelegate.setDefaultNightMode(getThemeConfig(this, "THEME"))
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             when {

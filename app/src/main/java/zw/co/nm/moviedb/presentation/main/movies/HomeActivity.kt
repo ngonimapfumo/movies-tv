@@ -10,8 +10,11 @@ import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
@@ -94,6 +97,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
 
+        binding.shimmer.startShimmer()
         viewModel.getPopularMovies()
         viewModel.getPopularMovies.observe(this){
 
@@ -121,6 +125,9 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 else -> {
+                    binding.recyclerView.visibility = VISIBLE
+                    binding.shimmer.stopShimmer()
+                    binding.shimmer.visibility = GONE
                     val data = it.body.genres
                     binding.recyclerView.layoutManager = LinearLayoutManager(
                         this,
@@ -193,6 +200,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun configurations(){
+        AppCompatDelegate.setDefaultNightMode(ConfigStore.getThemeConfig(this, "THEME"))
         try {
             appUpdateManager = AppUpdateManagerFactory.create(this)
             appUpdateManager.registerListener(updateListener)
