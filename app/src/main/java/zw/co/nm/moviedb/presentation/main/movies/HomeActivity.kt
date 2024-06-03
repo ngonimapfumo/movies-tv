@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -37,7 +36,6 @@ import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.GeneralUtil
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 class HomeActivity : AppCompatActivity() {
@@ -148,8 +146,8 @@ class HomeActivity : AppCompatActivity() {
                 drawerLayout.addDrawerListener(toggle!!)
                 toggle!!.syncState()
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                navView.setNavigationItemSelectedListener {
-                    when (it.itemId) {
+                navView.setNavigationItemSelectedListener {menu->
+                    when (menu.itemId) {
                         R.id.drawer_settings -> {
                             startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
                         }
@@ -184,9 +182,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         if (toggle!!.onOptionsItemSelected(item)) {
-            true
+         return true
         }
 
         return when (item.itemId) {
