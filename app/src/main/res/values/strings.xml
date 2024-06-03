@@ -145,4 +145,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="pop_movies">Popular Movies</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="more">More...</string>
 </resources>

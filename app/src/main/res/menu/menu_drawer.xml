@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item
-        android:id="@+id/drawer_trending_today"
-        android:title="@string/trending_today"/>
-
-
     <item
-        android:id="@+id/drawer_top_movies"
-        android:title="@string/top_rated_movies" />-->
+        android:id="@+id/drawer_movies"
+        android:title="@string/pop_movies" />
 
     <item
         android:id="@+id/drawer_tv"
@@ -25,13 +20,5 @@
     <item
         android:id="@+id/drawer_settings"
         android:title="@string/settings" />
-
-    <item
-        android:visible="false"
-        android:id="@+id/drawer_notice"
-        android:title="@string/notice" />
-
-    <!--todo:: about -> settings />-->
-
 
 </menu>
