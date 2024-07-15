@@ -64,10 +64,10 @@
                     app:layout_constraintVertical_bias="0.5" />
 
                 <TextView
-                    android:layout_marginTop="5dp"
                     android:id="@+id/movieTitleTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -168,7 +168,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/background_imm"
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
                 app:layout_constraintHorizontal_bias="0.487"
@@ -304,133 +304,246 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="@string/production"
-                            android:textSize="@dimen/info_txt_size"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/textView2"
-                            app:layout_constraintHorizontal_bias="0.0"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_marginTop="5dp"
                             app:layout_constraintStart_toStartOf="@+id/textView2"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                            app:layout_constraintTop_toBottomOf="@+id/textView2"
+                            android:id="@+id/directorLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/prod_company"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/info_detail_txt"
-                            app:layout_constraintEnd_toEndOf="@+id/textView4"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView4"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                            <TextView
+                                android:id="@+id/directorTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/director"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            <TextView
+                                android:id="@+id/director"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="@dimen/info_detail_txt"
+                                app:layout_constraintEnd_toEndOf="@+id/directorTxt"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/directorTxt" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+
+                            app:layout_constraintStart_toStartOf="@+id/directorLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/directorLayout"
                             android:layout_marginTop="15dp"
-                            android:text="@string/user_score"
-                            android:textSize="@dimen/info_txt_size"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/textView4"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView4"
-                            app:layout_constraintTop_toBottomOf="@+id/prod_company" />
-
-                        <TextView
-                            android:id="@+id/movieRatingTxt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/info_detail_txt"
-                            app:layout_constraintEnd_toEndOf="@+id/textView6"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView6"
-                            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="@string/status"
-                            android:textSize="@dimen/info_txt_size"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/textView6"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView6"
-                            app:layout_constraintTop_toBottomOf="@+id/movieRatingTxt" />
-
-                        <TextView
-                            android:id="@+id/statusTxt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/info_detail_txt"
-                            app:layout_constraintEnd_toEndOf="@+id/textView7"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView7"
-                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                        <TextView
-                            android:id="@+id/textView17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="@string/genres"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@+id/statusTxt"
-                            app:layout_constraintTop_toBottomOf="@+id/statusTxt" />
-
-
-                        <TextView
-                            android:id="@+id/genre"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/genre_year_txt"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-                        <TextView
-                            android:id="@+id/certficationsTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="@string/certfications"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@+id/genre"
-                            app:layout_constraintTop_toBottomOf="@+id/genre" />
-
-
-                        <TextView
-                            android:id="@+id/certifications"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/genre_year_txt"
-                            app:layout_constraintStart_toStartOf="@+id/certficationsTextView"
-                            app:layout_constraintTop_toBottomOf="@+id/certficationsTextView" />
-
-                        <TextView
-                            android:id="@+id/textView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="@string/cast"
-                            android:textSize="@dimen/info_txt_size"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@+id/certifications"
-                            app:layout_constraintTop_toBottomOf="@+id/certifications" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/castRecyclerView"
+                            android:id="@+id/prodLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/info_detail_txt"
-                            app:layout_constraintStart_toStartOf="@+id/textView8"
-                            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                            >
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/production"
+                                android:textSize="@dimen/info_txt_size"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/prod_company"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="@dimen/info_detail_txt"
+                                app:layout_constraintEnd_toEndOf="@+id/textView4"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+
+                            android:id="@+id/userScoreLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:layout_constraintEnd_toEndOf="@+id/prodLayout"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/prodLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/prodLayout">
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/user_score"
+                                android:textSize="@dimen/info_txt_size"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:id="@+id/movieRatingTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/info_detail_txt"
+                                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/textView6"
+                                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/statusLayout"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:layout_constraintEnd_toEndOf="@+id/userScoreLayout"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/userScoreLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/userScoreLayout">
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/status"
+                                android:textSize="@dimen/info_txt_size"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:id="@+id/statusTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/info_detail_txt"
+                                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/textView7"
+                                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/genresLayout"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:layout_constraintStart_toStartOf="@+id/statusLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/statusLayout">
+
+
+                            <TextView
+                                android:id="@+id/textView17"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/genres"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:id="@+id/genre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/genre_year_txt"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+
+                            android:id="@+id/certificationsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:layout_constraintStart_toStartOf="@+id/genresLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/genresLayout">
+
+                            <TextView
+                                android:id="@+id/certficationsTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/certfications"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:id="@+id/certifications"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/genre_year_txt"
+                                app:layout_constraintStart_toStartOf="@+id/certficationsTextView"
+                                app:layout_constraintTop_toBottomOf="@+id/certficationsTextView" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+
+                            android:id="@+id/castLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:layout_constraintStart_toStartOf="@+id/certificationsLayout"
+                            app:layout_constraintTop_toBottomOf="@+id/certificationsLayout">
+
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/cast"
+                                android:textSize="@dimen/info_txt_size"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_marginTop="2dp"
+                                android:id="@+id/castRecyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/info_detail_txt"
+                                app:layout_constraintStart_toStartOf="@+id/textView8"
+                                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                         <HorizontalScrollView
                             android:layout_width="match_parent"
@@ -439,7 +552,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.013"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/castRecyclerView"
+                            app:layout_constraintTop_toBottomOf="@+id/castLayout"
                             app:layout_constraintVertical_bias="0.0">
 
                             <LinearLayout
@@ -486,19 +599,19 @@
                                             android:id="@+id/collectionImage"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            app:layout_constraintBottom_toTopOf="@+id/collectionName"
-                                            android:contentDescription="@string/movie_collection" />
+                                            android:contentDescription="@string/movie_collection"
+                                            app:layout_constraintBottom_toTopOf="@+id/collectionName" />
 
 
                                     </androidx.cardview.widget.CardView>
 
 
                                     <TextView
-                                        android:visibility="gone"
                                         android:id="@+id/collectionName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
                                         android:textAlignment="center"
+                                        android:visibility="gone"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="@+id/collectionCard"
                                         app:layout_constraintHorizontal_bias="0.06"
@@ -556,18 +669,18 @@
 
 
                                     <TextView
-                                        android:visibility="gone"
                                         android:id="@+id/postersName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
-                                        tools:text="@string/poster_collection"
                                         android:textAlignment="center"
+                                        android:visibility="gone"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="@+id/postersCard"
                                         app:layout_constraintHorizontal_bias="0.06"
                                         app:layout_constraintStart_toStartOf="@+id/postersCard"
                                         app:layout_constraintTop_toBottomOf="@+id/postersCard"
-                                        app:layout_constraintVertical_bias="0.0" />
+                                        app:layout_constraintVertical_bias="0.0"
+                                        tools:text="@string/poster_collection" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 

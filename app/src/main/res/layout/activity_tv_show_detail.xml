@@ -158,7 +158,7 @@
                 android:padding="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_background_imm"
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
                 app:layout_constraintStart_toStartOf="@+id/buttonLayout"
