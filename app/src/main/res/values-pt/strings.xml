@@ -87,4 +87,9 @@
     <string name="posters">Cartazes de filmes</string>
     <string name="poster_collection">Coleção de pôsteres</string>
 
+    <string name="pop_movies">Filmes Populares</string>
+    <string name="popular_movies">Filmes Populares</string>
+    <string name="more">Mais...</string>
+    <string name="director">Diretor de cinema</string>
+
 </resources>
