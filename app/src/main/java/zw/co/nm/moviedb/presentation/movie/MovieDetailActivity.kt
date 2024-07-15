@@ -2,12 +2,10 @@ package zw.co.nm.moviedb.presentation.movie
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -291,13 +289,14 @@ class MovieDetailActivity : AppCompatActivity() {
                     if (response.body.cast.isEmpty()) {
                         binding.textView8.visibility = GONE
                     }
-                        response.body.crew.forEach {
-                            when (it.job) {
-                                "Director" -> {
-                                    binding.director.text  = it.name
-                                }
+                    response.body.crew.forEach { crew ->
+                        when (crew.job) {
+                            "Director" -> {
+
+                                    binding.director.text = crew.name
                             }
                         }
+                    }
 
                 }
             }
