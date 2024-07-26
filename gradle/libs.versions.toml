@@ -1,8 +1,15 @@
 [versions]
+circleimageviewVersion = "3.1.0"
+picassoVersion = "2.71828"
 pierfrancescosoffrittiVersion = "12.1.0"
+processPhoenixVersion = "2.1.2"
 
 [libraries]
+circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageviewVersion" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picassoVersion" }
 pierfrancescosoffritti = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "pierfrancescosoffrittiVersion" }
+pierfrancescosoffritti-custom-ui = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui", version.ref = "pierfrancescosoffrittiVersion" }
+process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenixVersion" }
 
 [plugins]
 
