@@ -1,0 +1,8 @@
+[versions]
+pierfrancescosoffrittiVersion = "12.1.0"
+
+[libraries]
+pierfrancescosoffritti = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "pierfrancescosoffrittiVersion" }
+
+[plugins]
+
