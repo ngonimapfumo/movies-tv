@@ -1,0 +1,75 @@
+[versions]
+activityKtxVersion = "1.9.1"
+appcompatVersion = "1.7.0"
+appUpdateKtxVersion = "2.1.0"
+circleimageviewVersion = "3.1.0"
+composeBomVersion = "2024.06.00"
+constraintlayoutVersion = "2.1.4"
+converterGsonVersion = "2.9.0"
+coreKtx = "1.13.1"
+espressoCoreVersion = "3.6.1"
+firebaseAnalyticsVersion = "22.0.2"
+firebaseCrashlyticsVersion = "19.0.3"
+hiltAndroidVersion = "2.44"
+junitVersion = "4.13.2"
+junit = "1.2.1"
+kotlinxCoroutinesAndroidVersion = "1.8.0"
+kotlinxCoroutinesCoreVersion = "1.8.0"
+lifecycleRuntimeKtxVersion = "2.8.4"
+loggingInterceptorVersion = "4.12.0"
+materialVersion = "1.12.0"
+navigationFragmentKtxVersion = "2.7.7"
+navigationUiKtxVersion = "2.7.7"
+picassoVersion = "2.71828"
+pierfrancescosoffrittiVersion = "12.1.0"
+preferenceKtxVersion = "1.2.1"
+processPhoenixVersion = "2.1.2"
+retrofitVersion = "2.9.0"
+shimmerVersion = "0.5.0"
+swiperefreshlayoutVersion = "1.2.0-alpha01"
+
+[libraries]
+androidx-activity = { module = "androidx.activity:activity", version.ref = "activityKtxVersion" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityKtxVersion" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtxVersion" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
+androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtxVersion" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtxVersion" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayoutVersion" }
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdateKtxVersion" }
+circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageviewVersion" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGsonVersion" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalyticsVersion" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlyticsVersion" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidVersion" }
+junit = { module = "junit:junit", version.ref = "junitVersion" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroidVersion" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptorVersion" }
+material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picassoVersion" }
+pierfrancescosoffritti = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "pierfrancescosoffrittiVersion" }
+pierfrancescosoffritti-custom-ui = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui", version.ref = "pierfrancescosoffrittiVersion" }
+process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenixVersion" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersion" }
+
+[plugins]
+
