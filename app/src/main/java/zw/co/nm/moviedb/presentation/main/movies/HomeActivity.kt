@@ -103,6 +103,7 @@ class HomeActivity : AppCompatActivity() {
                 null -> {
                     actionSnack(binding.root, "Error getting data", "Retry") {
                         viewModel.getPopularMovies()
+                        viewModel.getMovieGenres()
                     }
                 }
                 else -> {
@@ -120,6 +121,7 @@ class HomeActivity : AppCompatActivity() {
                 null -> {
                     actionSnack(binding.root, "Error getting data", "Retry") {
                         viewModel.getMovieGenres()
+                        viewModel.getPopularMovies()
                     }
                 }
                 else -> {

@@ -28,7 +28,7 @@ class TrailersAdapter(
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val ytKey: String = data[position].key
+        val ytKey = data[position].key
         when {
             data[position].official -> {
                 binding!!.textViewOfficialTxt.text =
@@ -40,7 +40,7 @@ class TrailersAdapter(
                     holder.itemView.context.getString(R.string.unofficial)
             }
         }
-        if (data[position].site == "YouTube") {
+        if (data[position].site.equals("youtube",true))  {
             //  binding!!.ytImg.visibility = VISIBLE
             /*Picasso.get().load("https://img.youtube.com/vi/${data[position].key}/mqdefault.jpg")
                 .into(binding!!.thumbView)*/
