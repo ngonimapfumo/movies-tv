@@ -150,4 +150,6 @@
     <string name="more">More...</string>
     <string name="director">Director</string>
     <string name="pause_button">pause button</string>
+    <string name="n_a">N/A</string>
+    <string name="no_information_available">No information available</string>
 </resources>

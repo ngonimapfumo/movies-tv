@@ -54,7 +54,7 @@ class EpisodeActivity : AppCompatActivity() {
                         .into(binding.episodePoster)
                     binding.episodeName.text = episode.name
                     if (episode.overview.isEmpty()) {
-                        binding.episodeOverView.text = "No information available"
+                        binding.episodeOverView.text = getString(R.string.no_information_available)
                     } else {
                         binding.episodeOverView.text = episode.overview
                     }
@@ -64,7 +64,7 @@ class EpisodeActivity : AppCompatActivity() {
                         this@EpisodeActivity,
                         LinearLayoutManager.HORIZONTAL, false
                     )
-                    var adapter = GuestCastAdapter(episode.guestStars)
+                    val adapter = GuestCastAdapter(episode.guestStars)
                     binding.guestsRecycler.adapter = adapter
 
                     binding.ratingTxt.text = buildString {
@@ -74,11 +74,11 @@ class EpisodeActivity : AppCompatActivity() {
                     }
                     when (episode.airDate) {
                         null -> {
-                            binding.EpisodeAirDate.text = "N/A"
+                            binding.EpisodeAirDate.text = getString(R.string.n_a)
                         }
 
                         else -> {
-                            var simpleDate = LocalDate.parse(episode.airDate)
+                            val simpleDate = LocalDate.parse(episode.airDate)
                             binding.EpisodeAirDate.text = buildString {
                                 append(simpleDate.dayOfMonth)
                                 append(" ")
