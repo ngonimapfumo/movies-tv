@@ -11,8 +11,8 @@ import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 class CollectionActivity : AppCompatActivity() {
-    lateinit var binding: ActivityCollectionBinding
-    lateinit var adapter: CollectionAdapter
+   private lateinit var binding: ActivityCollectionBinding
+   private lateinit var adapter: CollectionAdapter
     private lateinit var collectionViewModel: CollectionViewModel
     private var collectionId: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
