@@ -9,7 +9,10 @@ converterGsonVersion = "2.9.0"
 coreKtx = "1.13.1"
 espressoCoreVersion = "3.6.1"
 firebaseAnalyticsVersion = "22.0.2"
+firebaseCrashlyticsGradleVersion = "3.0.2"
 firebaseCrashlyticsVersion = "19.0.3"
+googleServicesVersion = "4.4.2"
+gradleVersion = "8.5.1"
 hiltAndroidVersion = "2.44"
 junitVersion = "4.13.2"
 junit = "1.2.1"
@@ -57,6 +60,9 @@ converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalyticsVersion" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlyticsVersion" }
+firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradleVersion" }
+google-services = { module = "com.google.gms:google-services", version.ref = "googleServicesVersion" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradleVersion" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidVersion" }
 junit = { module = "junit:junit", version.ref = "junitVersion" }

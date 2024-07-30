@@ -18,7 +18,7 @@ android {
         applicationId "zw.co.nm.moviedb"
         minSdk 26
         targetSdk 34
-        versionCode 15
+        versionCode 17
         versionName "2.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -29,11 +29,13 @@ android {
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", 'API_KEY', localProperties['apiKey'])
         }
         debug{
+            debuggable true
             buildConfigField("String", 'API_KEY', localProperties['apiKey'])
         }
     }
