@@ -1,7 +1,6 @@
 package zw.co.nm.moviedb.presentation.collection
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
@@ -9,6 +8,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityCollectionBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 
 class CollectionActivity : AppCompatActivity() {
    private lateinit var binding: ActivityCollectionBinding
@@ -47,10 +47,7 @@ class CollectionActivity : AppCompatActivity() {
                         }
                     }
                     binding.collectionOverView.setOnClickListener {
-                        AlertDialog.Builder(this)
-                            .setMessage(data.overview)
-                            .setPositiveButton("OKAY", null)
-                            .show()
+                        showGenericDialog(this@CollectionActivity, data.overview, "OKAY")
                     }
                     Picasso.get().load(Constants.IMAGE_BASE_URL + data.posterPath)
                         .placeholder(R.drawable.sample_cover_large_exp)

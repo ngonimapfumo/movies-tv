@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +23,7 @@ import zw.co.nm.moviedb.util.Constants.NETWORK_ERROR_MSG
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
@@ -113,10 +113,11 @@ class MovieDetailActivity : AppCompatActivity() {
                     }
                     binding.detailedSummaryTxt.text = movie.overview
                     binding.detailedSummaryTxt.setOnClickListener {
-                        AlertDialog.Builder(this@MovieDetailActivity)
-                            .setPositiveButton("OKAY", null)
-                            .setMessage(movie.overview)
-                            .show()
+                        showGenericDialog(
+                            this@MovieDetailActivity,
+                            movie.overview, "OKAY"
+                        )
+
                     }
                     binding.movieTitleTxt.text = movie.title
                     binding.runtimeTxt.text = buildString {

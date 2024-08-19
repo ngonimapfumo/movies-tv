@@ -129,11 +129,10 @@
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/baseline_rate_review_24"
+
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/reviews"
-                    android:textAlignment="viewStart"
                     android:textColor="@color/black"
                     android:visibility="visible" />
 
@@ -148,11 +147,10 @@
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/baseline_play_arrow_24"
+
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/trailers"
-                    android:textAlignment="viewStart"
                     android:textColor="@color/black" />
 
 

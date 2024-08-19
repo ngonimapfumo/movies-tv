@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.content.res.Resources
 import android.view.View
 import android.view.View.OnClickListener
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Response
 
@@ -50,6 +51,13 @@ object GeneralUtil {
 
     fun dpToPx(dp: Int): Int {
         return (dp * Resources.getSystem().displayMetrics.density).toInt()
+    }
+
+    fun showGenericDialog(context: Context, message: String, positiveButtonText: String) {
+        MaterialAlertDialogBuilder(context)
+            .setPositiveButton(positiveButtonText, null)
+            .setMessage(message)
+            .show()
     }
 
 }

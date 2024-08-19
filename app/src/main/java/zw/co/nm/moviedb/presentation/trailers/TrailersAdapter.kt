@@ -1,14 +1,11 @@
 package zw.co.nm.moviedb.presentation.trailers
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
 
@@ -41,39 +38,14 @@ class TrailersAdapter(
             }
         }
         if (data[position].site.equals("youtube",true))  {
-            //  binding!!.ytImg.visibility = VISIBLE
-            /*Picasso.get().load("https://img.youtube.com/vi/${data[position].key}/mqdefault.jpg")
-                .into(binding!!.thumbView)*/
-
-            /*holder.itemView.setOnClickListener {
-                //go to activity that extends youtube and display
-                val ytIntent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://www.youtube.com/watch?v=${data[position].key}")
-                )
-                try {
-                    holder.itemView.context.startActivity(ytIntent)
-                } catch (ex: ActivityNotFoundException) {
-                    //hoyo
-                }
-            }*/
-            /*holder.itemView.context
-                .startActivity(Intent(holder.itemView.context,TrailerActivity::class.java))*/
-
             activity.lifecycle.addObserver(binding!!.thumbView)
             binding!!.thumbView.enableAutomaticInitialization = false
-          // val controlsUI: View = binding!!.thumbView.inflateCustomPlayerUi(R.layout.item_controls)
-
             val yt: YouTubePlayerListener = object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     super.onReady(youTubePlayer)
-                   // val controller = PlayerUIController(holder.itemView.context,youTubePlayer,binding!!.thumbView)
-
-                   // youTubePlayer.addListener(controller)
                     youTubePlayer.cueVideo(ytKey,0F)
                 }
             }
-          //  val options = IFramePlayerOptions.Builder().controls(0).build()
             binding!!.thumbView.initialize(yt)
 
         }

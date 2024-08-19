@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +16,7 @@ import zw.co.nm.moviedb.adapters.CombinedCreditsListAdapter
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil
+import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 import java.time.LocalDate
 
 
@@ -53,10 +53,10 @@ class PersonActivity : AppCompatActivity() {
                             binding.bioCard.visibility = GONE
                         }
                         binding.bioCard.setOnClickListener {
-                            AlertDialog.Builder(this@PersonActivity)
-                                .setPositiveButton("OKAY", null)
-                                .setMessage(response.body.biography)
-                                .show()
+                            showGenericDialog(
+                                this@PersonActivity,
+                                response.body.biography, "OKAY"
+                            )
                         }
                         binding.biographyTxt.text = response.body.biography
                         binding.nameTxt.text = response.body.name

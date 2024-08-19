@@ -1,9 +1,9 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.MovieDB" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MovieDB" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
         <!-- <item name="android:windowBackground">@color/white</item>-->
-        <item name="fontFamily">@font/albertsansregular</item>
+        <item name="fontFamily">@font/kumb</item>
         <item name="colorPrimary">#000</item>
         <item name="colorPrimaryVariant">#0d253f</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -25,9 +25,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.MovieDB.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MovieDB.AppBarOverlay" parent="ThemeOverlay.Material3.Dark.ActionBar" />
 
-    <style name="Theme.MovieDB.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.MovieDB.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 
     <color name="grey_white">#C9C9CC</color>
     <!-- Base application theme. -->

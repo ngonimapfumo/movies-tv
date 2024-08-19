@@ -4,10 +4,10 @@ import android.R
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.jakewharton.processphoenix.ProcessPhoenix
 import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.databinding.ActivitySettingsBinding
@@ -16,6 +16,7 @@ import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -35,11 +36,12 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         binding.imageView2.setOnClickListener {
-            AlertDialog.Builder(this).apply {
-                setMessage(zw.co.nm.moviedb.R.string.notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb)
-                setPositiveButton("OKAY", null)
-                show()
-            }
+            showGenericDialog(
+                this@SettingsActivity,
+                getString(zw.co.nm.moviedb.R.string.notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb),
+                "OKAY"
+            )
+
         }
 
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
@@ -71,7 +73,7 @@ class SettingsActivity : AppCompatActivity() {
                             binding.autoComplete.text.toString()
                         )
 
-                        AlertDialog.Builder(this)
+                        MaterialAlertDialogBuilder(this)
                             .setTitle(getString(zw.co.nm.moviedb.R.string.alert))
                             .setMessage(
                                 getString(zw.co.nm.moviedb.R.string.language_change_requires_a_restart) +
