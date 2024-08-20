@@ -214,7 +214,8 @@
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/ll_suggested">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    style="?attr/materialCardViewFilledStyle"
                     android:id="@+id/aboutCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -258,7 +259,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -272,7 +273,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_about">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    style="?attr/materialCardViewFilledStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="10dp"
@@ -578,8 +580,9 @@
                                         app:layout_constraintTop_toTopOf="parent"
                                         app:layout_constraintVertical_bias="0.0" />
 
-                                    <androidx.cardview.widget.CardView
+                                    <com.google.android.material.card.MaterialCardView
 
+                                        style="?attr/materialCardViewFilledStyle"
                                         android:id="@+id/collectionCard"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -601,7 +604,7 @@
                                             app:layout_constraintBottom_toTopOf="@+id/collectionName" />
 
 
-                                    </androidx.cardview.widget.CardView>
+                                    </com.google.android.material.card.MaterialCardView>
 
 
                                     <TextView
@@ -640,8 +643,9 @@
                                         app:layout_constraintTop_toTopOf="parent"
                                         app:layout_constraintVertical_bias="0.0" />
 
-                                    <androidx.cardview.widget.CardView
+                                    <com.google.android.material.card.MaterialCardView
 
+                                        style="?attr/materialCardViewFilledStyle"
                                         android:id="@+id/postersCard"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -663,7 +667,7 @@
                                             app:layout_constraintBottom_toTopOf="@+id/collectionName" />
 
 
-                                    </androidx.cardview.widget.CardView>
+                                    </com.google.android.material.card.MaterialCardView>
 
 
                                     <TextView
@@ -687,7 +691,7 @@
                         </HorizontalScrollView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

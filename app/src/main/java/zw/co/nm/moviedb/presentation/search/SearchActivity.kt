@@ -82,6 +82,7 @@ class SearchActivity : AppCompatActivity(),
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.nextB.setOnClickListener {
             searchViewModel.page++

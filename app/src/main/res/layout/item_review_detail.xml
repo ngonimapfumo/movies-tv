@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        style="?attr/materialCardViewFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardPreventCornerOverlap="true"
@@ -21,7 +22,7 @@
 
 
             <TextView
-                android:textColor="@color/green_light"
+                android:textColor="@color/blue_light"
                 android:textStyle="bold"
                 android:id="@+id/textViewAuthorName"
                 android:layout_width="wrap_content"
@@ -35,7 +36,6 @@
 
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/textViewContent"
                 android:layout_width="338dp"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

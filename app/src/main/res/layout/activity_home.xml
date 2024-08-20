@@ -63,7 +63,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
+                        style="?attr/materialCardViewFilledStyle"
                         android:id="@+id/cardView4"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -73,7 +74,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
+                        style="?attr/materialCardViewFilledStyle"
                         android:id="@+id/cardView5"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -84,7 +86,8 @@
                         app:layout_constraintStart_toEndOf="@+id/cardView4"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
+                        style="?attr/materialCardViewFilledStyle"
                         android:id="@+id/cardView6"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -95,7 +98,8 @@
                         app:layout_constraintStart_toEndOf="@+id/cardView5"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
+                        style="?attr/materialCardViewFilledStyle"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="2dp"
@@ -105,7 +109,7 @@
                         app:layout_constraintStart_toEndOf="@+id/cardView6"
                         app:layout_constraintTop_toTopOf="parent">
 
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

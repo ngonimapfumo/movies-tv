@@ -41,7 +41,8 @@
                 app:layout_constraintStart_toStartOf="@+id/backImageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
+                style="?attr/materialCardViewFilledStyle"
                 android:id="@+id/bioCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,9 +68,10 @@
                     android:textAlignment="center"
                     android:textStyle="italic" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
+                style="?attr/materialCardViewFilledStyle"
                 android:id="@+id/infoCard"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -189,7 +191,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/creditsLayout"
