@@ -49,7 +49,7 @@ class MovieDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpView()
 
-        moviesViewModel.getMovieImages(movieId!!)
+        /*moviesViewModel.getMovieImages(movieId!!)
         moviesViewModel.getMovieImages.observe(this) { posters ->
 
             posters.body.posters.forEach { imagesResponse ->
@@ -69,7 +69,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 }
             }
-        }
+        }*/
 
 
         moviesViewModel.getMovieDetail(movieId!!)
@@ -87,6 +87,11 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 else -> {
                     val movie = it.body
+                    Picasso.get().load(IMAGE_BASE_URL+movie.posterPath)
+                        .resize(500, 0)
+                        .placeholder(R.drawable.sample_cover_large_exp)
+                        .into(binding.backgroundImm)
+
                     if (movie.belongsToCollection != null) {
                         if (movie.belongsToCollection.backdropPath == null) {
                             when {

@@ -1,5 +1,6 @@
 package zw.co.nm.moviedb.presentation.main.movies
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.hardware.display.DisplayManager
@@ -11,6 +12,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -22,6 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.InstallState
 import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
@@ -83,9 +87,28 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+    private val activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+        when (val resultCode = result.resultCode) {
+            Activity.RESULT_OK -> {
+                Toast.makeText(this@HomeActivity,
+                    "Update successful", Toast.LENGTH_SHORT).show()
+            }
+            Activity.RESULT_CANCELED -> {
+                Toast.makeText(this@HomeActivity,
+                    "Update canceled", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                Log.v("MyActivity", "Update flow failed with resultCode:$resultCode")
+            }
+        }
+    }
 
     private fun startUpdate(updateInfo: AppUpdateInfo?) {
-        appUpdateManager.startUpdateFlowForResult(updateInfo!!, AppUpdateType.FLEXIBLE, this, 1101)
+        appUpdateManager.startUpdateFlowForResult(
+            updateInfo!!,
+            activityResultLauncher,
+            AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
+        )
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
