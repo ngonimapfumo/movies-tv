@@ -28,8 +28,8 @@ data class Response<T>(
 
 
     sealed class Status {
-        object Success : Status()
-        object Failure : Status()
+        data object Success : Status()
+        data object Failure : Status()
 
     }
 

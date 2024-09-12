@@ -2,10 +2,12 @@ package zw.co.nm.moviedb.presentation.movie
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +36,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private var movieId: Int? = null
     private var genres: ArrayList<String>? = arrayListOf()
     private var logos: ArrayList<String>? = arrayListOf()
+    private var posterList: ArrayList<String>? = arrayListOf()
     private var productionCompanies: ArrayList<String>? = arrayListOf()
     private var iso6391: String? = null
     private var iso31661: String? = null
@@ -45,6 +48,29 @@ class MovieDetailActivity : AppCompatActivity() {
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpView()
+
+        /*moviesViewModel.getMovieImages(movieId!!)
+        moviesViewModel.getMovieImages.observe(this) { posters ->
+
+            posters.body.posters.forEach { imagesResponse ->
+                when (imagesResponse.iso6391) {
+                    iso6391 -> {
+                        posterList!!.add(IMAGE_BASE_URL+imagesResponse.filePath)
+
+                        //   println(posterList!!.random())
+
+                        Picasso.get().load(posterList!!.random())
+                            .resize(500, 0)
+                            .placeholder(R.drawable.sample_cover_large_exp)
+                            .into(binding.backgroundImm)
+
+
+                    }
+
+                }
+            }
+        }*/
+
 
         moviesViewModel.getMovieDetail(movieId!!)
         moviesViewModel.getMovieDetail.observe(this) {
@@ -61,6 +87,11 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 else -> {
                     val movie = it.body
+                    Picasso.get().load(IMAGE_BASE_URL+movie.posterPath)
+                        .resize(500, 0)
+                        .placeholder(R.drawable.sample_cover_large_exp)
+                        .into(binding.backgroundImm)
+
                     if (movie.belongsToCollection != null) {
                         if (movie.belongsToCollection.backdropPath == null) {
                             when {
@@ -99,10 +130,7 @@ class MovieDetailActivity : AppCompatActivity() {
                     } else {
                         binding.collectionLayout.visibility = GONE
                     }
-                    Picasso.get().load(IMAGE_BASE_URL + movie.posterPath)
-                        .resize(500, 0)
-                        .placeholder(R.drawable.sample_cover_large_exp)
-                        .into(binding.backgroundImm)
+
                     if (movie.tagline.isEmpty()) {
                         binding.movieSummaryTxt.text = ""
                     } else {
@@ -294,7 +322,7 @@ class MovieDetailActivity : AppCompatActivity() {
                         when (crew.job) {
                             "Director" -> {
 
-                                    binding.director.text = crew.name
+                                binding.director.text = crew.name
                             }
                         }
                     }
