@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewElevatedStyle"
+        style="@style/Widget.Material3.CardView.Filled"
         app:cardUseCompatPadding="true"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
@@ -23,13 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:id="@+id/genreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

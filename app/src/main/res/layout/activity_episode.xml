@@ -38,7 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewEpisodeNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/episodePoster" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/episodeName"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/episodeName">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/episodeOverView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
 
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
                     tools:layout_editor_absoluteX="13dp"
                     tools:layout_editor_absoluteY="18dp">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                         app:layout_constraintStart_toStartOf="@+id/textView2"
                         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/EpisodeAirDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView4"
                         tools:text="2000" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                         app:layout_constraintStart_toStartOf="@+id/textView4"
                         app:layout_constraintTop_toBottomOf="@+id/EpisodeAirDate" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/ratingTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

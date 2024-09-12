@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sample_cover_small" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/seasonName"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.17"
         tools:text="Season 1" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/episodeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seasonName"
         tools:text="15 Episodes" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/seasonAirDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         tools:text="1994" />
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:visibility="gone"
         android:id="@+id/movieRatingTxt"
         android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seasonPoster">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/seasonOverView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

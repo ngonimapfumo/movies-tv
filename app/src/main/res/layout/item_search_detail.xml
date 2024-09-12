@@ -8,7 +8,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
+        style="@style/Widget.Material3.CardView.Filled"
         android:id="@+id/imgCard"
         app:cardUseCompatPadding="true"
         app:cardCornerRadius="5dp"
@@ -30,7 +30,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:cardCornerRadius="5dp"
@@ -46,7 +46,8 @@
             android:layout_height="match_parent">
 
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.TitleMedium"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:id="@+id/textViewName"
@@ -56,13 +57,12 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="10dp"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="NNNNNNNNNNNNNNASMJASKJASNANS" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:id="@+id/textMediaType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,10 +71,10 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewName"
-                tools:text="Tv" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:id="@+id/textViewRelease"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -83,8 +83,7 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textMediaType"
-                app:layout_constraintTop_toBottomOf="@+id/textMediaType"
-                tools:text="2005" />
+                app:layout_constraintTop_toBottomOf="@+id/textMediaType" />
 
             <TextView
                 android:id="@+id/textView"

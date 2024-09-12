@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardPreventCornerOverlap="true"
@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:textColor="@color/blue_light"
                 android:textStyle="bold"
                 android:id="@+id/textViewAuthorName"
@@ -35,7 +35,7 @@
                 tools:text="Ngoni M" />
 
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewContent"
                 android:layout_width="338dp"
                 android:layout_height="wrap_content"

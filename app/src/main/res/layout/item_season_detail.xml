@@ -23,7 +23,7 @@
         android:contentDescription="@string/season_poster" />
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:maxLines="3"
         android:textAlignment="center"
         android:id="@+id/seasonTxt"

@@ -16,8 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sample_cover_small" />
 
-    <TextView
-        android:textStyle="bold"
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/TextAppearance.Material3.HeadlineLarge"
         android:padding="5dp"
         android:id="@+id/collectionName"
         android:layout_width="180dp"

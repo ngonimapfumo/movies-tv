@@ -63,7 +63,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.5" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/movieTitleTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constMedia"
                 tools:layout_editor_absoluteX="0dp">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/yearTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
 
             </LinearLayout>
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/movieSummaryTxt"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
@@ -233,7 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/textView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -246,7 +246,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/detailed_summaryTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/textView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/directorTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -322,7 +322,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/director"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -348,7 +348,7 @@
                             android:layout_height="wrap_content"
                             >
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/textView4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -360,7 +360,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/prod_company"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -384,7 +384,7 @@
                             app:layout_constraintStart_toStartOf="@+id/prodLayout"
                             app:layout_constraintTop_toBottomOf="@+id/prodLayout">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/textView6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -394,7 +394,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:layout_marginTop="2dp"
                                 android:id="@+id/movieRatingTxt"
                                 android:layout_width="wrap_content"
@@ -419,7 +419,7 @@
                             app:layout_constraintStart_toStartOf="@+id/userScoreLayout"
                             app:layout_constraintTop_toBottomOf="@+id/userScoreLayout">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/textView7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -430,7 +430,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:layout_marginTop="2dp"
                                 android:id="@+id/statusTxt"
                                 android:layout_width="wrap_content"
@@ -454,7 +454,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/statusLayout">
 
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/textView17"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -465,7 +465,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:layout_marginTop="2dp"
                                 android:id="@+id/genre"
                                 android:layout_width="wrap_content"
@@ -488,7 +488,7 @@
                             app:layout_constraintStart_toStartOf="@+id/genresLayout"
                             app:layout_constraintTop_toBottomOf="@+id/genresLayout">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/certficationsTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -499,7 +499,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:layout_marginTop="2dp"
                                 android:id="@+id/certifications"
                                 android:layout_width="wrap_content"
@@ -522,7 +522,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/certificationsLayout">
 
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/textView8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -568,7 +568,7 @@
                                     android:layout_marginTop="@dimen/tv_lay_marginTop_txt">
 
 
-                                    <TextView
+                                    <com.google.android.material.textview.MaterialTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/collection"
@@ -607,7 +607,7 @@
                                     </com.google.android.material.card.MaterialCardView>
 
 
-                                    <TextView
+                                    <com.google.android.material.textview.MaterialTextView
                                         android:id="@+id/collectionName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"
@@ -631,7 +631,7 @@
                                     android:layout_marginTop="@dimen/tv_lay_marginTop_txt">
 
 
-                                    <TextView
+                                    <com.google.android.material.textview.MaterialTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/posters"
@@ -670,7 +670,7 @@
                                     </com.google.android.material.card.MaterialCardView>
 
 
-                                    <TextView
+                                    <com.google.android.material.textview.MaterialTextView
                                         android:id="@+id/postersName"
                                         android:layout_width="85dp"
                                         android:layout_height="wrap_content"

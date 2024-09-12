@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="8dp"
@@ -29,23 +29,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewMovieName"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:layout_width="190dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:padding="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textViewShortSummary"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewShortSummary"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:layout_width="250dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="4dp"
@@ -56,8 +56,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.072"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName"/>
-                                                                                                    crime bosses. As events turn deadly, McCall knows what he has to do: become his friends' protector by taking on the
+                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
