@@ -6,11 +6,11 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
-        app:cardElevation="8dp"
+        app:cardElevation="5dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,18 +20,18 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="4dp">
 
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            <ImageView
                 android:id="@+id/thumbView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="168dp"
+                android:layout_height="103dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_play_circle_24"
@@ -41,8 +41,9 @@
                 app:layout_constraintTop_toTopOf="@+id/thumbView" />
 
 
-            <TextView
-                android:visibility="gone"
+            <com.google.android.material.textview.MaterialTextView
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:id="@+id/textViewNameTxt"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -63,7 +64,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textViewNameTxt"
                 app:layout_constraintTop_toBottomOf="@+id/textViewNameTxt">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textViewTypeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Trailer" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textViewOfficialTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,6 +89,8 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
     </com.google.android.material.card.MaterialCardView>

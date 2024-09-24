@@ -79,7 +79,7 @@ class TrailerActivity : AppCompatActivity() {
             binding.noResultLay.visibility = View.GONE
         }
         val data = response.body.results
-        adapter = TrailersAdapter(data, this@TrailerActivity)
+        adapter = TrailersAdapter(data)
         binding.trailerRecycler.adapter = adapter
     }
 }
