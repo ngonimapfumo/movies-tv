@@ -1,16 +1,16 @@
 [versions]
-activityKtxVersion = "1.9.1"
+activityKtxVersion = "1.9.2"
 appcompatVersion = "1.7.0"
 appUpdateKtxVersion = "2.1.0"
 circleimageviewVersion = "3.1.0"
-composeBomVersion = "2024.08.00"
+composeBomVersion = "2024.09.02"
 constraintlayoutVersion = "2.1.4"
 converterGsonVersion = "2.9.0"
 coreKtx = "1.13.1"
 espressoCoreVersion = "3.6.1"
 firebaseAnalyticsVersion = "22.1.0"
 firebaseCrashlyticsGradleVersion = "3.0.2"
-firebaseCrashlyticsVersion = "19.0.3"
+firebaseCrashlyticsVersion = "19.1.0"
 googleServicesVersion = "4.4.2"
 gradleVersion = "8.5.2"
 hiltAndroidVersion = "2.44"
@@ -18,11 +18,11 @@ junitVersion = "4.13.2"
 junit = "1.2.1"
 kotlinxCoroutinesAndroidVersion = "1.8.0"
 kotlinxCoroutinesCoreVersion = "1.8.0"
-lifecycleRuntimeKtxVersion = "2.8.4"
+lifecycleRuntimeKtxVersion = "2.8.6"
 loggingInterceptorVersion = "4.12.0"
 materialVersion = "1.12.0"
-navigationFragmentKtxVersion = "2.7.7"
-navigationUiKtxVersion = "2.7.7"
+navigationFragmentKtxVersion = "2.8.1"
+navigationUiKtxVersion = "2.8.1"
 picassoVersion = "2.71828"
 pierfrancescosoffrittiVersion = "12.1.0"
 preferenceKtxVersion = "1.2.1"
@@ -30,7 +30,8 @@ processPhoenixVersion = "2.1.2"
 retrofitVersion = "2.9.0"
 shimmerVersion = "0.5.0"
 swiperefreshlayoutVersion = "1.2.0-alpha01"
-uiTextGoogleFontsVersion = "1.6.8"
+uiTextGoogleFontsVersion = "1.7.2"
+junitJupiterVersion = "5.8.1"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityKtxVersion" }
@@ -78,6 +79,7 @@ pierfrancescosoffritti-custom-ui = { module = "com.pierfrancescosoffritti.androi
 process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenixVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersion" }
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiterVersion" }
 
 [plugins]
 
