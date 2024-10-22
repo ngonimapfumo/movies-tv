@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/movie_item">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         app:cardUseCompatPadding="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true" />
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
