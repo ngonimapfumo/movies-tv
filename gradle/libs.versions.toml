@@ -1,4 +1,5 @@
 [versions]
+kotlin = "2.0.10"
 activityKtxVersion = "1.9.3"
 appcompatVersion = "1.7.0"
 appUpdateKtxVersion = "2.1.0"
@@ -12,7 +13,7 @@ firebaseAnalyticsVersion = "22.1.2"
 firebaseCrashlyticsGradleVersion = "3.0.2"
 firebaseCrashlyticsVersion = "19.2.1"
 googleServicesVersion = "4.4.2"
-gradleVersion = "8.5.2"
+gradleVersion = "8.7.1"
 hiltAndroidVersion = "2.44"
 junitVersion = "4.13.2"
 junit = "1.2.1"
@@ -83,3 +84,4 @@ junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.r
 
 [plugins]
 
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

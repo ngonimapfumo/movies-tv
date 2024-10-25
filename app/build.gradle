@@ -5,6 +5,7 @@ plugins {
     id 'com.google.firebase.crashlytics'
     id 'kotlin-kapt'
     id("com.google.dagger.hilt.android")
+    alias(libs.plugins.compose.compiler)
 }
 
 def localProperties = new Properties()
