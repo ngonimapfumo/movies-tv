@@ -13,7 +13,7 @@ localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     namespace 'zw.co.nm.moviedb'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "zw.co.nm.moviedb"

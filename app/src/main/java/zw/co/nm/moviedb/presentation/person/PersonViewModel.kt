@@ -16,6 +16,7 @@ class PersonViewModel(application: Application) :
     AndroidViewModel(application) {
     private val personRepo = PersonRepo()
     private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
+
     private val _getPerson =
         MutableLiveData<Response<GetPersonResponse>>()
     val getPerson: LiveData<Response<GetPersonResponse>> =

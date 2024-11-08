@@ -35,12 +35,6 @@ interface MovieService {
         @Query("language") language: String
     ): Response<zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse>
 
-    @GET("person/{id}")
-    suspend fun getPerson(
-        @Path("id") personId: Int,
-        @Query("language") language: String
-    ): Response<zw.co.nm.moviedb.data.remote.model.response.GetPersonResponse>
-
     @GET("search/multi")
     suspend fun searchMulti(
         @Query("query") query: String,
@@ -48,12 +42,6 @@ interface MovieService {
         @Query("include_adult") include_adult: Boolean,
         @Query("language") language: String
     ): Response<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse>
-
-    @GET("person/{id}/combined_credits")
-    suspend fun getCombinedCredits(
-        @Path("id") query: Int,
-        @Query("language") language: String
-    ): Response<zw.co.nm.moviedb.data.remote.model.response.GetCombinedCreditsResponse>
 
     @GET("movie/{id}/videos")
     suspend fun getTrailers(
