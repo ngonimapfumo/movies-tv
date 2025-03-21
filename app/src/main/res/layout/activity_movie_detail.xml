@@ -123,6 +123,8 @@
 
 
                 <com.google.android.material.button.MaterialButton
+                    android:textAllCaps="false"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:id="@+id/reviewsBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -141,6 +143,8 @@
                     android:layout_height="wrap_content" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:textAllCaps="false"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:id="@+id/trailerBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

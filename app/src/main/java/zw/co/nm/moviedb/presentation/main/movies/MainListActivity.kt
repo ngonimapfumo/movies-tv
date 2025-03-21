@@ -93,6 +93,7 @@ class MainListActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
+        supportActionBar?.title = "Movies"
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             when {
