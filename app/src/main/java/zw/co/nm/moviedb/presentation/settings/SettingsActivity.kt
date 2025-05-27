@@ -30,6 +30,7 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Settings"
         binding.appVerTxt.text = buildString {
             append("version: ")
             append(BuildConfig.VERSION_NAME)

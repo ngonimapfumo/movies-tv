@@ -66,8 +66,8 @@ class TvShowDetailActivity : AppCompatActivity() {
                 }
 
                 else -> {
-
                     val tv = it.body
+                    supportActionBar?.title = tv.name
                     Picasso.get().load(IMAGE_BASE_URL + tv.posterPath)
                         .resize(500, 750)
                         .placeholder(R.drawable.sample_cover_large_exp)

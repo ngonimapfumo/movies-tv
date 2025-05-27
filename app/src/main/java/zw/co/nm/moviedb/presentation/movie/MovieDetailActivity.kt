@@ -87,6 +87,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 else -> {
                     val movie = it.body
+                    supportActionBar?.title = movie.title
                     Picasso.get().load(IMAGE_BASE_URL+movie.posterPath)
                         .resize(500, 0)
                         .placeholder(R.drawable.sample_cover_large_exp)
