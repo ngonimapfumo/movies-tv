@@ -5,20 +5,20 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <!--<com.google.android.material.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
+        app:cardPreventCornerOverlap="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
+        android:elevation="15dp"
         app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </com.google.android.material.card.MaterialCardView>-->
-        <ImageView
 
+        <ImageView
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/sample_cover_large" />
-
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
