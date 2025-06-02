@@ -2,7 +2,10 @@ package zw.co.nm.moviedb.presentation.trailers
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.data.remote.model.response.GetTrailersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
@@ -21,10 +24,25 @@ class TrailerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTrailerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         trailerType = intent.getStringExtra(TRAILER_TYPE)
         mediaId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
         trailersViewModel = ViewModelProvider(this)[TrailersViewModel::class.java]
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
 
         if (trailerType.equals("movie")) {
             trailersViewModel.getTrailers(mediaId!!)

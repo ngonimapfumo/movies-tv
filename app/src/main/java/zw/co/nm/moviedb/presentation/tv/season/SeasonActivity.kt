@@ -1,7 +1,10 @@
 package zw.co.nm.moviedb.presentation.tv.season
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
@@ -23,7 +26,22 @@ class SeasonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySeasonBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
         seasonViewModel = ViewModelProvider(this)[SeasonViewModel::class.java]
         seasonNumber = intent.getIntExtra(SEASON_ID, 0)
         tvShowId = ConfigStore.getInt(this, SAVED_SHOW_ID)

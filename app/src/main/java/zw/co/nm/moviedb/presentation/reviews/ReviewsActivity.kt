@@ -2,7 +2,10 @@ package zw.co.nm.moviedb.presentation.reviews
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.data.remote.model.response.GetReviewsResponse
 import zw.co.nm.moviedb.data.remote.util.Response
@@ -23,8 +26,24 @@ class ReviewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityReviewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         reviewsViewModel = ViewModelProvider(this)[ReviewsViewModel::class.java]
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
 
         mediaId = intent.getIntExtra(ID, 0)
         reviewType = intent.getStringExtra(REVIEW_TYPE)

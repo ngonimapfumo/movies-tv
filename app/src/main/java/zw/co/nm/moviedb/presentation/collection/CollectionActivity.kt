@@ -1,7 +1,10 @@
 package zw.co.nm.moviedb.presentation.collection
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
@@ -19,7 +22,22 @@ class CollectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCollectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
         collectionViewModel = ViewModelProvider(this)[CollectionViewModel::class.java]
         collectionId = intent.getIntExtra(COLLECTION_ID, 0)
         collectionViewModel.getCollectionDetail(collectionId!!)
