@@ -8,7 +8,10 @@ import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -47,9 +50,24 @@ class MovieDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         setUpView()
 
-        /*moviesViewModel.getMovieImages(movieId!!)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.mainLayout) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.mainLayout.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
+
+        moviesViewModel.getMovieImages(movieId!!)
         moviesViewModel.getMovieImages.observe(this) { posters ->
 
             posters.body.posters.forEach { imagesResponse ->
@@ -58,7 +76,6 @@ class MovieDetailActivity : AppCompatActivity() {
                         posterList!!.add(IMAGE_BASE_URL+imagesResponse.filePath)
 
                         //   println(posterList!!.random())
-
                         Picasso.get().load(posterList!!.random())
                             .resize(500, 0)
                             .placeholder(R.drawable.sample_cover_large_exp)
@@ -69,7 +86,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 }
             }
-        }*/
+        }
 
 
         moviesViewModel.getMovieDetail(movieId!!)
