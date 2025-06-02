@@ -4,8 +4,11 @@ import android.R
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.jakewharton.processphoenix.ProcessPhoenix
@@ -29,11 +32,27 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Settings"
         binding.appVerTxt.text = buildString {
             append("version: ")
             append(BuildConfig.VERSION_NAME)
+        }
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
         }
 
         binding.imageView2.setOnClickListener {

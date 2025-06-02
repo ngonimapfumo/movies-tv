@@ -13,11 +13,15 @@ import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.core.content.getSystemService
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -61,6 +65,7 @@ class HomeActivity : AppCompatActivity() {
 
         }
     }
+
     private fun updateStatusSnack() {
         try {
             Snackbar.make(
@@ -87,21 +92,29 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-    private val activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-        when (val resultCode = result.resultCode) {
-            Activity.RESULT_OK -> {
-                Toast.makeText(this@HomeActivity,
-                    "Update successful", Toast.LENGTH_SHORT).show()
-            }
-            Activity.RESULT_CANCELED -> {
-                Toast.makeText(this@HomeActivity,
-                    "Update canceled", Toast.LENGTH_SHORT).show()
-            }
-            else -> {
-                Log.v("MyActivity", "Update flow failed with resultCode:$resultCode")
+
+    private val activityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+            when (val resultCode = result.resultCode) {
+                Activity.RESULT_OK -> {
+                    Toast.makeText(
+                        this@HomeActivity,
+                        "Update successful", Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                Activity.RESULT_CANCELED -> {
+                    Toast.makeText(
+                        this@HomeActivity,
+                        "Update canceled", Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                else -> {
+                    Log.v("MyActivity", "Update flow failed with resultCode:$resultCode")
+                }
             }
         }
-    }
 
     private fun startUpdate(updateInfo: AppUpdateInfo?) {
         appUpdateManager.startUpdateFlowForResult(
@@ -110,18 +123,49 @@ class HomeActivity : AppCompatActivity() {
             AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
         )
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        enableEdgeToEdge()
         binding = ActivityHomeBinding.inflate(
             layoutInflater
         )
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.drawerLayout) {
+            view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.drawerLayout.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.s) {
+            view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.s.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
+
+
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
 
         binding.shimmer.startShimmer()
         viewModel.getPopularMovies()
-        viewModel.getPopularMovies.observe(this){
+        viewModel.getPopularMovies.observe(this) {
 
             when (it.data) {
                 null -> {
@@ -130,6 +174,7 @@ class HomeActivity : AppCompatActivity() {
                         viewModel.getMovieGenres()
                     }
                 }
+
                 else -> {
                     val data = it.body.results
                     movieAdapter = MoviesAdapter(data)
@@ -148,6 +193,7 @@ class HomeActivity : AppCompatActivity() {
                         viewModel.getPopularMovies()
                     }
                 }
+
                 else -> {
                     binding.recyclerView.visibility = VISIBLE
                     binding.shimmer.stopShimmer()
@@ -172,7 +218,7 @@ class HomeActivity : AppCompatActivity() {
                 drawerLayout.addDrawerListener(toggle!!)
                 toggle!!.syncState()
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                navView.setNavigationItemSelectedListener {menu->
+                navView.setNavigationItemSelectedListener { menu ->
                     when (menu.itemId) {
                         R.id.drawer_settings -> {
                             startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
@@ -198,7 +244,14 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
-        binding.moreText.setOnClickListener { startActivity(Intent(this,MainListActivity::class.java)) }
+        binding.moreText.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    MainListActivity::class.java
+                )
+            )
+        }
         configurations()
     }
 
@@ -209,7 +262,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle!!.onOptionsItemSelected(item)) {
-         return true
+            return true
         }
 
         return when (item.itemId) {
@@ -222,7 +275,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun configurations(){
+    private fun configurations() {
         AppCompatDelegate.setDefaultNightMode(ConfigStore.getThemeConfig(this, "THEME"))
         try {
             appUpdateManager = AppUpdateManagerFactory.create(this)
@@ -234,7 +287,11 @@ class HomeActivity : AppCompatActivity() {
 
         val displayMetrics =
             this.getSystemService<DisplayManager>()?.getDisplay(Display.DEFAULT_DISPLAY)
-        ConfigStore.saveIntConfig(this, Constants.DISPLAY_METRICS_WIDTH, displayMetrics!!.mode.physicalWidth)
+        ConfigStore.saveIntConfig(
+            this,
+            Constants.DISPLAY_METRICS_WIDTH,
+            displayMetrics!!.mode.physicalWidth
+        )
 
 
         val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
@@ -242,6 +299,7 @@ class HomeActivity : AppCompatActivity() {
         ConfigStore.saveStringConfig(this, Constants.COUNTRY_ISO, countryIsoValue)
 
     }
+
     override fun onDestroy() {
         super.onDestroy()
         try {

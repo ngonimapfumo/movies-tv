@@ -4,8 +4,11 @@ package zw.co.nm.moviedb.presentation.main.movies
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivityMainListBinding
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
@@ -25,8 +28,25 @@ class MainListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setUpView()
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
+
+
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         bundle = intent.extras
         when {

@@ -3,7 +3,10 @@ package zw.co.nm.moviedb.presentation.tv.episode
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -29,7 +32,23 @@ class EpisodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEpisodeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.mainLayout) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.mainLayout.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
+
+
         val bundle = intent.extras
         seriesId = bundle!!.getInt("seriesId")
         seasonNumber = bundle.getInt("seasonNumber")

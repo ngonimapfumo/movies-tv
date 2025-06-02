@@ -6,7 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -37,7 +40,22 @@ class TvShowDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTvShowDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.mainLayout) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.mainLayout.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
 
         iso6391 = ConfigStore.getStringLang(this, Constants.LANGUAGE_KEY)!!.substring(0, 2)
         iso31661 = ConfigStore.getStringLang(this, Constants.LANGUAGE_KEY)!!.substring(3)

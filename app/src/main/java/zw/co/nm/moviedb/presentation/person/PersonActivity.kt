@@ -6,8 +6,11 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -28,7 +31,24 @@ class PersonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPersonBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         setUpView()
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
+                view, insets, ->
+            val innerPadding = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.main.setPadding(
+                innerPadding.left,
+                innerPadding.top,
+                innerPadding.right,
+                innerPadding.bottom
+            )
+            insets
+        }
+
+
         personViewModel = ViewModelProvider(this)[PersonViewModel::class.java]
         personViewModel.getPerson(personId!!)
         personViewModel.getPerson.observe(this) { response ->
