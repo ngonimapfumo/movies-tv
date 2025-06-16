@@ -24,10 +24,9 @@ import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
-import zw.co.nm.moviedb.util.Constants.NETWORK_ERROR_MSG
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
-import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
@@ -93,7 +92,7 @@ class MovieDetailActivity : AppCompatActivity() {
         moviesViewModel.getMovieDetail.observe(this) {
             when (it!!.data) {
                 null -> {
-                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) { _, _ ->
                         moviesViewModel.getMovieImages(movieId!!)
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
@@ -246,7 +245,8 @@ class MovieDetailActivity : AppCompatActivity() {
 
             when (movie.data) {
                 null -> {
-                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         moviesViewModel.getMovieImages(movieId!!)
                     }
                 }
@@ -281,7 +281,8 @@ class MovieDetailActivity : AppCompatActivity() {
 
             when (it.data) {
                 null -> {
-                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
@@ -314,7 +315,8 @@ class MovieDetailActivity : AppCompatActivity() {
 
             when (response.data) {
                 null -> {
-                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)
@@ -355,7 +357,8 @@ class MovieDetailActivity : AppCompatActivity() {
         moviesViewModel.getMovieReleaseDates.observe(this) {
             when (it.data) {
                 null -> {
-                    actionSnack(binding.root, NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         moviesViewModel.getMovieDetail(movieId!!)
                         moviesViewModel.getSimilarMoviesList(movieId!!)
                         moviesViewModel.getCredits(movieId!!)

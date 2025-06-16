@@ -37,13 +37,18 @@ object GeneralUtil {
             .setNegativeButton(negativeButtonText, negativeDialogInterface)
             .show()
     }
+    fun actionDialog(context: Context,
+                     positiveDialogInterface: DialogInterface.OnClickListener?){
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Alert")
+            .setMessage("Error getting data, Please try again")
+            .setCancelable(false)
+            .setPositiveButton("Retry", positiveDialogInterface)
+            .show()
 
-    fun actionSnack(view: View, msg: String, actionMsg: String, listener: OnClickListener) {
-        Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE)
-            .setAction(actionMsg) {
-                listener.onClick(it)
-            }.show()
+
     }
+
 
     fun getScreenWidth(): Int {
         return Resources.getSystem().displayMetrics.widthPixels

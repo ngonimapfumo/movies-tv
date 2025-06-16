@@ -6,14 +6,12 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import zw.co.nm.moviedb.databinding.ActivityMainListBinding
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
-import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
-import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
 
 
 class MainListActivity : AppCompatActivity() {
@@ -32,8 +30,7 @@ class MainListActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setUpView()
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
-                view, insets, ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val innerPadding = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
@@ -50,10 +47,11 @@ class MainListActivity : AppCompatActivity() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         bundle = intent.extras
         when {
-            bundle!=null -> {
-                genreId = bundle!!.getInt("genre_id",0)
-                identifier = bundle!!.getString("identifier","")
+            bundle != null -> {
+                genreId = bundle!!.getInt("genre_id", 0)
+                identifier = bundle!!.getString("identifier", "")
             }
+
             else -> {
                 genreId = 0
                 identifier = ""
@@ -67,17 +65,21 @@ class MainListActivity : AppCompatActivity() {
                 moviesViewModel.getMovieByGenreId.observe(this) {
                     binding.progressBar.visibility = GONE
 
-                    when(it.data){
-                        null->{
-                            actionSnack(binding.root,"Error getting data","Retry"){
+                    when (it.data) {
+                        null -> {
+                            actionDialog(this) { _, _ ->
                                 binding.progressBar.visibility = VISIBLE
                                 moviesViewModel.getMoviesByGenreId(genreId!!)
                             }
-                        }else->{
-                        binding.prevB.isEnabled = it.body.page != 1
-                        val data = it.body.results
-                        adapter = MoviesAdapter(data)
-                        binding.recyclerView.adapter = adapter
+
+
+                        }
+
+                        else -> {
+                            binding.prevB.isEnabled = it.body.page != 1
+                            val data = it.body.results
+                            adapter = MoviesAdapter(data)
+                            binding.recyclerView.adapter = adapter
                         }
                     }
 
@@ -92,7 +94,7 @@ class MainListActivity : AppCompatActivity() {
                     binding.progressBar.visibility = GONE
                     when (response.data) {
                         null -> {
-                            actionSnack(binding.root, "Error getting data", "Retry") {
+                            actionDialog(this) { _, _ ->
                                 binding.progressBar.visibility = VISIBLE
                                 moviesViewModel.getPopularMovies()
                             }
@@ -117,18 +119,24 @@ class MainListActivity : AppCompatActivity() {
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             when {
-                identifier!!.equals("from_genre",true) -> {
+                identifier!!.equals("from_genre", true) -> {
                     moviesViewModel.getMoviesByGenreId(genreId!!)
                 }
-                else -> {moviesViewModel.getPopularMovies()}
+
+                else -> {
+                    moviesViewModel.getPopularMovies()
+                }
             }
 
         }
         binding.prevB.setOnClickListener {
             if (moviesViewModel.page != 1) {
                 moviesViewModel.page--
-                if (identifier!!.equals("from_genre",true)){moviesViewModel.getMoviesByGenreId(genreId!!)}
-                else{moviesViewModel.getPopularMovies()}
+                if (identifier!!.equals("from_genre", true)) {
+                    moviesViewModel.getMoviesByGenreId(genreId!!)
+                } else {
+                    moviesViewModel.getPopularMovies()
+                }
 
             } else {
                 return@setOnClickListener
