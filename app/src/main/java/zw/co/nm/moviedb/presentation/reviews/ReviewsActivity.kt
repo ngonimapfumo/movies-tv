@@ -13,7 +13,7 @@ import zw.co.nm.moviedb.databinding.ActivityReviewsBinding
 import zw.co.nm.moviedb.util.Constants.REVIEW_MOVIE
 import zw.co.nm.moviedb.util.Constants.REVIEW_TV
 import zw.co.nm.moviedb.util.Constants.REVIEW_TYPE
-import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
 
 class ReviewsActivity : AppCompatActivity() {
     private lateinit var adapter: ReviewsAdapter
@@ -52,7 +52,8 @@ class ReviewsActivity : AppCompatActivity() {
             reviewsViewModel.getTvReviews.observe(this) { response ->
                 when (response.data) {
                     null -> {
-                        actionSnack(binding.root, "Error getting data", "Retry") {
+                        actionDialog(this) {
+                                _, _ ->
                             reviewsViewModel.getTvReviews(mediaId!!)
                         }
                     }
@@ -68,7 +69,8 @@ class ReviewsActivity : AppCompatActivity() {
             reviewsViewModel.getMovieReviews.observe(this) { response ->
                 when (response.data) {
                     null -> {
-                        actionSnack(binding.root, "Error getting data", "Retry") {
+                        actionDialog(this) {
+                                _, _ ->
                             reviewsViewModel.getMovieReviews(mediaId!!)
                         }
                     }

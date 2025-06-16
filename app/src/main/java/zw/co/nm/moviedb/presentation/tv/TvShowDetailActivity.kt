@@ -21,7 +21,7 @@ import zw.co.nm.moviedb.presentation.tv.season.SeasonsAdapter
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
-import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 import java.time.format.TextStyle
@@ -76,7 +76,8 @@ class TvShowDetailActivity : AppCompatActivity() {
 
             when (it!!.data) {
                 null -> {
-                    actionSnack(binding.root, Constants.NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         tvShowsViewModel.getShowDetails(showId!!)
                         tvShowsViewModel.getTvImages(showId!!)
                         tvShowsViewModel.getTvCredits(showId!!)
@@ -146,7 +147,8 @@ class TvShowDetailActivity : AppCompatActivity() {
 
             when (images.data) {
                 null -> {
-                    actionSnack(binding.root, Constants.NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         tvShowsViewModel.getShowDetails(showId!!)
                         tvShowsViewModel.getTvImages(showId!!)
                         tvShowsViewModel.getTvCredits(showId!!)
@@ -183,7 +185,8 @@ class TvShowDetailActivity : AppCompatActivity() {
 
             when (response!!.data) {
                 null -> {
-                    actionSnack(binding.root, Constants.NETWORK_ERROR_MSG, "Retry") {
+                    actionDialog(this) {
+                            _, _ ->
                         tvShowsViewModel.getShowDetails(showId!!)
                         tvShowsViewModel.getTvImages(showId!!)
                         tvShowsViewModel.getTvCredits(showId!!)

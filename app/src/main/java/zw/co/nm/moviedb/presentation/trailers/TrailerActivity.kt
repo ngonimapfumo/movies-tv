@@ -11,7 +11,7 @@ import zw.co.nm.moviedb.data.remote.model.response.GetTrailersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.databinding.ActivityTrailerBinding
 import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
-import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
 
 class TrailerActivity : AppCompatActivity() {
     lateinit var binding: ActivityTrailerBinding
@@ -50,7 +50,8 @@ class TrailerActivity : AppCompatActivity() {
 
                 when (response.data) {
                     null -> {
-                        actionSnack(binding.root, "Error getting data", "Retry") {
+                        actionDialog(this) {
+                                _, _ ->
                             trailersViewModel.getTrailers(mediaId!!)
                         }
                     }
@@ -67,7 +68,8 @@ class TrailerActivity : AppCompatActivity() {
             trailersViewModel.getTVTrailers.observe(this) { response ->
                 when (response.data) {
                     null -> {
-                        actionSnack(binding.root, "Error getting data", "Retry") {
+                        actionDialog(this) {
+                                _, _ ->
                             trailersViewModel.getTvTrailers(mediaId!!)
                         }
                     }
