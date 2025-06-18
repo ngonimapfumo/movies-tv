@@ -18,7 +18,7 @@ import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
-import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 
 
@@ -70,8 +70,7 @@ class SettingsActivity : AppCompatActivity() {
 
             when (it.data) {
                 null -> {
-                    actionDialog(this) {
-                            _, _ ->
+                    actionSnack(binding.root, "Error getting data", "Retry") {
                         configViewModel.getTranslations()
                     }
                 }
