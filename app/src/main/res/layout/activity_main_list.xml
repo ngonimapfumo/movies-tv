@@ -47,7 +47,6 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -89,32 +88,43 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginBottom="20dp"
             android:visibility="gone"
-            android:id="@+id/floatingActionButton"
-            style="@style/ThemeOverlay.Material3.FloatingActionButton.Primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="44dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/floatingActionButton2" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:visibility="gone"
-            android:id="@+id/floatingActionButton2"
-            style="@style/ThemeOverlay.Material3.FloatingActionButton.Primary"
+            app:layout_constraintStart_toEndOf="@+id/floatingActionButton2"
+            android:id="@+id/floatingActionButton"
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/next"
+            android:textAllCaps="false"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:text="@string/prev"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:visibility="gone"
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.045"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/floatingActionButton"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"/>
+
+
+
+
 
         <ProgressBar
             android:id="@+id/loader"

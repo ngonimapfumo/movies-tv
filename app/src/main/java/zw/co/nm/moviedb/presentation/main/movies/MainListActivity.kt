@@ -13,6 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +35,7 @@ class MainListActivity : AppCompatActivity() {
     private var genreId: Int? = null
     private var identifier: String? = null
     var isLoading = false
-    var radius = 20f
+    var radius = 40F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,14 +85,9 @@ class MainListActivity : AppCompatActivity() {
                                 binding.progressBar.visibility = VISIBLE
                                 moviesViewModel.getMoviesByGenreId(genreId!!)
                             }
-                            /*actionDialog(this) { _, _ ->
-                                binding.progressBar.visibility = VISIBLE
-                                moviesViewModel.getMoviesByGenreId(genreId!!)
-                            }*/
-
-
                         }else->{
                         binding.prevB.isEnabled = it.body.page != 1
+                        binding.floatingActionButton2.isEnabled = it.body.page != 1
                         val data = it.body.results
                         adapter = MoviesAdapter(data)
                         binding.recyclerView.adapter = adapter
@@ -117,6 +113,7 @@ class MainListActivity : AppCompatActivity() {
 
                         else -> {
                             binding.prevB.isEnabled = response.body.page != 1
+                            binding.floatingActionButton2.isEnabled = response.body.page != 1
                             val data = response.body.results
                             adapter = MoviesAdapter(data)
                             binding.recyclerView.adapter = adapter
@@ -141,7 +138,31 @@ class MainListActivity : AppCompatActivity() {
             }
 
         }
+
+        binding.floatingActionButton.setOnClickListener {
+            moviesViewModel.page++
+            when {
+                identifier!!.equals("from_genre",true) -> {
+                    moviesViewModel.getMoviesByGenreId(genreId!!)
+                }
+                else -> {moviesViewModel.getPopularMovies()}
+            }
+
+        }
+
+
         binding.prevB.setOnClickListener {
+            if (moviesViewModel.page != 1) {
+                moviesViewModel.page--
+                if (identifier!!.equals("from_genre",true)){moviesViewModel.getMoviesByGenreId(genreId!!)}
+                else{moviesViewModel.getPopularMovies()}
+
+            } else {
+                return@setOnClickListener
+            }
+        }
+
+        binding.floatingActionButton2.setOnClickListener {
             if (moviesViewModel.page != 1) {
                 moviesViewModel.page--
                 if (identifier!!.equals("from_genre",true)){moviesViewModel.getMoviesByGenreId(genreId!!)}
@@ -180,18 +201,6 @@ class MainListActivity : AppCompatActivity() {
         binding.blurView.setBlurRadius(radius)
         binding.blurView.outlineProvider = ViewOutlineProvider.BACKGROUND
         binding.blurView.clipToOutline = true
-
-    }
-
-
-    fun doSomething(){
-        CoroutineScope(Dispatchers.Main).launch {
-            // Load your data here...
-            Toast.makeText(this@MainListActivity, "bottom reach", Toast.LENGTH_SHORT).show()
-
-            delay(2000) // simulate throttling delay
-            isLoading = false
-        }
 
     }
     override fun onSupportNavigateUp(): Boolean {
