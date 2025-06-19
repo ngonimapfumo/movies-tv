@@ -407,6 +407,7 @@ class MovieDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

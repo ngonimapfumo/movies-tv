@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <!-- <item name="android:windowBackground">@color/white</item>-->
        <!-- <item name="android:windowFullscreen">true</item>-->
-        <item name="fontFamily">@font/kumb</item>
+       <!-- <item name="fontFamily">@font/kumb</item>-->
         <item name="colorPrimary">#000</item>
         <item name="colorPrimaryVariant">#0d253f</item>
         <item name="colorOnPrimary">@color/white</item>

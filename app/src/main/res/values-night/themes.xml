@@ -3,7 +3,7 @@
     <style name="Theme.MovieDB" parent="Theme.Material3.DynamicColors.DayNight">
         <!-- Primary brand color. -->
        <!-- <item name="android:windowFullscreen">true</item>-->
-        <item name="fontFamily">@font/kumb</item>
+        <!--<item name="fontFamily">@font/kumb</item>-->
         <item name="colorPrimary">#1976D2</item>
         <item name="colorPrimaryVariant">#303F9F</item>
         <item name="colorOnPrimary">@color/black</item>
