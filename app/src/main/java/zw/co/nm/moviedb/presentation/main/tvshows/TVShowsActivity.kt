@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityMainListBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
@@ -21,6 +27,8 @@ class TVShowsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainListBinding
     private lateinit var tvShowsViewModel: TvShowsViewModel
     private lateinit var adapter: TvShowsAdapter
+    private var radius = 40F
+    var isLoading = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainListBinding.inflate(layoutInflater)
@@ -82,6 +90,37 @@ class TVShowsActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
         }
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val visibleItemCount = layoutManager.childCount
+                val totalItemCount = layoutManager.itemCount
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+
+                if((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
+                    isLoading = true
+                    binding.constraintLayout2.visibility = GONE
+                    binding.floatingActionButton.visibility = VISIBLE
+                    binding.floatingActionButton2.visibility = VISIBLE
+                }
+                else {
+                    binding.constraintLayout2.visibility = VISIBLE
+                    binding.floatingActionButton.visibility = GONE
+                    binding.floatingActionButton2.visibility = GONE
+                }
+            }
+
+        })
+
+
+        val decorView = window.decorView
+        val rootView = decorView.findViewById<View?>(android.R.id.content) as ViewGroup?
+        binding.blurView.setupWith(rootView!!)
+        binding.blurView.setBlurRadius(radius)
+        binding.blurView.outlineProvider = ViewOutlineProvider.BACKGROUND
+        binding.blurView.clipToOutline = true
     }
 
     override fun onSupportNavigateUp(): Boolean {

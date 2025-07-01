@@ -62,7 +62,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="88dp"
-                        android:backgroundTint="@color/white"
                         android:text="@string/next"
                         android:textAllCaps="false"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +73,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="88dp"
-                        android:backgroundTint="@color/white"
                         android:text="@string/prev"
                         android:textAllCaps="false"
                         app:layout_constraintStart_toStartOf="parent"
@@ -101,13 +99,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/white"
             android:text="@string/next"
             android:textAllCaps="false"/>
 
 
         <com.google.android.material.button.MaterialButton
-            android:backgroundTint="@color/white"
             android:text="@string/prev"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:visibility="gone"
@@ -121,10 +117,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/floatingActionButton"
             app:layout_constraintVertical_bias="0.0"/>
-
-
-
-
 
         <ProgressBar
             android:id="@+id/loader"

@@ -35,7 +35,7 @@ class MainListActivity : AppCompatActivity() {
     private var genreId: Int? = null
     private var identifier: String? = null
     var isLoading = false
-    var radius = 40F
+    private var radius = 40F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
