@@ -103,7 +103,7 @@ class HomeActivity : AppCompatActivity() {
                     ).show()
                 }
 
-                Activity.RESULT_CANCELED -> {
+                RESULT_CANCELED -> {
                     Toast.makeText(
                         this@HomeActivity,
                         "Update canceled", Toast.LENGTH_SHORT
@@ -297,6 +297,8 @@ class HomeActivity : AppCompatActivity() {
         val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
         val countryIsoValue = tm.networkCountryIso
         ConfigStore.saveStringConfig(this, Constants.COUNTRY_ISO, countryIsoValue)
+
+       // Toast.makeText(this, AppCompatDelegate.getDefaultNightMode().toString(), Toast.LENGTH_SHORT).show()
 
     }
 

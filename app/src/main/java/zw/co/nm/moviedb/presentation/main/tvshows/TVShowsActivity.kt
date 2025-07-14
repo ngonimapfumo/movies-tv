@@ -62,6 +62,7 @@ class TVShowsActivity : AppCompatActivity() {
                 }
 
                 else -> {
+                    binding.floatingActionButton2.isEnabled = response.body.page != 1
                     binding.prevB.isEnabled = response.body.page != 1
                     binding.progressBar.visibility = View.GONE
                     val data = response.body.results
@@ -82,7 +83,23 @@ class TVShowsActivity : AppCompatActivity() {
             tvShowsViewModel.getPopularTvShows()
         }
 
+        binding.floatingActionButton.setOnClickListener {
+            tvShowsViewModel.page++
+            tvShowsViewModel.page++
+            tvShowsViewModel.getPopularTvShows()
+
+        }
+
         binding.prevB.setOnClickListener {
+            if (tvShowsViewModel.page != 1) {
+                tvShowsViewModel.page--
+                tvShowsViewModel.getPopularTvShows()
+            } else {
+                return@setOnClickListener
+            }
+        }
+
+        binding.floatingActionButton2.setOnClickListener {
             if (tvShowsViewModel.page != 1) {
                 tvShowsViewModel.page--
                 tvShowsViewModel.getPopularTvShows()
