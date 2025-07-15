@@ -19,7 +19,6 @@ import zw.co.nm.moviedb.adapters.CombinedCreditsListAdapter
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil
-import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 import java.time.LocalDate
 
@@ -56,8 +55,7 @@ class PersonActivity : AppCompatActivity() {
 
             when (response.data) {
                 null -> {
-                    actionDialog(this) {
-                            _, _ ->
+                    GeneralUtil.actionSnack(binding.root, "Error getting data", "Retry") {
                         personViewModel.getPerson(personId!!)
                         personViewModel.getCombinedCredits(personId!!)
 
@@ -119,8 +117,7 @@ class PersonActivity : AppCompatActivity() {
         personViewModel.getCombinedCreditsResponse.observe(this) { response ->
             when (response.data) {
                 null -> {
-                    actionDialog(this) {
-                            _, _ ->
+                    GeneralUtil.actionSnack(binding.root, "Error getting data", "Retry") {
                         personViewModel.getCombinedCredits(personId!!)
                         personViewModel.getPerson(personId!!)
                     }

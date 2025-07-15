@@ -1,17 +1,23 @@
 package zw.co.nm.moviedb.presentation.main.movies
 
 
+import android.R
 import android.os.Bundle
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.databinding.ActivityMainListBinding
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
-import zw.co.nm.moviedb.util.GeneralUtil.actionDialog
+import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 
 
 class MainListActivity : AppCompatActivity() {
@@ -22,6 +28,9 @@ class MainListActivity : AppCompatActivity() {
     private var bundle: Bundle? = null
     private var genreId: Int? = null
     private var identifier: String? = null
+    var isLoading = false
+    private var radius = 40F
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainListBinding.inflate(layoutInflater)
@@ -47,11 +56,10 @@ class MainListActivity : AppCompatActivity() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         bundle = intent.extras
         when {
-            bundle != null -> {
-                genreId = bundle!!.getInt("genre_id", 0)
-                identifier = bundle!!.getString("identifier", "")
+            bundle!=null -> {
+                genreId = bundle!!.getInt("genre_id",0)
+                identifier = bundle!!.getString("identifier","")
             }
-
             else -> {
                 genreId = 0
                 identifier = ""
@@ -65,21 +73,18 @@ class MainListActivity : AppCompatActivity() {
                 moviesViewModel.getMovieByGenreId.observe(this) {
                     binding.progressBar.visibility = GONE
 
-                    when (it.data) {
-                        null -> {
-                            actionDialog(this) { _, _ ->
+                    when(it.data){
+                        null->{
+                            actionSnack(binding.root,"Error getting data","Retry"){
                                 binding.progressBar.visibility = VISIBLE
                                 moviesViewModel.getMoviesByGenreId(genreId!!)
                             }
-
-
-                        }
-
-                        else -> {
-                            binding.prevB.isEnabled = it.body.page != 1
-                            val data = it.body.results
-                            adapter = MoviesAdapter(data)
-                            binding.recyclerView.adapter = adapter
+                        }else->{
+                        binding.prevB.isEnabled = it.body.page != 1
+                        binding.floatingActionButton2.isEnabled = it.body.page != 1
+                        val data = it.body.results
+                        adapter = MoviesAdapter(data)
+                        binding.recyclerView.adapter = adapter
                         }
                     }
 
@@ -94,7 +99,7 @@ class MainListActivity : AppCompatActivity() {
                     binding.progressBar.visibility = GONE
                     when (response.data) {
                         null -> {
-                            actionDialog(this) { _, _ ->
+                            actionSnack(binding.root, "Error getting data", "Retry") {
                                 binding.progressBar.visibility = VISIBLE
                                 moviesViewModel.getPopularMovies()
                             }
@@ -102,6 +107,7 @@ class MainListActivity : AppCompatActivity() {
 
                         else -> {
                             binding.prevB.isEnabled = response.body.page != 1
+                            binding.floatingActionButton2.isEnabled = response.body.page != 1
                             val data = response.body.results
                             adapter = MoviesAdapter(data)
                             binding.recyclerView.adapter = adapter
@@ -119,31 +125,78 @@ class MainListActivity : AppCompatActivity() {
         binding.nextB.setOnClickListener {
             moviesViewModel.page++
             when {
-                identifier!!.equals("from_genre", true) -> {
+                identifier!!.equals("from_genre",true) -> {
                     moviesViewModel.getMoviesByGenreId(genreId!!)
                 }
-
-                else -> {
-                    moviesViewModel.getPopularMovies()
-                }
+                else -> {moviesViewModel.getPopularMovies()}
             }
 
         }
+
+        binding.floatingActionButton.setOnClickListener {
+            moviesViewModel.page++
+            when {
+                identifier!!.equals("from_genre",true) -> {
+                    moviesViewModel.getMoviesByGenreId(genreId!!)
+                }
+                else -> {moviesViewModel.getPopularMovies()}
+            }
+
+        }
+
+
         binding.prevB.setOnClickListener {
             if (moviesViewModel.page != 1) {
                 moviesViewModel.page--
-                if (identifier!!.equals("from_genre", true)) {
-                    moviesViewModel.getMoviesByGenreId(genreId!!)
-                } else {
-                    moviesViewModel.getPopularMovies()
-                }
+                if (identifier!!.equals("from_genre",true)){moviesViewModel.getMoviesByGenreId(genreId!!)}
+                else{moviesViewModel.getPopularMovies()}
 
             } else {
                 return@setOnClickListener
             }
         }
-    }
 
+        binding.floatingActionButton2.setOnClickListener {
+            if (moviesViewModel.page != 1) {
+                moviesViewModel.page--
+                if (identifier!!.equals("from_genre",true)){moviesViewModel.getMoviesByGenreId(genreId!!)}
+                else{moviesViewModel.getPopularMovies()}
+
+            } else {
+                return@setOnClickListener
+            }
+        }
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val visibleItemCount = layoutManager.childCount
+                val totalItemCount = layoutManager.itemCount
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+
+                if((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
+                    isLoading = true
+                    binding.constraintLayout2.visibility = GONE
+                    binding.floatingActionButton.visibility = VISIBLE
+                    binding.floatingActionButton2.visibility = VISIBLE
+                }
+                else {
+                    binding.constraintLayout2.visibility = VISIBLE
+                    binding.floatingActionButton.visibility = GONE
+                    binding.floatingActionButton2.visibility = GONE
+                }
+            }
+
+        })
+        val decorView = window.decorView
+        val rootView = decorView.findViewById<View?>(R.id.content) as ViewGroup?
+        binding.blurView.setupWith(rootView!!)
+        binding.blurView.setBlurRadius(radius)
+        binding.blurView.outlineProvider = ViewOutlineProvider.BACKGROUND
+        binding.blurView.clipToOutline = true
+
+    }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return super.onSupportNavigateUp()

@@ -6,7 +6,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
 
-interface TvShowService {
+interface   TvShowService {
 
     @GET("tv/popular")
     suspend fun getPopularTvShows(
