@@ -99,11 +99,6 @@ class TvShowDetailActivity : AppCompatActivity() {
                             .replace("]", "")
                     }
 
-
-
-
-
-
                     when {
                         tv.overview.isEmpty() -> {
                             binding.detailedSummaryTxt.text = getString(R.string.no_info)
