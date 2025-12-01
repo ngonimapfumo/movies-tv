@@ -30,6 +30,7 @@
                 android:src="@drawable/sample_cover_large_exp"
                 app:layout_constraintBottom_toTopOf="@+id/ll_suggested"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
@@ -62,7 +63,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
+                    app:layout_constraintVertical_bias="0.5"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_marginTop="5dp"
@@ -164,6 +166,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/buttonLayout"
                 app:layout_constraintStart_toStartOf="@+id/buttonLayout"
                 app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
+
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -316,7 +319,29 @@
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView4"
                             app:layout_constraintTop_toBottomOf="@+id/textView4"
-                            tools:text="Lucasfilm Ltdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss" />
+                            tools:text="Lucasfilm Ltd" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/tv_lay_marginTop_txt"
+                            android:text="Networks"
+                            android:textSize="@dimen/info_txt_size"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/prod_company"
+                            app:layout_constraintTop_toBottomOf="@+id/prod_company" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/networksText"
+                            android:layout_width="360dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/info_detail_txt"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/textView10"
+                            app:layout_constraintTop_toBottomOf="@+id/textView10"
+                            tools:text="Disney+" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/textView7"
@@ -374,7 +399,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView4"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/textView4"
-                            app:layout_constraintTop_toBottomOf="@+id/prod_company" />
+                            app:layout_constraintTop_toBottomOf="@+id/networksText" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tvRatingTxt"

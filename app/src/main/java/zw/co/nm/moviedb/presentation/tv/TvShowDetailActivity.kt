@@ -32,6 +32,7 @@ class TvShowDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTvShowDetailBinding
     private var showId: Int? = null
     private var productionCompanies: ArrayList<String>? = arrayListOf()
+    private var tvNetworks: ArrayList<String>? = arrayListOf()
     private var iso6391: String? = null
     private var iso31661: String? = null
     private var logos: ArrayList<String>? = arrayListOf()
@@ -91,6 +92,18 @@ class TvShowDetailActivity : AppCompatActivity() {
                         .placeholder(R.drawable.sample_cover_large_exp)
                         .into(binding.tvBackgroundImm)
                     binding.tvSummaryTxt.text = tv.tagline
+
+                    tv.networks.forEach { network ->
+                        tvNetworks!!.add(network.name)
+                        binding.networksText.text = tvNetworks.toString().replace("[", "")
+                            .replace("]", "")
+                    }
+
+
+
+
+
+
                     when {
                         tv.overview.isEmpty() -> {
                             binding.detailedSummaryTxt.text = getString(R.string.no_info)

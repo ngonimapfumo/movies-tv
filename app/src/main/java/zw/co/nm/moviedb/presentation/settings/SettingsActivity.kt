@@ -78,8 +78,7 @@ class SettingsActivity : AppCompatActivity() {
                 else -> {
 
                     binding.autoComplete.setText(ConfigStore.getStringLang(this, LANGUAGE_KEY))
-                    binding.autoComplete.setAdapter(
-                        ArrayAdapter(
+                    binding.autoComplete.setAdapter(ArrayAdapter(
                             this,
                             R.layout.simple_spinner_dropdown_item,
                             it.body

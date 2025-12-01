@@ -149,7 +149,8 @@
     <string name="popular_movies">Popular Movies</string>
     <string name="more">More...</string>
     <string name="director">Director</string>
-    <string name="pause_button">pause button</string>
-    <string name="n_a">N/A</string>
-    <string name="no_information_available">No information available</string>
+    <string name="pause_button" translatable="false">pause button</string>
+    <string name="n_a" translatable="false">N/A</string>
+    <string name="no_information_available" translatable="false">No information available</string>
+    <string name="title_activity_settings_compose" translatable="false">SettingsComposeActivity</string>
 </resources>
