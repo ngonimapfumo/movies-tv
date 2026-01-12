@@ -1,6 +1,8 @@
 package zw.co.nm.moviedb.presentation.tv
 
 import android.content.Intent
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -44,8 +46,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.mainLayout) {
-                view, insets, ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.mainLayout) { view, insets ->
             val innerPadding = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
