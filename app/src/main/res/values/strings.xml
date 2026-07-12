@@ -153,4 +153,5 @@
     <string name="n_a" translatable="false">N/A</string>
     <string name="no_information_available" translatable="false">No information available</string>
     <string name="title_activity_settings_compose" translatable="false">SettingsComposeActivity</string>
+    <string name="bookmark">Bookmark</string>
 </resources>
