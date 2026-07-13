@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
                 binding.passwordField.text.toString(), token!!
             )
             authViewModel.getLoginSession.observe(this) {
-                Toast.makeText(this, it.body.success.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, it.data!!.isSuccessful.toString(), Toast.LENGTH_SHORT).show()
             }
         }
     }

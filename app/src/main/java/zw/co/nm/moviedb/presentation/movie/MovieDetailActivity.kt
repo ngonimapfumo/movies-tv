@@ -2,12 +2,10 @@ package zw.co.nm.moviedb.presentation.movie
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -407,8 +405,12 @@ class MovieDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
-        binding.bookmarkBtn.setOnClickListener {  }
+        binding.bookmarkBtn.setOnClickListener {
+//            startActivity(Intent(this@MovieDetailActivity,
+//            LoginActivity::class.java)) }
 
+            //todo:: implement new flow
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
