@@ -5,34 +5,52 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class MoviesAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse.Result>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MoviesAdapter(
+    movies: List<GetPopularMoviesListResponse.Result> = emptyList()
+) : RecyclerView.Adapter<MoviesAdapter.ItemMovieViewHolder>() {
 
-    private var binding: ItemMovieMainBinding? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = ItemMovieMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemMovieViewHolder(binding!!)
+    private val data: MutableList<GetPopularMoviesListResponse.Result> = movies.toMutableList()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder {
+        val binding = ItemMovieMainBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ItemMovieViewHolder(binding)
     }
 
     override fun getItemCount(): Int = data.size
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val imgPath = data[position].posterPath
-        Picasso.get().load(IMAGE_BASE_URL + imgPath).placeholder(R.drawable.sample_cover_small).into(binding!!.imageView)
+
+    override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
+        val movie = data[position]
+        Picasso.get()
+            .load(IMAGE_BASE_URL + movie.posterPath)
+            .placeholder(R.drawable.sample_cover_small)
+            .into(holder.binding.imageView)
         holder.itemView.setOnClickListener {
-            PageNavUtils.navMovieDetailsPage(holder.itemView.context,
-                data[position].id)
+            PageNavUtils.navMovieDetailsPage(holder.itemView.context, movie.id)
         }
-
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position
+    fun submitList(movies: List<GetPopularMoviesListResponse.Result>) {
+        data.clear()
+        data.addAll(movies)
+        notifyDataSetChanged()
     }
 
-    class ItemMovieViewHolder(binding: ItemMovieMainBinding) :
+    fun appendList(movies: List<GetPopularMoviesListResponse.Result>) {
+        if (movies.isEmpty()) return
+        val start = data.size
+        data.addAll(movies)
+        notifyItemRangeInserted(start, movies.size)
+    }
+
+    class ItemMovieViewHolder(val binding: ItemMovieMainBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

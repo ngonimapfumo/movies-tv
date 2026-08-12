@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import zw.co.nm.moviedb.data.remote.model.response.AccountStatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
@@ -16,6 +17,12 @@ interface MovieService {
         @Path("id") movieId: Int,
         @Query("language") language: String
     ): Response<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse>
+
+    @GET("movie/{movie_id}/account_states")
+    suspend fun getMovieAccountStates(
+        @Path("movie_id") movieId: Int,
+        @Query("session_id") sessionId: String
+    ): Response<AccountStatesResponse>
 
     @GET("movie/popular")
     suspend fun getPopularMovies(

@@ -64,6 +64,24 @@
     <string name="certfications">Rated</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">Login</string>
+    <string name="login_with_tmdb">TMDB Login</string>
+    <string name="login_tmdb_message">Sign in with your TMDB account in the browser, then approve access to continue.</string>
+    <string name="continue_with_tmdb">Continue with TMDB</string>
+    <string name="login_success">Logged in successfully</string>
+    <string name="login_denied">Login was cancelled</string>
+    <string name="login_required">Please log in to add movies to your watchlist</string>
+    <string name="login_required_watchlist">Please log in to view your watchlist</string>
+    <string name="added_to_watchlist">Added to watchlist</string>
+    <string name="removed_from_watchlist">Removed from watchlist</string>
+    <string name="watchlist_error">Could not update watchlist</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="watchlist_empty">Your watchlist is empty</string>
+    <string name="watchlist_empty_tv">Your TV watchlist is empty</string>
+    <string name="watchlist_load_error">Error getting watchlist</string>
+    <string name="remove_from_watchlist_title">Remove from watchlist</string>
+    <string name="remove_from_watchlist_message">Remove \"%1$s\" from your watchlist?</string>
+    <string name="remove">Remove</string>
+    <string name="popular_tv_shows">Popular TV Shows</string>
     <string name="in_app_update_exception">in-app-update-exception</string>
     <string name="notice_nthis_product_uses_the_tmdb_api_but_is_not_endorsed_or_certified_by_tmdb">NOTICE! \n\nThis product uses the TMDB API but is NOT endorsed or certified by TMDB.</string>
     <string name="cast_guest">Cast/Guest</string>
@@ -154,4 +172,8 @@
     <string name="no_information_available" translatable="false">No information available</string>
     <string name="title_activity_settings_compose" translatable="false">SettingsComposeActivity</string>
     <string name="bookmark">Bookmark</string>
+    <string name="explore">Explore</string>
+    <string name="featured">Featured</string>
+    <string name="loading_more">Loading more</string>
+    <string name="scroll_to_top">scroll to top</string>
 </resources>

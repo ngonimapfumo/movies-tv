@@ -18,7 +18,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.core.content.getSystemService
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -35,7 +34,9 @@ import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
+import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ActivityHomeBinding
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MovieGenresAdapter
@@ -44,7 +45,10 @@ import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.Constants.BACKDROP_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.PageNavUtils
+import java.time.LocalDate
 
 class HomeActivity : AppCompatActivity() {
 
@@ -169,6 +173,7 @@ class HomeActivity : AppCompatActivity() {
 
             when (it.data) {
                 null -> {
+                    binding.heroLayout.visibility = GONE
                     actionSnack(binding.root, "Error getting data", "Retry") {
                         viewModel.getPopularMovies()
                         viewModel.getMovieGenres()
@@ -177,6 +182,7 @@ class HomeActivity : AppCompatActivity() {
 
                 else -> {
                     val data = it.body.results
+                    bindFeaturedHero(data)
                     movieAdapter = MoviesAdapter(data)
                     binding.recyclerHome.adapter = movieAdapter
                 }
@@ -235,6 +241,19 @@ class HomeActivity : AppCompatActivity() {
                         R.id.drawer_movies -> {
                             startActivity(Intent(this@HomeActivity, MainListActivity::class.java))
                         }
+
+                        R.id.drawer_watchlist -> {
+                            if (ConfigStore.isLoggedIn(this@HomeActivity)) {
+                                PageNavUtils.navWatchlistPage(this@HomeActivity)
+                            } else {
+                                Toast.makeText(
+                                    this@HomeActivity,
+                                    R.string.login_required_watchlist,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                PageNavUtils.navLoginPage(this@HomeActivity)
+                            }
+                        }
                     }
                     true
                 }
@@ -275,6 +294,61 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun bindFeaturedHero(movies: List<GetPopularMoviesListResponse.Result>) {
+        val featured = movies
+            .filter { !it.backdropPath.isNullOrBlank() }
+            .maxByOrNull { it.voteAverage }
+            ?: movies.firstOrNull()
+
+        if (featured == null) {
+            binding.heroLayout.visibility = GONE
+            return
+        }
+
+        binding.heroLayout.visibility = VISIBLE
+        binding.heroTitle.text = featured.title.orEmpty()
+        binding.heroOverview.text = featured.overview.orEmpty()
+        binding.heroOverview.visibility =
+            if (featured.overview.isNullOrBlank()) GONE else VISIBLE
+
+        val year = try {
+            val releaseDate = featured.releaseDate
+            if (!releaseDate.isNullOrBlank()) {
+                LocalDate.parse(releaseDate).year.toString()
+            } else {
+                ""
+            }
+        } catch (_: Exception) {
+            ""
+        }
+        val rating = "${(featured.voteAverage * 10).toInt()}%"
+        binding.heroMeta.text = listOf(year, rating)
+            .filter { it.isNotBlank() }
+            .joinToString(" · ")
+
+        val imageUrl = when {
+            !featured.backdropPath.isNullOrBlank() ->
+                BACKDROP_IMAGE_BASE_URL + featured.backdropPath
+            !featured.posterPath.isNullOrBlank() ->
+                Constants.IMAGE_BASE_URL + featured.posterPath
+            else -> null
+        }
+        if (imageUrl != null) {
+            Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.sample_cover_large_exp)
+                .into(binding.heroImage)
+        } else {
+            binding.heroImage.setImageResource(R.drawable.sample_cover_large_exp)
+        }
+
+        val openFeatured = {
+            PageNavUtils.navMovieDetailsPage(this@HomeActivity, featured.id)
+        }
+        binding.heroCta.setOnClickListener { openFeatured() }
+        binding.heroLayout.setOnClickListener { openFeatured() }
+    }
+
     private fun configurations() {
         AppCompatDelegate.setDefaultNightMode(ConfigStore.getThemeConfig(this, "THEME"))
         try {
@@ -293,13 +367,9 @@ class HomeActivity : AppCompatActivity() {
             displayMetrics!!.mode.physicalWidth
         )
 
-
         val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
         val countryIsoValue = tm.networkCountryIso
         ConfigStore.saveStringConfig(this, Constants.COUNTRY_ISO, countryIsoValue)
-
-       // Toast.makeText(this, AppCompatDelegate.getDefaultNightMode().toString(), Toast.LENGTH_SHORT).show()
-
     }
 
     override fun onDestroy() {

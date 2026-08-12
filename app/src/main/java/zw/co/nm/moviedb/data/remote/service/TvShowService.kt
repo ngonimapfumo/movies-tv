@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import zw.co.nm.moviedb.data.remote.model.response.AccountStatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
 
 interface   TvShowService {
@@ -19,6 +20,12 @@ interface   TvShowService {
         @Path("id") tvShowId: Int,
         @Query("language") language: String
     ): Response<zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse>
+
+    @GET("tv/{series_id}/account_states")
+    suspend fun getTvAccountStates(
+        @Path("series_id") seriesId: Int,
+        @Query("session_id") sessionId: String
+    ): Response<AccountStatesResponse>
 
 
     @GET("tv/{series_id}/season/{season_number}")

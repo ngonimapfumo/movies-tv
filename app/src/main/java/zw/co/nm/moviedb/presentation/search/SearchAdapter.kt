@@ -6,119 +6,115 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse
 import zw.co.nm.moviedb.databinding.ItemSearchDetailBinding
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
-class SearchAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.SearchMultiResponse.Result>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchAdapter(
+    results: List<SearchMultiResponse.Result> = emptyList()
+) : RecyclerView.Adapter<SearchAdapter.ItemMovieViewHolder>() {
 
-    private var binding: ItemSearchDetailBinding? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding =
-            ItemSearchDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemMovieViewHolder(binding!!)
+    private val data: MutableList<SearchMultiResponse.Result> = results.toMutableList()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder {
+        val binding = ItemSearchDetailBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ItemMovieViewHolder(binding)
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
+        val item = data[position]
+        val binding = holder.binding
         var imgPath: Any? = null
 
-        binding!!.textMediaType.text = data[position].mediaType
-        when (data[position].mediaType) {
+        binding.textMediaType.text = item.mediaType
+        when (item.mediaType) {
             "person" -> {
-                imgPath = data[position].profilePath
-                binding!!.textViewName.text = data[position].originalName
+                imgPath = item.profilePath
+                binding.textViewName.text = item.originalName
+                binding.textViewRelease.text = ""
             }
-            "movie" -> {
-                imgPath = data[position].posterPath
-                binding!!.textViewName.text = data[position].originalTitle
-                when {
-                    data[position].releaseDate.isEmpty() -> {
-                        binding!!.textViewRelease.text = ""
-                    }
 
-                    else -> {
-                        binding!!.textViewRelease.text =
-                            LocalDate.parse(data[position].releaseDate).year.toString()
-                    }
+            "movie" -> {
+                imgPath = item.posterPath
+                binding.textViewName.text = item.originalTitle
+                binding.textViewRelease.text = if (item.releaseDate.isEmpty()) {
+                    ""
+                } else {
+                    LocalDate.parse(item.releaseDate).year.toString()
                 }
             }
 
             "tv" -> {
-                imgPath = data[position].posterPath
-                binding!!.textViewName.text = data[position].originalName
-                when {
-                    data[position].firstAirDate.isEmpty() -> {
-                        binding!!.textViewRelease.text = ""
-                    }
-
-                    else -> {
-                        binding!!.textViewRelease.text =
-                            LocalDate.parse(data[position].firstAirDate).year.toString()
-                    }
+                imgPath = item.posterPath
+                binding.textViewName.text = item.originalName
+                binding.textViewRelease.text = if (item.firstAirDate.isEmpty()) {
+                    ""
+                } else {
+                    LocalDate.parse(item.firstAirDate).year.toString()
                 }
             }
         }
 
-        Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
-            .into(binding!!.imageView)
-
+        Picasso.get()
+            .load(Constants.IMAGE_BASE_URL + imgPath)
+            .placeholder(R.drawable.sample_cover_small)
+            .into(binding.imageView)
 
         holder.itemView.setOnClickListener {
-            when (data[position].mediaType) {
-
-
+            when (item.mediaType) {
                 "movie" -> {
-                    if (data[position].adult) {
+                    if (item.adult) {
                         GeneralUtil.generalAlertDialog(
                             holder.itemView.context,
                             holder.itemView.context.getString(R.string.warning),
                             holder.itemView.context.getString(R.string.content_may_contain_explicit_images),
                             holder.itemView.context.getString(R.string.proceed),
                             holder.itemView.context.getString(R.string.cancel),
-                            { _, _ -> proceedToMovie(holder.itemView.context, position) },
+                            { _, _ -> proceedToMovie(holder.itemView.context, item.id) },
                             null
                         )
-                    } else
-                        proceedToMovie(holder.itemView.context, position)
-
+                    } else {
+                        proceedToMovie(holder.itemView.context, item.id)
+                    }
                 }
 
                 "person" -> {
-                    PageNavUtils.navPersonDetailsPage(
-                        holder.itemView.context,
-                        data[position].id
-                    )
+                    PageNavUtils.navPersonDetailsPage(holder.itemView.context, item.id)
                 }
 
                 "tv" -> {
-                    PageNavUtils.navTvDetailsPage(
-                        holder.itemView.context,
-                        data[position].id
-                    )
-
+                    PageNavUtils.navTvDetailsPage(holder.itemView.context, item.id)
                 }
             }
         }
-
-
     }
 
-    private fun proceedToMovie(context: Context?, position: Int) {
-        PageNavUtils.navMovieDetailsPage(
-            context!!,
-            data[position].id
-        )
+    fun submitList(results: List<SearchMultiResponse.Result>) {
+        data.clear()
+        data.addAll(results)
+        notifyDataSetChanged()
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position
+    fun appendList(results: List<SearchMultiResponse.Result>) {
+        if (results.isEmpty()) return
+        val start = data.size
+        data.addAll(results)
+        notifyItemRangeInserted(start, results.size)
     }
 
-    class ItemMovieViewHolder(binding: ItemSearchDetailBinding) :
+    private fun proceedToMovie(context: Context, movieId: Int) {
+        PageNavUtils.navMovieDetailsPage(context, movieId)
+    }
+
+    class ItemMovieViewHolder(val binding: ItemSearchDetailBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

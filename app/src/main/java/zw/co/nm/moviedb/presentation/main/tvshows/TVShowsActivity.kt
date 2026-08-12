@@ -4,45 +4,47 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
-import android.view.ViewOutlineProvider
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.databinding.ActivityMainListBinding
+import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse
+import zw.co.nm.moviedb.databinding.ActivityTvshowsBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.tv.TvShowsViewModel
+import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.Constants.BACKDROP_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.PageNavUtils
+import java.time.LocalDate
 
 class TVShowsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainListBinding
+    private lateinit var binding: ActivityTvshowsBinding
     private lateinit var tvShowsViewModel: TvShowsViewModel
     private lateinit var adapter: TvShowsAdapter
-    private var radius = 40F
-    var isLoading = false
+    private var isLoadingMore = false
+    private var isLastPage = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainListBinding.inflate(layoutInflater)
+        binding = ActivityTvshowsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
-        tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
-        setUpView()
+        supportActionBar?.title = getString(R.string.tv_shows)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
-                view, insets, ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val innerPadding = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
-            binding.main.setPadding(
+            view.setPadding(
                 innerPadding.left,
                 innerPadding.top,
                 innerPadding.right,
@@ -50,94 +52,147 @@ class TVShowsActivity : AppCompatActivity() {
             )
             insets
         }
-        tvShowsViewModel.getPopularTvShows()
+
+        tvShowsViewModel = ViewModelProvider(this)[TvShowsViewModel::class.java]
+        adapter = TvShowsAdapter()
+        binding.recyclerView.adapter = adapter
+        setUpScroll()
+        observeShows()
+        loadInitial()
+    }
+
+    private fun setUpScroll() {
+        binding.scrollView.setOnScrollChangeListener(
+            NestedScrollView.OnScrollChangeListener { scrollView, _, scrollY, _, oldScrollY ->
+                binding.scrollTopFab.visibility = if (scrollY > 800) VISIBLE else GONE
+
+                val scrollingDown = scrollY > oldScrollY
+                if (!scrollingDown || isLoadingMore || isLastPage) return@OnScrollChangeListener
+
+                val child = scrollView.getChildAt(0) ?: return@OnScrollChangeListener
+                val distanceFromBottom = child.measuredHeight - (scrollView.height + scrollY)
+                if (distanceFromBottom < 900) {
+                    loadNextPage()
+                }
+            }
+        )
+        binding.scrollTopFab.setOnClickListener {
+            binding.scrollView.smoothScrollTo(0, 0)
+        }
+    }
+
+    private fun observeShows() {
         tvShowsViewModel.getPopularShows.observe(this) { response ->
+            binding.progressBar.visibility = GONE
+            setLoadMoreVisible(false)
+            val loadingMore = isLoadingMore
+            isLoadingMore = false
 
             when (response.data) {
                 null -> {
+                    if (loadingMore && tvShowsViewModel.page > 1) {
+                        tvShowsViewModel.page--
+                    }
+                    if (!loadingMore) {
+                        binding.heroLayout.visibility = GONE
+                    }
                     actionSnack(binding.root, "Error getting data", "Retry") {
-                        binding.progressBar.visibility = View.VISIBLE
-                        tvShowsViewModel.getPopularTvShows()
+                        if (tvShowsViewModel.page == 1) {
+                            loadInitial()
+                        } else {
+                            isLoadingMore = false
+                            loadNextPage()
+                        }
                     }
                 }
 
                 else -> {
-                    binding.floatingActionButton2.isEnabled = response.body.page != 1
-                    binding.prevB.isEnabled = response.body.page != 1
-                    binding.progressBar.visibility = View.GONE
-                    val data = response.body.results
-                    adapter = TvShowsAdapter(data)
-                    binding.recyclerView.adapter = adapter
+                    isLastPage = response.body.page >= response.body.totalPages
+                    if (response.body.page == 1) {
+                        bindFeaturedHero(response.body.results)
+                        adapter.submitList(response.body.results)
+                    } else {
+                        adapter.appendList(response.body.results)
+                    }
                 }
             }
-
-
         }
     }
 
-    private fun setUpView() {
-        supportActionBar?.title = getString(R.string.tv_shows)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.nextB.setOnClickListener {
-            tvShowsViewModel.page++
-            tvShowsViewModel.getPopularTvShows()
+    private fun bindFeaturedHero(shows: List<GetPopularTVSeriesListResponse.Result>) {
+        val featured = shows
+            .filter { !it.backdropPath.isNullOrBlank() }
+            .maxByOrNull { it.voteAverage }
+            ?: shows.firstOrNull()
+
+        if (featured == null) {
+            binding.heroLayout.visibility = GONE
+            return
         }
 
-        binding.floatingActionButton.setOnClickListener {
-            tvShowsViewModel.page++
-            tvShowsViewModel.page++
-            tvShowsViewModel.getPopularTvShows()
+        binding.heroLayout.visibility = VISIBLE
+        binding.heroTitle.text = featured.name.orEmpty()
+        binding.heroOverview.text = featured.overview.orEmpty()
+        binding.heroOverview.visibility =
+            if (featured.overview.isNullOrBlank()) GONE else VISIBLE
 
-        }
-
-        binding.prevB.setOnClickListener {
-            if (tvShowsViewModel.page != 1) {
-                tvShowsViewModel.page--
-                tvShowsViewModel.getPopularTvShows()
+        val year = try {
+            val airDate = featured.firstAirDate
+            if (!airDate.isNullOrBlank()) {
+                LocalDate.parse(airDate).year.toString()
             } else {
-                return@setOnClickListener
+                ""
             }
+        } catch (_: Exception) {
+            ""
+        }
+        val rating = "${(featured.voteAverage * 10).toInt()}%"
+        binding.heroMeta.text = listOf(year, rating)
+            .filter { it.isNotBlank() }
+            .joinToString(" · ")
+
+        val imageUrl = when {
+            !featured.backdropPath.isNullOrBlank() ->
+                BACKDROP_IMAGE_BASE_URL + featured.backdropPath
+            !featured.posterPath.isNullOrBlank() ->
+                Constants.IMAGE_BASE_URL + featured.posterPath
+            else -> null
+        }
+        if (imageUrl != null) {
+            Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.sample_cover_large_exp)
+                .into(binding.heroImage)
+        } else {
+            binding.heroImage.setImageResource(R.drawable.sample_cover_large_exp)
         }
 
-        binding.floatingActionButton2.setOnClickListener {
-            if (tvShowsViewModel.page != 1) {
-                tvShowsViewModel.page--
-                tvShowsViewModel.getPopularTvShows()
-            } else {
-                return@setOnClickListener
-            }
+        val openFeatured = {
+            PageNavUtils.navTvDetailsPage(this@TVShowsActivity, featured.id)
         }
+        binding.heroCta.setOnClickListener { openFeatured() }
+        binding.heroLayout.setOnClickListener { openFeatured() }
+    }
 
-        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val visibleItemCount = layoutManager.childCount
-                val totalItemCount = layoutManager.itemCount
-                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+    private fun loadInitial() {
+        tvShowsViewModel.page = 1
+        isLastPage = false
+        isLoadingMore = false
+        binding.progressBar.visibility = VISIBLE
+        setLoadMoreVisible(false)
+        tvShowsViewModel.getPopularTvShows()
+    }
 
-                if((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
-                    isLoading = true
-                    binding.constraintLayout2.visibility = GONE
-                    binding.floatingActionButton.visibility = VISIBLE
-                    binding.floatingActionButton2.visibility = VISIBLE
-                }
-                else {
-                    binding.constraintLayout2.visibility = VISIBLE
-                    binding.floatingActionButton.visibility = GONE
-                    binding.floatingActionButton2.visibility = GONE
-                }
-            }
+    private fun loadNextPage() {
+        if (isLoadingMore || isLastPage) return
+        isLoadingMore = true
+        setLoadMoreVisible(true)
+        tvShowsViewModel.page++
+        tvShowsViewModel.getPopularTvShows()
+    }
 
-        })
-
-
-        val decorView = window.decorView
-        val rootView = decorView.findViewById<View?>(android.R.id.content) as ViewGroup?
-        binding.blurView.setupWith(rootView!!)
-        binding.blurView.setBlurRadius(radius)
-        binding.blurView.outlineProvider = ViewOutlineProvider.BACKGROUND
-        binding.blurView.clipToOutline = true
+    private fun setLoadMoreVisible(visible: Boolean) {
+        binding.loadMoreCard.visibility = if (visible) VISIBLE else GONE
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -160,6 +215,4 @@ class TVShowsActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }

@@ -17,16 +17,14 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     private var language = ConfigStore.getStringLang(application, LANGUAGE_KEY)
     var page: Int = 1
 
-    private val _searchMulti =
-        MutableLiveData<Response<SearchMultiResponse>>()
-    val searchMulti: LiveData<Response<SearchMultiResponse>> =
-        _searchMulti
+    private val _searchMulti = MutableLiveData<Response<SearchMultiResponse>>()
+    val searchMulti: LiveData<Response<SearchMultiResponse>> = _searchMulti
 
     fun searchMulti(query: String) {
         viewModelScope.launch {
             val data = searchRepo.searchMulti(query, page, language!!)
             if (data.isSuccessful) {
-                _searchMulti.value = searchRepo.searchMulti(query, page, language!!)
+                _searchMulti.value = data
             } else {
                 Toast.makeText(
                     getApplication(),

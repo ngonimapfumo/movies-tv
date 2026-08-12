@@ -1,12 +1,15 @@
 package zw.co.nm.moviedb.presentation.movie
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -17,6 +20,8 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CastAdapter
 import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
 import zw.co.nm.moviedb.databinding.ActivityMovieDetailBinding
+import zw.co.nm.moviedb.presentation.auth.AuthViewModel
+import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
@@ -34,6 +39,7 @@ import java.time.LocalDate
 class MovieDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var authViewModel: AuthViewModel
     private var movieId: Int? = null
     private var genres: ArrayList<String>? = arrayListOf()
     private var logos: ArrayList<String>? = arrayListOf()
@@ -42,6 +48,17 @@ class MovieDetailActivity : AppCompatActivity() {
     private var iso6391: String? = null
     private var iso31661: String? = null
     private var displayMetricsWidth: Int? = null
+    private val loginLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val id = movieId ?: return@registerForActivityResult
+            if (id != 0) {
+                authViewModel.checkWatchlistState(id, Constants.MEDIA_TYPE_MOVIE)
+                authViewModel.setWatchlist(id, true, Constants.MEDIA_TYPE_MOVIE)
+            }
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -404,13 +421,54 @@ class MovieDetailActivity : AppCompatActivity() {
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         movieId = intent.getIntExtra(MOVIE_ID_EXTRA, 0)
-        binding.bookmarkBtn.setOnClickListener {
-//            startActivity(Intent(this@MovieDetailActivity,
-//            LoginActivity::class.java)) }
 
-            //todo:: implement new flow
+        authViewModel.watchlistMutation.observe(this) { mutation ->
+            if (mutation.mediaType != Constants.MEDIA_TYPE_MOVIE) return@observe
+            if (mutation.success) {
+                val message = if (mutation.added) {
+                    R.string.added_to_watchlist
+                } else {
+                    R.string.removed_from_watchlist
+                }
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                updateBookmarkUi(mutation.added)
+            } else {
+                Toast.makeText(this, R.string.watchlist_error, Toast.LENGTH_SHORT).show()
+            }
         }
+
+        authViewModel.isOnWatchlist.observe(this) { onWatchlist ->
+            updateBookmarkUi(onWatchlist)
+        }
+
+        if (ConfigStore.isLoggedIn(this) && movieId != null && movieId != 0) {
+            authViewModel.checkWatchlistState(movieId!!, Constants.MEDIA_TYPE_MOVIE)
+        }
+
+        binding.bookmarkBtn.setOnClickListener {
+            if (ConfigStore.isLoggedIn(this)) {
+                toggleWatchlist()
+            } else {
+                Toast.makeText(this, R.string.login_required, Toast.LENGTH_SHORT).show()
+                loginLauncher.launch(Intent(this, LoginActivity::class.java))
+            }
+        }
+    }
+
+    private fun toggleWatchlist() {
+        val id = movieId ?: return
+        if (id == 0) return
+        val currentlyOnWatchlist = authViewModel.isOnWatchlist.value == true
+        authViewModel.setWatchlist(id, !currentlyOnWatchlist, Constants.MEDIA_TYPE_MOVIE)
+    }
+
+    private fun updateBookmarkUi(onWatchlist: Boolean) {
+        binding.bookmarkBtn.alpha = if (onWatchlist) 1f else 0.55f
+        binding.bookmarkBtn.contentDescription = getString(
+            if (onWatchlist) R.string.remove_from_watchlist_title else R.string.bookmark
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -34,10 +34,23 @@
             android:exported="false" />
         <activity
             android:name=".presentation.auth.LoginActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_login"
+            android:launchMode="singleTop"
             android:screenOrientation="locked"
-            android:theme="@style/Theme.MovieDB" />
+            android:theme="@style/Theme.MovieDB">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="auth"
+                    android:pathPrefix="/callback"
+                    android:scheme="moviedb" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".presentation.tv.episode.EpisodeActivity"
             android:exported="false"
@@ -60,6 +73,10 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".presentation.settings.SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".presentation.watchlist.WatchlistActivity"
             android:exported="false"
             android:screenOrientation="locked" />
         <activity

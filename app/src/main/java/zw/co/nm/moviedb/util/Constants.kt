@@ -11,9 +11,23 @@ object Constants {
         get() = "https://image.tmdb.org/t/p/w200"
     val MED_RES_IMAGE_BASE_URL
         get() = "https://image.tmdb.org/t/p/w300"
+    val BACKDROP_IMAGE_BASE_URL
+        get() = "https://image.tmdb.org/t/p/w780"
 
     val REQ_TOKEN
         get() = "request_token"
+    val SESSION_ID
+        get() = "session_id"
+    val ACCOUNT_ID
+        get() = "account_id"
+
+    const val AUTH_REDIRECT_SCHEME = "moviedb"
+    const val AUTH_REDIRECT_HOST = "auth"
+    const val AUTH_REDIRECT_URI = "moviedb://auth/callback"
+    const val TMDB_AUTH_BASE_URL = "https://www.themoviedb.org/authenticate/"
+
+    const val MEDIA_TYPE_MOVIE = "movie"
+    const val MEDIA_TYPE_TV = "tv"
 
     val SAVED_SHOW_ID
         get() = "tvShowId"

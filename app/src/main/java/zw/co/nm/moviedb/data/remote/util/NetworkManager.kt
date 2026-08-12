@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import zw.co.nm.moviedb.BuildConfig
 import zw.co.nm.moviedb.data.remote.interceptor.QueryParamInterceptor
+import zw.co.nm.moviedb.data.remote.service.AccountService
 import zw.co.nm.moviedb.data.remote.service.ApiServiceGeneral
 import zw.co.nm.moviedb.data.remote.service.AuthService
 import zw.co.nm.moviedb.data.remote.service.CollectionService
@@ -65,6 +66,7 @@ object NetworkManager {
     var tvShowService: TvShowService = retrofit.create(TvShowService::class.java)
     var collectionService: CollectionService = retrofit.create(CollectionService::class.java)
     var authService: AuthService = retrofit.create(AuthService::class.java)
+    var accountService: AccountService = retrofit.create(AccountService::class.java)
     var configService: ConfigService = retrofit.create(ConfigService::class.java)
     var apiServiceGeneral: ApiServiceGeneral = retrofit.create(ApiServiceGeneral::class.java)
 

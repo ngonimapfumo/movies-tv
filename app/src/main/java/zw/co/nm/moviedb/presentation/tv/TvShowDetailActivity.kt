@@ -1,5 +1,6 @@
 package zw.co.nm.moviedb.presentation.tv
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
@@ -8,7 +9,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,6 +21,8 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.TVCastAdapter
 import zw.co.nm.moviedb.databinding.ActivityTvShowDetailBinding
+import zw.co.nm.moviedb.presentation.auth.AuthViewModel
+import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.tv.season.SeasonsAdapter
 import zw.co.nm.moviedb.util.ConfigStore
@@ -32,12 +37,24 @@ import java.util.Locale
 class TvShowDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTvShowDetailBinding
+    private lateinit var authViewModel: AuthViewModel
     private var showId: Int? = null
     private var productionCompanies: ArrayList<String>? = arrayListOf()
     private var tvNetworks: ArrayList<String>? = arrayListOf()
     private var iso6391: String? = null
     private var iso31661: String? = null
     private var logos: ArrayList<String>? = arrayListOf()
+    private val loginLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val id = showId ?: return@registerForActivityResult
+            if (id != 0) {
+                authViewModel.checkWatchlistState(id, Constants.MEDIA_TYPE_TV)
+                authViewModel.setWatchlist(id, true, Constants.MEDIA_TYPE_TV)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +79,8 @@ class TvShowDetailActivity : AppCompatActivity() {
         iso6391 = ConfigStore.getStringLang(this, Constants.LANGUAGE_KEY)!!.substring(0, 2)
         iso31661 = ConfigStore.getStringLang(this, Constants.LANGUAGE_KEY)!!.substring(3)
         showId = intent.getIntExtra(TV_SHOW_ID_EXTRA, 0)
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
+        setupWatchlist()
         binding.reviewsBtn.setOnClickListener {
             PageNavUtils.navReviewsPage(this, "tv_show", showId!!)
         }
@@ -218,6 +237,54 @@ class TvShowDetailActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun setupWatchlist() {
+        authViewModel.watchlistMutation.observe(this) { mutation ->
+            if (mutation.mediaType != Constants.MEDIA_TYPE_TV) return@observe
+            if (mutation.success) {
+                val message = if (mutation.added) {
+                    R.string.added_to_watchlist
+                } else {
+                    R.string.removed_from_watchlist
+                }
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                updateBookmarkUi(mutation.added)
+            } else {
+                Toast.makeText(this, R.string.watchlist_error, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        authViewModel.isOnWatchlist.observe(this) { onWatchlist ->
+            updateBookmarkUi(onWatchlist)
+        }
+
+        if (ConfigStore.isLoggedIn(this) && showId != null && showId != 0) {
+            authViewModel.checkWatchlistState(showId!!, Constants.MEDIA_TYPE_TV)
+        }
+
+        binding.bookmarkBtn.setOnClickListener {
+            if (ConfigStore.isLoggedIn(this)) {
+                toggleWatchlist()
+            } else {
+                Toast.makeText(this, R.string.login_required, Toast.LENGTH_SHORT).show()
+                loginLauncher.launch(Intent(this, LoginActivity::class.java))
+            }
+        }
+    }
+
+    private fun toggleWatchlist() {
+        val id = showId ?: return
+        if (id == 0) return
+        val currentlyOnWatchlist = authViewModel.isOnWatchlist.value == true
+        authViewModel.setWatchlist(id, !currentlyOnWatchlist, Constants.MEDIA_TYPE_TV)
+    }
+
+    private fun updateBookmarkUi(onWatchlist: Boolean) {
+        binding.bookmarkBtn.alpha = if (onWatchlist) 1f else 0.55f
+        binding.bookmarkBtn.contentDescription = getString(
+            if (onWatchlist) R.string.remove_from_watchlist_title else R.string.bookmark
+        )
     }
 
     companion object {
