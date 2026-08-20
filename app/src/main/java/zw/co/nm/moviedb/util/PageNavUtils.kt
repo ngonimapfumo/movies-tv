@@ -27,6 +27,19 @@ object PageNavUtils {
 
     fun navWatchlistPage(context: Context) {
         val intent = Intent(context, WatchlistActivity::class.java)
+        intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_WATCHLIST)
+        context.startActivity(intent)
+    }
+
+    fun navFavoritesPage(context: Context) {
+        val intent = Intent(context, WatchlistActivity::class.java)
+        intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_FAVORITES)
+        context.startActivity(intent)
+    }
+
+    fun navRatedPage(context: Context) {
+        val intent = Intent(context, WatchlistActivity::class.java)
+        intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_RATED)
         context.startActivity(intent)
     }
 

@@ -6,37 +6,47 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
-import zw.co.nm.moviedb.databinding.ItemGenreBinding
+import zw.co.nm.moviedb.databinding.ItemKeywordChipBinding
 import zw.co.nm.moviedb.presentation.main.movies.MainListActivity
 
-class MovieGenresAdapter(private var data: List<GetMovieGenres.Genre?>?) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MovieGenresAdapter(
+    private val genres: List<GetMovieGenres.Genre>
+) : RecyclerView.Adapter<MovieGenresAdapter.ChipViewHolder>() {
 
-    private var binding: ItemGenreBinding? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding =
-            ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemMovieViewHolder(binding!!)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChipViewHolder {
+        val binding = ItemKeywordChipBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ChipViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = data!!.size
+    override fun getItemCount(): Int = genres.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val view = holder.itemView
-        val extrasBundle = Bundle()
-        binding!!.genreName.text = data!![position]!!.name
-        view.setOnClickListener {
-            extrasBundle.putSerializable("identifier", "from_genre")
-            extrasBundle.putSerializable("genre_id", data!![position]!!.id)
-            view.context
-                .startActivity(Intent(view.context,MainListActivity::class.java).putExtras(extrasBundle))
+    override fun onBindViewHolder(holder: ChipViewHolder, position: Int) {
+        val genre = genres[position]
+        holder.binding.keywordChip.text = genre.name.orEmpty()
+        holder.binding.keywordChip.setOnClickListener {
+            openGenre(holder, genre)
+        }
+        holder.itemView.setOnClickListener {
+            openGenre(holder, genre)
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position
+    private fun openGenre(holder: ChipViewHolder, genre: GetMovieGenres.Genre) {
+        val genreId = genre.id ?: return
+        val extras = Bundle().apply {
+            putString("identifier", "from_genre")
+            putInt("genre_id", genreId)
+            putString("title", genre.name.orEmpty())
+        }
+        holder.itemView.context.startActivity(
+            Intent(holder.itemView.context, MainListActivity::class.java).putExtras(extras)
+        )
     }
 
-    class ItemMovieViewHolder(binding: ItemGenreBinding) :
+    class ChipViewHolder(val binding: ItemKeywordChipBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

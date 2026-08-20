@@ -30,6 +30,7 @@ class WatchlistPageFragment : Fragment() {
     private lateinit var moviesAdapter: WatchlistAdapter
     private lateinit var tvAdapter: WatchlistTvAdapter
 
+    private var listType: String = Constants.LIST_TYPE_WATCHLIST
     private var mediaType: String = Constants.MEDIA_TYPE_MOVIE
     private var isLoadingMore = false
     private var isLastPage = false
@@ -37,6 +38,7 @@ class WatchlistPageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        listType = arguments?.getString(ARG_LIST_TYPE) ?: Constants.LIST_TYPE_WATCHLIST
         mediaType = arguments?.getString(ARG_MEDIA_TYPE) ?: Constants.MEDIA_TYPE_MOVIE
     }
 
@@ -86,16 +88,37 @@ class WatchlistPageFragment : Fragment() {
 
     private fun observe() {
         if (mediaType == Constants.MEDIA_TYPE_TV) {
-            authViewModel.watchlistTv.observe(viewLifecycleOwner) { response ->
-                handleTvResponse(response)
+            when (listType) {
+                Constants.LIST_TYPE_FAVORITES ->
+                    authViewModel.favoriteTv.observe(viewLifecycleOwner) { handleTvResponse(it) }
+
+                Constants.LIST_TYPE_RATED ->
+                    authViewModel.ratedTv.observe(viewLifecycleOwner) { handleTvResponse(it) }
+
+                else ->
+                    authViewModel.watchlistTv.observe(viewLifecycleOwner) { handleTvResponse(it) }
             }
         } else {
-            authViewModel.watchlistMovies.observe(viewLifecycleOwner) { response ->
-                handleMoviesResponse(response)
+            when (listType) {
+                Constants.LIST_TYPE_FAVORITES ->
+                    authViewModel.favoriteMovies.observe(viewLifecycleOwner) {
+                        handleMoviesResponse(it)
+                    }
+
+                Constants.LIST_TYPE_RATED ->
+                    authViewModel.ratedMovies.observe(viewLifecycleOwner) {
+                        handleMoviesResponse(it)
+                    }
+
+                else ->
+                    authViewModel.watchlistMovies.observe(viewLifecycleOwner) {
+                        handleMoviesResponse(it)
+                    }
             }
         }
 
         authViewModel.watchlistMutation.observe(viewLifecycleOwner) { mutation ->
+            if (listType != Constants.LIST_TYPE_WATCHLIST) return@observe
             if (!mutation.success) {
                 Toast.makeText(requireContext(), R.string.watchlist_error, Toast.LENGTH_SHORT).show()
                 return@observe
@@ -103,6 +126,31 @@ class WatchlistPageFragment : Fragment() {
             if (!mutation.added && mutation.mediaType == mediaType) {
                 Toast.makeText(requireContext(), R.string.removed_from_watchlist, Toast.LENGTH_SHORT)
                     .show()
+                loadInitial()
+            }
+        }
+
+        authViewModel.favoriteMutation.observe(viewLifecycleOwner) { mutation ->
+            if (listType != Constants.LIST_TYPE_FAVORITES) return@observe
+            if (!mutation.success) {
+                Toast.makeText(requireContext(), R.string.favorites_error, Toast.LENGTH_SHORT).show()
+                return@observe
+            }
+            if (!mutation.added && mutation.mediaType == mediaType) {
+                Toast.makeText(requireContext(), R.string.removed_from_favorites, Toast.LENGTH_SHORT)
+                    .show()
+                loadInitial()
+            }
+        }
+
+        authViewModel.ratingMutation.observe(viewLifecycleOwner) { mutation ->
+            if (listType != Constants.LIST_TYPE_RATED) return@observe
+            if (!mutation.success) {
+                Toast.makeText(requireContext(), R.string.rating_error, Toast.LENGTH_SHORT).show()
+                return@observe
+            }
+            if (mutation.deleted && mutation.mediaType == mediaType) {
+                Toast.makeText(requireContext(), R.string.rating_removed, Toast.LENGTH_SHORT).show()
                 loadInitial()
             }
         }
@@ -118,11 +166,11 @@ class WatchlistPageFragment : Fragment() {
 
         when (response.data) {
             null -> {
-                if (loadingMore && authViewModel.moviesPage > 1) {
-                    authViewModel.moviesPage--
+                if (loadingMore && moviesPage() > 1) {
+                    decrementMoviesPage()
                 }
-                actionSnack(binding.root, getString(R.string.watchlist_load_error), "Retry") {
-                    if (authViewModel.moviesPage == 1) loadInitial() else {
+                actionSnack(binding.root, getString(loadErrorRes()), "Retry") {
+                    if (moviesPage() == 1) loadInitial() else {
                         isLoadingMore = false
                         loadNextPage()
                     }
@@ -135,7 +183,7 @@ class WatchlistPageFragment : Fragment() {
                 if (response.body.page == 1) {
                     moviesAdapter.submitList(response.body.results)
                     if (response.body.results.isEmpty()) {
-                        Toast.makeText(requireContext(), R.string.watchlist_empty, Toast.LENGTH_SHORT)
+                        Toast.makeText(requireContext(), emptyMoviesRes(), Toast.LENGTH_SHORT)
                             .show()
                     }
                 } else {
@@ -155,11 +203,11 @@ class WatchlistPageFragment : Fragment() {
 
         when (response.data) {
             null -> {
-                if (loadingMore && authViewModel.tvPage > 1) {
-                    authViewModel.tvPage--
+                if (loadingMore && tvPage() > 1) {
+                    decrementTvPage()
                 }
-                actionSnack(binding.root, getString(R.string.watchlist_load_error), "Retry") {
-                    if (authViewModel.tvPage == 1) loadInitial() else {
+                actionSnack(binding.root, getString(loadErrorRes()), "Retry") {
+                    if (tvPage() == 1) loadInitial() else {
                         isLoadingMore = false
                         loadNextPage()
                     }
@@ -172,8 +220,7 @@ class WatchlistPageFragment : Fragment() {
                 if (response.body.page == 1) {
                     tvAdapter.submitList(response.body.results)
                     if (response.body.results.isEmpty()) {
-                        Toast.makeText(requireContext(), R.string.watchlist_empty_tv, Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(requireContext(), emptyTvRes(), Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     tvAdapter.appendList(response.body.results)
@@ -183,25 +230,73 @@ class WatchlistPageFragment : Fragment() {
     }
 
     private fun confirmRemoveMovie(movie: GetPopularMoviesListResponse.Result) {
+        val title = when (listType) {
+            Constants.LIST_TYPE_FAVORITES -> getString(R.string.remove_from_favorites_title)
+            Constants.LIST_TYPE_RATED -> getString(R.string.remove_rating_title)
+            else -> getString(R.string.remove_from_watchlist_title)
+        }
+        val message = when (listType) {
+            Constants.LIST_TYPE_FAVORITES ->
+                getString(R.string.remove_from_favorites_message, movie.title)
+
+            Constants.LIST_TYPE_RATED ->
+                getString(R.string.remove_rating_message, movie.title)
+
+            else -> getString(R.string.remove_from_watchlist_message, movie.title)
+        }
         generalAlertDialog(
             requireContext(),
-            getString(R.string.remove_from_watchlist_title),
-            getString(R.string.remove_from_watchlist_message, movie.title),
+            title,
+            message,
             getString(R.string.remove),
             getString(R.string.cancel),
-            { _, _ -> authViewModel.removeMovieFromWatchlist(movie.id) },
+            { _, _ ->
+                when (listType) {
+                    Constants.LIST_TYPE_FAVORITES ->
+                        authViewModel.removeMovieFromFavorites(movie.id)
+
+                    Constants.LIST_TYPE_RATED ->
+                        authViewModel.removeMovieRating(movie.id)
+
+                    else -> authViewModel.removeMovieFromWatchlist(movie.id)
+                }
+            },
             null
         )
     }
 
     private fun confirmRemoveTv(show: GetPopularTVSeriesListResponse.Result) {
+        val title = when (listType) {
+            Constants.LIST_TYPE_FAVORITES -> getString(R.string.remove_from_favorites_title)
+            Constants.LIST_TYPE_RATED -> getString(R.string.remove_rating_title)
+            else -> getString(R.string.remove_from_watchlist_title)
+        }
+        val message = when (listType) {
+            Constants.LIST_TYPE_FAVORITES ->
+                getString(R.string.remove_from_favorites_message, show.name)
+
+            Constants.LIST_TYPE_RATED ->
+                getString(R.string.remove_rating_message, show.name)
+
+            else -> getString(R.string.remove_from_watchlist_message, show.name)
+        }
         generalAlertDialog(
             requireContext(),
-            getString(R.string.remove_from_watchlist_title),
-            getString(R.string.remove_from_watchlist_message, show.name),
+            title,
+            message,
             getString(R.string.remove),
             getString(R.string.cancel),
-            { _, _ -> authViewModel.removeTvFromWatchlist(show.id) },
+            { _, _ ->
+                when (listType) {
+                    Constants.LIST_TYPE_FAVORITES ->
+                        authViewModel.removeTvFromFavorites(show.id)
+
+                    Constants.LIST_TYPE_RATED ->
+                        authViewModel.removeTvRating(show.id)
+
+                    else -> authViewModel.removeTvFromWatchlist(show.id)
+                }
+            },
             null
         )
     }
@@ -214,11 +309,11 @@ class WatchlistPageFragment : Fragment() {
         }
         setLoadMoreVisible(false)
         if (mediaType == Constants.MEDIA_TYPE_TV) {
-            authViewModel.tvPage = 1
-            authViewModel.getWatchlistTv()
+            setTvPage(1)
+            fetchTv()
         } else {
-            authViewModel.moviesPage = 1
-            authViewModel.getWatchlistMovies()
+            setMoviesPage(1)
+            fetchMovies()
         }
     }
 
@@ -227,12 +322,82 @@ class WatchlistPageFragment : Fragment() {
         isLoadingMore = true
         setLoadMoreVisible(true)
         if (mediaType == Constants.MEDIA_TYPE_TV) {
-            authViewModel.tvPage++
-            authViewModel.getWatchlistTv()
+            setTvPage(tvPage() + 1)
+            fetchTv()
         } else {
-            authViewModel.moviesPage++
-            authViewModel.getWatchlistMovies()
+            setMoviesPage(moviesPage() + 1)
+            fetchMovies()
         }
+    }
+
+    private fun fetchMovies() {
+        when (listType) {
+            Constants.LIST_TYPE_FAVORITES -> authViewModel.getFavoriteMovies()
+            Constants.LIST_TYPE_RATED -> authViewModel.getRatedMovies()
+            else -> authViewModel.getWatchlistMovies()
+        }
+    }
+
+    private fun fetchTv() {
+        when (listType) {
+            Constants.LIST_TYPE_FAVORITES -> authViewModel.getFavoriteTv()
+            Constants.LIST_TYPE_RATED -> authViewModel.getRatedTv()
+            else -> authViewModel.getWatchlistTv()
+        }
+    }
+
+    private fun moviesPage(): Int = when (listType) {
+        Constants.LIST_TYPE_FAVORITES -> authViewModel.favoriteMoviesPage
+        Constants.LIST_TYPE_RATED -> authViewModel.ratedMoviesPage
+        else -> authViewModel.moviesPage
+    }
+
+    private fun tvPage(): Int = when (listType) {
+        Constants.LIST_TYPE_FAVORITES -> authViewModel.favoriteTvPage
+        Constants.LIST_TYPE_RATED -> authViewModel.ratedTvPage
+        else -> authViewModel.tvPage
+    }
+
+    private fun setMoviesPage(page: Int) {
+        when (listType) {
+            Constants.LIST_TYPE_FAVORITES -> authViewModel.favoriteMoviesPage = page
+            Constants.LIST_TYPE_RATED -> authViewModel.ratedMoviesPage = page
+            else -> authViewModel.moviesPage = page
+        }
+    }
+
+    private fun setTvPage(page: Int) {
+        when (listType) {
+            Constants.LIST_TYPE_FAVORITES -> authViewModel.favoriteTvPage = page
+            Constants.LIST_TYPE_RATED -> authViewModel.ratedTvPage = page
+            else -> authViewModel.tvPage = page
+        }
+    }
+
+    private fun decrementMoviesPage() {
+        setMoviesPage(moviesPage() - 1)
+    }
+
+    private fun decrementTvPage() {
+        setTvPage(tvPage() - 1)
+    }
+
+    private fun emptyMoviesRes(): Int = when (listType) {
+        Constants.LIST_TYPE_FAVORITES -> R.string.favorites_empty
+        Constants.LIST_TYPE_RATED -> R.string.rated_empty
+        else -> R.string.watchlist_empty
+    }
+
+    private fun emptyTvRes(): Int = when (listType) {
+        Constants.LIST_TYPE_FAVORITES -> R.string.favorites_empty_tv
+        Constants.LIST_TYPE_RATED -> R.string.rated_empty_tv
+        else -> R.string.watchlist_empty_tv
+    }
+
+    private fun loadErrorRes(): Int = when (listType) {
+        Constants.LIST_TYPE_FAVORITES -> R.string.favorites_load_error
+        Constants.LIST_TYPE_RATED -> R.string.rated_load_error
+        else -> R.string.watchlist_load_error
     }
 
     private fun setLoadMoreVisible(visible: Boolean) {
@@ -246,10 +411,12 @@ class WatchlistPageFragment : Fragment() {
 
     companion object {
         private const val ARG_MEDIA_TYPE = "media_type"
+        private const val ARG_LIST_TYPE = "list_type"
 
-        fun newInstance(mediaType: String): WatchlistPageFragment {
+        fun newInstance(listType: String, mediaType: String): WatchlistPageFragment {
             return WatchlistPageFragment().apply {
                 arguments = Bundle().apply {
+                    putString(ARG_LIST_TYPE, listType)
                     putString(ARG_MEDIA_TYPE, mediaType)
                 }
             }

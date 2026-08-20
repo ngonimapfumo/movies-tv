@@ -7,10 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetTrendingResponse
+import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.databinding.ActivityMainListBinding
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.util.EndlessScrollListener
@@ -19,9 +23,11 @@ import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 class MainListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainListBinding
-    private lateinit var adapter: MoviesAdapter
+    private lateinit var moviesAdapter: MoviesAdapter
+    private lateinit var trendingAdapter: TrendingAdapter
     private lateinit var moviesViewModel: MoviesViewModel
     private var genreId: Int = 0
+    private var keywordId: Int = 0
     private var identifier: String = ""
     private var isLoadingMore = false
     private var isLastPage = false
@@ -32,7 +38,6 @@ class MainListActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.movies)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val innerPadding = insets.getInsets(
@@ -49,14 +54,30 @@ class MainListActivity : AppCompatActivity() {
 
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         genreId = intent.getIntExtra("genre_id", 0)
+        keywordId = intent.getIntExtra("keyword_id", 0)
         identifier = intent.getStringExtra("identifier").orEmpty()
+        supportActionBar?.title = intent.getStringExtra("title")
+            ?: defaultTitle()
 
-        adapter = MoviesAdapter()
-        binding.recyclerView.adapter = adapter
+        moviesAdapter = MoviesAdapter()
+        trendingAdapter = TrendingAdapter()
+        binding.recyclerView.adapter =
+            if (isTrending()) trendingAdapter else moviesAdapter
+
         setUpScroll()
-        observeMovies()
+        observeList()
         loadInitial()
     }
+
+    private fun defaultTitle(): String = when {
+        identifier.equals("trending", true) -> getString(R.string.trending_today)
+        identifier.equals("now_playing", true) -> getString(R.string.now_playing)
+        identifier.equals("upcoming", true) -> getString(R.string.upcoming)
+        identifier.equals("from_keyword", true) -> getString(R.string.keywords)
+        else -> getString(R.string.movies)
+    }
+
+    private fun isTrending(): Boolean = identifier.equals("trending", true)
 
     private fun setUpScroll() {
         val layoutManager = binding.recyclerView.layoutManager as GridLayoutManager
@@ -74,13 +95,23 @@ class MainListActivity : AppCompatActivity() {
         }
     }
 
-    private fun observeMovies() {
-        val liveData = if (identifier.equals("from_genre", true)) {
-            moviesViewModel.getMovieByGenreId
+    private fun observeList() {
+        if (isTrending()) {
+            observeTrending(moviesViewModel.getTrending)
         } else {
-            moviesViewModel.getPopularMovies
+            observeMovies(moviesLiveData())
         }
+    }
 
+    private fun moviesLiveData(): LiveData<Response<GetPopularMoviesListResponse>> = when {
+        identifier.equals("from_genre", true) -> moviesViewModel.getMovieByGenreId
+        identifier.equals("from_keyword", true) -> moviesViewModel.getMoviesByKeywordId
+        identifier.equals("now_playing", true) -> moviesViewModel.getNowPlaying
+        identifier.equals("upcoming", true) -> moviesViewModel.getUpcoming
+        else -> moviesViewModel.getPopularMovies
+    }
+
+    private fun observeMovies(liveData: LiveData<Response<GetPopularMoviesListResponse>>) {
         liveData.observe(this) { response ->
             binding.progressBar.visibility = GONE
             setLoadMoreVisible(false)
@@ -106,9 +137,44 @@ class MainListActivity : AppCompatActivity() {
                     isLastPage = response.body.page >= response.body.totalPages
                     val results = response.body.results
                     if (response.body.page == 1) {
-                        adapter.submitList(results)
+                        moviesAdapter.submitList(results)
                     } else {
-                        adapter.appendList(results)
+                        moviesAdapter.appendList(results)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeTrending(liveData: LiveData<Response<GetTrendingResponse>>) {
+        liveData.observe(this) { response ->
+            binding.progressBar.visibility = GONE
+            setLoadMoreVisible(false)
+            val loadingMore = isLoadingMore
+            isLoadingMore = false
+
+            when (response.data) {
+                null -> {
+                    if (loadingMore && moviesViewModel.page > 1) {
+                        moviesViewModel.page--
+                    }
+                    actionSnack(binding.root, "Error getting data", "Retry") {
+                        if (moviesViewModel.page == 1) {
+                            loadInitial()
+                        } else {
+                            isLoadingMore = false
+                            loadNextPage()
+                        }
+                    }
+                }
+
+                else -> {
+                    isLastPage = response.body.page >= response.body.totalPages
+                    val results = response.body.results
+                    if (response.body.page == 1) {
+                        trendingAdapter.submitList(results)
+                    } else {
+                        trendingAdapter.appendList(results)
                     }
                 }
             }
@@ -133,10 +199,23 @@ class MainListActivity : AppCompatActivity() {
     }
 
     private fun fetchPage() {
-        if (identifier.equals("from_genre", true)) {
-            moviesViewModel.getMoviesByGenreId(genreId)
-        } else {
-            moviesViewModel.getPopularMovies()
+        when {
+            identifier.equals("from_genre", true) ->
+                moviesViewModel.getMoviesByGenreId(genreId)
+
+            identifier.equals("from_keyword", true) ->
+                moviesViewModel.getMoviesByKeywordId(keywordId)
+
+            identifier.equals("trending", true) ->
+                moviesViewModel.getTrending()
+
+            identifier.equals("now_playing", true) ->
+                moviesViewModel.getNowPlaying()
+
+            identifier.equals("upcoming", true) ->
+                moviesViewModel.getUpcoming()
+
+            else -> moviesViewModel.getPopularMovies()
         }
     }
 

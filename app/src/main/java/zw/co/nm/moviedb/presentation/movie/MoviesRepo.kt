@@ -4,9 +4,12 @@ import zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetMovieKeywordsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetTrendingResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 import zw.co.nm.moviedb.data.remote.util.NetworkManager
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
@@ -57,4 +60,45 @@ class MoviesRepo {
         apiCall {
             NetworkManager.movieService.getMoviesByGenreId(page, language, genreId)
         }
+
+    suspend fun getMoviesByKeywordId(
+        page: Int,
+        language: String,
+        keywordId: Int
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.movieService.getMoviesByKeywordId(page, language, keywordId)
+        }
+
+    suspend fun getTrending(
+        page: Int,
+        language: String
+    ): Response<GetTrendingResponse> =
+        apiCall {
+            NetworkManager.movieService.getTrending(page, language)
+        }
+
+    suspend fun getNowPlaying(
+        page: Int,
+        language: String
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.movieService.getNowPlaying(page, language)
+        }
+
+    suspend fun getUpcoming(
+        page: Int,
+        language: String
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.movieService.getUpcoming(page, language)
+        }
+
+    suspend fun getMovieKeywords(movieId: Int): Response<GetMovieKeywordsResponse> =
+        apiCall {
+            NetworkManager.movieService.getMovieKeywords(movieId)
+        }
+
+    suspend fun getWatchProviders(movieId: Int): Response<GetWatchProvidersResponse> =
+        apiCall { NetworkManager.movieService.getWatchProviders(movieId) }
 }

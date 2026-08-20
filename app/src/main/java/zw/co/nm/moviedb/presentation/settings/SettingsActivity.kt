@@ -17,15 +17,18 @@ import zw.co.nm.moviedb.databinding.ActivitySettingsBinding
 import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.ConfigStore.getThemeConfig
+import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
+import zw.co.nm.moviedb.util.WatchRegionPicker
 
 
 class SettingsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySettingsBinding
     private lateinit var configViewModel: ConfigViewModel
+    private var countryOptions: List<WatchRegionPicker.CountryOption> = emptyList()
 
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +69,13 @@ class SettingsActivity : AppCompatActivity() {
 
         configViewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
         configViewModel.getTranslations()
+        configViewModel.getCountries()
+        setupLanguagePicker()
+        setupWatchRegionPicker()
+        setupThemePicker()
+    }
+
+    private fun setupLanguagePicker() {
         configViewModel.getTranslations.observe(this) {
 
             when (it.data) {
@@ -111,6 +121,69 @@ class SettingsActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun setupWatchRegionPicker() {
+        configViewModel.getCountries.observe(this) { response ->
+            when (response.data) {
+                null -> {
+                    actionSnack(binding.root, "Error getting countries", "Retry") {
+                        configViewModel.getCountries()
+                    }
+                }
+
+                else -> {
+                    countryOptions = WatchRegionPicker.toOptions(response.body)
+                    val deviceDefault = getString(zw.co.nm.moviedb.R.string.watch_region_device_default)
+                    val labels = buildList {
+                        add(deviceDefault)
+                        addAll(countryOptions.map { it.displayName })
+                    }
+                    binding.watchRegionAutoComplete.setAdapter(
+                        ArrayAdapter(
+                            this,
+                            R.layout.simple_spinner_dropdown_item,
+                            labels
+                        )
+                    )
+                    binding.watchRegionAutoComplete.setText(currentWatchRegionLabel(deviceDefault), false)
+                    binding.watchRegionAutoComplete.setOnItemClickListener { _, _, position, _ ->
+                        if (position == 0) {
+                            ConfigStore.clearConfig(this, Constants.WATCH_REGION)
+                            binding.watchRegionAutoComplete.setText(deviceDefault, false)
+                        } else {
+                            val option = countryOptions[position - 1]
+                            ConfigStore.saveStringConfig(
+                                this,
+                                Constants.WATCH_REGION,
+                                option.iso
+                            )
+                            binding.watchRegionAutoComplete.setText(option.displayName, false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun currentWatchRegionLabel(deviceDefault: String): String {
+        if (!ConfigStore.hasWatchRegionOverride(this)) {
+            val device = ConfigStore.getString(this, Constants.COUNTRY_ISO)
+                ?.uppercase()
+                .orEmpty()
+            return if (device.isNotBlank()) {
+                "$deviceDefault ($device)"
+            } else {
+                deviceDefault
+            }
+        }
+        val selected = ConfigStore.getPreferredWatchRegion(this)
+        return countryOptions.firstOrNull { it.iso == selected }?.displayName
+            ?: selected
+            ?: deviceDefault
+    }
+
+    private fun setupThemePicker() {
         when {
             AppCompatDelegate.MODE_NIGHT_YES == getThemeConfig(this, "THEME") -> {
                 binding.darkThemeRad.isChecked = true
@@ -158,7 +231,6 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

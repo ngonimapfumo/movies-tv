@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityWatchlistBinding
+import zw.co.nm.moviedb.util.Constants
 
 class WatchlistActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class WatchlistActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.watchlist)
+        supportActionBar?.title = getString(R.string.my_lists)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val innerPadding = insets.getInsets(
@@ -34,13 +35,19 @@ class WatchlistActivity : AppCompatActivity() {
             insets
         }
 
-        binding.viewPager.adapter = WatchlistPagerAdapter(this)
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+        val pagerAdapter = LibrarySectionPagerAdapter(this)
+        binding.sectionViewPager.adapter = pagerAdapter
+        TabLayoutMediator(binding.sectionTabLayout, binding.sectionViewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> getString(R.string.movies)
-                else -> getString(R.string.tv_shows)
+                0 -> getString(R.string.watchlist)
+                1 -> getString(R.string.favorites)
+                else -> getString(R.string.rated)
             }
         }.attach()
+
+        val section = intent.getStringExtra(Constants.EXTRA_LIBRARY_SECTION)
+            ?: Constants.LIST_TYPE_WATCHLIST
+        binding.sectionViewPager.setCurrentItem(pagerAdapter.indexOf(section), false)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,11 +1,13 @@
 package zw.co.nm.moviedb.presentation.watchlist
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import zw.co.nm.moviedb.util.Constants
 
-class WatchlistPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
+class WatchlistPagerAdapter(
+    fragment: Fragment,
+    private val listType: String
+) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 2
 
@@ -15,6 +17,6 @@ class WatchlistPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(a
         } else {
             Constants.MEDIA_TYPE_TV
         }
-        return WatchlistPageFragment.newInstance(mediaType)
+        return WatchlistPageFragment.newInstance(listType, mediaType)
     }
 }

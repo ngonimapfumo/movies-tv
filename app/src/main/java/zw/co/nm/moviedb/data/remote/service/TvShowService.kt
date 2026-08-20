@@ -1,13 +1,19 @@
 package zw.co.nm.moviedb.data.remote.service
 
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
+import zw.co.nm.moviedb.data.remote.model.request.RateMediaRequest
 import zw.co.nm.moviedb.data.remote.model.response.AccountStatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
+import zw.co.nm.moviedb.data.remote.model.response.StatusResponse
 
-interface   TvShowService {
+interface TvShowService {
 
     @GET("tv/popular")
     suspend fun getPopularTvShows(
@@ -26,6 +32,19 @@ interface   TvShowService {
         @Path("series_id") seriesId: Int,
         @Query("session_id") sessionId: String
     ): Response<AccountStatesResponse>
+
+    @POST("tv/{series_id}/rating")
+    suspend fun rateTvShow(
+        @Path("series_id") seriesId: Int,
+        @Query("session_id") sessionId: String,
+        @Body body: RateMediaRequest
+    ): Response<StatusResponse>
+
+    @DELETE("tv/{series_id}/rating")
+    suspend fun deleteTvRating(
+        @Path("series_id") seriesId: Int,
+        @Query("session_id") sessionId: String
+    ): Response<StatusResponse>
 
 
     @GET("tv/{series_id}/season/{season_number}")
@@ -64,5 +83,8 @@ interface   TvShowService {
 
     @GET("tv/{id}/images")
     suspend fun getTvImages(@Path("id") seriesId: Int): Response<GetTVImagesResponse>
+
+    @GET("tv/{id}/watch/providers")
+    suspend fun getWatchProviders(@Path("id") tvShowId: Int): Response<GetWatchProvidersResponse>
 
 }

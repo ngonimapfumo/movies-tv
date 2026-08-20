@@ -1,7 +1,9 @@
 package zw.co.nm.moviedb.presentation.auth
 
+import zw.co.nm.moviedb.data.remote.model.request.AddFavoriteRequest
 import zw.co.nm.moviedb.data.remote.model.request.AddWatchlistRequest
 import zw.co.nm.moviedb.data.remote.model.request.CreateSessionRequest
+import zw.co.nm.moviedb.data.remote.model.request.RateMediaRequest
 import zw.co.nm.moviedb.data.remote.model.response.AccountStatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.CreateRequestTokenResponse
 import zw.co.nm.moviedb.data.remote.model.response.CreateSessionIdResponse
@@ -91,5 +93,126 @@ class AuthRepo {
                     watchlist = watchlist
                 )
             )
+        }
+
+    suspend fun getFavoriteMovies(
+        accountId: Int,
+        sessionId: String,
+        language: String,
+        page: Int
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.accountService.getFavoriteMovies(
+                accountId = accountId,
+                sessionId = sessionId,
+                language = language,
+                page = page
+            )
+        }
+
+    suspend fun getFavoriteTv(
+        accountId: Int,
+        sessionId: String,
+        language: String,
+        page: Int
+    ): Response<GetPopularTVSeriesListResponse> =
+        apiCall {
+            NetworkManager.accountService.getFavoriteTv(
+                accountId = accountId,
+                sessionId = sessionId,
+                language = language,
+                page = page
+            )
+        }
+
+    suspend fun setFavorite(
+        accountId: Int,
+        sessionId: String,
+        mediaId: Int,
+        mediaType: String,
+        favorite: Boolean
+    ): Response<StatusResponse> =
+        apiCall {
+            NetworkManager.accountService.addToFavorites(
+                accountId = accountId,
+                sessionId = sessionId,
+                body = AddFavoriteRequest(
+                    mediaType = mediaType,
+                    mediaId = mediaId,
+                    favorite = favorite
+                )
+            )
+        }
+
+    suspend fun getRatedMovies(
+        accountId: Int,
+        sessionId: String,
+        language: String,
+        page: Int
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.accountService.getRatedMovies(
+                accountId = accountId,
+                sessionId = sessionId,
+                language = language,
+                page = page
+            )
+        }
+
+    suspend fun getRatedTv(
+        accountId: Int,
+        sessionId: String,
+        language: String,
+        page: Int
+    ): Response<GetPopularTVSeriesListResponse> =
+        apiCall {
+            NetworkManager.accountService.getRatedTv(
+                accountId = accountId,
+                sessionId = sessionId,
+                language = language,
+                page = page
+            )
+        }
+
+    suspend fun rateMovie(
+        movieId: Int,
+        sessionId: String,
+        value: Double
+    ): Response<StatusResponse> =
+        apiCall {
+            NetworkManager.movieService.rateMovie(
+                movieId = movieId,
+                sessionId = sessionId,
+                body = RateMediaRequest(value)
+            )
+        }
+
+    suspend fun rateTvShow(
+        seriesId: Int,
+        sessionId: String,
+        value: Double
+    ): Response<StatusResponse> =
+        apiCall {
+            NetworkManager.tvShowService.rateTvShow(
+                seriesId = seriesId,
+                sessionId = sessionId,
+                body = RateMediaRequest(value)
+            )
+        }
+
+    suspend fun deleteMovieRating(
+        movieId: Int,
+        sessionId: String
+    ): Response<StatusResponse> =
+        apiCall {
+            NetworkManager.movieService.deleteMovieRating(movieId, sessionId)
+        }
+
+    suspend fun deleteTvRating(
+        seriesId: Int,
+        sessionId: String
+    ): Response<StatusResponse> =
+        apiCall {
+            NetworkManager.tvShowService.deleteTvRating(seriesId, sessionId)
         }
 }

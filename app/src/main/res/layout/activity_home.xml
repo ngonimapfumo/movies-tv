@@ -139,7 +139,7 @@
                 android:id="@+id/genreLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="12dp"
+                android:paddingTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heroLayout">
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/genres"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -160,79 +160,252 @@
                     android:id="@+id/recyclerView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:clipToPadding="false"
                     android:nestedScrollingEnabled="false"
-                    android:paddingHorizontal="8dp"
+                    android:paddingHorizontal="12dp"
                     android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView15"
-                    tools:listitem="@layout/item_genre"
+                    tools:listitem="@layout/item_keyword_chip"
                     tools:orientation="horizontal"
                     tools:visibility="visible" />
 
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/shimmer"
                     android:layout_width="0dp"
-                    android:layout_height="99dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="4dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView15">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="8dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardView4"
-                            style="?attr/materialCardViewFilledStyle"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="5dp"
-                            app:cardUseCompatPadding="true"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardView5"
-                            style="?attr/materialCardViewFilledStyle"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="2dp"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="5dp"
-                            app:cardUseCompatPadding="true"
-                            app:layout_constraintStart_toEndOf="@id/cardView4"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardView6"
-                            style="?attr/materialCardViewFilledStyle"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="2dp"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="5dp"
-                            app:cardUseCompatPadding="true"
-                            app:layout_constraintStart_toEndOf="@id/cardView5"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp">
 
                         <com.google.android.material.card.MaterialCardView
                             style="?attr/materialCardViewFilledStyle"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="2dp"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="5dp"
-                            app:cardUseCompatPadding="true"
-                            app:layout_constraintStart_toEndOf="@id/cardView6"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            android:layout_width="72dp"
+                            android:layout_height="28dp"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="0dp" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            style="?attr/materialCardViewFilledStyle"
+                            android:layout_width="88dp"
+                            android:layout_height="28dp"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="0dp" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            style="?attr/materialCardViewFilledStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="28dp"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="0dp" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            style="?attr/materialCardViewFilledStyle"
+                            android:layout_width="80dp"
+                            android:layout_height="28dp"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="0dp" />
+                    </LinearLayout>
                 </com.facebook.shimmer.ShimmerFrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/vibesLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/genreLayout">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/vibesTitle"
+                    style="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/vibes"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerVibes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingHorizontal="12dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vibesTitle"
+                    tools:listitem="@layout/item_keyword_chip"
+                    tools:orientation="horizontal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/trendingLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vibesLayout">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/trendingTitle"
+                    style="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/trending_today"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/trendingMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/more"
+                    android:textColor="@color/new_blue"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/trendingTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/trendingTitle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTrending"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/trendingTitle"
+                    tools:listitem="@layout/item_movie_main"
+                    tools:orientation="horizontal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nowPlayingLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/trendingLayout">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/nowPlayingTitle"
+                    style="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/now_playing"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/nowPlayingMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/more"
+                    android:textColor="@color/new_blue"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/nowPlayingTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/nowPlayingTitle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerNowPlaying"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/nowPlayingTitle"
+                    tools:listitem="@layout/item_movie_main"
+                    tools:orientation="horizontal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/upcomingLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nowPlayingLayout">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/upcomingTitle"
+                    style="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/upcoming"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/upcomingMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/more"
+                    android:textColor="@color/new_blue"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/upcomingTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/upcomingTitle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerUpcoming"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/upcomingTitle"
+                    tools:listitem="@layout/item_movie_main"
+                    tools:orientation="horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -242,7 +415,7 @@
                 android:paddingBottom="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genreLayout">
+                app:layout_constraintTop_toBottomOf="@id/upcomingLayout">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView20"
@@ -273,14 +446,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:clipToPadding="false"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    android:paddingHorizontal="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView20"
-                    app:spanCount="3"
-                    tools:listitem="@layout/item_movie_main" />
+                    tools:listitem="@layout/item_movie_main"
+                    tools:orientation="horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

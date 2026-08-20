@@ -68,4 +68,21 @@ object ConfigStore {
         val accountId = getInt(context, Constants.ACCOUNT_ID)
         return !sessionId.isNullOrBlank() && accountId != 0
     }
+
+    /** User-selected region for Where to Watch, else device network country. */
+    fun getPreferredWatchRegion(context: Context): String? {
+        val override = getString(context, Constants.WATCH_REGION)
+            ?.trim()
+            ?.uppercase()
+            ?.takeIf { it.length == 2 }
+        if (override != null) return override
+        return getString(context, Constants.COUNTRY_ISO)
+            ?.trim()
+            ?.uppercase()
+            ?.takeIf { it.length == 2 }
+    }
+
+    fun hasWatchRegionOverride(context: Context): Boolean {
+        return !getString(context, Constants.WATCH_REGION).isNullOrBlank()
+    }
 }

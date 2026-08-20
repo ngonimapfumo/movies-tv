@@ -11,6 +11,7 @@ import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListRespons
 import zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
@@ -45,6 +46,11 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
     val getTVImages: LiveData<Response<GetTVImagesResponse>> =
         _getTVImages
 
+    private val _getWatchProviders =
+        MutableLiveData<Response<GetWatchProvidersResponse>>()
+    val getWatchProviders: LiveData<Response<GetWatchProvidersResponse>> =
+        _getWatchProviders
+
     fun getPopularTvShows() {
         viewModelScope.launch {
             _getPopularShows.value = tvShowsRepo.getPopularTvShows(page, language!!)
@@ -74,6 +80,12 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             _getTVImages.value =
                 tvShowsRepo.getTvImages(seriesId)
+        }
+    }
+
+    fun getWatchProviders(tvShowId: Int) {
+        viewModelScope.launch {
+            _getWatchProviders.value = tvShowsRepo.getWatchProviders(tvShowId)
         }
     }
 

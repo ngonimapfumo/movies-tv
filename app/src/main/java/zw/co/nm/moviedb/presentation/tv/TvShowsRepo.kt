@@ -5,6 +5,7 @@ import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListRespons
 import zw.co.nm.moviedb.data.remote.model.response.GetTVCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVImagesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 import zw.co.nm.moviedb.data.remote.util.NetworkManager
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
@@ -38,4 +39,7 @@ class TvShowsRepo {
 
     suspend fun getTvImages(seriesId: Int): Response<GetTVImagesResponse> =
         apiCall { NetworkManager.tvShowService.getTvImages(seriesId) }
+
+    suspend fun getWatchProviders(tvShowId: Int): Response<GetWatchProvidersResponse> =
+        apiCall { NetworkManager.tvShowService.getWatchProviders(tvShowId) }
 }

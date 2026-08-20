@@ -29,6 +29,11 @@ object Constants {
     const val MEDIA_TYPE_MOVIE = "movie"
     const val MEDIA_TYPE_TV = "tv"
 
+    const val LIST_TYPE_WATCHLIST = "watchlist"
+    const val LIST_TYPE_FAVORITES = "favorites"
+    const val LIST_TYPE_RATED = "rated"
+    const val EXTRA_LIBRARY_SECTION = "library_section"
+
     val SAVED_SHOW_ID
         get() = "tvShowId"
     val REVIEW_TYPE
@@ -54,6 +59,8 @@ object Constants {
         get() = 6
     val COUNTRY_ISO
         get() = "countryIsoVal"
+    val WATCH_REGION
+        get() = "watch_region"
     val NETWORK_ERROR_MSG
         get() = "Error getting data"
 

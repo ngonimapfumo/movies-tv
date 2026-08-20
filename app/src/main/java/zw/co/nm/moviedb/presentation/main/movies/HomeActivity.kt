@@ -39,6 +39,7 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ActivityHomeBinding
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
+import zw.co.nm.moviedb.presentation.movie.KeywordChipsAdapter
 import zw.co.nm.moviedb.presentation.movie.MovieGenresAdapter
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
@@ -46,6 +47,7 @@ import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.BACKDROP_IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.DiscoveryKeywords
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
@@ -168,35 +170,45 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
 
         binding.shimmer.startShimmer()
+        setupDrawer()
+        setupVibes()
+        setupShelfMoreLinks()
+        loadHomeShelves()
+        configurations()
+    }
+
+    private fun loadHomeShelves() {
+        viewModel.page = 1
         viewModel.getPopularMovies()
         viewModel.getPopularMovies.observe(this) {
-
             when (it.data) {
                 null -> {
                     binding.heroLayout.visibility = GONE
                     actionSnack(binding.root, "Error getting data", "Retry") {
-                        viewModel.getPopularMovies()
-                        viewModel.getMovieGenres()
+                        loadHomeShelves()
                     }
                 }
 
                 else -> {
                     val data = it.body.results
                     bindFeaturedHero(data)
+                    binding.recyclerHome.layoutManager = LinearLayoutManager(
+                        this,
+                        LinearLayoutManager.HORIZONTAL,
+                        false
+                    )
                     movieAdapter = MoviesAdapter(data)
                     binding.recyclerHome.adapter = movieAdapter
                 }
             }
         }
+
         viewModel.getMovieGenres()
         viewModel.getMovieGenres.observe(this) {
-
-
             when (it.data) {
                 null -> {
                     actionSnack(binding.root, "Error getting data", "Retry") {
                         viewModel.getMovieGenres()
-                        viewModel.getPopularMovies()
                     }
                 }
 
@@ -204,74 +216,147 @@ class HomeActivity : AppCompatActivity() {
                     binding.recyclerView.visibility = VISIBLE
                     binding.shimmer.stopShimmer()
                     binding.shimmer.visibility = GONE
-                    val data = it.body.genres
                     binding.recyclerView.layoutManager = LinearLayoutManager(
                         this,
-                        LinearLayoutManager.HORIZONTAL, false
+                        LinearLayoutManager.HORIZONTAL,
+                        false
                     )
-                    adapter = MovieGenresAdapter(data)
+                    adapter = MovieGenresAdapter(
+                        it.body.genres.orEmpty()
+                            .filterNotNull()
+                            .filter { it.id != null && !it.name.isNullOrBlank() }
+                    )
                     binding.recyclerView.adapter = adapter
                 }
             }
+        }
 
-            binding.apply {
-                toggle = ActionBarDrawerToggle(
-                    this@HomeActivity,
-                    drawerLayout,
-                    R.string.open,
-                    R.string.close
+        viewModel.getTrending()
+        viewModel.getTrending.observe(this) {
+            if (it.data != null) {
+                binding.recyclerTrending.layoutManager = LinearLayoutManager(
+                    this,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
                 )
-                drawerLayout.addDrawerListener(toggle!!)
-                toggle!!.syncState()
-                supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                navView.setNavigationItemSelectedListener { menu ->
-                    when (menu.itemId) {
-                        R.id.drawer_settings -> {
-                            startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
-                        }
+                binding.recyclerTrending.adapter = TrendingAdapter(it.body.results)
+            }
+        }
 
-                        R.id.drawer_tv -> {
-                            startActivity(Intent(this@HomeActivity, TVShowsActivity::class.java))
-                        }
+        viewModel.getNowPlaying()
+        viewModel.getNowPlaying.observe(this) {
+            if (it.data != null) {
+                binding.recyclerNowPlaying.layoutManager = LinearLayoutManager(
+                    this,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                binding.recyclerNowPlaying.adapter = MoviesAdapter(it.body.results)
+            }
+        }
 
-                        R.id.drawer_search -> {
-                            startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
-                        }
+        viewModel.getUpcoming()
+        viewModel.getUpcoming.observe(this) {
+            if (it.data != null) {
+                binding.recyclerUpcoming.layoutManager = LinearLayoutManager(
+                    this,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                binding.recyclerUpcoming.adapter = MoviesAdapter(it.body.results)
+            }
+        }
+    }
 
-                        R.id.drawer_movies -> {
-                            startActivity(Intent(this@HomeActivity, MainListActivity::class.java))
-                        }
+    private fun setupVibes() {
+        binding.recyclerVibes.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        binding.recyclerVibes.adapter = KeywordChipsAdapter(DiscoveryKeywords.VIBES)
+    }
 
-                        R.id.drawer_watchlist -> {
-                            if (ConfigStore.isLoggedIn(this@HomeActivity)) {
-                                PageNavUtils.navWatchlistPage(this@HomeActivity)
-                            } else {
-                                Toast.makeText(
-                                    this@HomeActivity,
-                                    R.string.login_required_watchlist,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                PageNavUtils.navLoginPage(this@HomeActivity)
-                            }
-                        }
-                    }
-                    true
+    private fun setupShelfMoreLinks() {
+        binding.trendingMore.setOnClickListener {
+            openHub("trending", getString(R.string.trending_today))
+        }
+        binding.nowPlayingMore.setOnClickListener {
+            openHub("now_playing", getString(R.string.now_playing))
+        }
+        binding.upcomingMore.setOnClickListener {
+            openHub("upcoming", getString(R.string.upcoming))
+        }
+        binding.moreText.setOnClickListener {
+            startActivity(Intent(this, MainListActivity::class.java))
+        }
+    }
+
+    private fun openHub(identifier: String, title: String) {
+        startActivity(
+            Intent(this, MainListActivity::class.java).apply {
+                putExtra("identifier", identifier)
+                putExtra("title", title)
+            }
+        )
+    }
+
+    private fun setupDrawer() {
+        toggle = ActionBarDrawerToggle(
+            this@HomeActivity,
+            binding.drawerLayout,
+            R.string.open,
+            R.string.close
+        )
+        binding.drawerLayout.addDrawerListener(toggle!!)
+        toggle!!.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.navView.setNavigationItemSelectedListener { menu ->
+            when (menu.itemId) {
+                R.id.drawer_settings -> {
+                    startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
                 }
 
+                R.id.drawer_tv -> {
+                    startActivity(Intent(this@HomeActivity, TVShowsActivity::class.java))
+                }
+
+                R.id.drawer_search -> {
+                    startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
+                }
+
+                R.id.drawer_movies -> {
+                    startActivity(Intent(this@HomeActivity, MainListActivity::class.java))
+                }
+
+                R.id.drawer_watchlist -> {
+                    if (ConfigStore.isLoggedIn(this@HomeActivity)) {
+                        PageNavUtils.navWatchlistPage(this@HomeActivity)
+                    } else {
+                        Toast.makeText(
+                            this@HomeActivity,
+                            R.string.login_required_watchlist,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        PageNavUtils.navLoginPage(this@HomeActivity)
+                    }
+                }
+
+                R.id.drawer_favorites -> {
+                    if (ConfigStore.isLoggedIn(this@HomeActivity)) {
+                        PageNavUtils.navFavoritesPage(this@HomeActivity)
+                    } else {
+                        Toast.makeText(
+                            this@HomeActivity,
+                            R.string.login_required_favorites,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        PageNavUtils.navLoginPage(this@HomeActivity)
+                    }
+                }
             }
-
-
+            true
         }
-
-        binding.moreText.setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    MainListActivity::class.java
-                )
-            )
-        }
-        configurations()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
