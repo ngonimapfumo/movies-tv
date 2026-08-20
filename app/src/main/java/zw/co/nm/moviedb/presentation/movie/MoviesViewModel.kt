@@ -10,9 +10,12 @@ import zw.co.nm.moviedb.data.remote.model.response.GetCreditsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieGenres
 import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetMovieKeywordsResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetReleaseDatesResponse
 import zw.co.nm.moviedb.data.remote.model.response.GetSimilarMoviesResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetTrendingResponse
+import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
@@ -61,6 +64,32 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     val getMovieByGenreId: LiveData<Response<GetPopularMoviesListResponse>> =
         _getMovieByGenreId
 
+    private val _getMoviesByKeywordId =
+        MutableLiveData<Response<GetPopularMoviesListResponse>>()
+    val getMoviesByKeywordId: LiveData<Response<GetPopularMoviesListResponse>> =
+        _getMoviesByKeywordId
+
+    private val _getTrending =
+        MutableLiveData<Response<GetTrendingResponse>>()
+    val getTrending: LiveData<Response<GetTrendingResponse>> = _getTrending
+
+    private val _getNowPlaying =
+        MutableLiveData<Response<GetPopularMoviesListResponse>>()
+    val getNowPlaying: LiveData<Response<GetPopularMoviesListResponse>> = _getNowPlaying
+
+    private val _getUpcoming =
+        MutableLiveData<Response<GetPopularMoviesListResponse>>()
+    val getUpcoming: LiveData<Response<GetPopularMoviesListResponse>> = _getUpcoming
+
+    private val _getMovieKeywords =
+        MutableLiveData<Response<GetMovieKeywordsResponse>>()
+    val getMovieKeywords: LiveData<Response<GetMovieKeywordsResponse>> = _getMovieKeywords
+
+    private val _getWatchProviders =
+        MutableLiveData<Response<GetWatchProvidersResponse>>()
+    val getWatchProviders: LiveData<Response<GetWatchProvidersResponse>> =
+        _getWatchProviders
+
     fun getSimilarMoviesList(movieId: Int) {
         viewModelScope.launch {
             _getSimilarMovies.value = moviesRepo.getSimilarMoviesList(movieId, language!!)
@@ -107,6 +136,43 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getMoviesByGenreId(genreId: Int) {
         viewModelScope.launch {
             _getMovieByGenreId.value = moviesRepo.getMovieByGenreId(page, language!!, genreId)
+        }
+    }
+
+    fun getMoviesByKeywordId(keywordId: Int) {
+        viewModelScope.launch {
+            _getMoviesByKeywordId.value =
+                moviesRepo.getMoviesByKeywordId(page, language!!, keywordId)
+        }
+    }
+
+    fun getTrending() {
+        viewModelScope.launch {
+            _getTrending.value = moviesRepo.getTrending(page, language!!)
+        }
+    }
+
+    fun getNowPlaying() {
+        viewModelScope.launch {
+            _getNowPlaying.value = moviesRepo.getNowPlaying(page, language!!)
+        }
+    }
+
+    fun getUpcoming() {
+        viewModelScope.launch {
+            _getUpcoming.value = moviesRepo.getUpcoming(page, language!!)
+        }
+    }
+
+    fun getMovieKeywords(movieId: Int) {
+        viewModelScope.launch {
+            _getMovieKeywords.value = moviesRepo.getMovieKeywords(movieId)
+        }
+    }
+
+    fun getWatchProviders(movieId: Int) {
+        viewModelScope.launch {
+            _getWatchProviders.value = moviesRepo.getWatchProviders(movieId)
         }
     }
 

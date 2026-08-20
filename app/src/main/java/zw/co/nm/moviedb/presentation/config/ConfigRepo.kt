@@ -12,4 +12,6 @@ class ConfigRepo {
 
     suspend fun getCountries(): Response<GetCountriesResponse> =
         apiCall { NetworkManager.configService.getCountries() }
+
+    //testing local configs1
 }

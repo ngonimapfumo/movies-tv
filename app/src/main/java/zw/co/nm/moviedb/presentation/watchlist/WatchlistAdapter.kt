@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.presentation.main.movies
+package zw.co.nm.moviedb.presentation.watchlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +10,10 @@ import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class MoviesAdapter(
-    movies: List<GetPopularMoviesListResponse.Result> = emptyList()
-) : RecyclerView.Adapter<MoviesAdapter.ItemMovieViewHolder>() {
+class WatchlistAdapter(
+    movies: List<GetPopularMoviesListResponse.Result> = emptyList(),
+    private val onRemove: (GetPopularMoviesListResponse.Result) -> Unit
+) : RecyclerView.Adapter<WatchlistAdapter.ItemMovieViewHolder>() {
 
     private val data: MutableList<GetPopularMoviesListResponse.Result> = movies.toMutableList()
 
@@ -33,8 +34,13 @@ class MoviesAdapter(
             .load(IMAGE_BASE_URL + movie.posterPath)
             .placeholder(R.drawable.sample_cover_small)
             .into(holder.binding.imageView)
+
         holder.itemView.setOnClickListener {
             PageNavUtils.navMovieDetailsPage(holder.itemView.context, movie.id)
+        }
+        holder.itemView.setOnLongClickListener {
+            onRemove(movie)
+            true
         }
     }
 

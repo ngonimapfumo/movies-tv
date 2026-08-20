@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:src="@drawable/sample_cover_large_exp"
-                app:layout_constraintBottom_toTopOf="@+id/ll_suggested"
+                app:layout_constraintBottom_toTopOf="@+id/watchProvidersSection"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -167,6 +167,14 @@
                 app:layout_constraintStart_toStartOf="@+id/buttonLayout"
                 app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
 
+            <include
+                android:id="@+id/watchProvidersSection"
+                layout="@layout/layout_watch_providers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_background_imm" />
 
             <LinearLayout
                 android:id="@+id/ll_suggested"
@@ -177,7 +185,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.035"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_background_imm">
+                app:layout_constraintTop_toBottomOf="@+id/watchProvidersSection">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView3"
@@ -420,5 +428,52 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/detailActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bookmarkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/bookmark"
+            app:fabCustomSize="32dp"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/round_bookmark_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favoriteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/favorite"
+            app:fabCustomSize="32dp"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/round_favorite_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/rateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/rate"
+            app:fabCustomSize="32dp"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/round_star_24"
+            app:tint="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

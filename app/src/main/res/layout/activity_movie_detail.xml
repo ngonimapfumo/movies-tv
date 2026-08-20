@@ -178,6 +178,47 @@
                 app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
                 app:layout_constraintVertical_bias="0.666" />
 
+            <include
+                android:id="@+id/watchProvidersSection"
+                layout="@layout/layout_watch_providers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background_imm" />
+
+            <LinearLayout
+                android:id="@+id/keywordsSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/watchProvidersSection"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/keywordsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/keywords"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerKeywords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_keyword_chip"
+                    tools:orientation="horizontal" />
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_suggested"
                 android:layout_width="match_parent"
@@ -188,7 +229,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/background_imm"
+                app:layout_constraintTop_toBottomOf="@+id/keywordsSection"
                 app:layout_constraintVertical_bias="0.5">
 
                 <TextView
@@ -701,5 +742,52 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/detailActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bookmarkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/bookmark"
+            app:fabCustomSize="32dp"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/round_bookmark_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favoriteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/favorite"
+            app:fabCustomSize="32dp"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/round_favorite_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/rateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/rate"
+            app:fabCustomSize="32dp"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/round_star_24"
+            app:tint="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

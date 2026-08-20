@@ -11,9 +11,28 @@ object Constants {
         get() = "https://image.tmdb.org/t/p/w200"
     val MED_RES_IMAGE_BASE_URL
         get() = "https://image.tmdb.org/t/p/w300"
+    val BACKDROP_IMAGE_BASE_URL
+        get() = "https://image.tmdb.org/t/p/w780"
 
     val REQ_TOKEN
         get() = "request_token"
+    val SESSION_ID
+        get() = "session_id"
+    val ACCOUNT_ID
+        get() = "account_id"
+
+    const val AUTH_REDIRECT_SCHEME = "moviedb"
+    const val AUTH_REDIRECT_HOST = "auth"
+    const val AUTH_REDIRECT_URI = "moviedb://auth/callback"
+    const val TMDB_AUTH_BASE_URL = "https://www.themoviedb.org/authenticate/"
+
+    const val MEDIA_TYPE_MOVIE = "movie"
+    const val MEDIA_TYPE_TV = "tv"
+
+    const val LIST_TYPE_WATCHLIST = "watchlist"
+    const val LIST_TYPE_FAVORITES = "favorites"
+    const val LIST_TYPE_RATED = "rated"
+    const val EXTRA_LIBRARY_SECTION = "library_section"
 
     val SAVED_SHOW_ID
         get() = "tvShowId"
@@ -40,6 +59,8 @@ object Constants {
         get() = 6
     val COUNTRY_ISO
         get() = "countryIsoVal"
+    val WATCH_REGION
+        get() = "watch_region"
     val NETWORK_ERROR_MSG
         get() = "Error getting data"
 

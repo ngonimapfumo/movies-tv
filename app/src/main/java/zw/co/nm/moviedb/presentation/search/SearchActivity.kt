@@ -8,15 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
+import zw.co.nm.moviedb.util.EndlessScrollListener
 
 class SearchActivity : AppCompatActivity(),
     androidx.appcompat.widget.SearchView.OnQueryTextListener {
+
     private lateinit var binding: ActivitySearchBinding
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var adapter: SearchAdapter
-    private var queryStr: String? = null
-    private var totalPages: Int? = null
+    private var queryStr: String = ""
+    private var isLoadingMore = false
+    private var isLastPage = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +31,11 @@ class SearchActivity : AppCompatActivity(),
         supportActionBar?.title = "Search"
         setUpView()
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
-                view, insets, ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val innerPadding = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
-            binding.main.setPadding(
+            view.setPadding(
                 innerPadding.left,
                 innerPadding.top,
                 innerPadding.right,
@@ -39,86 +43,91 @@ class SearchActivity : AppCompatActivity(),
             )
             insets
         }
-
-
-
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        /*binding.progressBar2.visibility = VISIBLE
-        if (searchViewModel.page > 1) {
-            searchViewModel.resetPages()
-        }*/
-
-        //   searchViewModel.searchMulti(query!!)
-
-        return false
-    }
+    override fun onQueryTextSubmit(query: String?): Boolean = false
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        binding.progressBar2.visibility = VISIBLE
-        if (searchViewModel.page > 1) {
-            searchViewModel.resetPages()
-        }
-        searchViewModel.searchMulti(newText!!)
-        searchViewModel.searchMulti.observe(this) { response ->
+        queryStr = newText.orEmpty()
+        searchViewModel.resetPages()
+        isLastPage = false
+        isLoadingMore = false
 
+        if (queryStr.isBlank()) {
+            adapter.submitList(emptyList())
             binding.progressBar2.visibility = GONE
-            queryStr = newText
-            val data = response.body.results
-            totalPages = response.body.totalPages
-            if (totalPages!! > 1) {
-                binding.constraintLayoutPages.visibility = VISIBLE
-                binding.nextB.isEnabled = searchViewModel.page != response.body.totalPages
-            } else {
-                binding.constraintLayoutPages.visibility = GONE
-            }
-
-            if (response.body.results.isEmpty() && queryStr!!.isNotEmpty()) {
-                /*binding.textView10.animate().apply {
-                    duration = 1000
-                    rotationYBy(360f)
-                }.withEndAction {
-                    binding.textView10.animate().apply {
-                        duration = 1000
-                        rotationYBy(3600f)
-                    }.start()
-                }*/
-                binding.textView14.text = buildString {
-                    append("No results found")
-                }
-                binding.searchRecycler.visibility = GONE
-                binding.noResultLay.visibility = VISIBLE
-            } else {
-                binding.searchRecycler.visibility = VISIBLE
-                binding.noResultLay.visibility = GONE
-            }
-            binding.prevB.isEnabled = response.body.page != 1
-            adapter = SearchAdapter(data)
-            binding.searchRecycler.adapter = adapter
+            binding.loadMoreCard.visibility = GONE
+            binding.noResultLay.visibility = GONE
+            binding.searchRecycler.visibility = VISIBLE
+            return true
         }
+
+        binding.progressBar2.visibility = VISIBLE
+        binding.loadMoreCard.visibility = GONE
+        searchViewModel.searchMulti(queryStr)
         return true
     }
 
     private fun setUpView() {
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        adapter = SearchAdapter()
+        binding.searchRecycler.adapter = adapter
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.nextB.setOnClickListener {
-            searchViewModel.page++
-            searchViewModel.searchMulti(queryStr!!)
+
+        val layoutManager = binding.searchRecycler.layoutManager as LinearLayoutManager
+        binding.searchRecycler.addOnScrollListener(
+            EndlessScrollListener(layoutManager) { loadNextPage() }
+        )
+        binding.searchRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val shouldShow = recyclerView.computeVerticalScrollOffset() > 800
+                binding.scrollTopFab.visibility = if (shouldShow) VISIBLE else GONE
+            }
+        })
+        binding.scrollTopFab.setOnClickListener {
+            binding.searchRecycler.smoothScrollToPosition(0)
         }
-        binding.prevB.setOnClickListener {
-            if (searchViewModel.page != 1) {
-                searchViewModel.page--
-                searchViewModel.searchMulti(queryStr!!)
+
+        searchViewModel.searchMulti.observe(this) { response ->
+            binding.progressBar2.visibility = GONE
+            binding.loadMoreCard.visibility = GONE
+            val loadingMore = isLoadingMore
+            isLoadingMore = false
+
+            if (!response.isSuccessful) {
+                if (loadingMore && searchViewModel.page > 1) {
+                    searchViewModel.page--
+                }
+                return@observe
+            }
+
+            isLastPage = response.body.page >= response.body.totalPages
+            val results = response.body.results
+
+            if (response.body.page == 1) {
+                adapter.submitList(results)
+                if (results.isEmpty() && queryStr.isNotEmpty()) {
+                    binding.textView14.text = "No results found"
+                    binding.searchRecycler.visibility = GONE
+                    binding.noResultLay.visibility = VISIBLE
+                } else {
+                    binding.searchRecycler.visibility = VISIBLE
+                    binding.noResultLay.visibility = GONE
+                }
             } else {
-                return@setOnClickListener
+                adapter.appendList(results)
             }
         }
+    }
 
+    private fun loadNextPage() {
+        if (isLoadingMore || isLastPage || queryStr.isBlank()) return
+        isLoadingMore = true
+        binding.loadMoreCard.visibility = VISIBLE
+        searchViewModel.page++
+        searchViewModel.searchMulti(queryStr)
     }
 
     override fun onSupportNavigateUp(): Boolean {

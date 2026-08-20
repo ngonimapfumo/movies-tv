@@ -1,4 +1,4 @@
-package zw.co.nm.moviedb.presentation.main.tvshows
+package zw.co.nm.moviedb.presentation.watchlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,29 +10,37 @@ import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class TvShowsAdapter(
-    private val data: MutableList<GetPopularTVSeriesListResponse.Result> = mutableListOf()
-) : RecyclerView.Adapter<TvShowsAdapter.ItemMovieViewHolder>() {
+class WatchlistTvAdapter(
+    shows: List<GetPopularTVSeriesListResponse.Result> = emptyList(),
+    private val onRemove: (GetPopularTVSeriesListResponse.Result) -> Unit
+) : RecyclerView.Adapter<WatchlistTvAdapter.ItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder {
+    private val data: MutableList<GetPopularTVSeriesListResponse.Result> = shows.toMutableList()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding = ItemMovieMainBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return ItemMovieViewHolder(binding)
+        return ItemViewHolder(binding)
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val show = data[position]
         Picasso.get()
             .load(IMAGE_BASE_URL + show.posterPath)
             .placeholder(R.drawable.sample_cover_small)
             .into(holder.binding.imageView)
+
         holder.itemView.setOnClickListener {
             PageNavUtils.navTvDetailsPage(holder.itemView.context, show.id)
+        }
+        holder.itemView.setOnLongClickListener {
+            onRemove(show)
+            true
         }
     }
 
@@ -49,6 +57,6 @@ class TvShowsAdapter(
         notifyItemRangeInserted(start, shows.size)
     }
 
-    class ItemMovieViewHolder(val binding: ItemMovieMainBinding) :
+    class ItemViewHolder(val binding: ItemMovieMainBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

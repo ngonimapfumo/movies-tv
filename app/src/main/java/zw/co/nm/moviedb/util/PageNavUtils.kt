@@ -5,6 +5,7 @@ import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.collection.CollectionActivity
 import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
 import zw.co.nm.moviedb.presentation.movie.PostersImagesActivity
@@ -14,9 +15,33 @@ import zw.co.nm.moviedb.presentation.trailers.TrailerActivity
 import zw.co.nm.moviedb.presentation.tv.TvShowDetailActivity
 import zw.co.nm.moviedb.presentation.tv.episode.EpisodeActivity
 import zw.co.nm.moviedb.presentation.tv.season.SeasonActivity
+import zw.co.nm.moviedb.presentation.watchlist.WatchlistActivity
 import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
 
 object PageNavUtils {
+
+    fun navLoginPage(context: Context) {
+        val intent = Intent(context, LoginActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun navWatchlistPage(context: Context) {
+        val intent = Intent(context, WatchlistActivity::class.java)
+        intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_WATCHLIST)
+        context.startActivity(intent)
+    }
+
+    fun navFavoritesPage(context: Context) {
+        val intent = Intent(context, WatchlistActivity::class.java)
+        intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_FAVORITES)
+        context.startActivity(intent)
+    }
+
+    fun navRatedPage(context: Context) {
+        val intent = Intent(context, WatchlistActivity::class.java)
+        intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_RATED)
+        context.startActivity(intent)
+    }
 
     fun navMovieDetailsPage(context: Context, movieId: Int) {
         val intent = Intent(context, MovieDetailActivity::class.java)

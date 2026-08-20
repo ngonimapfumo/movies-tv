@@ -13,14 +13,14 @@ localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     namespace 'zw.co.nm.moviedb'
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         applicationId "zw.co.nm.moviedb"
         minSdk 26
-        targetSdk 36
-        versionCode 23
-        versionName "3.0.1"
+        targetSdk 37
+        versionCode 24
+        versionName "4.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
