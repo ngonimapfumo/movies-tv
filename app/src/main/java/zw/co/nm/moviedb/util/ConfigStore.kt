@@ -85,4 +85,39 @@ object ConfigStore {
     fun hasWatchRegionOverride(context: Context): Boolean {
         return !getString(context, Constants.WATCH_REGION).isNullOrBlank()
     }
+
+    fun clearSession(context: Context) {
+        clearConfig(context, Constants.SESSION_ID)
+        clearConfig(context, Constants.ACCOUNT_ID)
+        clearConfig(context, Constants.REQ_TOKEN)
+    }
+
+    fun getRecentSearches(context: Context): List<String> {
+        return getString(context, RECENT_SEARCHES_KEY)
+            ?.split(RECENT_SEARCHES_SEPARATOR)
+            ?.map { it.trim() }
+            ?.filter { it.isNotEmpty() }
+            ?: emptyList()
+    }
+
+    fun addRecentSearch(context: Context, query: String) {
+        val cleaned = query.trim()
+        if (cleaned.length < 2) return
+        val updated = (listOf(cleaned) + getRecentSearches(context)
+            .filterNot { it.equals(cleaned, ignoreCase = true) })
+            .take(MAX_RECENT_SEARCHES)
+        saveStringConfig(
+            context,
+            RECENT_SEARCHES_KEY,
+            updated.joinToString(RECENT_SEARCHES_SEPARATOR)
+        )
+    }
+
+    fun clearRecentSearches(context: Context) {
+        clearConfig(context, RECENT_SEARCHES_KEY)
+    }
+
+    private const val RECENT_SEARCHES_KEY = "recent_searches"
+    private const val RECENT_SEARCHES_SEPARATOR = "\u0001"
+    private const val MAX_RECENT_SEARCHES = 12
 }

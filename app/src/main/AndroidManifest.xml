@@ -80,6 +80,14 @@
             android:exported="false"
             android:screenOrientation="locked" />
         <activity
+            android:name=".presentation.lists.CustomListsActivity"
+            android:exported="false"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".presentation.lists.ListDetailActivity"
+            android:exported="false"
+            android:screenOrientation="locked" />
+        <activity
             android:name=".presentation.main.tvshows.TVShowsActivity"
             android:exported="false"
             android:screenOrientation="locked" />

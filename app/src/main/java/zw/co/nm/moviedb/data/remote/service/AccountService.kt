@@ -81,4 +81,12 @@ interface AccountService {
         @Query("language") language: String,
         @Query("page") page: Int
     ): Response<GetPopularTVSeriesListResponse>
+
+    @GET("account/{account_id}/lists")
+    suspend fun getAccountLists(
+        @Path("account_id") accountId: Int,
+        @Query("session_id") sessionId: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ): Response<zw.co.nm.moviedb.data.remote.model.response.GetAccountListsResponse>
 }

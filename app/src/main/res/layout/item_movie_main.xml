@@ -7,11 +7,11 @@
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
-        app:cardPreventCornerOverlap="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="15dp"
-        app:cardCornerRadius="5dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,16 +19,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/sample_cover_large" />
+            android:layout_width="112dp"
+            android:layout_height="168dp"
+            android:contentDescription="@string/poster"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample_cover_small" />
     </com.google.android.material.card.MaterialCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

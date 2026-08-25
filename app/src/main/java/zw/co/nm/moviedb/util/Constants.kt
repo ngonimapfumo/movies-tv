@@ -33,6 +33,10 @@ object Constants {
     const val LIST_TYPE_FAVORITES = "favorites"
     const val LIST_TYPE_RATED = "rated"
     const val EXTRA_LIBRARY_SECTION = "library_section"
+    const val ACCOUNT_USERNAME = "account_username"
+    const val EXTRA_LIST_ID = "list_id"
+    const val EXTRA_LIST_NAME = "list_name"
+    const val EXTRA_MOVIE_ID = "movie_id_for_list"
 
     val SAVED_SHOW_ID
         get() = "tvShowId"

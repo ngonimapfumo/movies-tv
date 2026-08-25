@@ -10,7 +10,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySearchBinding
+import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.EndlessScrollListener
 
 class SearchActivity : AppCompatActivity(),
@@ -22,13 +24,14 @@ class SearchActivity : AppCompatActivity(),
     private var queryStr: String = ""
     private var isLoadingMore = false
     private var isLastPage = false
+    private var lastSavedQuery: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
-        supportActionBar?.title = "Search"
+        supportActionBar?.title = getString(R.string.search)
         setUpView()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
@@ -45,26 +48,30 @@ class SearchActivity : AppCompatActivity(),
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean = false
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        val text = query.orEmpty().trim()
+        if (text.isBlank()) return true
+        binding.searchView.clearFocus()
+        runSearch(text, saveRecent = true)
+        return true
+    }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        queryStr = newText.orEmpty()
-        searchViewModel.resetPages()
-        isLastPage = false
-        isLoadingMore = false
-
-        if (queryStr.isBlank()) {
+        val text = newText.orEmpty()
+        if (text.isBlank()) {
+            queryStr = ""
+            searchViewModel.resetPages()
+            isLastPage = false
+            isLoadingMore = false
             adapter.submitList(emptyList())
             binding.progressBar2.visibility = GONE
             binding.loadMoreCard.visibility = GONE
             binding.noResultLay.visibility = GONE
             binding.searchRecycler.visibility = VISIBLE
-            return true
+            refreshRecentSearches()
+        } else {
+            binding.recentSearchesSection.visibility = GONE
         }
-
-        binding.progressBar2.visibility = VISIBLE
-        binding.loadMoreCard.visibility = GONE
-        searchViewModel.searchMulti(queryStr)
         return true
     }
 
@@ -74,7 +81,19 @@ class SearchActivity : AppCompatActivity(),
         binding.searchRecycler.adapter = adapter
         binding.searchView.setOnQueryTextListener(this)
         binding.searchView.onActionViewExpanded()
+        binding.searchView.imeOptions = android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.recentSearchesRecycler.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        binding.clearRecentSearchesBtn.setOnClickListener {
+            ConfigStore.clearRecentSearches(this)
+            refreshRecentSearches()
+        }
+        refreshRecentSearches()
 
         val layoutManager = binding.searchRecycler.layoutManager as LinearLayoutManager
         binding.searchRecycler.addOnScrollListener(
@@ -108,8 +127,12 @@ class SearchActivity : AppCompatActivity(),
 
             if (response.body.page == 1) {
                 adapter.submitList(results)
+                if (results.isNotEmpty() && queryStr.isNotBlank() && queryStr != lastSavedQuery) {
+                    ConfigStore.addRecentSearch(this, queryStr)
+                    lastSavedQuery = queryStr
+                }
                 if (results.isEmpty() && queryStr.isNotEmpty()) {
-                    binding.textView14.text = "No results found"
+                    binding.textView14.text = getString(R.string.no_results_found)
                     binding.searchRecycler.visibility = GONE
                     binding.noResultLay.visibility = VISIBLE
                 } else {
@@ -119,6 +142,36 @@ class SearchActivity : AppCompatActivity(),
             } else {
                 adapter.appendList(results)
             }
+        }
+    }
+
+    private fun runSearch(query: String, saveRecent: Boolean) {
+        queryStr = query
+        searchViewModel.resetPages()
+        isLastPage = false
+        isLoadingMore = false
+        binding.recentSearchesSection.visibility = GONE
+        binding.progressBar2.visibility = VISIBLE
+        binding.loadMoreCard.visibility = GONE
+        binding.noResultLay.visibility = GONE
+        binding.searchRecycler.visibility = VISIBLE
+        if (saveRecent) {
+            ConfigStore.addRecentSearch(this, query)
+            lastSavedQuery = query
+        }
+        searchViewModel.searchMulti(queryStr)
+    }
+
+    private fun refreshRecentSearches() {
+        val recent = ConfigStore.getRecentSearches(this)
+        if (recent.isEmpty() || queryStr.isNotBlank()) {
+            binding.recentSearchesSection.visibility = GONE
+            return
+        }
+        binding.recentSearchesSection.visibility = VISIBLE
+        binding.recentSearchesRecycler.adapter = RecentSearchChipsAdapter(recent) { query ->
+            binding.searchView.setQuery(query, false)
+            runSearch(query, saveRecent = true)
         }
     }
 
