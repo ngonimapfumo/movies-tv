@@ -32,6 +32,8 @@ class WatchlistTvAdapter(
         val show = data[position]
         Picasso.get()
             .load(IMAGE_BASE_URL + show.posterPath)
+            .resize(336, 504)
+            .centerCrop()
             .placeholder(R.drawable.sample_cover_small)
             .into(holder.binding.imageView)
 

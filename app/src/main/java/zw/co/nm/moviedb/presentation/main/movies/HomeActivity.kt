@@ -39,7 +39,6 @@ import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ActivityHomeBinding
 import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
-import zw.co.nm.moviedb.presentation.movie.KeywordChipsAdapter
 import zw.co.nm.moviedb.presentation.movie.MovieGenresAdapter
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
@@ -47,7 +46,6 @@ import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.BACKDROP_IMAGE_BASE_URL
-import zw.co.nm.moviedb.util.DiscoveryKeywords
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
@@ -171,7 +169,6 @@ class HomeActivity : AppCompatActivity() {
 
         binding.shimmer.startShimmer()
         setupDrawer()
-        setupVibes()
         setupShelfMoreLinks()
         loadHomeShelves()
         configurations()
@@ -268,15 +265,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupVibes() {
-        binding.recyclerVibes.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        binding.recyclerVibes.adapter = KeywordChipsAdapter(DiscoveryKeywords.VIBES)
-    }
-
     private fun setupShelfMoreLinks() {
         binding.trendingMore.setOnClickListener {
             openHub("trending", getString(R.string.trending_today))
@@ -349,6 +337,19 @@ class HomeActivity : AppCompatActivity() {
                         Toast.makeText(
                             this@HomeActivity,
                             R.string.login_required_favorites,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        PageNavUtils.navLoginPage(this@HomeActivity)
+                    }
+                }
+
+                R.id.drawer_lists -> {
+                    if (ConfigStore.isLoggedIn(this@HomeActivity)) {
+                        PageNavUtils.navCustomListsPage(this@HomeActivity)
+                    } else {
+                        Toast.makeText(
+                            this@HomeActivity,
+                            R.string.login_required_lists,
                             Toast.LENGTH_SHORT
                         ).show()
                         PageNavUtils.navLoginPage(this@HomeActivity)

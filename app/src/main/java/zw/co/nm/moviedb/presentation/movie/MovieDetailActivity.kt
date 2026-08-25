@@ -28,6 +28,7 @@ import zw.co.nm.moviedb.presentation.auth.AuthViewModel
 import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.config.ConfigViewModel
 import zw.co.nm.moviedb.presentation.search.SearchActivity
+import zw.co.nm.moviedb.util.AddToListPicker
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
@@ -678,12 +679,25 @@ class MovieDetailActivity : AppCompatActivity() {
                 true
             }
 
+            R.id.action_add_to_list -> {
+                val id = movieId
+                if (id == null || id == 0) return true
+                if (!ConfigStore.isLoggedIn(this)) {
+                    Toast.makeText(this, R.string.login_required_lists, Toast.LENGTH_SHORT).show()
+                    loginLauncher.launch(Intent(this, LoginActivity::class.java))
+                } else {
+                    AddToListPicker.show(this, id)
+                }
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_movie_detail, menu)
         return true
     }
 }

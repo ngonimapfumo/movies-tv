@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.collection.CollectionActivity
+import zw.co.nm.moviedb.presentation.lists.CustomListsActivity
 import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
 import zw.co.nm.moviedb.presentation.movie.PostersImagesActivity
 import zw.co.nm.moviedb.presentation.person.PersonActivity
@@ -41,6 +42,10 @@ object PageNavUtils {
         val intent = Intent(context, WatchlistActivity::class.java)
         intent.putExtra(Constants.EXTRA_LIBRARY_SECTION, Constants.LIST_TYPE_RATED)
         context.startActivity(intent)
+    }
+
+    fun navCustomListsPage(context: Context) {
+        context.startActivity(Intent(context, CustomListsActivity::class.java))
     }
 
     fun navMovieDetailsPage(context: Context, movieId: Int) {

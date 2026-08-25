@@ -13,6 +13,7 @@ import zw.co.nm.moviedb.data.remote.service.ApiServiceGeneral
 import zw.co.nm.moviedb.data.remote.service.AuthService
 import zw.co.nm.moviedb.data.remote.service.CollectionService
 import zw.co.nm.moviedb.data.remote.service.ConfigService
+import zw.co.nm.moviedb.data.remote.service.ListService
 import zw.co.nm.moviedb.data.remote.service.MovieService
 import zw.co.nm.moviedb.data.remote.service.TvShowService
 import zw.co.nm.moviedb.util.Constants
@@ -37,20 +38,7 @@ object NetworkManager {
 
     }
     private val client = OkHttpClient.Builder()
-        .addInterceptor(QueryParamInterceptor)/*Interceptor { chain: Interceptor.Chain ->
-            Response
-            val url: HttpUrl = chain.request()
-                .url
-                .newBuilder()
-                .addQueryParameter("api_key", BuildConfig.API_KEY)
-                .addQueryParameter("language", "lang")
-                .build()
-            val request: Request = chain.request()
-                .newBuilder()
-                .url(url)
-                .build()
-            chain.proceed(request)
-        }*/
+        .addInterceptor(QueryParamInterceptor)
         .addInterceptor(loggingInterceptor)
         .readTimeout(1, TimeUnit.MINUTES)
         .connectTimeout(1, TimeUnit.MINUTES)
@@ -69,5 +57,6 @@ object NetworkManager {
     var accountService: AccountService = retrofit.create(AccountService::class.java)
     var configService: ConfigService = retrofit.create(ConfigService::class.java)
     var apiServiceGeneral: ApiServiceGeneral = retrofit.create(ApiServiceGeneral::class.java)
+    var listService: ListService = retrofit.create(ListService::class.java)
 
 }

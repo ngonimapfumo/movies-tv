@@ -145,6 +145,15 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
             ConfigStore.saveStringConfig(getApplication(), SESSION_ID, sessionId)
             ConfigStore.saveIntConfig(getApplication(), ACCOUNT_ID, accountResponse.body.id)
+            val displayName = accountResponse.body.username.takeIf { it.isNotBlank() }
+                ?: accountResponse.body.name
+            if (!displayName.isNullOrBlank()) {
+                ConfigStore.saveStringConfig(
+                    getApplication(),
+                    Constants.ACCOUNT_USERNAME,
+                    displayName
+                )
+            }
             ConfigStore.clearConfig(getApplication(), REQ_TOKEN)
             _loading.value = false
             _loginResult.value = true
