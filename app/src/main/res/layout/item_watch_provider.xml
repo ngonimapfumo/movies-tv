@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="88dp"
+    android:layout_height="wrap_content"
+    android:padding="6dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/providerLogo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:contentDescription="@string/where_to_watch"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sample_cover_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/providerNameTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/providerLogo"
+        tools:text="Netflix" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/offerTypeTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/providerNameTxt"
+        tools:text="Stream" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
