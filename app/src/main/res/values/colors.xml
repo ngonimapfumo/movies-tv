@@ -14,4 +14,9 @@
     <color name="green_light">#4CAA50</color>
     <color name="red">#D60E0E</color>
     <color name="new_blue">#198CE7</color>
+    <color name="glass_nav_fill">#B3F5F7FA</color>
+    <color name="glass_nav_stroke">#66FFFFFF</color>
+    <color name="glass_nav_overlay">#33FFFFFF</color>
+    <color name="glass_nav_selected">#0D2030</color>
+    <color name="glass_nav_unselected">#990D2030</color>
 </resources>

@@ -3,6 +3,7 @@ package zw.co.nm.moviedb.presentation.main.movies
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.hardware.display.DisplayManager
 import android.os.Bundle
 import android.telephony.TelephonyManager
@@ -10,17 +11,19 @@ import android.util.Log
 import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,7 +59,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: MoviesViewModel
     private lateinit var adapter: MovieGenresAdapter
     private lateinit var movieAdapter: MoviesAdapter
-    private var toggle: ActionBarDrawerToggle? = null
 
     private lateinit var appUpdateManager: AppUpdateManager
     private var updateAvailable = MutableLiveData<Boolean>().apply {
@@ -66,14 +68,13 @@ class HomeActivity : AppCompatActivity() {
     private var updateListener = InstallStateUpdatedListener { state: InstallState ->
         if (state.installStatus() == InstallStatus.DOWNLOADED) {
             updateStatusSnack()
-
         }
     }
 
     private fun updateStatusSnack() {
         try {
             Snackbar.make(
-                binding.drawerLayout,
+                binding.homeRoot,
                 "An update has just been downloaded",
                 Snackbar.LENGTH_INDEFINITE
             )
@@ -131,47 +132,84 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityHomeBinding.inflate(
-            layoutInflater
-        )
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.drawerLayout) {
-            view, insets, ->
-            val innerPadding = insets.getInsets(
+        ViewCompat.setOnApplyWindowInsetsListener(binding.homeRoot) { _, insets ->
+            val bars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
-            binding.drawerLayout.setPadding(
-                innerPadding.left,
-                innerPadding.top,
-                innerPadding.right,
-                innerPadding.bottom
+            binding.s.updatePadding(
+                left = bars.left,
+                top = bars.top,
+                right = bars.right,
+                bottom = bars.bottom + resources.getDimensionPixelSize(R.dimen.home_bottom_nav_content_inset)
             )
+            val lp = binding.glassBottomNav.layoutParams as ConstraintLayout.LayoutParams
+            lp.bottomMargin =
+                bars.bottom + resources.getDimensionPixelSize(R.dimen.home_bottom_nav_margin)
+            binding.glassBottomNav.layoutParams = lp
             insets
         }
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.s) {
-            view, insets, ->
-            val innerPadding = insets.getInsets(
-                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
-            )
-            binding.s.setPadding(
-                innerPadding.left,
-                innerPadding.top,
-                innerPadding.right,
-                innerPadding.bottom
-            )
-            insets
-        }
-
 
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
 
         binding.shimmer.startShimmer()
-        setupDrawer()
+        setupGlassBottomNav()
         setupShelfMoreLinks()
         loadHomeShelves()
         configurations()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.bottomNav.menu.findItem(R.id.nav_home)?.isChecked = true
+    }
+
+    private fun setupGlassBottomNav() {
+        val rootView = binding.homeRoot as ViewGroup
+        val windowBackground: Drawable? = window.decorView.background
+        binding.glassBottomNav.setupWith(rootView)
+            .setFrameClearDrawable(windowBackground)
+            .setBlurRadius(18f)
+            .setBlurAutoUpdate(true)
+        binding.glassBottomNav.clipToOutline = true
+
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    binding.s.smoothScrollTo(0, 0)
+                    true
+                }
+
+                R.id.nav_tv -> {
+                    startActivity(Intent(this, TVShowsActivity::class.java))
+                    false
+                }
+
+                R.id.nav_search -> {
+                    startActivity(Intent(this, SearchActivity::class.java))
+                    false
+                }
+
+                R.id.nav_library -> {
+                    openLibrary()
+                    false
+                }
+
+                else -> false
+            }
+        }
+        binding.bottomNav.selectedItemId = R.id.nav_home
+    }
+
+    private fun openLibrary() {
+        if (ConfigStore.isLoggedIn(this)) {
+            PageNavUtils.navWatchlistPage(this)
+        } else {
+            Toast.makeText(this, R.string.login_required_watchlist, Toast.LENGTH_SHORT).show()
+            PageNavUtils.navLoginPage(this)
+        }
     }
 
     private fun loadHomeShelves() {
@@ -221,7 +259,7 @@ class HomeActivity : AppCompatActivity() {
                     adapter = MovieGenresAdapter(
                         it.body.genres.orEmpty()
                             .filterNotNull()
-                            .filter { it.id != null && !it.name.isNullOrBlank() }
+                            .filter { genre -> genre.id != null && !genre.name.isNullOrBlank() }
                     )
                     binding.recyclerView.adapter = adapter
                 }
@@ -289,90 +327,20 @@ class HomeActivity : AppCompatActivity() {
         )
     }
 
-    private fun setupDrawer() {
-        toggle = ActionBarDrawerToggle(
-            this@HomeActivity,
-            binding.drawerLayout,
-            R.string.open,
-            R.string.close
-        )
-        binding.drawerLayout.addDrawerListener(toggle!!)
-        toggle!!.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.navView.setNavigationItemSelectedListener { menu ->
-            when (menu.itemId) {
-                R.id.drawer_settings -> {
-                    startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
-                }
-
-                R.id.drawer_tv -> {
-                    startActivity(Intent(this@HomeActivity, TVShowsActivity::class.java))
-                }
-
-                R.id.drawer_search -> {
-                    startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
-                }
-
-                R.id.drawer_movies -> {
-                    startActivity(Intent(this@HomeActivity, MainListActivity::class.java))
-                }
-
-                R.id.drawer_watchlist -> {
-                    if (ConfigStore.isLoggedIn(this@HomeActivity)) {
-                        PageNavUtils.navWatchlistPage(this@HomeActivity)
-                    } else {
-                        Toast.makeText(
-                            this@HomeActivity,
-                            R.string.login_required_watchlist,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        PageNavUtils.navLoginPage(this@HomeActivity)
-                    }
-                }
-
-                R.id.drawer_favorites -> {
-                    if (ConfigStore.isLoggedIn(this@HomeActivity)) {
-                        PageNavUtils.navFavoritesPage(this@HomeActivity)
-                    } else {
-                        Toast.makeText(
-                            this@HomeActivity,
-                            R.string.login_required_favorites,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        PageNavUtils.navLoginPage(this@HomeActivity)
-                    }
-                }
-
-                R.id.drawer_lists -> {
-                    if (ConfigStore.isLoggedIn(this@HomeActivity)) {
-                        PageNavUtils.navCustomListsPage(this@HomeActivity)
-                    } else {
-                        Toast.makeText(
-                            this@HomeActivity,
-                            R.string.login_required_lists,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        PageNavUtils.navLoginPage(this@HomeActivity)
-                    }
-                }
-            }
-            true
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle!!.onOptionsItemSelected(item)) {
-            return true
-        }
-
         return when (item.itemId) {
             R.id.app_bar_search -> {
                 startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
+                true
+            }
+
+            R.id.app_bar_settings -> {
+                startActivity(Intent(this@HomeActivity, SettingsActivity::class.java))
                 true
             }
 
@@ -466,6 +434,4 @@ class HomeActivity : AppCompatActivity() {
             Log.e("In-app-update-exception", "OnDestroy: ", e)
         }
     }
-
-
 }

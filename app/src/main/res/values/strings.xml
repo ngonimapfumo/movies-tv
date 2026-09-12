@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false"><![CDATA[TV & Film Reviews]]></string>
     <string name="search">Search</string>
+    <string name="home">Home</string>
     <string name="dummy_dummy" translatable="false">Dummy</string>
     <string name="search_movies_tv_series_actors">Search</string>
     <string name="title_activity_settings">SettingsActivity</string>

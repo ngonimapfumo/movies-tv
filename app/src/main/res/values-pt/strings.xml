@@ -2,6 +2,7 @@
 <resources>
 
     <string name="search_movies_tv_series_actors">Procurar</string>
+    <string name="home">Início</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
 

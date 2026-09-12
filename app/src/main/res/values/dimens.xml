@@ -10,4 +10,6 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tv_lay_marginTop_txt">15dp</dimen>
+    <dimen name="home_bottom_nav_margin">12dp</dimen>
+    <dimen name="home_bottom_nav_content_inset">88dp</dimen>
 </resources>
