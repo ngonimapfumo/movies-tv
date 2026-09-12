@@ -6,14 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivitySeasonBinding
 import zw.co.nm.moviedb.presentation.tv.episode.EpisodeAdapter
 import zw.co.nm.moviedb.util.ConfigStore
-import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.SAVED_SHOW_ID
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.ImageLoader
 import java.time.LocalDate
 
 class SeasonActivity : AppCompatActivity() {
@@ -56,9 +55,13 @@ class SeasonActivity : AppCompatActivity() {
                 }
 
                 else -> {
-                    Picasso.get().load(Constants.IMAGE_BASE_URL + it!!.body.posterPath)
-                        .placeholder(R.drawable.sample_cover_small)
-                        .into(binding.seasonPoster)
+                    ImageLoader.loadDetailPoster(
+                        binding.seasonPoster,
+                        it.body.posterPath,
+                        widthPx = 400,
+                        heightPx = 600,
+                        placeholder = R.drawable.sample_cover_small
+                    )
 
                     when {
                         it.body.overview.isEmpty() -> {

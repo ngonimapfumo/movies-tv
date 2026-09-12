@@ -6,10 +6,10 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetTrailersResponse
 import zw.co.nm.moviedb.databinding.ItemTrailerBinding
+import zw.co.nm.moviedb.util.ImageLoader
 
 class TrailersAdapter(
     private val data: List<GetTrailersResponse.Result>
@@ -37,10 +37,7 @@ class TrailersAdapter(
         binding.textViewNameTxt.text = trailer.name
 
         if (trailer.site == "YouTube") {
-            Picasso.get()
-                .load("https://img.youtube.com/vi/${trailer.key}/mqdefault.jpg")
-                .into(binding.thumbView)
-
+            ImageLoader.loadYoutubeThumb(binding.thumbView, trailer.key)
             holder.itemView.setOnClickListener {
                 val ytIntent = Intent(
                     Intent.ACTION_VIEW,
@@ -54,6 +51,11 @@ class TrailersAdapter(
         } else {
             holder.itemView.setOnClickListener(null)
         }
+    }
+
+    override fun onViewRecycled(holder: ItemTrailerViewHolder) {
+        ImageLoader.cancel(holder.binding.thumbView)
+        super.onViewRecycled(holder)
     }
 
     class ItemTrailerViewHolder(val binding: ItemTrailerBinding) :

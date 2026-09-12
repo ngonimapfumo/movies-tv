@@ -69,7 +69,8 @@ class PersonActivity : AppCompatActivity() {
                         binding.infoCard.visibility = VISIBLE
                         Picasso.get()
                             .load(IMAGE_BASE_URL + response.body.profilePath)
-                            .resize(500, 750)
+                            .resize(400, 600)
+                            .onlyScaleDown()
                             .centerCrop()
                             .placeholder(R.drawable.sample_people_exp)
                             .into(binding.imageView)

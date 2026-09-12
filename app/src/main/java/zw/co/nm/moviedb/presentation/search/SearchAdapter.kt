@@ -65,8 +65,9 @@ class SearchAdapter(
         }
 
         Picasso.get()
-            .load(Constants.MED_RES_IMAGE_BASE_URL + imgPath)
-            .resize(200, 300)
+            .load(Constants.THUMB_IMAGE_BASE_URL + imgPath)
+            .resize(160, 240)
+            .onlyScaleDown()
             .centerCrop()
             .placeholder(R.drawable.sample_cover_small)
             .into(binding.imageView)
@@ -115,6 +116,7 @@ class SearchAdapter(
 
     override fun onViewRecycled(holder: ItemMovieViewHolder) {
         Picasso.get().cancelRequest(holder.binding.imageView)
+        holder.binding.imageView.setImageDrawable(null)
         super.onViewRecycled(holder)
     }
 
