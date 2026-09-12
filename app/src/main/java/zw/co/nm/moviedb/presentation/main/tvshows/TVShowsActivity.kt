@@ -12,15 +12,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.databinding.ActivityTvshowsBinding
 import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.tv.TvShowsViewModel
-import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.Constants.BACKDROP_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
@@ -151,20 +149,27 @@ class TVShowsActivity : AppCompatActivity() {
             .filter { it.isNotBlank() }
             .joinToString(" · ")
 
-        val imageUrl = when {
-            !featured.backdropPath.isNullOrBlank() ->
-                BACKDROP_IMAGE_BASE_URL + featured.backdropPath
-            !featured.posterPath.isNullOrBlank() ->
-                Constants.IMAGE_BASE_URL + featured.posterPath
-            else -> null
-        }
-        if (imageUrl != null) {
-            Picasso.get()
-                .load(imageUrl)
-                .placeholder(R.drawable.sample_cover_large_exp)
-                .into(binding.heroImage)
-        } else {
-            binding.heroImage.setImageResource(R.drawable.sample_cover_large_exp)
+        when {
+            !featured.backdropPath.isNullOrBlank() -> {
+                val density = resources.displayMetrics.density
+                ImageLoader.loadBackdrop(
+                    binding.heroImage,
+                    featured.backdropPath,
+                    resources.displayMetrics.widthPixels,
+                    (480 * density).toInt()
+                )
+            }
+            !featured.posterPath.isNullOrBlank() -> {
+                val density = resources.displayMetrics.density
+                ImageLoader.loadPoster(
+                    binding.heroImage,
+                    featured.posterPath,
+                    resources.displayMetrics.widthPixels,
+                    (480 * density).toInt(),
+                    R.drawable.sample_cover_large_exp
+                )
+            }
+            else -> binding.heroImage.setImageResource(R.drawable.sample_cover_large_exp)
         }
 
         val openFeatured = {

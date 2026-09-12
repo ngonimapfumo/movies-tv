@@ -15,9 +15,7 @@ object ConfigStore {
         getPrefs(context).edit()
 
     fun saveBoolConfig(context: Context, key: String, boolean: Boolean) {
-        val editor = getPrefsEditor(context)
-        editor.putBoolean(key, boolean)
-        editor.commit()
+        getPrefsEditor(context).putBoolean(key, boolean).apply()
     }
 
     fun getBool(context: Context, key: String): Boolean {
@@ -26,15 +24,15 @@ object ConfigStore {
     }
 
     fun saveIntConfig(context: Context, key: String, intId: Int) {
-        val editor = getPrefsEditor(context)
-        editor.putInt(key, intId)
-        editor.commit()
+        val prefs = getPrefs(context)
+        if (prefs.getInt(key, Int.MIN_VALUE) == intId) return
+        prefs.edit().putInt(key, intId).apply()
     }
 
     fun saveStringConfig(context: Context, key: String, strId: String) {
-        val editor = getPrefsEditor(context)
-        editor.putString(key, strId)
-        editor.commit()
+        val prefs = getPrefs(context)
+        if (prefs.getString(key, null) == strId) return
+        prefs.edit().putString(key, strId).apply()
     }
 
     fun getStringLang(context: Context, key: String): String? {
@@ -48,9 +46,7 @@ object ConfigStore {
     }
 
     fun clearConfig(context: Context, key: String) {
-        val editor = getPrefsEditor(context)
-        editor.remove(key)
-        editor.commit()
+        getPrefsEditor(context).remove(key).apply()
     }
 
     fun getInt(context: Context, key: String): Int {

@@ -3,11 +3,9 @@ package zw.co.nm.moviedb.presentation.collection
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetCollectionDetailResponse
 import zw.co.nm.moviedb.databinding.ItemCollectionDetailBinding
-import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 
 class CollectionAdapter(
@@ -29,13 +27,15 @@ class CollectionAdapter(
         val part = data[position]
         holder.binding.textViewMovieName.text = part.title
         holder.binding.textViewShortSummary.text = part.overview
-        Picasso.get()
-            .load(Constants.LOW_RES_IMAGE_BASE_URL + part.posterPath)
-            .placeholder(R.drawable.sample_cover_small)
-            .into(holder.binding.imageView)
+        ImageLoader.loadLowResPoster(holder.binding.imageView, part.posterPath)
         holder.itemView.setOnClickListener {
             PageNavUtils.navMovieDetailsPage(holder.itemView.context, part.id)
         }
+    }
+
+    override fun onViewRecycled(holder: ItemMovieViewHolder) {
+        ImageLoader.cancel(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
     class ItemMovieViewHolder(val binding: ItemCollectionDetailBinding) :

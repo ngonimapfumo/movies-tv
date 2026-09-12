@@ -3,43 +3,42 @@ package zw.co.nm.moviedb.presentation.tv.season
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse
 import zw.co.nm.moviedb.databinding.ItemSeasonDetailBinding
-import zw.co.nm.moviedb.util.Constants
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 
-class SeasonsAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetTVShowDetailResponse.Season>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SeasonsAdapter(
+    private var data: List<GetTVShowDetailResponse.Season>
+) : RecyclerView.Adapter<SeasonsAdapter.ItemMovieViewHolder>() {
 
-    private var binding: ItemSeasonDetailBinding? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder {
+        val binding =
             ItemSeasonDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemMovieViewHolder(binding!!)
+        return ItemMovieViewHolder(binding)
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val imgPath = data[position].posterPath
-        binding!!.seasonTxt.text = data[position].name.replace(" ", "\n")
-        Picasso.get().load(Constants.IMAGE_BASE_URL + imgPath)
-            .placeholder(R.drawable.sample_recycler_small_exp)
-            .into(binding!!.imageView)
-
-        binding!!.imageView.setOnClickListener {
-            PageNavUtils.navSeasonPage(
-                holder.itemView.context, data[position].seasonNumber
-            )
+    override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
+        val season = data[position]
+        holder.binding.seasonTxt.text = season.name.replace(" ", "\n")
+        ImageLoader.loadPoster(
+            holder.binding.imageView,
+            season.posterPath,
+            placeholder = R.drawable.sample_recycler_small_exp
+        )
+        holder.binding.imageView.setOnClickListener {
+            PageNavUtils.navSeasonPage(holder.itemView.context, season.seasonNumber)
         }
-
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position
+    override fun onViewRecycled(holder: ItemMovieViewHolder) {
+        ImageLoader.cancel(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
-    class ItemMovieViewHolder(binding: ItemSeasonDetailBinding) :
+    class ItemMovieViewHolder(val binding: ItemSeasonDetailBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

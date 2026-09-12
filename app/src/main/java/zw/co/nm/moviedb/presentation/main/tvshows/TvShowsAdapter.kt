@@ -3,11 +3,10 @@ package zw.co.nm.moviedb.presentation.main.tvshows
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
-import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 
 class TvShowsAdapter(
@@ -27,15 +26,19 @@ class TvShowsAdapter(
 
     override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
         val show = data[position]
-        Picasso.get()
-            .load(IMAGE_BASE_URL + show.posterPath)
-            .resize(336, 504)
-            .centerCrop()
-            .placeholder(R.drawable.sample_cover_small)
-            .into(holder.binding.imageView)
+        ImageLoader.loadPoster(
+            holder.binding.imageView,
+            show.posterPath,
+            placeholder = R.drawable.sample_cover_small
+        )
         holder.itemView.setOnClickListener {
             PageNavUtils.navTvDetailsPage(holder.itemView.context, show.id)
         }
+    }
+
+    override fun onViewRecycled(holder: ItemMovieViewHolder) {
+        ImageLoader.cancel(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
     fun submitList(shows: List<GetPopularTVSeriesListResponse.Result>) {

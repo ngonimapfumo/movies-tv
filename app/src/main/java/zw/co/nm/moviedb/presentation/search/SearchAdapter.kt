@@ -65,7 +65,9 @@ class SearchAdapter(
         }
 
         Picasso.get()
-            .load(Constants.IMAGE_BASE_URL + imgPath)
+            .load(Constants.MED_RES_IMAGE_BASE_URL + imgPath)
+            .resize(200, 300)
+            .centerCrop()
             .placeholder(R.drawable.sample_cover_small)
             .into(binding.imageView)
 
@@ -109,6 +111,11 @@ class SearchAdapter(
         val start = data.size
         data.addAll(results)
         notifyItemRangeInserted(start, results.size)
+    }
+
+    override fun onViewRecycled(holder: ItemMovieViewHolder) {
+        Picasso.get().cancelRequest(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
     private fun proceedToMovie(context: Context, movieId: Int) {

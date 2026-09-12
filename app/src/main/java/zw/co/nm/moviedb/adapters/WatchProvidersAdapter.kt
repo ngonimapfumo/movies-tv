@@ -35,6 +35,8 @@ class WatchProvidersAdapter(
         if (!item.logoPath.isNullOrBlank()) {
             Picasso.get()
                 .load(LOW_RES_IMAGE_BASE_URL + item.logoPath)
+                .resize(96, 96)
+                .centerInside()
                 .placeholder(R.drawable.sample_cover_small)
                 .into(binding.providerLogo)
         } else {
