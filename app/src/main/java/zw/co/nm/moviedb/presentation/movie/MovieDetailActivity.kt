@@ -129,39 +129,38 @@ class MovieDetailActivity : AppCompatActivity() {
                     )
 
                     if (movie.belongsToCollection != null) {
-                        if (movie.belongsToCollection.backdropPath == null) {
+                        val collection = movie.belongsToCollection
+                        if (collection.backdropPath.isNullOrBlank()) {
                             binding.collectionImage.setImageResource(R.drawable.sample_episode_exp)
                         } else {
-                            ImageLoader.loadStill(
+                            ImageLoader.loadLandscapeThumb(
                                 binding.collectionImage,
-                                movie.belongsToCollection.backdropPath,
-                                widthPx = 500,
-                                heightPx = 280,
+                                collection.backdropPath,
                                 placeholder = R.drawable.sample_episode_exp
                             )
                         }
-                        binding.collectionName.text = movie.belongsToCollection.name
+                        binding.collectionName.text = collection.name
                         binding.collectionImage.setOnClickListener {
-                            PageNavUtils.navCollectionPage(this, movie.belongsToCollection.id)
+                            PageNavUtils.navCollectionPage(this, collection.id)
                         }
 
                     } else {
                         binding.collectionLayout.visibility = GONE
                     }
 
-                    if (movie.tagline.isEmpty()) {
+                    if (movie.tagline.isNullOrEmpty()) {
                         binding.movieSummaryTxt.text = ""
                     } else {
                         binding.movieSummaryTxt.text = movie.tagline
                     }
-                    if (movie.overview.isEmpty()) {
+                    if (movie.overview.isNullOrEmpty()) {
                         binding.aboutCard.visibility = GONE
                     }
-                    binding.detailedSummaryTxt.text = movie.overview
+                    binding.detailedSummaryTxt.text = movie.overview.orEmpty()
                     binding.detailedSummaryTxt.setOnClickListener {
                         showGenericDialog(
                             this@MovieDetailActivity,
-                            movie.overview, "OKAY"
+                            movie.overview.orEmpty(), "OKAY"
                         )
 
                     }
@@ -173,9 +172,21 @@ class MovieDetailActivity : AppCompatActivity() {
                         append("min")
                     }
                     binding.postersName.text = getString(R.string.poster_collection)
+                    if (movie.backdropPath.isNullOrBlank()) {
+                        binding.postersImage.setImageResource(R.drawable.sample_episode_exp)
+                    } else {
+                        ImageLoader.loadLandscapeThumb(
+                            binding.postersImage,
+                            movie.backdropPath,
+                            placeholder = R.drawable.sample_episode_exp
+                        )
+                    }
+                    binding.postersCard.setOnClickListener {
+                        PageNavUtils.navMoviePostersPage(this, movieId!!)
+                    }
 
                     when {
-                        movie.releaseDate.isEmpty() -> {
+                        movie.releaseDate.isNullOrEmpty() -> {
                             binding.yearTxt.text = ""
                         }
 
@@ -207,21 +218,6 @@ class MovieDetailActivity : AppCompatActivity() {
                     }
                     binding.statusTxt.text = movie.status
 
-                    if (movie.backdropPath == null) {
-                        binding.postersImage.setImageResource(R.drawable.sample_episode_exp)
-                    } else {
-                        ImageLoader.loadStill(
-                            binding.postersImage,
-                            movie.backdropPath,
-                            widthPx = 500,
-                            heightPx = 280,
-                            placeholder = R.drawable.sample_episode_exp
-                        )
-                    }
-                    binding.postersCard.setOnClickListener {
-                        PageNavUtils.navMoviePostersPage(this, movieId!!)
-                    }
-
                 }
             }
 
@@ -238,7 +234,6 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
 
                 else -> {
-
                     movie.body.logos.forEach {
                         when (it.iso6391) {
                             iso6391 -> {

@@ -10,4 +10,8 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tv_lay_marginTop_txt">15dp</dimen>
+    <dimen name="landscape_thumb_width">160dp</dimen>
+    <dimen name="landscape_thumb_height">90dp</dimen>
+    <dimen name="landscape_title_height">56dp</dimen>
+    <dimen name="landscape_shelf_row_height">172dp</dimen>
 </resources>
