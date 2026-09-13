@@ -1,21 +1,18 @@
 [versions]
 blurviewVersion = "version-2.0.6"
-kotlin = "2.2.21"
 activityKtxVersion = "1.12.0"
 appcompatVersion = "1.7.1"
 appUpdateKtxVersion = "2.1.0"
 circleimageviewVersion = "3.1.0"
-composeBomVersion = "2025.06.01"
 constraintlayoutVersion = "2.2.1"
 converterGsonVersion = "3.0.0"
 coreKtx = "1.16.0"
 espressoCoreVersion = "3.6.1"
 firebaseAnalyticsVersion = "22.5.0"
-firebaseCrashlyticsGradleVersion = "3.0.4"
+firebaseCrashlyticsGradleVersion = "3.0.8"
 firebaseCrashlyticsVersion = "19.4.4"
-googleServicesVersion = "4.4.3"
-gradleVersion = "8.13.2"
-hiltAndroidVersion = "2.56.2"
+googleServicesVersion = "4.5.0"
+agpVersion = "9.0.1"
 junitVersion = "4.13.2"
 junit = "1.2.1"
 kotlinxCoroutinesAndroidVersion = "1.10.2"
@@ -32,33 +29,22 @@ processPhoenixVersion = "3.0.0"
 retrofitVersion = "3.0.0"
 shimmerVersion = "0.5.0"
 swiperefreshlayoutVersion = "1.2.0-rc01"
-uiTextGoogleFontsVersion = "1.8.3"
 junitJupiterVersion = "5.13.3"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activityKtxVersion" }
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityKtxVersion" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtxVersion" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
-androidx-material3 = { module = "androidx.compose.material3:material3" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtxVersion" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtxVersion" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayoutVersion" }
-androidx-ui = { module = "androidx.compose.ui:ui" }
-androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
-androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
-androidx-ui-text-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "uiTextGoogleFontsVersion" }
-androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
-androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdateKtxVersion" }
 blurview = { module = "com.github.Dimezis:BlurView", version.ref = "blurviewVersion" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageviewVersion" }
@@ -68,9 +54,7 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics", versio
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlyticsVersion" }
 firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradleVersion" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServicesVersion" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "gradleVersion" }
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidVersion" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "agpVersion" }
 junit = { module = "junit:junit", version.ref = "junitVersion" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroidVersion" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
@@ -85,5 +69,6 @@ shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersi
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiterVersion" }
 
 [plugins]
-
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agpVersion" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServicesVersion" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsGradleVersion" }

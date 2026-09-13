@@ -1,6 +1,7 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
 }
@@ -10,14 +11,15 @@ localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     namespace 'zw.co.nm.moviedb'
-    compileSdk 37
+    // AGP 9.0 supports up to API 36.1
+    compileSdk 36
 
     defaultConfig {
         applicationId "zw.co.nm.moviedb"
         minSdk 26
-        targetSdk 37
-        versionCode 27
-        versionName "5.1.0"
+        targetSdk 36
+        versionCode 29
+        versionName "5.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -33,7 +35,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", 'API_KEY', localProperties['apiKey'])
         }
-        debug{
+        debug {
             debuggable true
             minifyEnabled false
             buildConfigField("String", 'API_KEY', localProperties['apiKey'])
@@ -43,12 +45,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '17'
-    }
     buildFeatures {
         viewBinding = true
-        compose false
         buildConfig true
     }
     packaging {
@@ -56,11 +54,15 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+}
 
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
+    }
 }
 
 dependencies {
-
     implementation libs.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
@@ -92,9 +94,8 @@ dependencies {
     implementation(libs.app.update.ktx)
     implementation(libs.process.phoenix)
     implementation(libs.androidx.swiperefreshlayout)
-    implementation (libs.shimmer)
-    implementation (libs.pierfrancescosoffritti)
-    implementation (libs.pierfrancescosoffritti.custom.ui)
+    implementation(libs.shimmer)
+    implementation(libs.pierfrancescosoffritti)
+    implementation(libs.pierfrancescosoffritti.custom.ui)
     implementation libs.blurview
-
 }
