@@ -3,11 +3,10 @@ package zw.co.nm.moviedb.presentation.main.movies
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetTrendingResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
-import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 
 class TrendingAdapter(
@@ -31,23 +30,22 @@ class TrendingAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = data[position]
-        val poster = item.posterPath
-        if (!poster.isNullOrBlank()) {
-            Picasso.get()
-                .load(IMAGE_BASE_URL + poster)
-                .resize(336, 504)
-                .centerCrop()
-                .placeholder(R.drawable.sample_cover_small)
-                .into(holder.binding.imageView)
-        } else {
-            holder.binding.imageView.setImageResource(R.drawable.sample_cover_small)
-        }
+        ImageLoader.loadPoster(
+            holder.binding.imageView,
+            item.posterPath,
+            placeholder = R.drawable.sample_cover_small
+        )
         holder.itemView.setOnClickListener {
             when (item.mediaType) {
                 "tv" -> PageNavUtils.navTvDetailsPage(holder.itemView.context, item.id)
                 else -> PageNavUtils.navMovieDetailsPage(holder.itemView.context, item.id)
             }
         }
+    }
+
+    override fun onViewRecycled(holder: ItemViewHolder) {
+        ImageLoader.cancel(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
     fun submitList(items: List<GetTrendingResponse.Result>) {

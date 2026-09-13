@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CastAdapter
 import zw.co.nm.moviedb.adapters.SuggestedMoviesListAdapter
@@ -31,13 +30,14 @@ import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.util.AddToListPicker
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.LANGUAGE_KEY
+import zw.co.nm.moviedb.util.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.Constants.NETWORK_ERROR_MSG
 import zw.co.nm.moviedb.util.Constants.THEATRICAL
 import zw.co.nm.moviedb.util.Constants.THEATRICAL_LIMITED
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 import zw.co.nm.moviedb.util.RateMediaDialog
 import zw.co.nm.moviedb.util.WatchProvidersUtils
@@ -122,40 +122,23 @@ class MovieDetailActivity : AppCompatActivity() {
                 else -> {
                     val movie = it.body
                     supportActionBar?.title = movie.title
-                    Picasso.get().load(IMAGE_BASE_URL+movie.posterPath)
-                        .resize(500, 0)
-                        .placeholder(R.drawable.sample_cover_large_exp)
-                        .into(binding.backgroundImm)
+                    ImageLoader.loadDetailPoster(
+                        binding.backgroundImm,
+                        movie.posterPath,
+                        placeholder = R.drawable.sample_cover_large_exp
+                    )
 
                     if (movie.belongsToCollection != null) {
                         if (movie.belongsToCollection.backdropPath == null) {
-                            when {
-                                displayMetricsWidth!! >= 1080 -> {
-                                    Picasso.get().load(R.drawable.sample_episode_exp)
-                                        .resize(500, 0)
-                                        .into(binding.collectionImage)
-                                }
-
-                                else -> {
-                                    Picasso.get().load(R.drawable.sample_episode_exp)
-                                        .resize(350, 0)
-                                        .into(binding.collectionImage)
-                                }
-                            }
+                            binding.collectionImage.setImageResource(R.drawable.sample_episode_exp)
                         } else {
-                            val picasso = Picasso.get()
-                                .load(IMAGE_BASE_URL + movie.belongsToCollection.backdropPath)
-                            when {
-                                displayMetricsWidth!! >= 1080 -> {
-                                    picasso.resize(500, 0)
-                                }
-
-                                else -> {
-                                    picasso.resize(350, 0)
-                                }
-                            }
-
-                            picasso.into(binding.collectionImage)
+                            ImageLoader.loadStill(
+                                binding.collectionImage,
+                                movie.belongsToCollection.backdropPath,
+                                widthPx = 500,
+                                heightPx = 280,
+                                placeholder = R.drawable.sample_episode_exp
+                            )
                         }
                         binding.collectionName.text = movie.belongsToCollection.name
                         binding.collectionImage.setOnClickListener {
@@ -225,29 +208,15 @@ class MovieDetailActivity : AppCompatActivity() {
                     binding.statusTxt.text = movie.status
 
                     if (movie.backdropPath == null) {
-                        when {
-                            displayMetricsWidth!! >= 1080 -> {
-                                Picasso.get().load(R.drawable.sample_episode_exp)
-                                    .resize(500, 0)
-                                    .into(binding.postersImage)
-                            }
-
-                            else -> {
-                                Picasso.get().load(R.drawable.sample_episode_exp)
-                                    .resize(350, 0)
-                                    .into(binding.postersImage)
-                            }
-                        }
-
+                        binding.postersImage.setImageResource(R.drawable.sample_episode_exp)
                     } else {
-                        val picasso = Picasso.get().load(IMAGE_BASE_URL + movie.backdropPath)
-                        if (displayMetricsWidth!! >= 1080) {
-                            picasso.resize(500, 0)
-                        } else {
-                            picasso.resize(350, 0)
-                        }
-                        picasso.into(binding.postersImage)
-
+                        ImageLoader.loadStill(
+                            binding.postersImage,
+                            movie.backdropPath,
+                            widthPx = 500,
+                            heightPx = 280,
+                            placeholder = R.drawable.sample_episode_exp
+                        )
                     }
                     binding.postersCard.setOnClickListener {
                         PageNavUtils.navMoviePostersPage(this, movieId!!)
@@ -275,7 +244,7 @@ class MovieDetailActivity : AppCompatActivity() {
                             iso6391 -> {
                                 binding.movieLogo.visibility = VISIBLE
                                 binding.movieTitleTxt.visibility = GONE
-                                logos!!.add(IMAGE_BASE_URL + it.filePath)
+                                logos!!.add(MED_RES_IMAGE_BASE_URL + it.filePath)
                             }
                         }
                     }
@@ -285,7 +254,7 @@ class MovieDetailActivity : AppCompatActivity() {
                             binding.movieTitleTxt.visibility = VISIBLE
                         }
 
-                        else -> Picasso.get().load(logos!![0]).into(binding.movieLogo)
+                        else -> ImageLoader.loadLogo(binding.movieLogo, logos!![0])
                     }
                 }
             }

@@ -6,12 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.databinding.ActivityCollectionBinding
-import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
+import zw.co.nm.moviedb.util.ImageLoader
 
 class CollectionActivity : AppCompatActivity() {
    private lateinit var binding: ActivityCollectionBinding
@@ -67,9 +66,11 @@ class CollectionActivity : AppCompatActivity() {
                     binding.collectionOverView.setOnClickListener {
                         showGenericDialog(this@CollectionActivity, data.overview, "OKAY")
                     }
-                    Picasso.get().load(Constants.IMAGE_BASE_URL + data.posterPath)
-                        .placeholder(R.drawable.sample_cover_large_exp)
-                        .into(binding.collectionPoster)
+                    ImageLoader.loadDetailPoster(
+                        binding.collectionPoster,
+                        data.posterPath,
+                        placeholder = R.drawable.sample_cover_large_exp
+                    )
                 }
             }
 

@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.CombinedCreditsListAdapter
 import zw.co.nm.moviedb.databinding.ActivityPersonBinding
+import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
@@ -66,7 +67,11 @@ class PersonActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         binding.bioCard.visibility = VISIBLE
                         binding.infoCard.visibility = VISIBLE
-                        Picasso.get().load(IMAGE_BASE_URL + response.body.profilePath)
+                        Picasso.get()
+                            .load(IMAGE_BASE_URL + response.body.profilePath)
+                            .resize(400, 600)
+                            .onlyScaleDown()
+                            .centerCrop()
                             .placeholder(R.drawable.sample_people_exp)
                             .into(binding.imageView)
                         if (response.body.biography.isEmpty()) {
@@ -95,11 +100,16 @@ class PersonActivity : AppCompatActivity() {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                             binding.backImageView.setRenderEffect(
                                 RenderEffect.createBlurEffect(
-                                    50F, 50F, Shader.TileMode.MIRROR
+                                    16F, 16F, Shader.TileMode.CLAMP
                                 )
                             )
                             Picasso.get()
-                                .load(IMAGE_BASE_URL + response.body.profilePath)
+                                .load(Constants.LOW_RES_IMAGE_BASE_URL + response.body.profilePath)
+                                .resize(
+                                    resources.displayMetrics.widthPixels / 2,
+                                    (200 * resources.displayMetrics.density).toInt()
+                                )
+                                .centerCrop()
                                 .into(binding.backImageView)
                         } else {
                             binding.backImageView.background =

@@ -8,42 +8,54 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
+import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.databinding.ItemPosterDetailBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.ImageLoader
 
-class PosterAdapter(private var data: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse.Poster>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PosterAdapter(
+    private var data: List<GetMovieImagesResponse.Poster>
+) : RecyclerView.Adapter<PosterAdapter.ItemMovieViewHolder>() {
 
-    private var binding: ItemPosterDetailBinding? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder {
+        val binding =
             ItemPosterDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemMovieViewHolder(binding!!)
+        return ItemMovieViewHolder(binding)
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val imagePath = data[position].filePath
-        Picasso.get().load(IMAGE_BASE_URL + imagePath)
-            .placeholder(R.drawable.sample_recycler_small_exp).into(binding!!.imageView)
-        binding!!.iso6391Txt.text = data[position].iso6391
+    override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
+        val poster = data[position]
+        ImageLoader.loadPoster(
+            holder.binding.imageView,
+            poster.filePath,
+            placeholder = R.drawable.sample_recycler_small_exp
+        )
+        holder.binding.iso6391Txt.text = poster.iso6391
         holder.itemView.setOnClickListener {
             val alertDialog = MaterialAlertDialogBuilder(holder.itemView.context)
             val customLayout: View =
                 View.inflate(holder.itemView.context, R.layout.dialog_view_img, null)
             val img = customLayout.findViewById<ImageView>(R.id.posterImageView)
-            Picasso.get().load(IMAGE_BASE_URL + imagePath)
-                .placeholder(R.drawable.sample_cover_large_exp).into(img)
+            Picasso.get()
+                .load(IMAGE_BASE_URL + poster.filePath)
+                .resize(720, 1080)
+                .onlyScaleDown()
+                .centerInside()
+                .memoryPolicy(com.squareup.picasso.MemoryPolicy.NO_CACHE, com.squareup.picasso.MemoryPolicy.NO_STORE)
+                .placeholder(R.drawable.sample_cover_large_exp)
+                .into(img)
             alertDialog.setView(customLayout)
             alertDialog.show()
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position
+    override fun onViewRecycled(holder: ItemMovieViewHolder) {
+        ImageLoader.cancel(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
-    class ItemMovieViewHolder(binding: ItemPosterDetailBinding) :
+    class ItemMovieViewHolder(val binding: ItemPosterDetailBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

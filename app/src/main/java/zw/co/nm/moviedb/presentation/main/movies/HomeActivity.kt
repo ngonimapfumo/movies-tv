@@ -3,11 +3,9 @@ package zw.co.nm.moviedb.presentation.main.movies
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
-import android.hardware.display.DisplayManager
 import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.util.Log
-import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
@@ -18,7 +16,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.getSystemService
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.MutableLiveData
@@ -34,7 +31,6 @@ import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ActivityHomeBinding
@@ -45,8 +41,8 @@ import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.settings.SettingsActivity
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.Constants.BACKDROP_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 import java.time.LocalDate
 
@@ -55,7 +51,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var viewModel: MoviesViewModel
     private lateinit var adapter: MovieGenresAdapter
-    private lateinit var movieAdapter: MoviesAdapter
     private var toggle: ActionBarDrawerToggle? = null
 
     private lateinit var appUpdateManager: AppUpdateManager
@@ -170,13 +165,53 @@ class HomeActivity : AppCompatActivity() {
         binding.shimmer.startShimmer()
         setupDrawer()
         setupShelfMoreLinks()
+        setupHomeAdapters()
+        observeHomeShelves()
         loadHomeShelves()
         configurations()
     }
 
-    private fun loadHomeShelves() {
-        viewModel.page = 1
-        viewModel.getPopularMovies()
+    private lateinit var popularAdapter: MoviesAdapter
+    private lateinit var nowPlayingAdapter: MoviesAdapter
+    private lateinit var upcomingAdapter: MoviesAdapter
+    private lateinit var trendingAdapter: TrendingAdapter
+
+    private fun setupHomeAdapters() {
+        popularAdapter = MoviesAdapter()
+        nowPlayingAdapter = MoviesAdapter()
+        upcomingAdapter = MoviesAdapter()
+        trendingAdapter = TrendingAdapter()
+
+        binding.recyclerHome.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerHome.setHasFixedSize(true)
+        binding.recyclerHome.setItemViewCacheSize(8)
+        binding.recyclerHome.adapter = popularAdapter
+
+        binding.recyclerTrending.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerTrending.setHasFixedSize(true)
+        binding.recyclerTrending.setItemViewCacheSize(8)
+        binding.recyclerTrending.adapter = trendingAdapter
+
+        binding.recyclerNowPlaying.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerNowPlaying.setHasFixedSize(true)
+        binding.recyclerNowPlaying.setItemViewCacheSize(8)
+        binding.recyclerNowPlaying.adapter = nowPlayingAdapter
+
+        binding.recyclerUpcoming.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerUpcoming.setHasFixedSize(true)
+        binding.recyclerUpcoming.setItemViewCacheSize(8)
+        binding.recyclerUpcoming.adapter = upcomingAdapter
+
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView.setHasFixedSize(true)
+    }
+
+    private fun observeHomeShelves() {
         viewModel.getPopularMovies.observe(this) {
             when (it.data) {
                 null -> {
@@ -189,18 +224,11 @@ class HomeActivity : AppCompatActivity() {
                 else -> {
                     val data = it.body.results
                     bindFeaturedHero(data)
-                    binding.recyclerHome.layoutManager = LinearLayoutManager(
-                        this,
-                        LinearLayoutManager.HORIZONTAL,
-                        false
-                    )
-                    movieAdapter = MoviesAdapter(data)
-                    binding.recyclerHome.adapter = movieAdapter
+                    popularAdapter.submitList(data.take(12))
                 }
             }
         }
 
-        viewModel.getMovieGenres()
         viewModel.getMovieGenres.observe(this) {
             when (it.data) {
                 null -> {
@@ -213,55 +241,43 @@ class HomeActivity : AppCompatActivity() {
                     binding.recyclerView.visibility = VISIBLE
                     binding.shimmer.stopShimmer()
                     binding.shimmer.visibility = GONE
-                    binding.recyclerView.layoutManager = LinearLayoutManager(
-                        this,
-                        LinearLayoutManager.HORIZONTAL,
-                        false
-                    )
                     adapter = MovieGenresAdapter(
                         it.body.genres.orEmpty()
                             .filterNotNull()
-                            .filter { it.id != null && !it.name.isNullOrBlank() }
+                            .filter { genre -> genre.id != null && !genre.name.isNullOrBlank() }
                     )
                     binding.recyclerView.adapter = adapter
                 }
             }
         }
 
-        viewModel.getTrending()
         viewModel.getTrending.observe(this) {
             if (it.data != null) {
-                binding.recyclerTrending.layoutManager = LinearLayoutManager(
-                    this,
-                    LinearLayoutManager.HORIZONTAL,
-                    false
-                )
-                binding.recyclerTrending.adapter = TrendingAdapter(it.body.results)
+                trendingAdapter.submitList(it.body.results.take(12))
             }
         }
 
-        viewModel.getNowPlaying()
         viewModel.getNowPlaying.observe(this) {
             if (it.data != null) {
-                binding.recyclerNowPlaying.layoutManager = LinearLayoutManager(
-                    this,
-                    LinearLayoutManager.HORIZONTAL,
-                    false
-                )
-                binding.recyclerNowPlaying.adapter = MoviesAdapter(it.body.results)
+                nowPlayingAdapter.submitList(it.body.results.take(12))
             }
         }
 
-        viewModel.getUpcoming()
         viewModel.getUpcoming.observe(this) {
             if (it.data != null) {
-                binding.recyclerUpcoming.layoutManager = LinearLayoutManager(
-                    this,
-                    LinearLayoutManager.HORIZONTAL,
-                    false
-                )
-                binding.recyclerUpcoming.adapter = MoviesAdapter(it.body.results)
+                upcomingAdapter.submitList(it.body.results.take(12))
             }
+        }
+    }
+
+    private fun loadHomeShelves() {
+        viewModel.page = 1
+        viewModel.getPopularMovies()
+        viewModel.getMovieGenres()
+        binding.recyclerHome.post {
+            viewModel.getTrending()
+            viewModel.getNowPlaying()
+            viewModel.getUpcoming()
         }
     }
 
@@ -412,20 +428,28 @@ class HomeActivity : AppCompatActivity() {
             .filter { it.isNotBlank() }
             .joinToString(" · ")
 
-        val imageUrl = when {
-            !featured.backdropPath.isNullOrBlank() ->
-                BACKDROP_IMAGE_BASE_URL + featured.backdropPath
-            !featured.posterPath.isNullOrBlank() ->
-                Constants.IMAGE_BASE_URL + featured.posterPath
-            else -> null
-        }
-        if (imageUrl != null) {
-            Picasso.get()
-                .load(imageUrl)
-                .placeholder(R.drawable.sample_cover_large_exp)
-                .into(binding.heroImage)
-        } else {
-            binding.heroImage.setImageResource(R.drawable.sample_cover_large_exp)
+        val density = resources.displayMetrics.density
+        val heroWidth = resources.displayMetrics.widthPixels
+        val heroHeight = (480 * density).toInt()
+        when {
+            !featured.backdropPath.isNullOrBlank() -> {
+                ImageLoader.loadBackdrop(
+                    binding.heroImage,
+                    featured.backdropPath,
+                    heroWidth,
+                    heroHeight
+                )
+            }
+            !featured.posterPath.isNullOrBlank() -> {
+                ImageLoader.loadPoster(
+                    binding.heroImage,
+                    featured.posterPath,
+                    heroWidth,
+                    heroHeight,
+                    R.drawable.sample_cover_large_exp
+                )
+            }
+            else -> binding.heroImage.setImageResource(R.drawable.sample_cover_large_exp)
         }
 
         val openFeatured = {
@@ -445,12 +469,10 @@ class HomeActivity : AppCompatActivity() {
             Log.e("In-app-update-exception", "OnCreate: ", e)
         }
 
-        val displayMetrics =
-            this.getSystemService<DisplayManager>()?.getDisplay(Display.DEFAULT_DISPLAY)
         ConfigStore.saveIntConfig(
             this,
             Constants.DISPLAY_METRICS_WIDTH,
-            displayMetrics!!.mode.physicalWidth
+            resources.displayMetrics.widthPixels
         )
 
         val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager

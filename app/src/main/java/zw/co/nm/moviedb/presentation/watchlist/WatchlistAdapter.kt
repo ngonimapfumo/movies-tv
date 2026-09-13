@@ -3,11 +3,10 @@ package zw.co.nm.moviedb.presentation.watchlist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.data.remote.model.response.GetPopularMoviesListResponse
 import zw.co.nm.moviedb.databinding.ItemMovieMainBinding
-import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 
 class WatchlistAdapter(
@@ -30,12 +29,11 @@ class WatchlistAdapter(
 
     override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
         val movie = data[position]
-        Picasso.get()
-            .load(IMAGE_BASE_URL + movie.posterPath)
-            .resize(336, 504)
-            .centerCrop()
-            .placeholder(R.drawable.sample_cover_small)
-            .into(holder.binding.imageView)
+        ImageLoader.loadPoster(
+            holder.binding.imageView,
+            movie.posterPath,
+            placeholder = R.drawable.sample_cover_small
+        )
 
         holder.itemView.setOnClickListener {
             PageNavUtils.navMovieDetailsPage(holder.itemView.context, movie.id)
@@ -44,6 +42,11 @@ class WatchlistAdapter(
             onRemove(movie)
             true
         }
+    }
+
+    override fun onViewRecycled(holder: ItemMovieViewHolder) {
+        ImageLoader.cancel(holder.binding.imageView)
+        super.onViewRecycled(holder)
     }
 
     fun submitList(movies: List<GetPopularMoviesListResponse.Result>) {

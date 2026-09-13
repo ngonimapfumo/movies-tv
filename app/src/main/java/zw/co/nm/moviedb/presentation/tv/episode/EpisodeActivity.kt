@@ -9,13 +9,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.GuestCastAdapter
 import zw.co.nm.moviedb.databinding.ActivityEpisodeBinding
 import zw.co.nm.moviedb.presentation.tv.TvShowsViewModel
-import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.ImageLoader
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
@@ -67,10 +66,11 @@ class EpisodeActivity : AppCompatActivity() {
 
                 else -> {
                     binding.mainLayout.visibility = VISIBLE
-                    Picasso.get()
-                        .load(Constants.IMAGE_BASE_URL + episode.stillPath)
-                        .placeholder(R.drawable.sample_episode_exp)
-                        .into(binding.episodePoster)
+                    ImageLoader.loadStill(
+                        binding.episodePoster,
+                        episode.stillPath,
+                        placeholder = R.drawable.sample_episode_exp
+                    )
                     binding.episodeName.text = episode.name
                     if (episode.overview.isEmpty()) {
                         binding.episodeOverView.text = getString(R.string.no_information_available)

@@ -7,6 +7,8 @@ object Constants {
 
     val IMAGE_BASE_URL
         get() = "https://image.tmdb.org/t/p/w500"
+    val THUMB_IMAGE_BASE_URL
+        get() = "https://image.tmdb.org/t/p/w185"
     val LOW_RES_IMAGE_BASE_URL
         get() = "https://image.tmdb.org/t/p/w200"
     val MED_RES_IMAGE_BASE_URL

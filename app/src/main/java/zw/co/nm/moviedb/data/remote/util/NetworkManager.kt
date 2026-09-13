@@ -3,7 +3,6 @@ package zw.co.nm.moviedb.data.remote.util
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import zw.co.nm.moviedb.BuildConfig
@@ -19,27 +18,22 @@ import zw.co.nm.moviedb.data.remote.service.TvShowService
 import zw.co.nm.moviedb.util.Constants
 import java.util.concurrent.TimeUnit
 
-
 object NetworkManager {
     private val gson: Gson = GsonBuilder()
         .enableComplexMapKeySerialization()
         .create()
 
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = when {
-            BuildConfig.DEBUG -> {
-                HttpLoggingInterceptor.Level.BODY
-            }
-
-            else -> {
-                HttpLoggingInterceptor.Level.NONE
+    private val client: OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(QueryParamInterceptor)
+        .apply {
+            if (BuildConfig.DEBUG) {
+                // Logging only on debug builds so release DEX can drop the interceptor.
+                val logging = okhttp3.logging.HttpLoggingInterceptor().apply {
+                    level = okhttp3.logging.HttpLoggingInterceptor.Level.BODY
+                }
+                addInterceptor(logging)
             }
         }
-
-    }
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(QueryParamInterceptor)
-        .addInterceptor(loggingInterceptor)
         .readTimeout(1, TimeUnit.MINUTES)
         .connectTimeout(1, TimeUnit.MINUTES)
         .build()
@@ -58,5 +52,4 @@ object NetworkManager {
     var configService: ConfigService = retrofit.create(ConfigService::class.java)
     var apiServiceGeneral: ApiServiceGeneral = retrofit.create(ApiServiceGeneral::class.java)
     var listService: ListService = retrofit.create(ListService::class.java)
-
 }

@@ -18,7 +18,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.squareup.picasso.Picasso
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.TVCastAdapter
 import zw.co.nm.moviedb.adapters.WatchProvidersAdapter
@@ -33,8 +32,9 @@ import zw.co.nm.moviedb.presentation.search.SearchActivity
 import zw.co.nm.moviedb.presentation.tv.season.SeasonsAdapter
 import zw.co.nm.moviedb.util.ConfigStore
 import zw.co.nm.moviedb.util.Constants
-import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
+import zw.co.nm.moviedb.util.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
 import zw.co.nm.moviedb.util.RateMediaDialog
 import zw.co.nm.moviedb.util.WatchProvidersUtils
@@ -132,10 +132,11 @@ class TvShowDetailActivity : AppCompatActivity() {
                 else -> {
                     val tv = it.body
                     supportActionBar?.title = tv.name
-                    Picasso.get().load(IMAGE_BASE_URL + tv.posterPath)
-                        .resize(500, 750)
-                        .placeholder(R.drawable.sample_cover_large_exp)
-                        .into(binding.tvBackgroundImm)
+                    ImageLoader.loadDetailPoster(
+                        binding.tvBackgroundImm,
+                        tv.posterPath,
+                        placeholder = R.drawable.sample_cover_large_exp
+                    )
                     binding.tvSummaryTxt.text = tv.tagline
 
                     tv.networks.forEach { network ->
@@ -213,7 +214,7 @@ class TvShowDetailActivity : AppCompatActivity() {
                             iso6391 -> {
                                 binding.tvLogo.visibility = View.VISIBLE
                                 binding.tvTitleTxt.visibility = GONE
-                                logos!!.add(IMAGE_BASE_URL + it.filePath)
+                                logos!!.add(MED_RES_IMAGE_BASE_URL + it.filePath)
                             }
                         }
                     }
@@ -223,7 +224,7 @@ class TvShowDetailActivity : AppCompatActivity() {
                             binding.tvTitleTxt.visibility = View.VISIBLE
                         }
 
-                        else -> Picasso.get().load(logos!![0]).into(binding.tvLogo)
+                        else -> ImageLoader.loadLogo(binding.tvLogo, logos!![0])
                     }
 
 
