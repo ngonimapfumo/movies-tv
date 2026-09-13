@@ -4,7 +4,8 @@
         <!-- Primary brand color. -->
         <!-- <item name="android:windowBackground">@color/white</item>-->
        <!-- <item name="android:windowFullscreen">true</item>-->
-        <item name="fontFamily">@font/dmsans</item>
+        <item name="fontFamily">@font/google_sans_flex</item>
+        <item name="android:fontFamily">@font/google_sans_flex</item>
         <item name="colorPrimary">#000</item>
         <item name="colorPrimaryVariant">#0d253f</item>
         <item name="colorOnPrimary">@color/white</item>

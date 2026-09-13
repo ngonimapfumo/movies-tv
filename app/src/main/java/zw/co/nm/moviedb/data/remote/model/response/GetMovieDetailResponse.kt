@@ -7,47 +7,47 @@ data class GetMovieDetailResponse(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String? = null,
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.BelongsToCollection,
+    val belongsToCollection: zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.BelongsToCollection? = null,
     @SerializedName("budget")
     val budget: Int,
     @SerializedName("genres")
-    val genres: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.Genre>,
+    val genres: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.Genre> = emptyList(),
     @SerializedName("homepage")
-    val homepage: String,
+    val homepage: String? = null,
     @SerializedName("id")
     val id: Int,
     @SerializedName("imdb_id")
-    val imdbId: String,
+    val imdbId: String? = null,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String? = null,
     @SerializedName("original_title")
-    val originalTitle: String,
+    val originalTitle: String? = null,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String? = null,
     @SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Double = 0.0,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String? = null,
     @SerializedName("production_companies")
-    val productionCompanies: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.ProductionCompany>,
+    val productionCompanies: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.ProductionCompany> = emptyList(),
     @SerializedName("production_countries")
-    val productionCountries: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.ProductionCountry>,
+    val productionCountries: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.ProductionCountry> = emptyList(),
     @SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String? = null,
     @SerializedName("revenue")
-    val revenue: Long,
+    val revenue: Long = 0,
     @SerializedName("runtime")
-    val runtime: Int,
+    val runtime: Int = 0,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.SpokenLanguage>,
+    val spokenLanguages: List<zw.co.nm.moviedb.data.remote.model.response.GetMovieDetailResponse.SpokenLanguage> = emptyList(),
     @SerializedName("status")
-    val status: String,
+    val status: String? = null,
     @SerializedName("tagline")
-    val tagline: String,
+    val tagline: String? = null,
     @SerializedName("title")
-    val title: String,
+    val title: String? = null,
     @SerializedName("video")
     val video: Boolean,
     @SerializedName("vote_average")
@@ -57,13 +57,13 @@ data class GetMovieDetailResponse(
 ) {
     data class BelongsToCollection(
         @SerializedName("backdrop_path")
-        val backdropPath: String,
+        val backdropPath: String? = null,
         @SerializedName("id")
         val id: Int,
         @SerializedName("name")
-        val name: String,
+        val name: String? = null,
         @SerializedName("poster_path")
-        val posterPath: String
+        val posterPath: String? = null
     )
 
     data class Genre(

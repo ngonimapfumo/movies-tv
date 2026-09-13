@@ -28,21 +28,21 @@ object MovieMapper {
                 name = genre.toString().replace("[", "")
                     .replace("]", "")
             ),
-            homepage = response.homepage,
+            homepage = response.homepage.orEmpty(),
             id = response.id,
-            originalTitle = response.originalTitle,
-            overview = response.overview,
+            originalTitle = response.originalTitle.orEmpty(),
+            overview = response.overview.orEmpty(),
             popularity = response.popularity,
-            posterPath = response.posterPath,
+            posterPath = response.posterPath.orEmpty(),
             productionCompanies = Movie.ProductionCompany(
                 name = productionCompany.toString().replace("[", "")
                     .replace("]", "")
             ),
-            releaseDate = response.releaseDate,
+            releaseDate = response.releaseDate.orEmpty(),
             runtime = response.runtime,
-            status = response.status,
-            tagline = response.tagline,
-            response.title,
+            status = response.status.orEmpty(),
+            tagline = response.tagline.orEmpty(),
+            title = response.title.orEmpty(),
             voteAverage = response.voteAverage,
             voteCount = response.voteCount
         )

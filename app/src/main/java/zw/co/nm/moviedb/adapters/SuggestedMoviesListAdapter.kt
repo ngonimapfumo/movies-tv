@@ -26,11 +26,15 @@ class SuggestedMoviesListAdapter(
 
     override fun onBindViewHolder(holder: ItemMovieViewHolder, position: Int) {
         val movie = data[position]
-        ImageLoader.loadLowResPoster(
+        val imagePath = movie.backdropPath?.takeIf { it.isNotBlank() }
+            ?: movie.posterPath?.takeIf { it.isNotBlank() }
+        ImageLoader.loadLandscapeThumb(
             holder.binding.imageView,
-            movie.posterPath,
-            placeholder = R.drawable.sample_suggested
+            imagePath,
+            placeholder = R.drawable.sample_episode_exp
         )
+        holder.binding.titleTxt.text = movie.title.takeIf { it.isNotBlank() }
+            ?: movie.originalTitle
         holder.itemView.setOnClickListener {
             PageNavUtils.navMovieDetailsPage(holder.itemView.context, movie.id)
         }

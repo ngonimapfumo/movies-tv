@@ -12,6 +12,7 @@ import zw.co.nm.moviedb.data.remote.model.response.GetMovieImagesResponse
 import zw.co.nm.moviedb.databinding.ItemPosterDetailBinding
 import zw.co.nm.moviedb.util.Constants.IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.ImageLoader
+import zw.co.nm.moviedb.util.TmdbImageSaver
 
 class PosterAdapter(
     private var data: List<GetMovieImagesResponse.Poster>
@@ -34,9 +35,10 @@ class PosterAdapter(
         )
         holder.binding.iso6391Txt.text = poster.iso6391
         holder.itemView.setOnClickListener {
-            val alertDialog = MaterialAlertDialogBuilder(holder.itemView.context)
+            val context = holder.itemView.context
+            val alertDialog = MaterialAlertDialogBuilder(context)
             val customLayout: View =
-                View.inflate(holder.itemView.context, R.layout.dialog_view_img, null)
+                View.inflate(context, R.layout.dialog_view_img, null)
             val img = customLayout.findViewById<ImageView>(R.id.posterImageView)
             Picasso.get()
                 .load(IMAGE_BASE_URL + poster.filePath)
@@ -47,6 +49,10 @@ class PosterAdapter(
                 .placeholder(R.drawable.sample_cover_large_exp)
                 .into(img)
             alertDialog.setView(customLayout)
+            alertDialog.setPositiveButton(R.string.download_poster) { _, _ ->
+                TmdbImageSaver.savePosterFromPath(context, poster.filePath)
+            }
+            alertDialog.setNegativeButton(android.R.string.cancel, null)
             alertDialog.show()
         }
     }

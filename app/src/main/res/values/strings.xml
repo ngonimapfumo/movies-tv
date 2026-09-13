@@ -152,6 +152,14 @@
     <string name="poster_collection">Poster collection</string>
     <string name="posterimage" translatable="false">PosterImage</string>
     <string name="poster" translatable="false">poster</string>
+    <string name="previous_poster">Previous poster</string>
+    <string name="next_poster">Next poster</string>
+    <string name="download_poster">Download poster</string>
+    <string name="view_all_posters">View all</string>
+    <string name="poster_index">%1$d / %2$d</string>
+    <string name="poster_download_success">Saved to Pictures. Artwork via TMDB — personal use only; not for redistribution.</string>
+    <string name="poster_download_failed">Couldn\'t save poster</string>
+    <string name="poster_download_unavailable">No poster to save</string>
     <string name="movie_logo" translatable="false">movie logo</string>
     <string name="movie_collection" translatable="false">movie collection</string>
     <string name="search_image" translatable="false">search image</string>

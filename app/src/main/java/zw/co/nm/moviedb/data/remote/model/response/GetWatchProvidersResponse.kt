@@ -10,13 +10,13 @@ data class GetWatchProvidersResponse(
 )
 
 data class CountryWatchProviders(
-    @SerializedName("link")
+            @SerializedName("link")
     val link: String? = null,
-    @SerializedName("flatrate")
+            @SerializedName("flatrate")
     val flatrate: List<WatchProvider> = emptyList(),
-    @SerializedName("rent")
+            @SerializedName("rent")
     val rent: List<WatchProvider> = emptyList(),
-    @SerializedName("buy")
+            @SerializedName("buy")
     val buy: List<WatchProvider> = emptyList(),
     @SerializedName("ads")
     val ads: List<WatchProvider> = emptyList(),
@@ -32,12 +32,12 @@ data class CountryWatchProviders(
 }
 
 data class WatchProvider(
-    @SerializedName("logo_path")
+                @SerializedName("logo_path")
     val logoPath: String? = null,
-    @SerializedName("provider_id")
+                @SerializedName("provider_id")
     val providerId: Int = 0,
-    @SerializedName("provider_name")
+                @SerializedName("provider_name")
     val providerName: String = "",
-    @SerializedName("display_priority")
+                @SerializedName("display_priority")
     val displayPriority: Int = Int.MAX_VALUE
 )
