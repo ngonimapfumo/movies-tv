@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import zw.co.nm.moviedb.R
 import zw.co.nm.moviedb.adapters.TVCastAdapter
 import zw.co.nm.moviedb.adapters.WatchProvidersAdapter
-import zw.co.nm.moviedb.data.remote.model.response.GetCountriesResponse
+import zw.co.nm.moviedb.data.remote.model.response.TmdbCountry
 import zw.co.nm.moviedb.data.remote.model.response.GetWatchProvidersResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.databinding.ActivityTvShowDetailBinding
@@ -320,8 +320,8 @@ class TvShowDetailActivity : AppCompatActivity() {
             }
             return
         }
-        val observer = object : Observer<Response<GetCountriesResponse>> {
-            override fun onChanged(response: Response<GetCountriesResponse>) {
+        val observer = object : Observer<Response<List<TmdbCountry>>> {
+            override fun onChanged(response: Response<List<TmdbCountry>>) {
                 if (response.data == null && !response.isSuccessful) return
                 configViewModel.getCountries.removeObserver(this)
                 if (!response.isSuccessful || response.data == null) {

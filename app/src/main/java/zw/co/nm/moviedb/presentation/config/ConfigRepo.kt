@@ -1,17 +1,14 @@
 package zw.co.nm.moviedb.presentation.config
 
-import zw.co.nm.moviedb.data.remote.model.response.GetCountriesResponse
-import zw.co.nm.moviedb.data.remote.model.response.GetTranslations
+import zw.co.nm.moviedb.data.remote.model.response.TmdbCountry
 import zw.co.nm.moviedb.data.remote.util.NetworkManager
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.util.GeneralUtil.apiCall
 
 class ConfigRepo {
-    suspend fun getConfigTranslations(): Response<GetTranslations> =
+    suspend fun getConfigTranslations(): Response<List<String>> =
         apiCall { NetworkManager.configService.getTranslations() }
 
-    suspend fun getCountries(): Response<GetCountriesResponse> =
+    suspend fun getCountries(): Response<List<TmdbCountry>> =
         apiCall { NetworkManager.configService.getCountries() }
-
-    //testing local configs1
 }

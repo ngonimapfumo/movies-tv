@@ -140,92 +140,92 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupLanguagePicker() {
-        configViewModel.getTranslations.observe(this) {
-            when (it.data) {
-                null -> {
-                    actionSnack(binding.root, "Error getting data", "Retry") {
-                        configViewModel.getTranslations()
-                    }
+        configViewModel.getTranslations.observe(this) { response ->
+            if (!response.isSuccessful) {
+                actionSnack(
+                    binding.root,
+                    response.exception?.message ?: "Error getting languages",
+                    "Retry"
+                ) {
+                    configViewModel.getTranslations()
                 }
+                return@observe
+            }
+            binding.autoComplete.setText(ConfigStore.getStringLang(this, LANGUAGE_KEY), false)
+            binding.autoComplete.setAdapter(
+                ArrayAdapter(
+                    this,
+                    R.layout.simple_spinner_dropdown_item,
+                    response.body
+                )
+            )
 
-                else -> {
-                    binding.autoComplete.setText(ConfigStore.getStringLang(this, LANGUAGE_KEY))
-                    binding.autoComplete.setAdapter(
-                        ArrayAdapter(
-                            this,
-                            R.layout.simple_spinner_dropdown_item,
-                            it.body
-                        )
+            binding.autoComplete.setOnItemClickListener { _, _, _, _ ->
+                ConfigStore.saveStringConfig(
+                    this,
+                    LANGUAGE_KEY,
+                    binding.autoComplete.text.toString()
+                )
+
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(zw.co.nm.moviedb.R.string.alert))
+                    .setMessage(
+                        getString(zw.co.nm.moviedb.R.string.language_change_requires_a_restart) +
+                            getString(zw.co.nm.moviedb.R.string.translation_warning)
                     )
-
-                    binding.autoComplete.setOnItemClickListener { _, _, _, _ ->
-                        ConfigStore.saveStringConfig(
-                            this,
-                            LANGUAGE_KEY,
-                            binding.autoComplete.text.toString()
-                        )
-
-                        MaterialAlertDialogBuilder(this)
-                            .setTitle(getString(zw.co.nm.moviedb.R.string.alert))
-                            .setMessage(
-                                getString(zw.co.nm.moviedb.R.string.language_change_requires_a_restart) +
-                                    getString(zw.co.nm.moviedb.R.string.translation_warning)
-                            )
-                            .setPositiveButton(
-                                getString(zw.co.nm.moviedb.R.string.restart_now)
-                            ) { _, _ ->
-                                ProcessPhoenix.triggerRebirth(applicationContext)
-                            }
-                            .setNegativeButton(getString(zw.co.nm.moviedb.R.string.not_now), null)
-                            .show()
+                    .setPositiveButton(
+                        getString(zw.co.nm.moviedb.R.string.restart_now)
+                    ) { _, _ ->
+                        ProcessPhoenix.triggerRebirth(applicationContext)
                     }
-                }
+                    .setNegativeButton(getString(zw.co.nm.moviedb.R.string.not_now), null)
+                    .show()
             }
         }
     }
 
     private fun setupWatchRegionPicker() {
         configViewModel.getCountries.observe(this) { response ->
-            when (response.data) {
-                null -> {
-                    actionSnack(binding.root, "Error getting countries", "Retry") {
-                        configViewModel.getCountries()
-                    }
+            if (!response.isSuccessful) {
+                actionSnack(
+                    binding.root,
+                    response.exception?.message ?: "Error getting countries",
+                    "Retry"
+                ) {
+                    configViewModel.getCountries()
                 }
-
-                else -> {
-                    countryOptions = WatchRegionPicker.toOptions(response.body)
-                    val deviceDefault =
-                        getString(zw.co.nm.moviedb.R.string.watch_region_device_default)
-                    val labels = buildList {
-                        add(deviceDefault)
-                        addAll(countryOptions.map { it.displayName })
-                    }
-                    binding.watchRegionAutoComplete.setAdapter(
-                        ArrayAdapter(
-                            this,
-                            R.layout.simple_spinner_dropdown_item,
-                            labels
-                        )
+                return@observe
+            }
+            countryOptions = WatchRegionPicker.toOptions(response.body)
+            val deviceDefault =
+                getString(zw.co.nm.moviedb.R.string.watch_region_device_default)
+            val labels = buildList {
+                add(deviceDefault)
+                addAll(countryOptions.map { it.displayName })
+            }
+            binding.watchRegionAutoComplete.setAdapter(
+                ArrayAdapter(
+                    this,
+                    R.layout.simple_spinner_dropdown_item,
+                    labels
+                )
+            )
+            binding.watchRegionAutoComplete.setText(
+                currentWatchRegionLabel(deviceDefault),
+                false
+            )
+            binding.watchRegionAutoComplete.setOnItemClickListener { _, _, position, _ ->
+                if (position == 0) {
+                    ConfigStore.clearConfig(this, Constants.WATCH_REGION)
+                    binding.watchRegionAutoComplete.setText(deviceDefault, false)
+                } else {
+                    val option = countryOptions[position - 1]
+                    ConfigStore.saveStringConfig(
+                        this,
+                        Constants.WATCH_REGION,
+                        option.iso
                     )
-                    binding.watchRegionAutoComplete.setText(
-                        currentWatchRegionLabel(deviceDefault),
-                        false
-                    )
-                    binding.watchRegionAutoComplete.setOnItemClickListener { _, _, position, _ ->
-                        if (position == 0) {
-                            ConfigStore.clearConfig(this, Constants.WATCH_REGION)
-                            binding.watchRegionAutoComplete.setText(deviceDefault, false)
-                        } else {
-                            val option = countryOptions[position - 1]
-                            ConfigStore.saveStringConfig(
-                                this,
-                                Constants.WATCH_REGION,
-                                option.iso
-                            )
-                            binding.watchRegionAutoComplete.setText(option.displayName, false)
-                        }
-                    }
+                    binding.watchRegionAutoComplete.setText(option.displayName, false)
                 }
             }
         }

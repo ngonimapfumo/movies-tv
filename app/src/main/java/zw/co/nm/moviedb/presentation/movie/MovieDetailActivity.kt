@@ -449,9 +449,9 @@ class MovieDetailActivity : AppCompatActivity() {
             }
             return
         }
-        val observer = object : Observer<Response<zw.co.nm.moviedb.data.remote.model.response.GetCountriesResponse>> {
+        val observer = object : Observer<Response<List<zw.co.nm.moviedb.data.remote.model.response.TmdbCountry>>> {
             override fun onChanged(
-                response: Response<zw.co.nm.moviedb.data.remote.model.response.GetCountriesResponse>
+                response: Response<List<zw.co.nm.moviedb.data.remote.model.response.TmdbCountry>>
             ) {
                 if (response.data == null && !response.isSuccessful) return
                 configViewModel.getCountries.removeObserver(this)
