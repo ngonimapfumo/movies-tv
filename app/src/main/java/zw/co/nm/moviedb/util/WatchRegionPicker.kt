@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import zw.co.nm.moviedb.R
-import zw.co.nm.moviedb.data.remote.model.response.GetCountriesResponse
+import zw.co.nm.moviedb.data.remote.model.response.TmdbCountry
 
 object WatchRegionPicker {
 
@@ -16,7 +16,7 @@ object WatchRegionPicker {
     }
 
     fun toOptions(
-        countries: List<GetCountriesResponse.GetCountriesResponseItem>
+        countries: List<TmdbCountry>
     ): List<CountryOption> =
         countries
             .map {
@@ -29,7 +29,7 @@ object WatchRegionPicker {
 
     fun show(
         context: Context,
-        countries: List<GetCountriesResponse.GetCountriesResponseItem>,
+        countries: List<TmdbCountry>,
         onSelected: (isoCode: String?) -> Unit
     ): AlertDialog {
         val options = toOptions(countries)

@@ -9,9 +9,10 @@
     @com.google.gson.annotations.SerializedName <fields>;
 }
 
-# Gson models (fields used via reflection)
--keep class zw.co.nm.moviedb.data.remote.model.** { <fields>; }
--keep class zw.co.nm.moviedb.data.domain.models.** { <fields>; }
+# Gson models. Keep constructors too — R8 was stripping them, so list
+# responses (languages, countries) failed to deserialize in release.
+-keep class zw.co.nm.moviedb.data.remote.model.** { <fields>; <init>(...); }
+-keep class zw.co.nm.moviedb.data.domain.models.** { <fields>; <init>(...); }
 -keep class zw.co.nm.moviedb.data.remote.util.RatedValueDeserializer { *; }
 -keepclassmembers,allowobfuscation class * {
   @com.google.gson.annotations.JsonAdapter <fields>;

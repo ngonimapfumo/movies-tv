@@ -5,6 +5,7 @@ Android app for discovering movies and TV shows, powered by the [TMDB API](https
 **Get it on Google Play:**  
 [https://play.google.com/store/apps/details?id=zw.co.nm.moviedb](https://play.google.com/store/apps/details?id=zw.co.nm.moviedb)
 
+
 > This product uses the TMDB API but is not endorsed or certified by TMDB.
 
 ## Features

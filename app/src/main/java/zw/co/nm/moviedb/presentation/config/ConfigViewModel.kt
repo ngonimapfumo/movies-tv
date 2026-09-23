@@ -6,23 +6,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import zw.co.nm.moviedb.data.remote.model.response.GetCountriesResponse
-import zw.co.nm.moviedb.data.remote.model.response.GetTranslations
+import zw.co.nm.moviedb.data.remote.model.response.TmdbCountry
 import zw.co.nm.moviedb.data.remote.util.Response
 
 class ConfigViewModel(application: Application) : AndroidViewModel(application) {
 
     private val configRepo = ConfigRepo()
 
-    private val _getTranslations =
-        MutableLiveData<Response<GetTranslations>>()
-    val getTranslations: LiveData<Response<GetTranslations>> =
-        _getTranslations
+    private val _getTranslations = MutableLiveData<Response<List<String>>>()
+    val getTranslations: LiveData<Response<List<String>>> = _getTranslations
 
-    private val _getCountries =
-        MutableLiveData<Response<GetCountriesResponse>>()
-    val getCountries: LiveData<Response<GetCountriesResponse>> =
-        _getCountries
+    private val _getCountries = MutableLiveData<Response<List<TmdbCountry>>>()
+    val getCountries: LiveData<Response<List<TmdbCountry>>> = _getCountries
 
     fun getTranslations() {
         viewModelScope.launch {
