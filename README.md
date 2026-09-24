@@ -19,9 +19,9 @@ Android app for discovering movies and TV shows, powered by the [TMDB API](https
 
 ## Requirements
 
-- [Android Studio](https://developer.android.com/studio) **Otter 3 Feature Drop (2025.2.3)** or newer (required for AGP 9)
+- [Android Studio](https://developer.android.com/studio) **Panda 3 (2025.3.3)** Patch 1 or newer (required for AGP 9.3 / API 37)
 - JDK 17
-- Android SDK with `compileSdk` 36
+- Android SDK with `compileSdk` 37 (Android 17)
 - Android device or emulator running **Android 8.0 (API 26)** or higher
 - A free [TMDB API key](https://www.themoviedb.org/settings/api)
 
@@ -85,8 +85,8 @@ The debug APK is written to:
 |---|---|
 | Application ID | `zw.co.nm.moviedb` |
 | Min SDK | 26 |
-| Target / Compile SDK | 36 |
-| AGP | 9.0.1 |
+| Target / Compile SDK | 37 |
+| AGP | 9.3.3 |
 | Current version | see `versionName` in `app/build.gradle` |
 
 ## Privacy & attribution
