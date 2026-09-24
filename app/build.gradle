@@ -11,15 +11,15 @@ localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     namespace 'zw.co.nm.moviedb'
-    // AGP 9.0 supports up to API 36.1
-    compileSdk 36
+    // AGP 9.3+ supports up to API 37 (Android 17)
+    compileSdk 37
 
     defaultConfig {
         applicationId "zw.co.nm.moviedb"
         minSdk 26
-        targetSdk 36
-        versionCode 31
-        versionName "5.2.1.1"
+        targetSdk 37
+        versionCode 32
+        versionName "5.3.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
