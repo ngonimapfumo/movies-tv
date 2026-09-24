@@ -39,6 +39,7 @@ import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.GeneralUtil.showGenericDialog
 import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
+import zw.co.nm.moviedb.util.PosterUtils
 import zw.co.nm.moviedb.util.RateMediaDialog
 import zw.co.nm.moviedb.util.WatchProvidersUtils
 import zw.co.nm.moviedb.util.WatchRegionPicker
@@ -234,6 +235,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
 
                 else -> {
+                    logos!!.clear()
                     movie.body.logos.forEach {
                         when (it.iso6391) {
                             iso6391 -> {
@@ -247,9 +249,29 @@ class MovieDetailActivity : AppCompatActivity() {
                     when (logos!!.size) {
                         0 -> {
                             binding.movieTitleTxt.visibility = VISIBLE
+                            binding.movieLogo.visibility = GONE
                         }
 
-                        else -> ImageLoader.loadLogo(binding.movieLogo, logos!![0])
+                        else -> {
+                            ImageLoader.loadLogo(binding.movieLogo, logos!![0])
+                            val textlessPath = PosterUtils.bestTextlessPath(
+                                movie.body.posters.map {
+                                    PosterUtils.ImageCandidate(
+                                        filePath = it.filePath,
+                                        iso6391 = it.iso6391,
+                                        voteAverage = it.voteAverage,
+                                        voteCount = it.voteCount
+                                    )
+                                }
+                            )
+                            if (textlessPath != null) {
+                                ImageLoader.loadDetailPoster(
+                                    binding.backgroundImm,
+                                    textlessPath,
+                                    placeholder = R.drawable.sample_cover_large_exp
+                                )
+                            }
+                        }
                     }
                 }
             }

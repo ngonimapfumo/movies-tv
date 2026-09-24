@@ -36,6 +36,7 @@ import zw.co.nm.moviedb.util.Constants.MED_RES_IMAGE_BASE_URL
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
 import zw.co.nm.moviedb.util.ImageLoader
 import zw.co.nm.moviedb.util.PageNavUtils
+import zw.co.nm.moviedb.util.PosterUtils
 import zw.co.nm.moviedb.util.RateMediaDialog
 import zw.co.nm.moviedb.util.WatchProvidersUtils
 import zw.co.nm.moviedb.util.WatchRegionPicker
@@ -208,7 +209,7 @@ class TvShowDetailActivity : AppCompatActivity() {
                 }
 
                 else -> {
-
+                    logos!!.clear()
                     images.body.logos.forEach {
                         when (it.iso6391) {
                             iso6391 -> {
@@ -222,12 +223,30 @@ class TvShowDetailActivity : AppCompatActivity() {
                     when (logos!!.size) {
                         0 -> {
                             binding.tvTitleTxt.visibility = View.VISIBLE
+                            binding.tvLogo.visibility = GONE
                         }
 
-                        else -> ImageLoader.loadLogo(binding.tvLogo, logos!![0])
+                        else -> {
+                            ImageLoader.loadLogo(binding.tvLogo, logos!![0])
+                            val textlessPath = PosterUtils.bestTextlessPath(
+                                images.body.posters.map {
+                                    PosterUtils.ImageCandidate(
+                                        filePath = it.filePath,
+                                        iso6391 = it.iso6391,
+                                        voteAverage = it.voteAverage,
+                                        voteCount = it.voteCount
+                                    )
+                                }
+                            )
+                            if (textlessPath != null) {
+                                ImageLoader.loadDetailPoster(
+                                    binding.tvBackgroundImm,
+                                    textlessPath,
+                                    placeholder = R.drawable.sample_cover_large_exp
+                                )
+                            }
+                        }
                     }
-
-
                 }
             }
         }
