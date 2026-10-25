@@ -44,6 +44,7 @@ import zw.co.nm.moviedb.util.RateMediaDialog
 import zw.co.nm.moviedb.util.WatchProvidersUtils
 import zw.co.nm.moviedb.util.WatchRegionPicker
 import java.time.LocalDate
+import java.time.OffsetDateTime
 
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -367,22 +368,23 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
 
                 else -> {
-                    it.body.results.forEach { result ->
-                        if (result.iso31661 == iso31661!!.uppercase()) {
-                            result.releaseDates.forEach { movie ->
-                                if (movie.type == THEATRICAL ||
-                                    movie.type == THEATRICAL_LIMITED
-                                ) {
-                                    if (movie.certification.isEmpty()) {
-                                        binding.certifications.text = "n/a"
-                                    } else {
-                                        binding.certifications.text = movie.certification
-                                    }
+                    val regionalReleaseDates = it.body.results
+                        .firstOrNull { result -> result.iso31661 == iso31661!!.uppercase() }
+                        ?.releaseDates
+                        .orEmpty()
 
-                                }
-                            }
+                    val latestTheatricalRelease = regionalReleaseDates
+                        .asSequence()
+                        .filter { release ->
+                            release.type == THEATRICAL || release.type == THEATRICAL_LIMITED
                         }
-                    }
+                        .maxByOrNull { release ->
+                            runCatching { OffsetDateTime.parse(release.releaseDate).toInstant().toEpochMilli() }
+                                .getOrDefault(Long.MIN_VALUE)
+                        }
+
+                    val certification = latestTheatricalRelease?.certification.orEmpty()
+                    binding.certifications.text = if (certification.isEmpty()) "n/a" else certification
 
                 }
 
