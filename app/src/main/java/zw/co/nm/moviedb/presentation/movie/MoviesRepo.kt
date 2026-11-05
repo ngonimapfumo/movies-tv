@@ -70,6 +70,14 @@ class MoviesRepo {
             NetworkManager.movieService.getMoviesByKeywordId(page, language, keywordId)
         }
 
+    suspend fun getHiddenGemMovies(
+        page: Int,
+        language: String
+    ): Response<GetPopularMoviesListResponse> =
+        apiCall {
+            NetworkManager.movieService.getHiddenGemMovies(page, language)
+        }
+
     suspend fun getTrending(
         page: Int,
         language: String

@@ -8,6 +8,8 @@ import android.os.Bundle
 import zw.co.nm.moviedb.presentation.auth.LoginActivity
 import zw.co.nm.moviedb.presentation.collection.CollectionActivity
 import zw.co.nm.moviedb.presentation.lists.CustomListsActivity
+import zw.co.nm.moviedb.presentation.main.movies.MainListActivity
+import zw.co.nm.moviedb.presentation.main.tvshows.TVShowsActivity
 import zw.co.nm.moviedb.presentation.movie.MovieDetailActivity
 import zw.co.nm.moviedb.presentation.movie.PostersImagesActivity
 import zw.co.nm.moviedb.presentation.person.PersonActivity
@@ -20,6 +22,24 @@ import zw.co.nm.moviedb.presentation.watchlist.WatchlistActivity
 import zw.co.nm.moviedb.util.Constants.TRAILER_TYPE
 
 object PageNavUtils {
+
+    fun navHiddenGemsMovies(context: Context) {
+        context.startActivity(
+            Intent(context, MainListActivity::class.java).apply {
+                putExtra(Constants.LIST_IDENTIFIER, Constants.IDENTIFIER_HIDDEN_GEMS)
+                putExtra(Constants.LIST_TITLE, context.getString(zw.co.nm.moviedb.R.string.hidden_gems))
+            }
+        )
+    }
+
+    fun navHiddenGemsTv(context: Context) {
+        context.startActivity(
+            Intent(context, TVShowsActivity::class.java).apply {
+                putExtra(Constants.LIST_IDENTIFIER, Constants.IDENTIFIER_HIDDEN_GEMS)
+                putExtra(Constants.LIST_TITLE, context.getString(zw.co.nm.moviedb.R.string.hidden_gems))
+            }
+        )
+    }
 
     fun navLoginPage(context: Context) {
         val intent = Intent(context, LoginActivity::class.java)

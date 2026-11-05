@@ -31,6 +31,11 @@ object Constants {
     const val MEDIA_TYPE_MOVIE = "movie"
     const val MEDIA_TYPE_TV = "tv"
 
+    const val LIST_IDENTIFIER = "identifier"
+    const val LIST_TITLE = "title"
+    const val IDENTIFIER_HIDDEN_GEMS = "hidden_gems"
+    const val IDENTIFIER_POPULAR = "popular"
+
     const val LIST_TYPE_WATCHLIST = "watchlist"
     const val LIST_TYPE_FAVORITES = "favorites"
     const val LIST_TYPE_RATED = "rated"

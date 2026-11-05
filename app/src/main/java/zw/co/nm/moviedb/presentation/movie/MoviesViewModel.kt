@@ -81,6 +81,10 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         MutableLiveData<Response<GetPopularMoviesListResponse>>()
     val getUpcoming: LiveData<Response<GetPopularMoviesListResponse>> = _getUpcoming
 
+    private val _getHiddenGems =
+        MutableLiveData<Response<GetPopularMoviesListResponse>>()
+    val getHiddenGems: LiveData<Response<GetPopularMoviesListResponse>> = _getHiddenGems
+
     private val _getMovieKeywords =
         MutableLiveData<Response<GetMovieKeywordsResponse>>()
     val getMovieKeywords: LiveData<Response<GetMovieKeywordsResponse>> = _getMovieKeywords
@@ -161,6 +165,12 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getUpcoming() {
         viewModelScope.launch {
             _getUpcoming.value = moviesRepo.getUpcoming(page, language!!)
+        }
+    }
+
+    fun getHiddenGems() {
+        viewModelScope.launch {
+            _getHiddenGems.value = moviesRepo.getHiddenGemMovies(page, language!!)
         }
     }
 

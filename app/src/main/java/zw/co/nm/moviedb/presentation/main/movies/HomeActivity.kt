@@ -333,6 +333,10 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this@HomeActivity, MainListActivity::class.java))
                 }
 
+                R.id.drawer_hidden_gems -> {
+                    PageNavUtils.navHiddenGemsMovies(this@HomeActivity)
+                }
+
                 R.id.drawer_watchlist -> {
                     if (ConfigStore.isLoggedIn(this@HomeActivity)) {
                         PageNavUtils.navWatchlistPage(this@HomeActivity)

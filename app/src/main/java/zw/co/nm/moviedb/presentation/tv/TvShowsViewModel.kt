@@ -26,6 +26,11 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
     val getPopularShows: LiveData<Response<GetPopularTVSeriesListResponse>> =
         _getPopularShows
 
+    private val _getHiddenGems =
+        MutableLiveData<Response<GetPopularTVSeriesListResponse>>()
+    val getHiddenGems: LiveData<Response<GetPopularTVSeriesListResponse>> =
+        _getHiddenGems
+
     private val _getShowDetails =
         MutableLiveData<Response<GetTVShowDetailResponse>>()
     val getShowDetails: LiveData<Response<GetTVShowDetailResponse>> =
@@ -54,6 +59,12 @@ class TvShowsViewModel(application: Application) : AndroidViewModel(application)
     fun getPopularTvShows() {
         viewModelScope.launch {
             _getPopularShows.value = tvShowsRepo.getPopularTvShows(page, language!!)
+        }
+    }
+
+    fun getHiddenGems() {
+        viewModelScope.launch {
+            _getHiddenGems.value = tvShowsRepo.getHiddenGemTvShows(page, language!!)
         }
     }
 

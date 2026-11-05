@@ -17,6 +17,12 @@ class TvShowsRepo {
     ): Response<GetPopularTVSeriesListResponse> =
         apiCall { NetworkManager.tvShowService.getPopularTvShows(page, language) }
 
+    suspend fun getHiddenGemTvShows(
+        page: Int,
+        language: String
+    ): Response<GetPopularTVSeriesListResponse> =
+        apiCall { NetworkManager.tvShowService.getHiddenGemTvShows(page, language) }
+
     suspend fun getTvShowDetails(showId: Int, language: String): Response<GetTVShowDetailResponse> =
         apiCall { NetworkManager.tvShowService.getTvShowDetails(showId, language) }
 

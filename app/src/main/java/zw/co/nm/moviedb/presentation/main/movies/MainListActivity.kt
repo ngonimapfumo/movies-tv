@@ -1,6 +1,9 @@
 package zw.co.nm.moviedb.presentation.main.movies
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
@@ -17,8 +20,10 @@ import zw.co.nm.moviedb.data.remote.model.response.GetTrendingResponse
 import zw.co.nm.moviedb.data.remote.util.Response
 import zw.co.nm.moviedb.databinding.ActivityMainListBinding
 import zw.co.nm.moviedb.presentation.movie.MoviesViewModel
+import zw.co.nm.moviedb.util.Constants
 import zw.co.nm.moviedb.util.EndlessScrollListener
 import zw.co.nm.moviedb.util.GeneralUtil.actionSnack
+import zw.co.nm.moviedb.util.PillBottomNav
 
 class MainListActivity : AppCompatActivity() {
 
@@ -55,8 +60,10 @@ class MainListActivity : AppCompatActivity() {
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         genreId = intent.getIntExtra("genre_id", 0)
         keywordId = intent.getIntExtra("keyword_id", 0)
-        identifier = intent.getStringExtra("identifier").orEmpty()
-        supportActionBar?.title = intent.getStringExtra("title")
+        identifier = intent.getStringExtra(Constants.LIST_IDENTIFIER)
+            ?: intent.getStringExtra("identifier").orEmpty()
+        supportActionBar?.title = intent.getStringExtra(Constants.LIST_TITLE)
+            ?: intent.getStringExtra("title")
             ?: defaultTitle()
 
         moviesAdapter = MoviesAdapter()
@@ -64,6 +71,7 @@ class MainListActivity : AppCompatActivity() {
         binding.recyclerView.adapter =
             if (isTrending()) trendingAdapter else moviesAdapter
 
+        PillBottomNav.setup(this, binding.pillNav)
         setUpScroll()
         observeList()
         loadInitial()
@@ -74,10 +82,14 @@ class MainListActivity : AppCompatActivity() {
         identifier.equals("now_playing", true) -> getString(R.string.now_playing)
         identifier.equals("upcoming", true) -> getString(R.string.upcoming)
         identifier.equals("from_keyword", true) -> getString(R.string.keywords)
+        identifier.equals(Constants.IDENTIFIER_HIDDEN_GEMS, true) -> getString(R.string.hidden_gems)
         else -> getString(R.string.movies)
     }
 
     private fun isTrending(): Boolean = identifier.equals("trending", true)
+
+    private fun isHiddenGems(): Boolean =
+        identifier.equals(Constants.IDENTIFIER_HIDDEN_GEMS, true)
 
     private fun setUpScroll() {
         val layoutManager = binding.recyclerView.layoutManager as GridLayoutManager
@@ -108,6 +120,7 @@ class MainListActivity : AppCompatActivity() {
         identifier.equals("from_keyword", true) -> moviesViewModel.getMoviesByKeywordId
         identifier.equals("now_playing", true) -> moviesViewModel.getNowPlaying
         identifier.equals("upcoming", true) -> moviesViewModel.getUpcoming
+        isHiddenGems() -> moviesViewModel.getHiddenGems
         else -> moviesViewModel.getPopularMovies
     }
 
@@ -215,12 +228,59 @@ class MainListActivity : AppCompatActivity() {
             identifier.equals("upcoming", true) ->
                 moviesViewModel.getUpcoming()
 
+            isHiddenGems() ->
+                moviesViewModel.getHiddenGems()
+
             else -> moviesViewModel.getPopularMovies()
         }
     }
 
     private fun setLoadMoreVisible(visible: Boolean) {
         binding.loadMoreCard.visibility = if (visible) VISIBLE else GONE
+    }
+
+    private fun openListMode(newIdentifier: String, titleRes: Int) {
+        if (identifier.equals(newIdentifier, true)) return
+        startActivity(
+            Intent(this, MainListActivity::class.java).apply {
+                putExtra(Constants.LIST_IDENTIFIER, newIdentifier)
+                putExtra(Constants.LIST_TITLE, getString(titleRes))
+            }
+        )
+        finish()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Only offer browse toggles on popular / hidden-gems (not genre/keyword hubs).
+        if (identifier.isEmpty() ||
+            isHiddenGems() ||
+            identifier.equals(Constants.IDENTIFIER_POPULAR, true)
+        ) {
+            menuInflater.inflate(R.menu.menu_list_browse, menu)
+        }
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.findItem(R.id.action_hidden_gems)?.isVisible = !isHiddenGems()
+        menu?.findItem(R.id.action_popular)?.isVisible = isHiddenGems()
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_hidden_gems -> {
+                openListMode(Constants.IDENTIFIER_HIDDEN_GEMS, R.string.hidden_gems)
+                true
+            }
+
+            R.id.action_popular -> {
+                openListMode(Constants.IDENTIFIER_POPULAR, R.string.popular_movies)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

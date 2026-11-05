@@ -110,6 +110,9 @@
     <string name="information">Informações</string>
     <string name="prev">Anterior</string>
     <string name="reviews">Avaliações</string>
+    <string name="hidden_gems">Joias escondidas</string>
+    <string name="popular">Popular</string>
+    <string name="hidden_gems_tv">Séries joias escondidas</string>
     <string name="trailers">Prévios</string>
     <string name="suggested_films">Filmes sugeridos</string>
     <string name="production">Produção</string>

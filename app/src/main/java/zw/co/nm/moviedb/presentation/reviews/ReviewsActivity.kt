@@ -30,13 +30,11 @@ class ReviewsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         reviewsViewModel = ViewModelProvider(this)[ReviewsViewModel::class.java]
 
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) {
-                view, insets, ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val innerPadding = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
-            binding.main.setPadding(
+            view.setPadding(
                 innerPadding.left,
                 innerPadding.top,
                 innerPadding.right,
@@ -61,7 +59,6 @@ class ReviewsActivity : AppCompatActivity() {
                         adapter(response)
                     }
                 }
-
             }
         } else if (reviewType.equals(REVIEW_MOVIE)) {
             reviewsViewModel.getMovieReviews(mediaId!!)
@@ -77,11 +74,8 @@ class ReviewsActivity : AppCompatActivity() {
                         adapter(response)
                     }
                 }
-
-
             }
         }
-
     }
 
     private fun adapter(response: Response<GetReviewsResponse>) {

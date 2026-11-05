@@ -87,4 +87,19 @@ interface TvShowService {
     @GET("tv/{id}/watch/providers")
     suspend fun getWatchProviders(@Path("id") tvShowId: Int): Response<GetWatchProvidersResponse>
 
+    /**
+     * Matches TMDB website preset `discover_preset=hidden-gems` for TV.
+     */
+    @GET("discover/tv")
+    suspend fun getHiddenGemTvShows(
+        @Query("page") page: Int,
+        @Query("language") language: String,
+        @Query("sort_by") sortBy: String = "vote_average.desc",
+        @Query("vote_average.gte") voteAverageGte: Float = 7f,
+        @Query("vote_average.lte") voteAverageLte: Float = 10f,
+        @Query("vote_count.gte") voteCountGte: Int = 50,
+        @Query("vote_count.lte") voteCountLte: Int = 200,
+        @Query("include_adult") includeAdult: Boolean = false
+    ): Response<zw.co.nm.moviedb.data.remote.model.response.GetPopularTVSeriesListResponse>
+
 }

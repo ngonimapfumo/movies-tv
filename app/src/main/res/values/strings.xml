@@ -122,6 +122,9 @@
     <string name="information">Information</string>
     <string name="prev">prev</string>
     <string name="reviews">Reviews</string>
+    <string name="hidden_gems">Hidden Gems</string>
+    <string name="popular">Popular</string>
+    <string name="hidden_gems_tv">Hidden Gems TV</string>
     <string name="trailers">Trailers</string>
     <string name="suggested_films">Suggested films</string>
     <string name="production">Production</string>

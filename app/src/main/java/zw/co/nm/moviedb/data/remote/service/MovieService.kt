@@ -111,6 +111,22 @@ interface MovieService {
         @Query("with_keywords") with_keywords: Int
     ): Response<GetPopularMoviesListResponse>
 
+    /**
+     * Matches TMDB website preset `discover_preset=hidden-gems`:
+     * rating 7–10, vote count 50–200, sorted by rating.
+     */
+    @GET("discover/movie")
+    suspend fun getHiddenGemMovies(
+        @Query("page") page: Int,
+        @Query("language") language: String,
+        @Query("sort_by") sortBy: String = "vote_average.desc",
+        @Query("vote_average.gte") voteAverageGte: Float = 7f,
+        @Query("vote_average.lte") voteAverageLte: Float = 10f,
+        @Query("vote_count.gte") voteCountGte: Int = 50,
+        @Query("vote_count.lte") voteCountLte: Int = 200,
+        @Query("include_adult") includeAdult: Boolean = false
+    ): Response<GetPopularMoviesListResponse>
+
     @GET("trending/all/day")
     suspend fun getTrending(
         @Query("page") page: Int,

@@ -6,6 +6,10 @@
         android:title="@string/pop_movies" />
 
     <item
+        android:id="@+id/drawer_hidden_gems"
+        android:title="@string/hidden_gems" />
+
+    <item
         android:id="@+id/drawer_tv"
         android:title="@string/tv_shows" />
 
